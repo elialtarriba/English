@@ -490,7 +490,10 @@ body{font-family:Georgia,serif;background:#f5ebe0;color:#3a2918;min-height:100vh
     <div class="study-search-row">
       <div class="search-box"><span class="search-icon">🔍</span><input class="search-inp" id="searchInp" placeholder="Buscar por inglés, español o tipo..."></div>
       <button class="random-btn" id="btnStudyRandom" title="Palabra random">↯</button>
-      <button class="btn-add-card" id="btnAddFlashcard" type="button">＋ Crear flashcard</button>
+      <div style="display:flex; gap:6px; flex-wrap:wrap;">
+        <button class="btn-add-card" id="btnAddFlashcard" type="button">＋ Crear flashcard</button>
+        <button class="btn-add-card" id="btnToggleVerifyBtn" type="button" style="background:#e67e22;">👁️ Ocultar Validar</button>
+      </div>
     </div>
     <div class="filter-row" id="filterRow">
       <div class="flt-btn on" data-flt="all">Todas (1300)</div>
