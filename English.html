@@ -329,6 +329,24 @@ body{font-family:Georgia,serif;background:#f5ebe0;color:#3a2918;min-height:100vh
 #sectionZoomContent .fc-ex-tr { font-size: 18.5px; margin-top: 6px; margin-bottom: 14px; }
 #sectionZoomContent .fc-sense-lbl { font-size: 17px; margin-bottom: 8px; }
 
+@media print {
+  body.printing-pdf > :not(#printContainer) { display: none !important; }
+  body.printing-pdf #printContainer { display: block !important; }
+  #printContainer { width: 100%; font-family: Arial, sans-serif; color: #333; }
+  .pdf-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; page-break-inside: avoid; }
+  .pdf-table td { border: 2px solid #e0c9a0; padding: 15px; vertical-align: middle; }
+  .pdf-img-cell { width: 220px; text-align: center; }
+  .pdf-img-cell img { max-width: 200px; max-height: 200px; object-fit: contain; border-radius: 8px; }
+  .pdf-img-cell svg { width: 120px; height: 120px; }
+  .pdf-info-cell { padding-left: 20px; }
+  .pdf-info-cell h2 { margin: 0 0 10px 0; color: #5d3b1f; font-size: 24px; text-transform: uppercase; letter-spacing: 1px; }
+  .pdf-info-row { margin-bottom: 6px; font-size: 14px; line-height: 1.4; }
+  .pdf-info-row strong { color: #6b4423; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; display: inline-block; width: 100px; }
+  .pdf-examples { margin-top: 12px; border-top: 1px solid #e0c9a0; padding-top: 10px; }
+  .pdf-ex-item { margin-bottom: 8px; }
+  .pdf-ex-en { font-weight: bold; font-size: 14px; color: #333; }
+  .pdf-ex-es { font-style: italic; font-size: 13px; color: #666; }
+}
 /* Quiz question editor */
 .btn-quiz-editor{background:#ead9c6;color:#6b4423;border:1.5px solid #d4b994;border-radius:999px;padding:10px 18px;font-size:12px;font-weight:700;font-family:Arial,sans-serif;cursor:pointer;box-shadow:0 3px 10px rgba(107,68,35,.08);transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:2px;line-height:1.25}.btn-quiz-editor strong{font-size:13px;color:#5d3b1f}.btn-quiz-editor span{font-size:11px;font-weight:600;color:#7d5a37}
 .btn-quiz-editor:hover{transform:translateY(-2px);filter:brightness(.95)}
@@ -551,6 +569,7 @@ window.addEventListener('message', function(event) {
     <div style="display:flex; gap:8px;">
       <button class="btn-edit-3d" id="btnStudyTopEdit" type="button">✎ Editar</button>
       <button class="btn-edit-3d" id="btnStudyTopView" type="button" style="display:none; background: #e0e5cd; color: #4b5e3d; border-color: #c4ccaa;">👁️ Ver normal</button>
+      <button class="btn-edit-3d" id="btnStudyTopPdf" type="button" style="display:none; background: #e0d0b8; color: #5d3b1f; border-color: #c4b094;">📄 Exportar PDF</button>
       <button class="hbtn" id="btnStudyHome">⌂ Inicio</button>
     </div>
   </div>
@@ -777,6 +796,7 @@ window.addEventListener('message', function(event) {
     <button class="rbtn sec" id="btnHome3">⌂ Menú Principal</button>
   </div>
 </div>
+<div id="printContainer" style="display:none;"></div>
 
 <script>
 var ADVERBS=["always","usually","often","frequently","regularly","generally","normally","typically","occasionally","sometimes","rarely","seldom","hardly","barely","scarcely","never","ever","constantly","continuously","perpetually","carefully","quickly","slowly","suddenly","gradually","gently","firmly","loudly","quietly","clearly","easily","happily","sadly","angrily","calmly","confidently","nervously","eagerly","reluctantly","willingly","brilliantly","perfectly","thoroughly","completely","entirely","fully","mainly","mostly","largely","partly","slightly","somewhat","rather","quite","fairly","reasonably","considerably","significantly","substantially","dramatically","enormously","tremendously","hugely","absolutely","utterly","totally","purely","simply","merely","just","already","soon","still","yet","recently","lately","currently","presently","formerly","previously","initially","originally","ultimately","finally","eventually","afterwards","subsequently","beforehand","meanwhile","simultaneously","immediately","instantly","promptly","directly","shortly","briefly","temporarily","permanently","widely","away","upstairs","downstairs","outdoors","indoors","ahead","backwards","forwards","sideways","abroad","overseas","locally","somewhere","everywhere","nowhere","anywhere","very","extremely","incredibly","remarkably","exceptionally","particularly","especially","notably","surprisingly","unexpectedly","genuinely","truly","actually","really","indeed","certainly","definitely","probably","possibly","apparently","seemingly","presumably","allegedly","supposedly","evidently","obviously","plainly","frankly","otherwise","instead","nonetheless","nevertheless","furthermore","moreover","however","therefore","consequently","accordingly","hence","thus","anyway","regardless","admittedly","fortunately","unfortunately","ideally","hopefully","luckily","thankfully","wisely","cleverly","sensibly","honestly","seriously","literally","precisely","exactly","virtually","practically","effectively","essentially","fundamentally","basically","broadly","roughly","approximately","personally","professionally","financially","politically","socially","culturally","technically","scientifically","historically","traditionally","officially","formally","informally","publicly","privately","secretly","openly","indirectly","casually","deliberately","intentionally","accidentally","coincidentally","naturally","physically","mentally","emotionally","spiritually","adequately","sufficiently","appropriately","properly","correctly","incorrectly","wrongly","rightly","justly","harshly","strictly","loosely","smoothly","swiftly","steadily","sharply","deeply","highly","strongly","powerfully","forcefully","softly","mildly","moderately","heavily","lightly","tightly","boldly","bravely","cheerfully","diligently","elegantly","energetically","enthusiastically","gracefully","gratefully","humbly","keenly","kindly","loyally","neatly","passionately","patiently","persistently","politely","proudly","punctually","rapidly","reliably","respectfully","sincerely","skilfully","tactfully","tenderly","equally","hardly ever","solely","readily","invariably","inevitably","incessantly","habitually","freshly","emphatically","doubtfully","definitively","daily","crudely","convincingly","competently","brutally","brightly","blindly","aptly","amiably","alternately","acutely","abundantly","repeatedly","correspondingly","systematically","characteristically","noticeably","conclusively","conveniently","decidedly","exclusively","indisputably","mysteriously","painfully","plentifully"];
@@ -2540,6 +2560,7 @@ function enterStudyMode(edit){
   screen.classList.toggle("show-edit", STUDY_EDIT_MODE);
   document.getElementById("btnStudyTopEdit").style.display = STUDY_EDIT_MODE ? "none" : "";
   document.getElementById("btnStudyTopView").style.display = STUDY_EDIT_MODE ? "" : "none";
+  document.getElementById("btnStudyTopPdf").style.display = STUDY_EDIT_MODE ? "" : "none";
   studyFilter="all"; studySearch=""; studyIdx=0;
   document.getElementById("searchInp").value="";
   document.querySelectorAll(".flt-btn").forEach(function(b){b.classList.toggle("on",b.dataset.flt==="all")});
@@ -2923,16 +2944,56 @@ function handleImageDelete(e) {
   }
 }
 
-function openSectionZoomModal(content){
+var currentZoomSec = null;
+function openSectionZoomModal(sec){
+  currentZoomSec = sec;
   var modal = document.getElementById("sectionZoomModal");
-  document.getElementById("sectionZoomContent").innerHTML = content;
+  document.getElementById("sectionZoomContent").innerHTML = sec.innerHTML;
   modal.classList.add("show");
   modal.setAttribute("aria-hidden","false");
 }
 function closeSectionZoomModal(){
+  var modalContent = document.getElementById("sectionZoomContent");
+  if (currentZoomSec && STUDY_EDIT_MODE) {
+    var valEl = modalContent.querySelector('.fc-sec-val');
+    if (valEl && valEl.dataset.editField) {
+      var c = getCurrentCard(); 
+      if (c) {
+         var k = cardKey(c), f = valEl.dataset.editField;
+         USER_EDITS[k] = USER_EDITS[k] || {};
+         USER_EDITS[k][f] = valEl.textContent.trim();
+         saveEdits();
+         var realEl = currentZoomSec.querySelector('.fc-sec-val');
+         if (realEl) realEl.textContent = valEl.textContent;
+      }
+    } else if (modalContent.querySelector('.fc-sense')) {
+      var c = getCurrentCard();
+      if (c) {
+         var k = cardKey(c);
+         var rows = [];
+         modalContent.querySelectorAll('.fc-sense').forEach(function(senseEl){
+           var sense = senseEl.querySelector('.fc-sense-lbl') ? senseEl.querySelector('.fc-sense-lbl').textContent.replace(/^Significado\s*\d+\s*:\s*/i,'').trim() : '';
+           var examples = [];
+           var exEls = senseEl.querySelectorAll('.fc-ex');
+           var trEls = senseEl.querySelectorAll('.fc-ex-tr');
+           for(var i=0; i<exEls.length; i++){
+             examples.push([exEls[i].textContent.replace(/^\d+\.\s*/, '').trim(), (trEls[i]?trEls[i].textContent.trim():"")]);
+           }
+           rows.push({sense:sense, examples:examples});
+         });
+         USER_EDITS[k] = USER_EDITS[k] || {};
+         USER_EDITS[k].examples = rows;
+         saveEdits();
+         setTimeout(function(){ renderStudy(); }, 10);
+      }
+    }
+  }
+  
   var modal = document.getElementById("sectionZoomModal");
   modal.classList.remove("show");
   modal.setAttribute("aria-hidden","true");
+  modalContent.innerHTML = "";
+  currentZoomSec = null;
 }
 
 function openImageZoomModal(e) {
@@ -3036,6 +3097,7 @@ document.addEventListener("DOMContentLoaded",function(){
       screen.classList.toggle("show-edit", true);
       document.getElementById("btnStudyTopEdit").style.display = "none";
       document.getElementById("btnStudyTopView").style.display = "";
+      document.getElementById("btnStudyTopPdf").style.display = "";
       renderStudy(studyIdx);
     });
   });
@@ -3046,8 +3108,93 @@ document.addEventListener("DOMContentLoaded",function(){
     screen.classList.toggle("show-edit", false);
     document.getElementById("btnStudyTopEdit").style.display = "";
     document.getElementById("btnStudyTopView").style.display = "none";
+    document.getElementById("btnStudyTopPdf").style.display = "none";
     renderStudy(studyIdx);
   });
+  
+  function generatePdfExport() {
+    var container = document.getElementById("printContainer");
+    container.innerHTML = "";
+    var html = '<h1 style="text-align:center; font-family:Arial; color:#5d3b1f; margin-bottom: 30px; font-size: 32px;">Mis Flashcards</h1>';
+    
+    studyList.forEach(function(c) {
+      var k = cardKey(c);
+      var ed = USER_EDITS[k] || {};
+      var word = c.word;
+      var trans = ed.trans || c.trans;
+      var cat = ed.cat || c.cat;
+      var reg = ed.reg || c.reg;
+      var structure = ed.struct || c.struct || "";
+      
+      var imgHtml = "";
+      if (ed.customImage) {
+        imgHtml = '<img src="' + ed.customImage + '">';
+      } else {
+        var chosenIcon = ed.icon || c.icon;
+        if (chosenIcon && typeof LUCIDE_ICONS !== 'undefined' && LUCIDE_ICONS[chosenIcon]) {
+           imgHtml = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#5d3b1f; width:100%; height:100%;">' + LUCIDE_ICONS[chosenIcon].replace(/width=['"][^'"]+['"]/gi, "").replace(/height=['"][^'"]+['"]/gi, "") + '</svg>';
+        } else if (DRAWINGS[cat]) {
+           imgHtml = DRAWINGS[cat].replace(/width=['"][^'"]+['"]/gi, "").replace(/height=['"][^'"]+['"]/gi, "").replace("<svg", '<svg style="width:100%; height:100%;"');
+        } else {
+           imgHtml = '<div style="width:100px; height:100px; display:flex; justify-content:center; align-items:center; background:#f0e6d2; border-radius:8px; color:#a08b74;">Sin foto</div>';
+        }
+      }
+      
+      var senses = (ed.examples && ed.examples.length) ? ed.examples : (c.examples && c.examples.length ? c.examples : (typeof genExamples === "function" ? genExamples(cat, word) : []));
+      var examplesHtml = "";
+      if (senses && senses.length > 0) {
+        examplesHtml = '<div class="pdf-examples">';
+        var globalIdx = 1;
+        var showSenseLabels = senses.length > 1;
+        for(var si=0; si<senses.length; si++){
+          var s = senses[si];
+          if(showSenseLabels){
+            examplesHtml += '<div style="font-weight:bold; font-size:12px; margin-top:6px; color:#5d3b1f; text-transform:uppercase; letter-spacing:1px;">Significado '+(si+1)+': '+s.sense+'</div>';
+          }
+          for(var ei=0; ei<s.examples.length; ei++){
+            var pair = s.examples[ei];
+            examplesHtml += '<div class="pdf-ex-item"><div class="pdf-ex-en">'+globalIdx+'. ' + pair[0] + '</div><div class="pdf-ex-es">' + (pair[1]||"") + '</div></div>';
+            globalIdx++;
+          }
+        }
+        examplesHtml += '</div>';
+      }
+      
+      var typeText = ed.typeText || (typeof getTypeName === "function" ? getTypeName(cat) : capFirst(cat));
+      if(cat==="verb" && c.type){
+        typeText += " — " + (c.type==="transitive"?"transitivo":"intransitivo");
+      } else if(cat==="phrasal" && c.meaning){
+        typeText += " — " + c.meaning;
+      } else if(cat==="connector" && c.meaning){
+        typeText += " — " + c.meaning;
+      }
+      
+      var regName = ed.regText || (typeof getRegisterName === "function" ? getRegisterName(reg) : (reg==='F'?'Formal':(reg==='I'?'Informal':'Neutro')));
+      
+      html += '<table class="pdf-table"><tr>';
+      html += '<td class="pdf-img-cell">' + imgHtml + '</td>';
+      html += '<td class="pdf-info-cell">';
+      html += '<h2>' + word + '</h2>';
+      html += '<div class="pdf-info-row"><strong>Traducción:</strong> ' + trans + '</div>';
+      html += '<div class="pdf-info-row"><strong>Tipo:</strong> ' + typeText + '</div>';
+      html += '<div class="pdf-info-row"><strong>Registro:</strong> ' + regName + '</div>';
+      if(structure) html += '<div class="pdf-info-row"><strong>Estructura:</strong> ' + structure + '</div>';
+      html += examplesHtml;
+      html += '</td></tr></table>';
+    });
+    
+    container.innerHTML = html;
+    document.body.classList.add("printing-pdf");
+    
+    setTimeout(function() {
+      window.print();
+      setTimeout(function() {
+        document.body.classList.remove("printing-pdf");
+        container.innerHTML = "";
+      }, 1000);
+    }, 500);
+  }
+  document.getElementById("btnStudyTopPdf").addEventListener("click", generatePdfExport);
   document.getElementById("btnStudyHome").addEventListener("click",function(){showScreen("home")});
   document.getElementById("btnExportHtml").addEventListener("click",function(){openActionPasswordModal("Introduce la contraseña para descargar el HTML con cambios:", downloadEditedHtml)});
   document.getElementById("btnQuizEditorHome").addEventListener("click",function(){saveQuizEditorCurrent();doHome();});
@@ -3080,10 +3227,13 @@ document.addEventListener("DOMContentLoaded",function(){
 
   /* Flashcard click: section opens modal zoom, otherwise flip */
   document.getElementById("flashcard").addEventListener("click",function(e){
+    if (e.target.isContentEditable || e.target.closest('.fc-edit-only') || e.target.closest('button') || e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') {
+      return;
+    }
     var sec = e.target.closest(".fc-sec");
     if(sec && document.getElementById("flashcard").classList.contains("flipped")){
       e.stopPropagation();
-      openSectionZoomModal(sec.innerHTML);
+      openSectionZoomModal(sec);
       return;
     }
     var card = document.getElementById("flashcard");
