@@ -323,11 +323,11 @@ body{font-family:Georgia,serif;background:#f5ebe0;color:#3a2918;min-height:100vh
 .modal-actions{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-top:14px}.modal-btn{border:none;border-radius:999px;padding:10px 20px;font-family:Arial,sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s}.modal-btn.primary{background:var(--green3);color:#fff}.modal-btn.secondary{background:transparent;color:var(--text2);border:1.5px solid var(--border)}.modal-btn:hover{transform:translateY(-1px)}
 /* Section Zoom Modal specifics */
 #sectionZoomModal .card-dialog, #imageZoomModal .card-dialog { max-width: 360px; width: 95vw; padding: 22px; }
-#sectionZoomContent .fc-sec-lbl { font-size: 13px; margin-bottom: 8px; }
-#sectionZoomContent .fc-sec-val { font-size: 18px; line-height: 1.5; font-weight: 500; }
-#sectionZoomContent .fc-ex { font-size: 17px; line-height: 1.6; padding-left: 14px; border-left-width: 3.5px; margin-top: 10px; }
-#sectionZoomContent .fc-ex-tr { font-size: 15.5px; margin-top: 6px; margin-bottom: 14px; }
-#sectionZoomContent .fc-sense-lbl { font-size: 14px; margin-bottom: 8px; }
+#sectionZoomContent .fc-sec-lbl { font-size: 16px; margin-bottom: 8px; }
+#sectionZoomContent .fc-sec-val { font-size: 21px; line-height: 1.5; font-weight: 500; }
+#sectionZoomContent .fc-ex { font-size: 20px; line-height: 1.6; padding-left: 14px; border-left-width: 3.5px; margin-top: 10px; }
+#sectionZoomContent .fc-ex-tr { font-size: 18.5px; margin-top: 6px; margin-bottom: 14px; }
+#sectionZoomContent .fc-sense-lbl { font-size: 17px; margin-bottom: 8px; }
 
 /* Quiz question editor */
 .btn-quiz-editor{background:#ead9c6;color:#6b4423;border:1.5px solid #d4b994;border-radius:999px;padding:10px 18px;font-size:12px;font-weight:700;font-family:Arial,sans-serif;cursor:pointer;box-shadow:0 3px 10px rgba(107,68,35,.08);transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:2px;line-height:1.25}.btn-quiz-editor strong{font-size:13px;color:#5d3b1f}.btn-quiz-editor span{font-size:11px;font-weight:600;color:#7d5a37}
@@ -550,6 +550,7 @@ window.addEventListener('message', function(event) {
     <span class="shdr-title">📚 Modo Estudio</span>
     <div style="display:flex; gap:8px;">
       <button class="btn-edit-3d" id="btnStudyTopEdit" type="button">✎ Editar</button>
+      <button class="btn-edit-3d" id="btnStudyTopView" type="button" style="display:none; background: #e0e5cd; color: #4b5e3d; border-color: #c4ccaa;">👁️ Ver normal</button>
       <button class="hbtn" id="btnStudyHome">⌂ Inicio</button>
     </div>
   </div>
@@ -2537,6 +2538,8 @@ function enterStudyMode(edit){
   var screen = document.getElementById("studyScreen");
   screen.classList.toggle("read-only-study", !STUDY_EDIT_MODE);
   screen.classList.toggle("show-edit", STUDY_EDIT_MODE);
+  document.getElementById("btnStudyTopEdit").style.display = STUDY_EDIT_MODE ? "none" : "";
+  document.getElementById("btnStudyTopView").style.display = STUDY_EDIT_MODE ? "" : "none";
   studyFilter="all"; studySearch=""; studyIdx=0;
   document.getElementById("searchInp").value="";
   document.querySelectorAll(".flt-btn").forEach(function(b){b.classList.toggle("on",b.dataset.flt==="all")});
@@ -2935,10 +2938,20 @@ function openImageZoomModal(e) {
     imgHTML = '<img src="' + ed.customImage + '" style="max-width:100%; max-height:60vh; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">';
   } else {
     var chosenIcon = ed.icon || c.icon;
+    var rawSvg = "";
     if (chosenIcon && typeof LUCIDE_ICONS !== 'undefined' && LUCIDE_ICONS[chosenIcon]) {
-      imgHTML = '<svg class="fc-svg-icon" viewBox="0 0 24 24" style="width:150px; height:150px; color:var(--text);">' + LUCIDE_ICONS[chosenIcon] + '</svg>';
+      rawSvg = LUCIDE_ICONS[chosenIcon];
+      if (!rawSvg.startsWith("<svg")) {
+        rawSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + rawSvg + '</svg>';
+      }
     } else if (typeof DRAWINGS !== 'undefined' && DRAWINGS[c.cat]) {
-      imgHTML = '<div style="width:150px; height:150px; display:flex; justify-content:center; align-items:center; color:var(--text);">' + DRAWINGS[c.cat] + '</div>';
+      rawSvg = DRAWINGS[c.cat];
+    }
+    
+    if (rawSvg) {
+      rawSvg = rawSvg.replace(/width=['"][^'"]+['"]/gi, "").replace(/height=['"][^'"]+['"]/gi, "");
+      rawSvg = rawSvg.replace("<svg", '<svg style="width:100%; height:100%;"');
+      imgHTML = '<div style="width:150px; height:150px; display:flex; justify-content:center; align-items:center; color:var(--text);">' + rawSvg + '</div>';
     } else {
       imgHTML = '<div style="font-size:80px;">🖼️</div>';
     }
@@ -3008,8 +3021,23 @@ document.addEventListener("DOMContentLoaded",function(){
   document.getElementById("btnStudyMode").addEventListener("click",function(){ enterStudyMode(false); });
   document.getElementById("btnStudyTopEdit").addEventListener("click",function(){
     openActionPasswordModal("Introduce la contraseña para editar las flashcards:", function(){
-      enterStudyMode(true);
+      STUDY_EDIT_MODE = true;
+      var screen = document.getElementById("studyScreen");
+      screen.classList.toggle("read-only-study", false);
+      screen.classList.toggle("show-edit", true);
+      document.getElementById("btnStudyTopEdit").style.display = "none";
+      document.getElementById("btnStudyTopView").style.display = "";
+      renderStudy(studyIdx);
     });
+  });
+  document.getElementById("btnStudyTopView").addEventListener("click",function(){
+    STUDY_EDIT_MODE = false;
+    var screen = document.getElementById("studyScreen");
+    screen.classList.toggle("read-only-study", true);
+    screen.classList.toggle("show-edit", false);
+    document.getElementById("btnStudyTopEdit").style.display = "";
+    document.getElementById("btnStudyTopView").style.display = "none";
+    renderStudy(studyIdx);
   });
   document.getElementById("btnStudyHome").addEventListener("click",function(){showScreen("home")});
   document.getElementById("btnExportHtml").addEventListener("click",function(){openActionPasswordModal("Introduce la contraseña para descargar el HTML con cambios:", downloadEditedHtml)});
