@@ -587,19 +587,19 @@ window.addEventListener('message', function(event) {
             <button class="fc-verify-btn" id="fcVerifyFront" type="button" title="Marcar como validada" onclick="toggleStudyVerify(event)">○ Validar</button>
             <button class="fc-flip-btn" id="fcFlipBtnFront" type="button" aria-label="Voltear carta">⟳ Voltear</button>
           </div>
+          <div class="fc-word-wrap" style="margin-bottom: 15px; margin-top: 5px;">
+            <div class="fc-word" id="fcWord">—</div>
+            <div class="fc-edit-icon">✏️</div>
+          </div>
           <div class="fc-image-container" style="position:relative; display:flex; flex-direction:column; align-items:center;">
             <div id="fcDrawingWrap" class="fc-drawing" style="display:flex; justify-content:center; align-items:center; overflow:hidden; border-radius:8px;"></div>
-            <div class="fc-image-actions fc-edit-only" style="display:flex; gap: 8px; margin-top: 8px;" onclick="event.stopPropagation()">
+            <div class="fc-image-actions fc-edit-only" style="display:flex; gap: 8px; margin-top: 12px;" onclick="event.stopPropagation()">
               <label class="fc-img-btn" title="Subir foto" style="cursor:pointer; background:var(--white); border:1.5px solid var(--border); border-radius:999px; padding:4px 10px; font-size:12px; display:flex; align-items:center; color:var(--text);">
                 📷 Subir
-                <input type="file" id="fcImageUpload" accept="image/png, image/jpeg" style="display:none;" onchange="handleImageUpload(event)">
+                <input type="file" id="fcImageUpload" accept="image/png, image/jpeg, image/webp" style="display:none;" onchange="handleImageUpload(event)">
               </label>
               <button type="button" class="fc-img-btn" id="fcImageDelete" title="Borrar foto" onclick="handleImageDelete(event)" style="display:none; cursor:pointer; background:var(--red1); color:var(--red3); border:1.5px solid var(--red2); border-radius:999px; padding:4px 10px; font-size:12px;">🗑️ Borrar</button>
             </div>
-          </div>
-          <div class="fc-word-wrap">
-            <div class="fc-word" id="fcWord">—</div>
-            <div class="fc-edit-icon">✏️</div>
           </div>
           <div class="fc-tap-hint">Pulsa para girar</div>
         </div>
@@ -2748,12 +2748,17 @@ function renderStudy(){
   fcWord.contentEditable = STUDY_EDIT_MODE ? "true" : "false";
   fcWord.classList.toggle("editable-field", STUDY_EDIT_MODE);
   
+  var drawWrap = document.getElementById("fcDrawingWrap");
   var drawingHtml = "";
   if (ed.customImage) {
-    drawingHtml = '<img src="' + ed.customImage + '" style="max-width:100%; max-height:100px; object-fit:contain; border-radius:8px;">';
+    drawingHtml = '<img src="' + ed.customImage + '" style="max-width:100%; max-height:220px; object-fit:contain; border-radius:8px; box-shadow:0 3px 10px rgba(0,0,0,0.1);">';
     document.getElementById("fcImageDelete").style.display = "flex";
+    drawWrap.style.width = "100%";
+    drawWrap.style.height = "auto";
   } else {
     document.getElementById("fcImageDelete").style.display = "none";
+    drawWrap.style.width = "";
+    drawWrap.style.height = "";
     var chosenIcon = ed.icon || c.icon;
     if (chosenIcon && LUCIDE_ICONS[chosenIcon]) {
       drawingHtml = '<svg class="fc-svg-icon" viewBox="0 0 24 24">' + LUCIDE_ICONS[chosenIcon] + '</svg>';
@@ -2870,8 +2875,8 @@ function handleImageUpload(e) {
     var img = new Image();
     img.onload = function() {
       var canvas = document.createElement("canvas");
-      var MAX_WIDTH = 300;
-      var MAX_HEIGHT = 300;
+      var MAX_WIDTH = 400;
+      var MAX_HEIGHT = 400;
       var width = img.width;
       var height = img.height;
       if (width > height) {
@@ -2889,7 +2894,11 @@ function handleImageUpload(e) {
       canvas.height = height;
       var ctx = canvas.getContext("2d");
       ctx.drawImage(img, 0, 0, width, height);
-      var dataUrl = canvas.toDataURL("image/jpeg", 0.7);
+      // WebP at 0.6 provides excellent compression to help avoid localStorage limits (fallback to jpeg natively if webp unsupported)
+      var dataUrl = canvas.toDataURL("image/webp", 0.6);
+      if (dataUrl.startsWith("data:image/png")) { // fallback occurred
+          dataUrl = canvas.toDataURL("image/jpeg", 0.65);
+      }
       
       var c = studyList[studyIdx];
       var k = cardKey(c);
