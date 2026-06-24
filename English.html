@@ -404,7 +404,7 @@ body{font-family:Georgia,serif;background:#f5ebe0;color:#3a2918;min-height:100vh
   cursor: pointer;
   display: inline-block;
   margin-bottom: 5px;
-  width: 280px;
+  width: 210px;
   height: 76px;
 }
 .title-flip-card {
@@ -427,7 +427,7 @@ body{font-family:Georgia,serif;background:#f5ebe0;color:#3a2918;min-height:100vh
   backface-visibility: hidden;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .title-flip-front {
   background: transparent;
@@ -491,13 +491,13 @@ window.addEventListener('message', function(event) {
 <body>
 
 <div id="home" class="screen active">
-<div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%; max-width: 400px; padding: 0 10px;">
+<div style="display: flex; align-items: center; justify-content: center; gap: 0px; max-width: 420px; padding: 0 10px 0 40px; margin: 0 auto;">
   <!-- Logo_angles.JPG -->
-  <img src="Logo_angles.JPG" style="width: 100px; height: 100px; object-fit: contain; border-radius: 12px; flex-shrink: 0; mix-blend-mode: multiply;">
+  <img src="Logo_angles.JPG" style="width: 140px; height: 140px; object-fit: contain; border-radius: 12px; flex-shrink: 0; mix-blend-mode: multiply; margin-right: 0px;">
   
   <!-- Titulo y Badge -->
-  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1;">
-    <div class="badge" style="margin-bottom: 8px;">🇬🇧 English</div>
+  <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
+    <div class="badge" style="margin-bottom: -8px;">English</div>
     
     <div class="title-flip-scene" onclick="this.classList.toggle('flipped')">
       <div class="title-flip-card">
@@ -600,21 +600,26 @@ window.addEventListener('message', function(event) {
     </div>
   </div>
   <div class="sctrl">
-    <div class="study-search-row">
-      <div class="search-box"><span class="search-icon">🔍</span><input class="search-inp" id="searchInp" placeholder="Buscar por inglés, español o tipo..."></div>
-      <select id="regFilterSel" class="hbtn" style="--btn-bg:var(--br1); --btn-sh:var(--br2); --btn-color:var(--br5); outline:none; cursor:pointer; padding-right:24px; appearance:none; background-image:url('data:image/svg+xml;utf8,<svg fill=%22%234a2e1a%22 viewBox=%220 0 24 24%22 xmlns=%22http://www.w3.org/2000/svg%22><path d=%22M7 10l5 5 5-5z%22/></svg>'); background-repeat:no-repeat; background-position:right 4px center;">
-        <option value="all">Cualquier registro</option>
-        <option value="neutral">Neutro</option>
-        <option value="formal">Formal</option>
-        <option value="informal">Informal</option>
-        <option value="">No informado</option>
-      </select>
-      <button class="hbtn" id="btnClearFilters" type="button" style="--btn-bg:var(--br2); --btn-sh:var(--br3); --btn-color:var(--br5);">🧹 Limpiar Filtros</button>
-      <button class="random-btn" id="btnStudyRandom" title="Palabra random">↯</button>
-      <div style="display:flex; gap:6px; flex-wrap:wrap;">
-        <button class="hbtn" id="btnAddFlashcard" type="button" style="--btn-bg:var(--br3); --btn-sh:var(--br4); --btn-color:#fff;">＋ Crear flashcard</button>
-        <button class="hbtn" id="btnReverseStudy" type="button" style="--btn-bg:var(--br4); --btn-sh:var(--br5); --btn-color:#fff;" onclick="toggleReverseStudy()">Al Revés (Off)</button>
-        <button class="hbtn" id="btnToggleVerifyBtn" type="button" style="--btn-bg:var(--br5); --btn-sh:#26180d; --btn-color:#fff;" onclick="toggleHideVerify()">👁️ Ocultar Validar</button>
+    <div class="study-search-row" style="flex-direction: column; gap: 10px; width: 100%;">
+      <!-- Buscador entero -->
+      <div class="search-box" style="width: 100%;">
+        <input class="search-inp" id="searchInp" placeholder="Buscar por inglés, español o tipo..." style="padding-left: 12px; width: 100%; box-sizing: border-box;">
+      </div>
+      
+      <!-- Botones de control (Scrollable) -->
+      <div class="filter-row" style="gap: 8px; align-items: stretch; width: 100%; margin-bottom: 0; padding-bottom: 8px;">
+        <button class="hbtn" id="btnClearFilters" type="button" style="--btn-bg:var(--br2); --btn-sh:var(--br3); --btn-color:var(--br5); border-radius: 12px; flex: 0 0 auto; font-weight: normal; font-size: 11px; text-transform: none; letter-spacing: normal;">Limpiar Filtros</button>
+        <button class="random-btn" id="btnStudyRandom" title="Palabra random" style="border-radius: 12px; height: auto; flex: 0 0 auto;">↯</button>
+        <select id="regFilterSel" class="hbtn" style="--btn-bg:var(--br1); --btn-sh:var(--br2); --btn-color:var(--br5); outline:none; cursor:pointer; padding-right:26px; padding-left:10px; appearance:none; background-image:url('data:image/svg+xml;utf8,<svg fill=%22%234a2e1a%22 viewBox=%220 0 24 24%22 xmlns=%22http://www.w3.org/2000/svg%22><path d=%22M7 10l5 5 5-5z%22/></svg>'); background-repeat:no-repeat; background-position:right 6px center; border-radius: 12px; flex: 0 0 auto; text-align: left; font-weight: normal; font-size: 11px; text-transform: none; letter-spacing: normal;">
+          <option value="all">Cualquier registro</option>
+          <option value="neutral">Neutro</option>
+          <option value="formal">Formal</option>
+          <option value="informal">Informal</option>
+          <option value="">No informado</option>
+        </select>
+        <button class="hbtn" id="btnReverseStudy" type="button" style="--btn-bg:var(--br2); --btn-sh:var(--br3); --btn-color:var(--br5); border-radius: 12px; flex: 0 0 auto; font-weight: normal; font-size: 11px; text-transform: none; letter-spacing: normal;" onclick="toggleReverseStudy()">Al Revés (Off)</button>
+        <button class="hbtn" id="btnAddFlashcard" type="button" style="--btn-bg:var(--br3); --btn-sh:var(--br4); --btn-color:#fff; border-radius: 12px; flex: 0 0 auto; font-weight: normal; font-size: 11px; text-transform: none; letter-spacing: normal;">Crear flashcard</button>
+        <button class="hbtn" id="btnToggleVerifyBtn" type="button" style="--btn-bg:var(--br5); --btn-sh:#26180d; --btn-color:#fff; border-radius: 12px; flex: 0 0 auto; font-weight: normal; font-size: 11px; text-transform: none; letter-spacing: normal;" onclick="toggleHideVerify()">Ocultar Validar</button>
       </div>
     </div>
     <div class="filter-row" id="filterRow">
