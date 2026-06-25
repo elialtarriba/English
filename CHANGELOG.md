@@ -13,3 +13,8 @@ Este archivo servirá para registrar todos los cambios que vayamos realizando en
 - **Alineación de Botones**: Se han alineado los tres botones ("Inicio", "Validar", "Voltear") en la misma línea en la parte superior de la tarjeta frontal.
   - El estado (rojo/verde) se guarda de forma persistente.
   - El estado es independiente entre el Modo Estudio y el Modo Quiz.
+
+- **Corrección de "Conditionals" y Tarjeta Giratoria (25 de Junio)**: 
+  - Se solucionó un error en JavaScript que bloqueaba el Modo Estudio y el Modo Quiz al entrar a Conditionals.
+  - Se modificó la tarjeta del email para usar CSS Grid, adaptando su altura al contenido y evitando superposiciones con la etiqueta "English".
+  - Se implementaron tamaños dinámicos (responsive con `clamp()`) para el logo superior y la tarjeta del email, logrando que no se corten en pantallas pequeñas de móvil.
