@@ -613,7 +613,7 @@ window.addEventListener('message', function(event) {
 
 <div id="studyScreen" class="screen">
   <div class="shdr">
-    <button class="hbtn" onclick="showScreen('home')" type="button" style="--btn-bg:var(--br2); --btn-sh:var(--br3); --btn-color:var(--br5); padding-left:10px; padding-right:10px; text-transform:none; letter-spacing:normal;">M.Estudio</button>
+    <button class="hbtn" onclick="setTimeout(function(){showScreen('home')},150)" type="button" style="--btn-bg:var(--br2); --btn-sh:var(--br3); --btn-color:var(--br5); padding-left:10px; padding-right:10px; text-transform:none; letter-spacing:normal;">M.Estudio</button>
     <div class="top-btns-scroll">
       <div class="top-btns-inner">
         <button class="hbtn" id="btnStudyTopEdit" type="button" style="--btn-bg:var(--br4); --btn-sh:var(--br5);">✎ Editar</button>
@@ -3247,32 +3247,38 @@ document.addEventListener("DOMContentLoaded",function(){
 
   document.getElementById("btnStudyMode").addEventListener("click",function(){ enterStudyMode(false); });
   document.getElementById("btnStudyTopEdit").addEventListener("click",function(){
-    openActionPasswordModal("Introduce la contraseña para editar las flashcards:", function(){
-      STUDY_EDIT_MODE = true;
-      var screen = document.getElementById("studyScreen");
-      screen.classList.toggle("read-only-study", false);
-      screen.classList.toggle("show-edit", true);
-      document.getElementById("btnStudyTopEdit").style.display = "none";
-      document.getElementById("btnStudyTopView").style.display = "";
-      document.getElementById("btnStudyTopSave").style.display = "";
-      document.getElementById("btnStudyTopPdf").style.display = "";
-      renderStudy(studyIdx);
-    });
+    setTimeout(function() {
+      openActionPasswordModal("Introduce la contraseña para editar las flashcards:", function(){
+        STUDY_EDIT_MODE = true;
+        var screen = document.getElementById("studyScreen");
+        screen.classList.toggle("read-only-study", false);
+        screen.classList.toggle("show-edit", true);
+        document.getElementById("btnStudyTopEdit").style.display = "none";
+        document.getElementById("btnStudyTopView").style.display = "";
+        document.getElementById("btnStudyTopSave").style.display = "";
+        document.getElementById("btnStudyTopPdf").style.display = "";
+        renderStudy(studyIdx);
+      });
+    }, 150);
   });
   document.getElementById("btnStudyTopView").addEventListener("click",function(){
-    STUDY_EDIT_MODE = false;
-    var screen = document.getElementById("studyScreen");
-    screen.classList.toggle("read-only-study", true);
-    screen.classList.toggle("show-edit", false);
-    document.getElementById("btnStudyTopEdit").style.display = "";
-    document.getElementById("btnStudyTopView").style.display = "none";
-    document.getElementById("btnStudyTopSave").style.display = "none";
-    document.getElementById("btnStudyTopPdf").style.display = "none";
-    renderStudy(studyIdx);
+    setTimeout(function() {
+      STUDY_EDIT_MODE = false;
+      var screen = document.getElementById("studyScreen");
+      screen.classList.toggle("read-only-study", true);
+      screen.classList.toggle("show-edit", false);
+      document.getElementById("btnStudyTopEdit").style.display = "";
+      document.getElementById("btnStudyTopView").style.display = "none";
+      document.getElementById("btnStudyTopSave").style.display = "none";
+      document.getElementById("btnStudyTopPdf").style.display = "none";
+      renderStudy(studyIdx);
+    }, 150);
   });
   document.getElementById("btnStudyTopSave").addEventListener("click", function() {
-    saveEdits();
-    openActionPasswordModal("Introduce la contraseña para descargar el HTML con cambios:", downloadEditedHtml);
+    setTimeout(function() {
+      saveEdits();
+      openActionPasswordModal("Introduce la contraseña para descargar el HTML con cambios:", downloadEditedHtml);
+    }, 150);
   });
   
   function generatePdfExport() {
@@ -3357,8 +3363,8 @@ document.addEventListener("DOMContentLoaded",function(){
       }, 1000);
     }, 500);
   }
-  document.getElementById("btnStudyTopPdf").addEventListener("click", generatePdfExport);
-  document.getElementById("btnStudyHome").addEventListener("click",function(){showScreen("home")});
+  document.getElementById("btnStudyTopPdf").addEventListener("click", function(){ setTimeout(generatePdfExport, 150); });
+  document.getElementById("btnStudyHome").addEventListener("click",function(){ setTimeout(function(){showScreen("home")}, 150); });
   document.getElementById("btnExportHtml").addEventListener("click",function(){openActionPasswordModal("Introduce la contraseña para descargar el HTML con cambios:", downloadEditedHtml)});
   document.getElementById("btnQuizEditorHome").addEventListener("click",function(){saveQuizEditorCurrent();doHome();});
   document.getElementById("btnActionPasswordOk").addEventListener("click",tryActionPassword);
