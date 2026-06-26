@@ -454,17 +454,24 @@ body{font-family:Georgia,serif;background:#f5ebe0;color:#3a2918;min-height:100vh
 
 .top-btns-scroll {
   display: flex;
-  gap: 8px;
   overflow-x: auto;
-  align-items: center;
-  padding-bottom: 2px;
-  margin-left: auto;
+  flex: 1;
   min-width: 0;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
 .top-btns-scroll::-webkit-scrollbar {
   display: none;
+}
+.top-btns-inner {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-left: auto;
+  padding-bottom: 2px;
+}
+.top-btns-inner > * {
+  flex-shrink: 0;
 }
 
 [contenteditable="true"][data-placeholder]:empty:before {
@@ -606,11 +613,13 @@ window.addEventListener('message', function(event) {
   <div class="shdr">
     <span class="shdr-title">📚 Modo Estudio</span>
     <div class="top-btns-scroll">
-      <button class="hbtn" id="btnStudyTopEdit" type="button" style="--btn-bg:var(--br4); --btn-sh:var(--br5);">✎ Editar</button>
-      <button class="hbtn" id="btnStudyTopView" type="button" style="display:none; --btn-bg:#e0e5cd; --btn-sh:#c4ccaa; --btn-color:#4b5e3d;">👁️ Ver normal</button>
-      <button class="hbtn" id="btnStudyTopSave" type="button" style="display:none; --btn-bg:#cce5ff; --btn-sh:#b8daff; --btn-color:#004085;">💾 Guardar</button>
-      <button class="hbtn" id="btnStudyTopPdf" type="button" style="display:none; --btn-bg:#e0d0b8; --btn-sh:#c4b094; --btn-color:#5d3b1f;">📄 Exportar PDF</button>
-      <button class="hbtn" id="btnStudyHome">⌂ Inicio</button>
+      <div class="top-btns-inner">
+        <button class="hbtn" id="btnStudyTopEdit" type="button" style="--btn-bg:var(--br4); --btn-sh:var(--br5);">✎ Editar</button>
+        <button class="hbtn" id="btnStudyTopView" type="button" style="display:none; --btn-bg:#e0e5cd; --btn-sh:#c4ccaa; --btn-color:#4b5e3d;">👁️ Ver normal</button>
+        <button class="hbtn" id="btnStudyTopSave" type="button" style="display:none; --btn-bg:#cce5ff; --btn-sh:#b8daff; --btn-color:#004085;">💾 Guardar</button>
+        <button class="hbtn" id="btnStudyTopPdf" type="button" style="display:none; --btn-bg:#e0d0b8; --btn-sh:#c4b094; --btn-color:#5d3b1f;">📄 Exportar PDF</button>
+        <button class="hbtn" id="btnStudyHome">⌂ Inicio</button>
+      </div>
     </div>
   </div>
   <div class="sctrl">
