@@ -18,3 +18,10 @@ Este archivo servirá para registrar todos los cambios que vayamos realizando en
   - Se solucionó un error en JavaScript que bloqueaba el Modo Estudio y el Modo Quiz al entrar a Conditionals.
   - Se modificó la tarjeta del email para usar CSS Grid, adaptando su altura al contenido y evitando superposiciones con la etiqueta "English".
   - Se implementaron tamaños dinámicos (responsive con `clamp()`) para el logo superior y la tarjeta del email, logrando que no se corten en pantallas pequeñas de móvil.
+
+- **Mejoras de Layout Móvil y Flashcards (26 de Junio)**:
+  - Se centró y ajustó el espaciado del logo principal en la pantalla de Inicio para una apariencia más profesional.
+  - Se incrementó el espaciado entre los 4 botones principales y se desplazaron ligeramente hacia abajo.
+  - Se movieron los botones de Exportar/Importar datos al final de la pantalla de Inicio.
+  - Se añadió la capacidad de desplazamiento horizontal (scroll) a los botones superiores del Modo Estudio para que todos sean accesibles en pantallas pequeñas.
+  - En el Modo Estudio, al editar una flashcard, ahora se muestran siempre 4 campos para ejemplos, permitiendo agregar hasta 4 ejemplos. En modo vista normal, los espacios de ejemplos vacíos se ocultan automáticamente.

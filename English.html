@@ -46,7 +46,7 @@ body{font-family:Georgia,serif;background:#f5ebe0;color:#3a2918;min-height:100vh
 .cond-edit-btns{display:flex;justify-content:center;gap:10px;margin-top:-8px;margin-bottom:8px;}
 .cond-edit-btns button{background:transparent;border:none;color:var(--text2);font-size:11px;opacity:0.4;cursor:pointer;transition:all 0.2s;}
 .cond-edit-btns button:hover{opacity:1;color:var(--br3);}
-.mode-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;width:100%;max-width:520px;margin:6px 0 4px}
+.mode-row{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;width:100%;max-width:520px;margin:24px 0 10px}
 .mode-btn{flex:1;min-width:170px;background:var(--white);border:2px solid var(--border);border-radius:14px;padding:14px 18px;font-family:Arial,sans-serif;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:4px}
 .mode-btn:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(107,68,35,.15)}
 .mode-btn .ico{font-size:28px}.mode-btn .lbl{font-size:14px;font-weight:700;color:var(--text)}.mode-btn .lbl strong{display:block;font-weight:800}.mode-btn .lbl span{display:block;font-size:12px;font-weight:600;color:var(--text3);margin-top:2px}.mode-btn .slbl{font-size:11px;color:var(--text3)}
@@ -323,7 +323,7 @@ body{font-family:Georgia,serif;background:#f5ebe0;color:#3a2918;min-height:100vh
 .btn-download{background:var(--white);color:var(--br4);border:none;border-radius:12px;padding:10px 20px;font-size:12px;font-weight:700;font-family:Arial,sans-serif;cursor:pointer;box-shadow:0 4px 0 var(--br2),0 6px 10px rgba(58,41,24,.15);transition:all .15s;display:flex;flex-direction:column;align-items:center;gap:2px;line-height:1.25}.btn-download strong{font-size:13px;color:var(--br4)}.btn-download span{font-size:11px;font-weight:600;color:var(--text3)}
 .btn-download:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--br2),0 4px 6px rgba(58,41,24,.15);filter:brightness(.95)}
 .btn-download:active{transform:translateY(4px);box-shadow:0 0 0 var(--br2),0 2px 4px rgba(58,41,24,.1)}
-.export-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:4px;width:100%;max-width:520px}.password-modal{position:fixed;inset:0;background:rgba(58,41,24,.45);display:none;align-items:center;justify-content:center;z-index:10000;padding:16px}.password-modal.show{display:flex}.password-dialog{width:min(420px,100%);background:var(--white);border:1.5px solid var(--border);border-radius:20px;box-shadow:0 16px 46px rgba(58,41,24,.24);padding:18px;text-align:left}.password-dialog h3{font-family:Georgia,serif;font-size:22px;color:var(--br5);margin-bottom:8px}.password-dialog p{font-family:Arial,sans-serif;font-size:13px;line-height:1.5;color:var(--text2);margin-bottom:12px}.password-dialog input{width:100%;padding:12px;border:1.5px solid var(--border);border-radius:12px;background:var(--cream);font-family:Arial,sans-serif;font-size:15px;outline:none}.password-dialog input:focus{border-color:var(--br3);background:#fff8ef}.password-error{display:none;color:var(--red3);font-family:Arial,sans-serif;font-size:12px;margin-top:8px}.password-error.show{display:block}.password-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:14px}.password-actions button{border:none;border-radius:999px;padding:10px 16px;font-family:Arial,sans-serif;font-size:13px;font-weight:700;cursor:pointer}.password-actions .primary{background:var(--br3);color:#fff}.password-actions .secondary{background:transparent;color:var(--text2);border:1.5px solid var(--border)}
+.export-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:auto;width:100%;max-width:520px;padding-bottom:10px}.password-modal{position:fixed;inset:0;background:rgba(58,41,24,.45);display:none;align-items:center;justify-content:center;z-index:10000;padding:16px}.password-modal.show{display:flex}.password-dialog{width:min(420px,100%);background:var(--white);border:1.5px solid var(--border);border-radius:20px;box-shadow:0 16px 46px rgba(58,41,24,.24);padding:18px;text-align:left}.password-dialog h3{font-family:Georgia,serif;font-size:22px;color:var(--br5);margin-bottom:8px}.password-dialog p{font-family:Arial,sans-serif;font-size:13px;line-height:1.5;color:var(--text2);margin-bottom:12px}.password-dialog input{width:100%;padding:12px;border:1.5px solid var(--border);border-radius:12px;background:var(--cream);font-family:Arial,sans-serif;font-size:15px;outline:none}.password-dialog input:focus{border-color:var(--br3);background:#fff8ef}.password-error{display:none;color:var(--red3);font-family:Arial,sans-serif;font-size:12px;margin-top:8px}.password-error.show{display:block}.password-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:14px}.password-actions button{border:none;border-radius:999px;padding:10px 16px;font-family:Arial,sans-serif;font-size:13px;font-weight:700;cursor:pointer}.password-actions .primary{background:var(--br3);color:#fff}.password-actions .secondary{background:transparent;color:var(--text2);border:1.5px solid var(--border)}
 
 .btn-add-card{background:var(--br3);color:#fff;border:none;border-radius:12px;padding:9px 16px;font-size:12px;font-weight:700;font-family:Arial,sans-serif;cursor:pointer;box-shadow:0 4px 0 var(--br4),0 6px 10px rgba(58,41,24,.2);transition:all .15s;white-space:nowrap;text-transform:uppercase}
 .btn-add-card:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--br4),0 4px 6px rgba(58,41,24,.2);filter:brightness(.95)}
@@ -452,6 +452,27 @@ body{font-family:Georgia,serif;background:#f5ebe0;color:#3a2918;min-height:100vh
   object-fit: contain;
 }
 
+.top-btns-scroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  align-items: center;
+  padding-bottom: 2px;
+  margin-left: auto;
+  min-width: 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.top-btns-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+[contenteditable="true"][data-placeholder]:empty:before {
+  content: attr(data-placeholder);
+  color: #999;
+  pointer-events: none;
+}
+
 body.hide-verify:not(.show-edit) .fc-verify-btn,
 body.hide-verify:not(.show-edit) .verify-btn {
   display: none !important;
@@ -487,7 +508,7 @@ window.addEventListener('message', function(event) {
 <body>
 
 <div id="home" class="screen active">
-<div style="display: inline-flex; align-items: center; justify-content: flex-start; gap: 15px; margin: 0 auto; max-width: 100%;">
+<div style="display: inline-flex; align-items: center; justify-content: center; gap: 15px; margin: 20px auto 0; max-width: 100%;">
   <!-- Logo_angles.JPG -->
   <img src="Logo_angles.JPG" style="width: clamp(80px, 20vw, 120px); height: clamp(80px, 20vw, 120px); object-fit: contain; border-radius: 12px; flex-shrink: 0; mix-blend-mode: multiply;">
   
@@ -584,7 +605,7 @@ window.addEventListener('message', function(event) {
 <div id="studyScreen" class="screen">
   <div class="shdr">
     <span class="shdr-title">📚 Modo Estudio</span>
-    <div style="display:flex; gap:8px;">
+    <div class="top-btns-scroll">
       <button class="hbtn" id="btnStudyTopEdit" type="button" style="--btn-bg:var(--br4); --btn-sh:var(--br5);">✎ Editar</button>
       <button class="hbtn" id="btnStudyTopView" type="button" style="display:none; --btn-bg:#e0e5cd; --btn-sh:#c4ccaa; --btn-color:#4b5e3d;">👁️ Ver normal</button>
       <button class="hbtn" id="btnStudyTopSave" type="button" style="display:none; --btn-bg:#cce5ff; --btn-sh:#b8daff; --btn-color:#004085;">💾 Guardar</button>
@@ -2921,10 +2942,14 @@ function renderStudy(){
     if(showSenseLabels){
       html += '<div class="fc-sense-lbl">Significado '+(si+1)+': '+escHtml(s.sense)+'</div>';
     }
-    for(var ei=0; ei<s.examples.length; ei++){
-      var pair = s.examples[ei];
-      html += '<div class="fc-ex '+(STUDY_EDIT_MODE?'editable-field':'')+'" contenteditable="'+(STUDY_EDIT_MODE?'true':'false')+'">'+globalIdx+'. '+highlight(pair[0], c.word)+'</div>';
-      html += '<div class="fc-ex-tr '+(STUDY_EDIT_MODE?'editable-field':'')+'" contenteditable="'+(STUDY_EDIT_MODE?'true':'false')+'">'+escHtml(pair[1]||"")+'</div>';
+    var numSlots = STUDY_EDIT_MODE ? Math.max(4, s.examples.length) : s.examples.length;
+    for(var ei=0; ei<numSlots; ei++){
+      var pair = s.examples[ei] || ["", ""];
+      if (!STUDY_EDIT_MODE && !pair[0] && !pair[1]) continue;
+      var prefix = globalIdx + '. ';
+      var exText = pair[0] ? highlight(pair[0], c.word) : "";
+      html += '<div class="fc-ex '+(STUDY_EDIT_MODE?'editable-field':'')+'" contenteditable="'+(STUDY_EDIT_MODE?'true':'false')+'" data-placeholder="Ejemplo en inglés">'+prefix+exText+'</div>';
+      html += '<div class="fc-ex-tr '+(STUDY_EDIT_MODE?'editable-field':'')+'" contenteditable="'+(STUDY_EDIT_MODE?'true':'false')+'" data-placeholder="Traducción">'+escHtml(pair[1]||"")+'</div>';
       globalIdx++;
     }
     html += '</div>';
