@@ -2956,7 +2956,8 @@ function renderStudy(){
     var numSlots = STUDY_EDIT_MODE ? Math.max(4, s.examples.length) : s.examples.length;
     for(var ei=0; ei<numSlots; ei++){
       var pair = s.examples[ei] || ["", ""];
-      if (!STUDY_EDIT_MODE && !pair[0] && !pair[1]) continue;
+      var isEmpty = !(pair[0] || "").replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, '').trim() && !(pair[1] || "").replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, '').trim();
+      if (!STUDY_EDIT_MODE && isEmpty) continue;
       var prefix = globalIdx + '. ';
       var exText = pair[0] ? highlight(pair[0], c.word) : "";
       html += '<div class="fc-ex '+(STUDY_EDIT_MODE?'editable-field':'')+'" contenteditable="'+(STUDY_EDIT_MODE?'true':'false')+'" data-placeholder="Ejemplo en inglés">'+prefix+exText+'</div>';
