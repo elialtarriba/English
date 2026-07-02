@@ -4340,7 +4340,7 @@ function renderIconPicker(query) {
     if(!q || key.includes(q)) {
       html += '<button type="button" class="ip-btn" onclick="selectIcon(\''+key+'\')"><svg viewBox="0 0 24 24">'+LUCIDE_ICONS[key]+'</svg><span>'+key+'</span></button>';
       count++;
-      if(count > 100 && !q) break; // limit initial render
+      if(count > 400 && !q) break; // limit initial render
     }
   }
   grid.innerHTML = html;
@@ -4351,9 +4351,10 @@ document.getElementById('iconPickerSearch').addEventListener('input', function(e
 function selectIcon(iconName) {
   if(!studyList.length) return;
   var c = studyList[studyIdx];
-  if(!USER_EDITS.cards) USER_EDITS.cards = {};
-  if(!USER_EDITS.cards[c.id]) USER_EDITS.cards[c.id] = {};
-  USER_EDITS.cards[c.id].icon = iconName;
+  var k = cardKey(c);
+  USER_EDITS[k] = USER_EDITS[k] || {};
+  USER_EDITS[k].icon = iconName;
+  saveEdits();
   closeIconPicker();
   renderStudyCard();
 }
