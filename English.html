@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>English</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -3308,6 +3308,12 @@ function openSectionZoomModal(sec){
   var content = document.getElementById("sectionZoomContent");
   content.innerHTML = sec.innerHTML;
   modal.classList.toggle("show-edit", STUDY_EDIT_MODE);
+  
+  var boldBtn = content.querySelector('.btn-bold');
+  if (boldBtn) {
+    boldBtn.style.display = STUDY_EDIT_MODE ? 'block' : 'none';
+    boldBtn.classList.remove('fc-edit-only');
+  }
   
   var origSelects = sec.querySelectorAll("select");
   var newSelects = content.querySelectorAll("select");
