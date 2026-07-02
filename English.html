@@ -729,14 +729,14 @@ window.addEventListener('message', function(event) {
       <!-- Botones de control (Scrollable) -->
       <div class="filter-row" style="gap: 8px; align-items: stretch; width: 100%; margin-bottom: 0; padding-bottom: 8px;">
         <button class="study-filter-btn" id="btnClearFilters" type="button">Limpiar Filtros</button>
-        <button class="study-filter-btn" id="btnStudyRandom" title="Palabra random">↯ Random</button>
-        <button class="study-filter-btn" id="btnStudyFav" type="button" onclick="toggleFavFilter()" style="background:var(--br1);">☆ Favoritos</button>
         <select class="study-filter-btn" id="selStudyStatus" onchange="toggleStatusFilter(parseInt(this.value))">
           <option value="0">Estado: Todos</option>
           <option value="1">Ya me la sé</option>
           <option value="2">Repasar</option>
           <option value="3">Siempre me equivoco</option>
         </select>
+        <button class="study-filter-btn" id="btnStudyFav" type="button" onclick="toggleFavFilter()" style="background:var(--br1);">☆ Favoritos</button>
+        <button class="study-filter-btn" id="btnStudyRandom" title="Palabra random">↯ Random</button>
         <button class="study-filter-btn" id="btnReverseStudy" type="button" onclick="toggleReverseStudy()">Al Revés (Off)</button>
         <button class="study-filter-btn" id="btnAddFlashcard" type="button">Crear flashcard</button>
         <button class="study-filter-btn" id="btnToggleVerifyBtn" type="button" onclick="toggleHideVerify()">Ocultar Validar</button>
