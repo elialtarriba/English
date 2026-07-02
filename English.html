@@ -825,7 +825,13 @@ window.addEventListener('message', function(event) {
               <button class="fc-flip-btn fc-flip-btn-back" id="fcFlipBtnBack" type="button" aria-label="Voltear carta">⟳ Voltear</button>
             </div>
           </div>
-          <div class="fc-sec" data-sec="trans"><div class="fc-sec-lbl">Traducción</div><div class="fc-sec-val" id="fcTrans">—</div></div>
+          <div class="fc-sec" data-sec="trans">
+            <div class="fc-sec-lbl" style="display:flex; justify-content:space-between; align-items:center;">
+              <span>Traducción</span>
+              <button type="button" class="fc-edit-only btn-bold" style="background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 12px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:14px; color:#5d4037; line-height:1; transition:all 0.1s; margin-left:10px; box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('bold', false, null); this.classList.toggle('active');" onclick="event.stopPropagation()" title="Poner en negrita">B</button>
+            </div>
+            <div class="fc-sec-val" id="fcTrans" style="white-space: pre-wrap;">—</div>
+          </div>
           <div class="fc-sec-row">
             <div class="fc-sec" data-sec="type">
               <div class="fc-sec-lbl">Tipo</div>
@@ -2732,7 +2738,7 @@ function getCurrentCard(){ if(!studyList || !studyList.length) return null; retu
 function getEdit(c){ return USER_EDITS[cardKey(c)] || {}; }
 function setEditableText(id, value, field){
   var el=document.getElementById(id); if(!el) return;
-  if(field === 'struct') {
+  if(field === 'struct' || field === 'trans') {
     el.innerHTML = (value || "—").replace(/\n/g, '<br>');
   } else {
     el.textContent = value || "—";
@@ -2746,7 +2752,7 @@ function saveFieldFromElement(el){
   var c=getCurrentCard(); if(!c || !el || !el.dataset.editField) return;
   var k=cardKey(c), f=el.dataset.editField;
   USER_EDITS[k]=USER_EDITS[k]||{};
-  if(f === 'struct') {
+  if(f === 'struct' || f === 'trans') {
     USER_EDITS[k][f]=el.innerHTML;
   } else {
     USER_EDITS[k][f]=el.textContent.trim();
@@ -3360,7 +3366,7 @@ function closeSectionZoomModal(){
         if (c) {
            var k = cardKey(c), f = valEl.dataset.editField;
            USER_EDITS[k] = USER_EDITS[k] || {};
-           if(f === 'struct') {
+           if(f === 'struct' || f === 'trans') {
              USER_EDITS[k][f] = valEl.innerHTML;
            } else {
              USER_EDITS[k][f] = valEl.textContent.trim();
@@ -3368,7 +3374,7 @@ function closeSectionZoomModal(){
            saveEdits();
            var realEl = currentZoomSec.querySelector('.fc-sec-val');
            if (realEl) {
-             if(f === 'struct') realEl.innerHTML = valEl.innerHTML;
+             if(f === 'struct' || f === 'trans') realEl.innerHTML = valEl.innerHTML;
              else realEl.textContent = valEl.textContent;
            }
         }
