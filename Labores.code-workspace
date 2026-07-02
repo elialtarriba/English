@@ -5,6 +5,15 @@
 		},
 		{
 			"path": "."
+		},
+		{
+			"path": "../Antigravity/HOME"
+		},
+		{
+			"path": "../Antigravity/CALCULADORA"
+		},
+		{
+			"path": "../Antigravity/LaboresSinConex"
 		}
 	],
 	"settings": {}
