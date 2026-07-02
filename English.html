@@ -56,13 +56,13 @@ body{font-family:Georgia,serif;background:#f5ebe0;color:#3a2918;min-height:100vh
 .section-label{font-family:Arial,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);width:100%;max-width:500px;text-align:left;margin-top:6px}
 .must-pick{color:var(--br3);font-weight:700}
 .cat-grid{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;max-width:520px;width:100%}
-.cat-btn{background:var(--white);border:2px solid var(--border);border-radius:11px;padding:8px 11px;font-family:Arial,sans-serif;font-size:12px;color:var(--text2);display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;transition:all .18s;min-width:80px}
-.cat-btn b{font-size:16px;color:var(--text)}
-.cat-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(107,68,35,.1)}
-.cat-btn.on{border-color:var(--br4);background:#ead9c0;box-shadow:0 3px 10px rgba(74,46,26,.15)}
-.cat-btn.on b{color:var(--br4)}
-.cat-btn .ck{display:none;font-size:10px;color:var(--br4);font-weight:700;margin-top:1px}
-.cat-btn.on .ck{display:block}
+.cat-btn, .lvl-btn{background:var(--white);border:2px solid var(--border);border-radius:11px;padding:8px 11px;font-family:Arial,sans-serif;font-size:12px;color:var(--text2);display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;transition:all .18s;min-width:80px}
+.cat-btn b, .lvl-btn b{font-size:16px;color:var(--text)}
+.cat-btn:hover, .lvl-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(107,68,35,.1)}
+.cat-btn.on, .lvl-btn.on{border-color:var(--br4);background:#ead9c0;box-shadow:0 3px 10px rgba(74,46,26,.15)}
+.cat-btn.on b, .lvl-btn.on b{color:var(--br4)}
+.cat-btn .ck, .lvl-btn .ck{display:none;font-size:10px;color:var(--br4);font-weight:700;margin-top:1px}
+.cat-btn.on .ck, .lvl-btn.on .ck{display:block}
 .qcount-row{display:flex;gap:9px}
 .qc-btn{background:var(--white);border:2px solid var(--border);border-radius:11px;padding:8px 18px;font-family:Arial,sans-serif;font-size:12px;color:var(--text2);display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;transition:all .18s;min-width:78px}
 .qc-btn b{font-size:16px;color:var(--text)}
@@ -195,7 +195,7 @@ body{font-family:Georgia,serif;background:#f5ebe0;color:#3a2918;min-height:100vh
 .sctrl{padding:8px 12px;background:var(--white);border-bottom:1px solid var(--border);flex-shrink:0;display:flex;flex-direction:column;gap:7px}
 .study-search-row{display:flex;gap:7px;width:100%;align-items:center}
 .search-box{position:relative;width:100%;flex:1}
-.search-inp{width:100%;padding:8px 12px 8px 34px;background:var(--cream);border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-family:Arial,sans-serif;color:var(--text);outline:none;transition:border-color .2s}
+.search-inp{width:100%;padding:8px 12px 8px 34px;background:var(--cream);border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:Arial,sans-serif;color:var(--text);outline:none;transition:border-color .2s}
 .search-inp:focus{border-color:var(--br3)}
 .search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--text3)}
 .random-btn{width:38px;height:38px;flex:0 0 auto;border:none;border-radius:50%;background:var(--white);color:var(--br3);font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;box-shadow:0 6px 0 var(--br2), 0 8px 12px rgba(58,41,24,.2)}
@@ -320,6 +320,7 @@ select.study-filter-btn{appearance:none;background-image:url('data:image/svg+xml
 .fc-select-edit { width: 100%; padding: 6px; border-radius: 8px; border: 1.5px dashed var(--br3); background: #fff8ef; font-family: Arial, sans-serif; font-size: 14px; color: var(--br5); outline: none; margin-top: 2px; }
 .fc-edit-only { display: none !important; }
 .show-edit .fc-edit-only { display: block !important; }
+.btn-bold.active { border-bottom-width: 1px !important; transform: translateY(2px); background: #e6d8c3 !important; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1) !important; margin-top:2px; }
 .fc-sec-row { display: flex; gap: 10px; margin-bottom: 12px; }
 .fc-sec-row .fc-sec { margin-bottom: 0; flex: 1; min-width: 0; }
 .fc-edit-icon{position:absolute;right:-28px;top:5px;font-size:18px;opacity:0.6;display:none;pointer-events:none;}
@@ -503,7 +504,7 @@ body.hide-verify:not(.show-edit) .verify-btn {
   display: flex;
 }
 
-.show-edit #fcTypeVal, .show-edit #fcRegVal { display: none !important; }
+.show-edit #fcTypeVal, .show-edit #fcLevelVal, .show-edit #fcRegVal { display: none !important; }
 
 /* Nuevos botones y estrella */
 .fc-fav-btn {
@@ -657,10 +658,15 @@ window.addEventListener('message', function(event) {
       <div class="cat-btn on" data-cat="connector"><b>100</b>Conectores<span class="ck">✓</span></div>
       <div class="cat-btn on" data-cat="starter"><b>150</b>Inicios<span class="ck">✓</span></div>
       <div class="cat-btn on" data-cat="verb"><b>150</b>Verbos<span class="ck">✓</span></div>
-      <div class="cat-btn on" data-cat="b2_1"><b>0</b>B2.1<span class="ck">✓</span></div>
-      <div class="cat-btn on" data-cat="b2_2"><b>0</b>B2.2<span class="ck">✓</span></div>
+      <div class="cat-btn on" data-cat="other"><b>0</b>Otros<span class="ck">✓</span></div>
     </div>
     <span class="val-hint" id="catHint">⚠ Selecciona al menos una categoría</span>
+    <div class="section-label"><span>Niveles</span> <span style="font-weight:400">(opcional)</span></div>
+    <div class="cat-grid" id="lvlGrid">
+      <div class="lvl-btn" data-lvl="b2_1"><b>0</b>B2.1<span class="ck">✓</span></div>
+      <div class="lvl-btn" data-lvl="b2_2"><b>0</b>B2.2<span class="ck">✓</span></div>
+      <div class="lvl-btn" data-lvl="c1"><b>0</b>C1<span class="ck">✓</span></div>
+    </div>
     <div class="section-label"><span class="must-pick">② Nº de preguntas</span></div>
     <div class="qcount-row">
       <div class="qc-btn" id="qc5" data-n="5"><b>5</b>Preguntas<span class="ck">✓</span></div>
@@ -731,6 +737,13 @@ window.addEventListener('message', function(event) {
         <button class="study-filter-btn" id="btnReverseStudy" type="button" onclick="toggleReverseStudy()">Al Revés (Off)</button>
         <button class="study-filter-btn" id="btnAddFlashcard" type="button">Crear flashcard</button>
         <button class="study-filter-btn" id="btnToggleVerifyBtn" type="button" onclick="toggleHideVerify()">Ocultar Validar</button>
+        <select id="lvlFilterSel" class="study-filter-btn">
+          <option value="all">Cualquier nivel</option>
+          <option value="b2_1">B2.1</option>
+          <option value="b2_2">B2.2</option>
+          <option value="c1">C1</option>
+          <option value="none">Sin nivel asignado</option>
+        </select>
         <select id="regFilterSel" class="study-filter-btn">
           <option value="all">Cualquier registro</option>
           <option value="neutral">Neutro</option>
@@ -748,8 +761,10 @@ window.addEventListener('message', function(event) {
       <div class="flt-btn" data-flt="connector">Conectores</div>
       <div class="flt-btn" data-flt="starter">Inicios</div>
       <div class="flt-btn" data-flt="verb">Verbos</div>
-      <div class="flt-btn" data-flt="b2_1">B2.1</div>
-      <div class="flt-btn" data-flt="b2_2">B2.2</div>
+      <div class="flt-btn" data-flt="other">Otros</div>
+      <div class="flt-btn lvl-flt-btn" data-lvlflt="b2_1">B2.1</div>
+      <div class="flt-btn lvl-flt-btn" data-lvlflt="b2_2">B2.2</div>
+      <div class="flt-btn lvl-flt-btn" data-lvlflt="c1">C1</div>
     </div>
   </div>
   <div class="sbody">
@@ -813,14 +828,23 @@ window.addEventListener('message', function(event) {
               <div class="fc-sec-lbl">Tipo</div>
               <div class="fc-sec-val" id="fcTypeVal">—</div>
               <select id="fcTypeSelect" class="fc-select-edit fc-edit-only" style="width:100%; margin-top:6px; padding:10px 14px; border-radius:12px; background:#eef7eb; border:1.5px solid #c4e1c3; color:#2c4230; font-weight:800; font-family:var(--fb); cursor:pointer; outline:none; box-shadow:0 4px 0 #c4e1c3;">
-                <option value="adverb">Adverbios</option>
-                <option value="adjective">Adjetivos</option>
-                <option value="phrasal">Phrasal V.</option>
-                <option value="connector">Conectores</option>
-                <option value="starter">Inicios</option>
-                <option value="verb">Verbos</option>
+                <option value="phrasal">Phrasal verb</option>
+                <option value="verb">Verbo</option>
+                <option value="adverb">Adverbio</option>
+                <option value="adjective">Adjetivo</option>
+                <option value="connector">Conector</option>
+                <option value="starter">Inicio de frase</option>
+                <option value="other">Otros / Sin asignar</option>
+              </select>
+            </div>
+            <div class="fc-sec" data-sec="level">
+              <div class="fc-sec-lbl">Nivel</div>
+              <div class="fc-sec-val" id="fcLevelVal">—</div>
+              <select id="fcLevelSelect" class="fc-select-edit fc-edit-only" style="width:100%; margin-top:6px; padding:10px 14px; border-radius:12px; background:#eef7eb; border:1.5px solid #c4e1c3; color:#2c4230; font-weight:800; font-family:var(--fb); cursor:pointer; outline:none; box-shadow:0 4px 0 #c4e1c3;">
+                <option value="">Ninguno</option>
                 <option value="b2_1">B2.1</option>
                 <option value="b2_2">B2.2</option>
+                <option value="c1">C1</option>
               </select>
             </div>
           </div>
@@ -834,7 +858,13 @@ window.addEventListener('message', function(event) {
               <option value="">No informado</option>
             </select>
           </div>
-          <div class="fc-sec" data-sec="struct"><div class="fc-sec-lbl">Estructura · Cómo se usa</div><div class="fc-sec-val" id="fcStructVal">—</div></div>
+          <div class="fc-sec" data-sec="struct">
+            <div class="fc-sec-lbl" style="display:flex; justify-content:space-between; align-items:center;">
+              <span>Estructura · Cómo se usa</span>
+              <button type="button" class="fc-edit-only btn-bold" style="background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 12px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:14px; color:#5d4037; line-height:1; transition:all 0.1s; margin-left:10px; box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('bold', false, null); this.classList.toggle('active');" onclick="event.stopPropagation()" title="Poner en negrita">B</button>
+            </div>
+            <div class="fc-sec-val" id="fcStructVal" style="white-space: pre-wrap;">—</div>
+          </div>
           <div class="fc-sec" data-sec="ex">
             <div class="fc-sec-lbl">Ejemplos</div>
             <div id="fcExamplesContainer"></div>
@@ -894,7 +924,8 @@ window.addEventListener('message', function(event) {
     <div class="form-grid">
       <div class="form-row"><label for="newWord">Palabra en inglés *</label><input id="newWord" type="text" placeholder="e.g. put up with"></div>
       <div class="form-row"><label for="newTrans">Traducción *</label><input id="newTrans" type="text" placeholder="e.g. aguantar / tolerar"></div>
-      <div class="form-row"><label for="newCat">Tipo</label><select id="newCat" style="width:100%; padding:12px 14px; border-radius:12px; background:#eef7eb; border:1.5px solid #c4e1c3; color:#2c4230; font-weight:800; font-family:var(--fb); cursor:pointer; outline:none; box-shadow:0 4px 0 #c4e1c3;"><option value="phrasal">Phrasal verb</option><option value="verb">Verbo</option><option value="adverb">Adverbio</option><option value="adjective">Adjetivo</option><option value="connector">Conector</option><option value="starter">Inicio de frase</option><option value="b2_1">B2.1</option><option value="b2_2">B2.2</option></select></div>
+      <div class="form-row"><label for="newCat">Tipo</label><select id="newCat" style="width:100%; padding:12px 14px; border-radius:12px; background:#eef7eb; border:1.5px solid #c4e1c3; color:#2c4230; font-weight:800; font-family:var(--fb); cursor:pointer; outline:none; box-shadow:0 4px 0 #c4e1c3;"><option value="phrasal">Phrasal verb</option><option value="verb">Verbo</option><option value="adverb">Adverbio</option><option value="adjective">Adjetivo</option><option value="connector">Conector</option><option value="starter">Inicio de frase</option><option value="other">Otros / Sin asignar</option></select></div>
+      <div class="form-row"><label for="newLevel">Nivel</label><select id="newLevel" style="width:100%; padding:12px 14px; border-radius:12px; background:#eef7eb; border:1.5px solid #c4e1c3; color:#2c4230; font-weight:800; font-family:var(--fb); cursor:pointer; outline:none; box-shadow:0 4px 0 #c4e1c3;"><option value="">Ninguno</option><option value="b2_1">B2.1</option><option value="b2_2">B2.2</option><option value="c1">C1</option></select></div>
       <div class="form-row"><label for="newReg">Registro</label><select id="newReg"><option value="N">Neutral</option><option value="F">Formal</option><option value="I">Informal</option></select></div>
       <div class="form-row full"><label for="newStruct">Estructura / cómo se usa</label><textarea id="newStruct" placeholder="Opcional: estructura, preposición, patrón, notas de uso..."></textarea></div>
       <div class="form-row full"><label>Ejemplos con traducción</label><div id="newExamples" class="examples-form"></div><button class="btn-sec" id="btnNewExample" type="button">＋ Añadir ejemplo</button></div>
@@ -1442,6 +1473,7 @@ function getTypeName(cat){
   if(cat==="verb") return "Verbo";
   if(cat==="b2_1") return "B2.1";
   if(cat==="b2_2") return "B2.2";
+  if(cat==="other") return "Otros / Sin asignar";
   return cat;
 }
 
@@ -1486,16 +1518,17 @@ PHRASALS.forEach(function(p){ ALL_CARDS.push({cat:"phrasal", word:p[0], trans:PH
 CONNECTORS.forEach(function(p){ ALL_CARDS.push({cat:"connector", word:p[0], trans:CON_TR[p[0]]||"", meaning:p[1], reg:REG[p[0]]||"N", struct:STRUCT[p[0]]||""}); });
 STARTERS.forEach(function(w){ ALL_CARDS.push({cat:"starter", word:w, trans:STR_TR[w]||"", reg:REG[w]||"F", struct:STRUCT[w]||""}); });
 VERBS.forEach(function(w){ ALL_CARDS.push({cat:"verb", word:w, trans:VRB_TR[w]||"", type:VRB_TYPE[w]||"", reg:REG[w]||"N", struct:STRUCT[w]||""}); });
-VOCAB_B2_1.forEach(function(w){ ALL_CARDS.push({cat:"b2_1", word:w, trans:B2_1_TR[w]||"", reg:"N", struct:"", examples: [{sense: B2_1_TR[w], examples: [["She looked bewildered by the instructions.", "Ella parecía desconcertada por las instrucciones."], ["He was bewildered by the strange noise.", "Él estaba perplejo por el extraño ruido."]]}]}); });
-VOCAB_B2_2.forEach(function(w){ ALL_CARDS.push({cat:"b2_2", word:w, trans:B2_2_TR[w]||"", reg:"N", struct:"", examples: [{sense: B2_2_TR[w], examples: [["He is meticulous in his work.", "Él es meticuloso en su trabajo."], ["She planned the trip with meticulous attention to detail.", "Ella planeó el viaje con una atención minuciosa a los detalles."]]}]}); });
+VOCAB_B2_1.forEach(function(w){ ALL_CARDS.push({cat:"other", level:"b2_1", word:w, trans:B2_1_TR[w]||"", reg:"N", struct:"", examples: [{sense: B2_1_TR[w], examples: [["She looked bewildered by the instructions.", "Ella parecía desconcertada por las instrucciones."], ["He was bewildered by the strange noise.", "Él estaba perplejo por el extraño ruido."]]}]}); });
+VOCAB_B2_2.forEach(function(w){ ALL_CARDS.push({cat:"other", level:"b2_2", word:w, trans:B2_2_TR[w]||"", reg:"N", struct:"", examples: [{sense: B2_2_TR[w], examples: [["He is meticulous in his work.", "Él es meticuloso en su trabajo."], ["She planned the trip with meticulous attention to detail.", "Ella planeó el viaje con una atención minuciosa a los detalles."]]}]}); });
 
 /* STATE */
 var numP=1, pNames=["Jugador 1","Jugador 2"], players=[], curP=0, qs=[], curQ=0, answered=false;
 var quizPerPlayerTotal=20, quizTotalQuestions=20;
 var dragVal=null, touchGhost=null, touchEl=null;
-var selCats={adverb:true,adjective:true,phrasal:true,connector:true,starter:true,verb:true};
+var selCats={adverb:true,adjective:true,phrasal:true,connector:true,starter:true,verb:true,other:true};
+var selLvls={};
 var selQCount=20;
-var studyFilter="all", studyRegFilter="all", studySearch="", studyIdx=0, studyList=[];
+var studyCatFilter="all", studyLvlFilter="all", studyRegFilter="all", studySearch="", studyIdx=0, studyList=[];
 
 function shuf(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t}return b}
 function pick(a,n){return shuf(a).slice(0,n)}
@@ -1515,42 +1548,20 @@ function hideQuizSetup(){
 
 function selPlayers(n){numP=n;document.getElementById("btn1p").classList.toggle("sel",n===1);document.getElementById("btn2p").classList.toggle("sel",n===2)}
 function toggleCat(btn){var cat=btn.dataset.cat;var active=Object.keys(selCats).filter(function(c){return selCats[c]});if(selCats[cat]&&active.length===1)return;selCats[cat]=!selCats[cat];btn.classList.toggle("on",selCats[cat]);document.getElementById("catHint").classList.remove("show")}
+function toggleLvl(btn){var lvl=btn.dataset.lvl;selLvls[lvl]=!selLvls[lvl];btn.classList.toggle("on",selLvls[lvl]);}
 function toggleQCount(n){selQCount=n;document.getElementById("qc5").classList.toggle("on",n===5);document.getElementById("qc10").classList.toggle("on",n===10);document.getElementById("qc20").classList.toggle("on",n===20)}
 function goNames(){var active=Object.keys(selCats).filter(function(c){return selCats[c]});if(!active.length){document.getElementById("catHint").classList.add("show");return}var nf=document.getElementById("nform");nf.innerHTML='<input class="ninp" id="n1" placeholder="Jugador 1" maxlength="18">';if(numP===2)nf.innerHTML+='<input class="ninp" id="n2" placeholder="Jugador 2" maxlength="18">';showScreen("nameScreen")}
 function startQ(){var n1=document.getElementById("n1");pNames[0]=(n1&&n1.value.trim())||"Jugador 1";if(numP===2){var n2=document.getElementById("n2");pNames[1]=(n2&&n2.value.trim())||"Jugador 2"}players=[];for(var i=0;i<numP;i++)players.push({name:pNames[i],ok:0,bad:0,wrong:[]});curP=0;genQs();curQ=0;showScreen("quizScreen");renderQ()}
 function doReset(){for(var i=0;i<players.length;i++){players[i].ok=0;players[i].bad=0;players[i].wrong=[]}curP=0;genQs();curQ=0;renderQ()}
 function doHome(){hideQuizSetup();showScreen("home")}
 
-function getCorrect(cat,item){return(cat==="adverb"||cat==="adjective"||cat==="starter"||cat==="verb")?item:item[0]}
-function getExplain(cat,item,trans){
-  var word = getCorrect(cat,item);
-  if(cat==="adverb")return '"'+word+'" significa "'+(ADV_TR[word]||"")+'" en español. Es un adverbio. '+(STRUCT[word]||"");
-  if(cat==="adjective")return '"'+word+'" significa "'+(ADJ_TR[word]||"")+'" en español. Es un adjetivo. '+(STRUCT[word]||"");
-  if(cat==="phrasal")return '"'+word+'" significa "'+(PHR_TR[word]||"")+'" en español. '+(STRUCT[word]||"");
-  if(cat==="connector")return '"'+word+'" es un conector que significa "'+(CON_TR[word]||"")+'". '+(STRUCT[word]||"");
-  if(cat==="starter")return '"'+word+'" se traduce como "'+(STR_TR[word]||"")+'". '+(STRUCT[word]||"");
-  if(cat==="verb"){var tp=VRB_TYPE[word]||"";var tpEs=tp==="transitive"?"transitivo":"intransitivo";return '"'+word+'" es un verbo '+tpEs+'. Significa "'+(VRB_TR[word]||"")+'" en español.'}
-}
-
-/* getWrong: picks 3 distractors from same category, EXCLUDING any word that
-   shares the same Spanish translation (to guarantee 1 correct answer) */
-function getWrong(cat,correct,correctTrans,n){
-  var pool;
-  var trans;
-  if(cat==="adverb"){pool=ADVERBS;trans=ADV_TR}
-  else if(cat==="adjective"){pool=ADJECTIVES;trans=ADJ_TR}
-  else if(cat==="phrasal"){pool=PHRASALS.map(function(x){return x[0]});trans=PHR_TR}
-  else if(cat==="connector"){pool=CONNECTORS.map(function(x){return x[0]});trans=CON_TR}
-  else if(cat==="starter"){pool=STARTERS;trans=STR_TR}
-  else {pool=VERBS;trans=VRB_TR}
-  
-  /* Filter: not equal to correct, AND Spanish translation is different */
+/* getWrongFromCards: picks 3 distractors from the pool */
+function getWrongFromCards(pool, correct, correctTrans, n){
   var filtered = pool.filter(function(x){
-    if(x===correct) return false;
-    var t = (trans[x]||"").toLowerCase().trim();
+    if(x.word===correct) return false;
+    var t = (x.trans||"").toLowerCase().trim();
     var ct = (correctTrans||"").toLowerCase().trim();
     if(!t || !ct) return true;
-    /* If translations share any significant word, skip */
     var tWords = t.split(/[\s,/]+/).filter(function(w){return w.length>3});
     var ctWords = ct.split(/[\s,/]+/).filter(function(w){return w.length>3});
     for(var i=0;i<tWords.length;i++){
@@ -1558,14 +1569,17 @@ function getWrong(cat,correct,correctTrans,n){
     }
     return true;
   });
-  return pick(filtered, n);
+  return pick(filtered, n).map(function(c){return c.word});
 }
 
-
-function buildDefaultQuizQuestion(cat,item){
-  var correct=getCorrect(cat,item);
-  var ctrans=getTrans(cat,correct);
-  var wrongs=getWrong(cat,correct,ctrans,3);
+function buildDefaultQuizQuestion(c, allCards){
+  var cat=c.cat;
+  var correct=c.word;
+  var ctrans=c.trans;
+  var pool = allCards.filter(function(x){ return x.cat === cat || x.level === c.level; });
+  if (pool.length < 4) pool = allCards;
+  
+  var wrongs=getWrongFromCards(pool, correct, ctrans, 3);
   var opts=[correct].concat(wrongs);
   var qtxt;
   if(cat==="adverb") qtxt='¿Cuál es la traducción al inglés del adverbio "<strong>'+ctrans+'</strong>"?';
@@ -1573,9 +1587,14 @@ function buildDefaultQuizQuestion(cat,item){
   else if(cat==="phrasal") qtxt='¿Cuál es el phrasal verb en inglés que significa "<strong>'+ctrans+'</strong>"?';
   else if(cat==="connector") qtxt='¿Cuál es el conector en inglés que equivale a "<strong>'+ctrans+'</strong>"?';
   else if(cat==="starter") qtxt='¿Cuál es la frase de inicio en inglés que equivale a "<strong>'+ctrans+'</strong>"?';
-  else qtxt='¿Cuál es el verbo en inglés que significa "<strong>'+ctrans+'</strong>"?';
-  return {cat:cat,item:item,sentence:qtxt,correct:correct,trans:ctrans,opts:opts,explain:getExplain(cat,item,ctrans)};
+  else if(cat==="verb") qtxt='¿Cuál es el verbo en inglés que significa "<strong>'+ctrans+'</strong>"?';
+  else qtxt='¿Cuál es la traducción al inglés de "<strong>'+ctrans+'</strong>"?';
+  
+  var explain = '"'+correct+'" significa "'+ctrans+'" en español. '+(c.struct||"");
+  
+  return {cat:cat,item:correct,sentence:qtxt,correct:correct,trans:ctrans,opts:opts,explain:explain};
 }
+
 function applyQuizEdit(q){
   var originalCorrect = q.correct;
   var k=(q.cat||"")+"||"+(originalCorrect||"");
@@ -1590,27 +1609,31 @@ function applyQuizEdit(q){
   return q;
 }
 
-/* Generate questions - SPANISH -> ENGLISH format guarantees 1 correct answer */
 function genQs(pool){
   if(pool){qs=pool;quizTotalQuestions=qs.length;quizPerPlayerTotal=qs.length;return}
-  var active=Object.keys(selCats).filter(function(c){return selCats[c]});
+  var activeCats=Object.keys(selCats).filter(function(c){return selCats[c]});
+  var activeLvls=Object.keys(selLvls).filter(function(l){return selLvls[l]});
   var total=selQCount*numP;
   quizPerPlayerTotal=selQCount;
   quizTotalQuestions=total;
-  var perCat=Math.floor(total/active.length),rem=total-(perCat*active.length);
+  
+  var allCards = getStudyCards();
+  var filtered = allCards.filter(function(c) {
+    var matchCat = activeCats.length === 0 || activeCats.includes(c.cat);
+    var matchLvl = activeLvls.length === 0 || (c.level && activeLvls.includes(c.level));
+    if (activeCats.length > 0 && activeLvls.length > 0) return matchCat && matchLvl;
+    if (activeCats.length > 0) return matchCat;
+    if (activeLvls.length > 0) return matchLvl;
+    return true;
+  });
+  if (filtered.length === 0) filtered = allCards;
+  
+  var items = pick(filtered, Math.min(total, filtered.length));
   qs=[];
-  active.forEach(function(cat,idx){
-    var n=perCat+(idx<rem?1:0);
-    var src;
-    if(cat==="adverb")src=ADVERBS;else if(cat==="adjective")src=ADJECTIVES;
-    else if(cat==="phrasal")src=PHRASALS;else if(cat==="connector")src=CONNECTORS;
-    else if(cat==="starter")src=STARTERS;else src=VERBS;
-    var items=pick(src,n);
-    items.forEach(function(item){
-      var q=applyQuizEdit(buildDefaultQuizQuestion(cat,item));
-      if(!USER_QUIZ_EDITS[(q.cat||"")+"||"+(q.correct||"")]) q.opts=shuf(q.opts);
-      qs.push(q);
-    });
+  items.forEach(function(c){
+    var q=applyQuizEdit(buildDefaultQuizQuestion(c, allCards));
+    if(!USER_QUIZ_EDITS[(q.cat||"")+"||"+(q.correct||"")]) q.opts=shuf(q.opts);
+    qs.push(q);
   });
   qs=shuf(qs);
 }
@@ -2562,6 +2585,10 @@ function saveQuizEdits(){ try{ localStorage.setItem("english2026_quiz_edits", JS
 function getStudyCards(){
   var list = ALL_CARDS.concat(USER_CARDS);
   list.forEach(function(c) {
+    if (c.cat === "b2_1" || c.cat === "b2_2" || c.cat === "c1") {
+      c.level = c.cat;
+      c.cat = "other";
+    }
     c.originalWord = c.originalWord || c.word;
     c.originalCat = c.originalCat || c.cat;
     var k = cardKey(c);
@@ -2702,7 +2729,11 @@ function getCurrentCard(){ if(!studyList || !studyList.length) return null; retu
 function getEdit(c){ return USER_EDITS[cardKey(c)] || {}; }
 function setEditableText(id, value, field){
   var el=document.getElementById(id); if(!el) return;
-  el.textContent = value || "—";
+  if(field === 'struct') {
+    el.innerHTML = (value || "—").replace(/\n/g, '<br>');
+  } else {
+    el.textContent = value || "—";
+  }
   el.contentEditable = STUDY_EDIT_MODE ? "true" : "false";
   el.classList.toggle("editable-field", STUDY_EDIT_MODE);
   if(STUDY_EDIT_MODE) el.dataset.editField = field; else delete el.dataset.editField;
@@ -2712,7 +2743,11 @@ function saveFieldFromElement(el){
   var c=getCurrentCard(); if(!c || !el || !el.dataset.editField) return;
   var k=cardKey(c), f=el.dataset.editField;
   USER_EDITS[k]=USER_EDITS[k]||{};
-  USER_EDITS[k][f]=el.textContent.trim();
+  if(f === 'struct') {
+    USER_EDITS[k][f]=el.innerHTML;
+  } else {
+    USER_EDITS[k][f]=el.textContent.trim();
+  }
   saveEdits();
 }
 function saveExamplesFromDom(){
@@ -2749,6 +2784,7 @@ function closeActionPasswordModal(){
   modal.classList.remove("show"); modal.setAttribute("aria-hidden","true");
   pendingPasswordAction = null;
 }
+
 function tryActionPassword(){
   if(document.getElementById("actionPasswordInput").value===EDIT_PASSWORD){
     var action=pendingPasswordAction;
@@ -2768,10 +2804,12 @@ function enterStudyMode(edit){
   document.getElementById("btnStudyTopView").style.display = STUDY_EDIT_MODE ? "" : "none";
   document.getElementById("btnStudyTopSave").style.display = STUDY_EDIT_MODE ? "" : "none";
   document.getElementById("btnStudyTopPdf").style.display = STUDY_EDIT_MODE ? "" : "none";
-  studyFilter="all"; studyRegFilter="all"; studySearch=""; studyIdx=0;
+  studyCatFilter="all"; studyLvlFilter="all"; studyRegFilter="all"; studySearch=""; studyIdx=0;
   document.getElementById("searchInp").value="";
   var regSel = document.getElementById("regFilterSel");
   if(regSel) regSel.value = "all";
+  var lvlSelFilter = document.getElementById("lvlFilterSel");
+  if(lvlSelFilter) lvlSelFilter.value = "all";
   document.querySelectorAll(".flt-btn").forEach(function(b){b.classList.toggle("on",b.dataset.flt==="all")});
   showScreen("studyScreen"); studyRandom();
 }
@@ -2926,7 +2964,9 @@ function openQuizEditor(){
 function studyFilteredList(){
   var s=studySearch.toLowerCase().trim();
   return getStudyCards().filter(function(c){
-    if(studyFilter!=="all" && c.cat!==studyFilter) return false;
+    if(studyCatFilter!=="all" && c.cat!==studyCatFilter) return false;
+    var lvl = c.level || "none";
+    if(studyLvlFilter!=="all" && lvl!==studyLvlFilter) return false;
     if(studyRegFilter!=="all" && getRegisterValue(c.reg)!==studyRegFilter) return false;
     var ed = getEdit(c);
     if(studyFavFilter && !ed.favorite) return false;
@@ -3103,6 +3143,12 @@ function renderStudy(){
   var sel = document.getElementById("fcTypeSelect");
   if(sel) sel.value = c.cat;
   
+  var lvlNames = {"b2_1":"B2.1", "b2_2":"B2.2", "c1":"C1"};
+  var lvlText = c.level ? lvlNames[c.level] || c.level : "Ninguno";
+  setEditableText("fcLevelVal", ed.levelText || lvlText, "levelText");
+  var lvlSel = document.getElementById("fcLevelSelect");
+  if(lvlSel) lvlSel.value = c.level || "";
+  
   setEditableText("fcRegVal", ed.regText || getRegisterName(c.reg), "regText");
   var regSel = document.getElementById("fcRegSelect");
   if(regSel) regSel.value = getRegisterValue(c.reg);
@@ -3191,7 +3237,8 @@ function toggleStudyVerify(e){
 function studyPrev(){if(studyIdx>0){studyIdx--;renderStudy()}}
 function studyNext(){if(studyIdx<studyList.length-1){studyIdx++;renderStudy()}}
 function studyRandom(){var list=studyFilteredList();studyIdx=list.length?Math.floor(Math.random()*list.length):0;renderStudy()}
-function setStudyFilter(f){studyFilter=f;studyIdx=0;document.querySelectorAll(".flt-btn").forEach(function(b){b.classList.toggle("on",b.dataset.flt===f)});renderStudy()}
+function setStudyFilter(f){studyCatFilter=f;studyIdx=0;document.querySelectorAll(".flt-btn:not(.lvl-flt-btn)").forEach(function(b){b.classList.toggle("on",b.dataset.flt===f)});renderStudy()}
+function setStudyLvlFilter(f){if(studyLvlFilter===f) studyLvlFilter="all"; else studyLvlFilter=f; studyIdx=0; document.querySelectorAll(".lvl-flt-btn").forEach(function(b){b.classList.toggle("on",b.dataset.lvlflt===studyLvlFilter)}); renderStudy()}
 
 
 function resetNewCardForm(){
@@ -3260,6 +3307,7 @@ function openSectionZoomModal(sec){
   var modal = document.getElementById("sectionZoomModal");
   var content = document.getElementById("sectionZoomContent");
   content.innerHTML = sec.innerHTML;
+  modal.classList.toggle("show-edit", STUDY_EDIT_MODE);
   
   var origSelects = sec.querySelectorAll("select");
   var newSelects = content.querySelectorAll("select");
@@ -3288,6 +3336,13 @@ function closeSectionZoomModal(){
         if (selectEl.id === "fcTypeSelect") {
           USER_EDITS[k].customCat = selectEl.value;
           c.cat = selectEl.value;
+        } else if (selectEl.id === "fcLevelSelect") {
+          USER_EDITS[k].customLevel = selectEl.value;
+          c.level = selectEl.value;
+          if (c.level && !c.cat) {
+            c.cat = "other";
+            USER_EDITS[k].customCat = "other";
+          }
         } else if (selectEl.id === "fcRegSelect") {
           USER_EDITS[k].customReg = selectEl.value;
           c.reg = selectEl.value;
@@ -3302,10 +3357,17 @@ function closeSectionZoomModal(){
         if (c) {
            var k = cardKey(c), f = valEl.dataset.editField;
            USER_EDITS[k] = USER_EDITS[k] || {};
-           USER_EDITS[k][f] = valEl.textContent.trim();
+           if(f === 'struct') {
+             USER_EDITS[k][f] = valEl.innerHTML;
+           } else {
+             USER_EDITS[k][f] = valEl.textContent.trim();
+           }
            saveEdits();
            var realEl = currentZoomSec.querySelector('.fc-sec-val');
-           if (realEl) realEl.textContent = valEl.textContent;
+           if (realEl) {
+             if(f === 'struct') realEl.innerHTML = valEl.innerHTML;
+             else realEl.textContent = valEl.textContent;
+           }
         }
       } else if (modalContent.querySelector('.fc-sense')) {
       var c = getCurrentCard();
@@ -3384,10 +3446,16 @@ function addExampleRow(ex,tr){var wrap=document.getElementById("newExamples");va
 function saveNewFlashcard(){
   var word=document.getElementById("newWord").value.trim();var trans=document.getElementById("newTrans").value.trim();if(!word||!trans){alert("Pon como mínimo la palabra en inglés y la traducción.");return;}
   var examples=[];document.querySelectorAll("#newExamples .example-pair").forEach(function(row){var ex=row.querySelector(".newExText").value.trim();var tr=row.querySelector(".newExTr").value.trim();if(ex||tr)examples.push([ex,tr]);});if(!examples.length)examples.push(["Write your example here.","Escribe aquí tu traducción."]);
-  var cat=document.getElementById("newCat").value;var card={cat:cat,word:word,trans:trans,reg:document.getElementById("newReg").value,struct:document.getElementById("newStruct").value.trim(),custom:true};if(cat==="phrasal"||cat==="connector")card.meaning=trans;
+  var cat=document.getElementById("newCat").value;
+  var lvl=document.getElementById("newLevel").value;
+  if(lvl && !cat) cat="other";
+  var card={cat:cat,word:word,trans:trans,reg:document.getElementById("newReg").value,struct:document.getElementById("newStruct").value.trim(),custom:true};
+  if(lvl) card.level = lvl;
+  if(cat==="phrasal"||cat==="connector")card.meaning=trans;
   USER_CARDS.push(card);USER_EDITS[cardKey(card)]={trans:trans,typeText:getTypeName(cat),regText:getRegisterName(card.reg),struct:card.struct,examples:[{sense:trans,examples:examples}]};saveUserCards();saveEdits();updateHomeTotal();closeAddCardModal();
-  studyFilter="all";studyRegFilter="all";studySearch=word;document.getElementById("searchInp").value=word;
+  studyCatFilter="all";studyLvlFilter="all";studyRegFilter="all";studySearch=word;document.getElementById("searchInp").value=word;
   var regSel = document.getElementById("regFilterSel"); if(regSel) regSel.value="all";
+  var lvlSelFilter = document.getElementById("lvlFilterSel"); if(lvlSelFilter) lvlSelFilter.value="all";
   document.querySelectorAll(".flt-btn").forEach(function(b){b.classList.toggle("on",b.dataset.flt==="all")});studyIdx=0;renderStudy();var cardEl=document.getElementById("flashcard");cardEl.classList.add("flipped");document.getElementById("studyScreen").classList.add("show-answer");
 }
 
@@ -3404,6 +3472,7 @@ document.addEventListener("DOMContentLoaded",function(){
   document.getElementById("btnRetry").addEventListener("click",retryWrong);
   document.getElementById("btnHome3").addEventListener("click",doHome);
   document.querySelectorAll(".cat-btn").forEach(function(btn){btn.addEventListener("click",function(){toggleCat(btn)})});
+  document.querySelectorAll(".lvl-btn").forEach(function(btn){btn.addEventListener("click",function(){toggleLvl(btn)})});
   document.getElementById("qc5").addEventListener("click",function(){toggleQCount(5)});
   document.getElementById("qc10").addEventListener("click",function(){toggleQCount(10)});
   document.getElementById("qc20").addEventListener("click",function(){toggleQCount(20)});
@@ -3567,7 +3636,7 @@ document.addEventListener("DOMContentLoaded",function(){
   document.getElementById("btnSaveNewCard").addEventListener("click",saveNewFlashcard);
   document.getElementById("btnNewExample").addEventListener("click",function(){addExampleRow("","")});
   document.getElementById("addCardModal").addEventListener("click",function(e){if(e.target===this)closeAddCardModal()});
-  ["fcTrans","fcTypeVal","fcRegVal","fcStructVal"].forEach(function(id){document.getElementById(id).addEventListener("blur",function(e){saveFieldFromElement(e.target)});});
+  ["fcTrans","fcTypeVal","fcLevelVal","fcRegVal","fcStructVal"].forEach(function(id){document.getElementById(id).addEventListener("blur",function(e){saveFieldFromElement(e.target)});});
   document.getElementById("fcTypeSelect").addEventListener("change", function(e) {
     if(!STUDY_EDIT_MODE) return;
     var c=getCurrentCard(); if(!c) return;
@@ -3577,6 +3646,21 @@ document.addEventListener("DOMContentLoaded",function(){
     c.cat = e.target.value;
     saveEdits();
     updateHomeCounts();
+  });
+  document.getElementById("fcLevelSelect").addEventListener("change", function(e) {
+    if(!STUDY_EDIT_MODE) return;
+    var c=getCurrentCard(); if(!c) return;
+    var k=cardKey(c);
+    USER_EDITS[k]=USER_EDITS[k]||{};
+    USER_EDITS[k].customLevel=e.target.value;
+    c.level = e.target.value;
+    if (c.level && !c.cat) {
+      c.cat = "other";
+      USER_EDITS[k].customCat = "other";
+    }
+    saveEdits();
+    updateHomeCounts();
+    renderStudy();
   });
   document.getElementById("fcRegSelect").addEventListener("change", function(e) {
     if(!STUDY_EDIT_MODE) return;
@@ -3640,7 +3724,8 @@ document.addEventListener("DOMContentLoaded",function(){
   document.getElementById("fcFlipBtnFront").addEventListener("click",function(e){e.stopPropagation();flipCard()});
   document.getElementById("fcFlipBtnBack").addEventListener("click",function(e){e.stopPropagation();flipCard()});
   document.getElementById("fcHomeBtnFront").addEventListener("click",function(e){e.stopPropagation();showScreen("home")});
-  document.querySelectorAll(".flt-btn").forEach(function(b){b.addEventListener("click",function(){setStudyFilter(b.dataset.flt)})});
+  document.querySelectorAll(".flt-btn:not(.lvl-flt-btn)").forEach(function(b){b.addEventListener("click",function(){setStudyFilter(b.dataset.flt)})});
+  document.querySelectorAll(".lvl-flt-btn").forEach(function(b){b.addEventListener("click",function(){setStudyLvlFilter(b.dataset.lvlflt)})});
   document.getElementById("searchInp").addEventListener("input",function(e){studySearch=e.target.value;studyIdx=0;renderStudy()});
   var rfs = document.getElementById("regFilterSel");
   if (rfs) {
@@ -3650,10 +3735,18 @@ document.addEventListener("DOMContentLoaded",function(){
       renderStudy();
     });
   }
+  var lfs = document.getElementById("lvlFilterSel");
+  if (lfs) {
+    lfs.addEventListener("change", function(e){
+      studyLvlFilter=e.target.value;
+      studyIdx=0;
+      renderStudy();
+    });
+  }
   var btnClear = document.getElementById("btnClearFilters");
   if (btnClear) {
     btnClear.addEventListener("click", function() {
-      studyFilter = "all";
+      studyCatFilter = "all"; studyLvlFilter = "all";
       studyRegFilter = "all";
       studySearch = "";
       studyFavFilter = false;
@@ -3661,6 +3754,7 @@ document.addEventListener("DOMContentLoaded",function(){
       studyIdx = 0;
       document.getElementById("searchInp").value = "";
       if (rfs) rfs.value = "all";
+      if (lfs) lfs.value = "all";
       document.querySelectorAll(".flt-btn").forEach(function(b){
         b.classList.toggle("on", b.dataset.flt === "all");
       });
