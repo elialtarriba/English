@@ -4,6 +4,18 @@ Este archivo servirá para registrar todos los cambios que vayamos realizando en
 
 ## Historial de Cambios
 
+- **Configuración de Git (3 de Julio)**:
+  - Se creó un archivo `.gitignore` para excluir archivos que no deben subirse a GitHub, como `.DS_Store`, copias de seguridad (`English_Backup_Datos.json`), scripts temporales y configuraciones locales.
+
+- **Mejoras en Flashcards (Modo Estudio), Filtros y Botones (3 de Julio)**:
+  - Se agrupó el "Registro", el nuevo selector de "Curso (CEFR)" y "Variante de inglés (Banderas/EliBi)" en una sola fila en el reverso de las tarjetas.
+  - Se añadieron nuevos campos a la estructura de datos para guardar el nivel CEFR (A1-C2) y la variante regional.
+  - Se modificaron los filtros superiores del Modo Estudio: "Cualquier nivel" ahora es "Nivel", "Cualquier registro" es "Registro".
+  - Se introdujo un nuevo filtro para "Curso (CEFR)".
+  - Se actualizó el botón "Todas" con un ribete oscuro para destacarlo.
+  - Los botones de niveles (B2.1, B2.2, C1) ahora tienen un diseño más cuadrado y de la misma longitud.
+  - El botón "Ver normal" se renombró a "Editando" en el modo de edición de flashcards.
+
 - **Inicio**: Creación de este archivo de registro para organizar nuestro trabajo.
 
 ---

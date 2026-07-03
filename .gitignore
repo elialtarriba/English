@@ -1,0 +1,12 @@
+# Archivos de sistema macOS
+.DS_Store
+
+# Copias de seguridad de datos de usuario
+English_Backup_Datos.json
+
+# Scripts temporales de utilidades
+*.js
+
+# Configuración de entornos y editores
+.agents/
+*.code-workspace
