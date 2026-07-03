@@ -686,7 +686,7 @@ window.addEventListener('message', function(event) {
 
   <p class="subtitle">Master vocabulary, verbs, conditionals, phrasal verbs and more...</p>
   <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V1</div>
+    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V2</div>
     <div class="total-badge" onclick="showStatsModal()" style="cursor:pointer;" title="Ver tarjetas por secciones">Total: <b id="totalFlashcards">0</b> flashcards</div>
   </div>
 
@@ -820,6 +820,15 @@ window.addEventListener('message', function(event) {
           <option value="c1">C1</option>
           <option value="c2">C2</option>
           <option value="none">Sin especificar</option>
+        </select>
+        <select id="freqFilterSel" class="study-filter-btn" onchange="toggleFreqFilter(this.value)">
+          <option value="all">Frecuencia</option>
+          <option value="5">🔥🔥🔥🔥🔥</option>
+          <option value="4">🔥🔥🔥🔥</option>
+          <option value="3">🔥🔥🔥</option>
+          <option value="2">🔥🔥</option>
+          <option value="1">🔥</option>
+          <option value="0">Sin asignar</option>
         </select>
       </div>
     </div>
@@ -3153,6 +3162,8 @@ function studyFilteredList(){
     var ed = getEdit(c);
     if(studyFavFilter && !ed.favorite) return false;
     if(studyStatusFilter !== 0 && (ed.status || 0) !== studyStatusFilter) return false;
+    var cardFreq = ed.freq !== undefined ? ed.freq : (c.freq || 0);
+    if(studyFreqFilter !== "all" && cardFreq !== parseInt(studyFreqFilter)) return false;
     if(!s) return true;
     if(c.word.toLowerCase().indexOf(s)>=0) return true;
     if((c.trans||"").toLowerCase().indexOf(s)>=0) return true;
@@ -3164,6 +3175,27 @@ function studyFilteredList(){
 
 var studyFavFilter = false;
 var studyStatusFilter = 0;
+var studyFreqFilter = "all";
+
+function toggleFreqFilter(val) {
+  studyFreqFilter = val;
+  studyIdx = 0;
+  renderStudy();
+}
+
+function setFreq(level) {
+  if (!STUDY_EDIT_MODE) return;
+  var c = studyList[studyIdx];
+  var ed = getEdit(c);
+  var currentFreq = ed.freq !== undefined ? ed.freq : (c.freq || 0);
+  if (currentFreq === level) {
+    ed.freq = 0;
+  } else {
+    ed.freq = level;
+  }
+  saveEdits();
+  renderStudy();
+}
 
 function toggleFavFilter() {
   studyFavFilter = !studyFavFilter;
@@ -3381,6 +3413,22 @@ function renderStudy(){
     html += '</div>';
   }
   container.innerHTML = html;
+
+  var currentFreq = ed.freq !== undefined ? ed.freq : (c.freq || 0);
+  var freqHtml = '<div style="margin-top:20px; display:flex; justify-content:center; align-items:center; gap:10px;">';
+  freqHtml += '<span style="font-size:14px; color:#5d4037; font-weight:bold;">Frecuencia:</span><div style="display:flex; gap:5px;">';
+  for (var i = 1; i <= 5; i++) {
+    var style = i <= currentFreq ? 'cursor:pointer; font-size:24px; transition:transform 0.2s;' : 'cursor:pointer; font-size:24px; filter:grayscale(100%); opacity:0.4; transition:transform 0.2s;';
+    freqHtml += '<span onclick="event.stopPropagation(); setFreq(' + i + ')" style="' + style + '" onmouseover="if(STUDY_EDIT_MODE)this.style.transform=\'scale(1.2)\'" onmouseout="if(STUDY_EDIT_MODE)this.style.transform=\'scale(1)\'">🔥</span>';
+  }
+  freqHtml += '</div></div>';
+  
+  var existingFreq = document.getElementById("fcFreqContainer");
+  if(existingFreq) existingFreq.remove();
+  var freqDiv = document.createElement("div");
+  freqDiv.id = "fcFreqContainer";
+  freqDiv.innerHTML = freqHtml;
+  container.parentNode.insertBefore(freqDiv, container.nextSibling);
 
   var vbtnFront = document.getElementById("fcVerifyFront");
   var vbtnBack = document.getElementById("fcVerifyBack");
@@ -3982,10 +4030,13 @@ document.addEventListener("DOMContentLoaded",function(){
       studySearch = "";
       studyFavFilter = false;
       studyStatusFilter = 0;
+      studyFreqFilter = "all";
       studyIdx = 0;
       document.getElementById("searchInp").value = "";
       if (rfs) rfs.value = "all";
       if (lfs) lfs.value = "all";
+      var ffs = document.getElementById("freqFilterSel");
+      if (ffs) ffs.value = "all";
       document.querySelectorAll(".flt-btn").forEach(function(b){
         b.classList.toggle("on", b.dataset.flt === "all");
       });
