@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>English</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#f5ebe0">
+<link rel="apple-touch-icon" href="Logo_angles.JPG">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
@@ -4579,6 +4582,18 @@ function selectIcon(iconName) {
   saveEdits();
   closeIconPicker();
   renderStudyCard();
+}
+</script>
+<div style="display:none;" id="v-flag">V1</div>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('sw.js').then(function(registration) {
+      console.log('ServiceWorker registration successful');
+    }, function(err) {
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
 }
 </script>
 </body>

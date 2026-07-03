@@ -4,6 +4,11 @@ Este archivo servirá para registrar todos los cambios que vayamos realizando en
 
 ## Historial de Cambios
 
+- **Conversión a PWA (Opción Offline) (3 de Julio)**:
+  - Se creó el archivo `manifest.json` y `sw.js` (Service Worker) para que la aplicación funcione de forma offline y pueda instalarse como una Progressive Web App (PWA) real en dispositivos móviles.
+  - Se vinculó el manifiesto y el icono `Logo_angles.JPG` en el archivo `English.html`.
+  - Se añadió una marca invisible "V1" al final de `English.html` para confirmar la versión.
+
 - **Configuración y Limpieza (3 de Julio)**:
   - Se creó un archivo `.gitignore` para excluir archivos que no deben subirse a GitHub, como `.DS_Store`, copias de seguridad (`English_Backup_Datos.json`), scripts temporales y configuraciones locales.
   - Se eliminaron scripts temporales (`.js`) y el logo antiguo (`logo.jpg`) que ya no formaban parte del proyecto, para mantener la carpeta limpia.
