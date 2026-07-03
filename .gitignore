@@ -6,6 +6,7 @@ English_Backup_Datos.json
 
 # Scripts temporales de utilidades
 *.js
+!sw.js
 
 # Configuración de entornos y editores
 .agents/
