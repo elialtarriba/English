@@ -4,8 +4,12 @@ Este archivo servirá para registrar todos los cambios que vayamos realizando en
 
 ## Historial de Cambios
 
-- **Configuración de Git (3 de Julio)**:
+- **Configuración y Limpieza (3 de Julio)**:
   - Se creó un archivo `.gitignore` para excluir archivos que no deben subirse a GitHub, como `.DS_Store`, copias de seguridad (`English_Backup_Datos.json`), scripts temporales y configuraciones locales.
+  - Se eliminaron scripts temporales (`.js`) y el logo antiguo (`logo.jpg`) que ya no formaban parte del proyecto, para mantener la carpeta limpia.
+
+- **Modificaciones de UI y Datos (3 de Julio)**:
+  - Se eliminó la variante "EliBi" del selector de Variantes en el Modo Estudio. Las tarjetas existentes con esta opción volverán a mostrarse como "Sin especificar".
 
 - **Mejoras en Flashcards (Modo Estudio), Filtros y Botones (3 de Julio)**:
   - Se agrupó el "Registro", el nuevo selector de "Curso (CEFR)" y "Variante de inglés (Banderas/EliBi)" en una sola fila en el reverso de las tarjetas.

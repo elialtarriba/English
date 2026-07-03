@@ -950,7 +950,6 @@ window.addEventListener('message', function(event) {
                 <option value="uk">🇬🇧 UK</option>
                 <option value="us">🇺🇸 US</option>
                 <option value="both">🇬🇧🇺🇸 Ambas</option>
-                <option value="elibi">EliBi (Propio)</option>
               </select>
             </div>
           </div>
@@ -3337,7 +3336,6 @@ function renderStudy(){
   if(c.flag === "uk") flagName = "🇬🇧 UK";
   else if(c.flag === "us") flagName = "🇺🇸 US";
   else if(c.flag === "both") flagName = "🇬🇧🇺🇸 Ambas";
-  else if(c.flag === "elibi") flagName = "<img src='logo.jpg' style='height:1.2em; vertical-align:middle; border-radius:4px;'> EliBi";
   else flagName = "Sin especificar";
 
   setEditableText("fcFlagVal", ed.flagText || flagName, "flagText");
