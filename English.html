@@ -661,7 +661,6 @@ window.addEventListener('message', function(event) {
 <body>
 
 <div id="home" class="screen active" style="position: relative;">
-<div id="v-flag" style="position: fixed; bottom: 10px; left: 10px; font-size: 10px; color: var(--text3); opacity: 0.4; pointer-events: none; z-index: 9999;">V1</div>
 <div style="display: inline-flex; align-items: center; justify-content: center; gap: 15px; margin: 20px auto 0; max-width: 100%;">
   <!-- Logo_angles.JPG -->
   <img src="Logo_angles.JPG" style="width: clamp(80px, 20vw, 120px); height: clamp(80px, 20vw, 120px); object-fit: contain; border-radius: 12px; flex-shrink: 0; mix-blend-mode: multiply;">
@@ -686,7 +685,10 @@ window.addEventListener('message', function(event) {
 </div>
 
   <p class="subtitle">Master vocabulary, verbs, conditionals, phrasal verbs and more...</p>
-  <div class="total-badge" onclick="showStatsModal()" style="cursor:pointer;" title="Ver tarjetas por secciones">Total: <b id="totalFlashcards">0</b> flashcards</div>
+  <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
+    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V1</div>
+    <div class="total-badge" onclick="showStatsModal()" style="cursor:pointer;" title="Ver tarjetas por secciones">Total: <b id="totalFlashcards">0</b> flashcards</div>
+  </div>
 
   <div class="mode-row">
     <div class="mode-btn study" id="btnStudyMode"><div class="ico">📚</div><div class="lbl"><strong>Study Mode</strong><span>Modo Estudio</span></div><div class="slbl">Repasa las flashcards</div></div>
