@@ -714,7 +714,7 @@ window.addEventListener('message', function(event) {
       <div class="top-btns-inner">
         <button class="hbtn" id="btnStudyTopEdit" type="button" style="--btn-bg:var(--br4); --btn-sh:var(--br5);">✎ Editar</button>
         <button class="hbtn" id="btnStudyTopView" type="button" style="display:none; --btn-bg:#e0e5cd; --btn-sh:#c4ccaa; --btn-color:#4b5e3d;">👁️ Ver normal</button>
-        <button class="hbtn" id="btnStudyTopSave" type="button" style="display:none; --btn-bg:#cce5ff; --btn-sh:#b8daff; --btn-color:#004085;">💾 Guardar</button>
+        <button class="hbtn" id="btnStudyTopSave" type="button" style="display:none; --btn-bg:#cce5ff; --btn-sh:#b8daff; --btn-color:#004085;">💾 Exportar</button>
         <button class="hbtn" id="btnStudyTopPdf" type="button" style="display:none; --btn-bg:#e0d0b8; --btn-sh:#c4b094; --btn-color:#5d3b1f;">📄 Exportar PDF</button>
         <button class="hbtn" id="btnStudyHome">⌂ Inicio</button>
       </div>
@@ -2580,18 +2580,99 @@ var LUCIDE_ICONS = {
 var USER_QUIZ_EDITS = {};/* USER_QUIZ_EDITS_MARKER */
 var EDIT_PASSWORD = "5eli5";
 var STUDY_EDIT_MODE = false;
-try{
+
+var dbPromise = (function() {
+  return new Promise(function(resolve, reject) {
+    var req = indexedDB.open('EnglishAppDB', 1);
+    req.onupgradeneeded = function(e) {
+      var db = e.target.result;
+      if (!db.objectStoreNames.contains('store')) db.createObjectStore('store');
+    };
+    req.onsuccess = function(e) { resolve(e.target.result); };
+    req.onerror = function(e) { reject(e); };
+  });
+})();
+
+function getVal(key) {
+  return dbPromise.then(function(db) {
+    return new Promise(function(resolve, reject) {
+      var tx = db.transaction('store', 'readonly');
+      var req = tx.objectStore('store').get(key);
+      req.onsuccess = function() { resolve(req.result); };
+      req.onerror = function() { reject(req.error); };
+    });
+  });
+}
+
+function setVal(key, val) {
+  return dbPromise.then(function(db) {
+    return new Promise(function(resolve, reject) {
+      var tx = db.transaction('store', 'readwrite');
+      var req = tx.objectStore('store').put(val, key);
+      req.onsuccess = function() { resolve(); };
+      req.onerror = function() { reject(req.error); };
+    });
+  });
+}
+
+try {
   var savedEdits = localStorage.getItem("english2026_user_edits");
   if(savedEdits){ USER_EDITS = Object.assign({}, USER_EDITS, JSON.parse(savedEdits)); }
   var savedCards = localStorage.getItem("english2026_user_cards");
   if(savedCards){ USER_CARDS = USER_CARDS.concat(JSON.parse(savedCards)); }
   var savedQuizEdits = localStorage.getItem("english2026_quiz_edits");
   if(savedQuizEdits){ USER_QUIZ_EDITS = Object.assign({}, USER_QUIZ_EDITS, JSON.parse(savedQuizEdits)); }
-}catch(e){}
+} catch(e){}
+
+dbPromise.then(function() {
+  return Promise.all([
+    getVal("english2026_user_edits"),
+    getVal("english2026_user_cards"),
+    getVal("english2026_quiz_edits")
+  ]);
+}).then(function(results) {
+  var idbEdits = results[0];
+  var idbCards = results[1];
+  var idbQuizEdits = results[2];
+
+  if (idbEdits || idbCards || idbQuizEdits) {
+    if (idbEdits) USER_EDITS = Object.assign({}, USER_EDITS, JSON.parse(idbEdits));
+    if (idbCards) USER_CARDS = JSON.parse(idbCards); // Replace entirely from IDB to avoid duplicates with base cards
+    if (idbQuizEdits) USER_QUIZ_EDITS = Object.assign({}, USER_QUIZ_EDITS, JSON.parse(idbQuizEdits));
+  } else {
+    // Migration: IDB empty, so push localStorage data to IDB
+    try {
+      if (localStorage.getItem("english2026_user_edits")) setVal("english2026_user_edits", localStorage.getItem("english2026_user_edits"));
+      if (localStorage.getItem("english2026_user_cards")) setVal("english2026_user_cards", localStorage.getItem("english2026_user_cards"));
+      if (localStorage.getItem("english2026_quiz_edits")) setVal("english2026_quiz_edits", localStorage.getItem("english2026_quiz_edits"));
+    } catch(e){}
+  }
+  
+  if(typeof updateHomeCounts === "function") updateHomeCounts();
+});
+
 function cardKey(c){ return (c.originalCat || c.cat ||"")+"||"+(c.originalWord || c.word ||""); }
-function saveEdits(){ try{ localStorage.setItem("english2026_user_edits", JSON.stringify(USER_EDITS)); }catch(e){} }
-function saveUserCards(){ try{ localStorage.setItem("english2026_user_cards", JSON.stringify(USER_CARDS)); }catch(e){} }
-function saveQuizEdits(){ try{ localStorage.setItem("english2026_quiz_edits", JSON.stringify(USER_QUIZ_EDITS)); }catch(e){} }
+function saveUserCards(){
+  var str = JSON.stringify(USER_CARDS);
+  try{ localStorage.setItem("english2026_user_cards", str); }catch(e){}
+  setVal("english2026_user_cards", str).catch(function(e) {
+    alert("¡Aviso! No se ha podido guardar localmente en IndexedDB. Comprueba tu espacio.");
+  });
+}
+function saveEdits(){
+  var str = JSON.stringify(USER_EDITS);
+  try{ localStorage.setItem("english2026_user_edits", str); }catch(e){}
+  setVal("english2026_user_edits", str).catch(function(e) {
+    alert("¡Aviso! No se ha podido guardar localmente en IndexedDB. Comprueba tu espacio.");
+  });
+}
+function saveQuizEdits(){
+  var str = JSON.stringify(USER_QUIZ_EDITS);
+  try{ localStorage.setItem("english2026_quiz_edits", str); }catch(e){}
+  setVal("english2026_quiz_edits", str).catch(function(e) {
+    alert("¡Aviso! No se ha podido guardar localmente en IndexedDB. Comprueba tu espacio.");
+  });
+}
 function getStudyCards(){
   var list = ALL_CARDS.concat(USER_CARDS);
   list.forEach(function(c) {
@@ -3055,6 +3136,11 @@ function toggleCardStatus(event) {
 
 
 window.REVERSE_STUDY = false;
+function forceSaveInline() {
+  if (document.activeElement && document.activeElement.isContentEditable) {
+    document.activeElement.blur();
+  }
+}
 function toggleReverseStudy(){
   window.REVERSE_STUDY = !window.REVERSE_STUDY;
   var btn = document.getElementById("btnReverseStudy");
@@ -3543,7 +3629,7 @@ document.addEventListener("DOMContentLoaded",function(){
   document.getElementById("btnStudyTopSave").addEventListener("click", function() {
     setTimeout(function() {
       saveEdits();
-      openActionPasswordModal("Introduce la contraseña para descargar el HTML con cambios:", downloadEditedHtml);
+      document.getElementById("btnExportData").click();
     }, 150);
   });
   
@@ -3630,7 +3716,10 @@ document.addEventListener("DOMContentLoaded",function(){
     }, 500);
   }
   document.getElementById("btnStudyTopPdf").addEventListener("click", function(){ setTimeout(generatePdfExport, 150); });
-  document.getElementById("btnStudyHome").addEventListener("click",function(){ setTimeout(function(){showScreen("home")}, 150); });
+  document.getElementById("btnStudyHome").addEventListener("click",function(){ 
+    if(typeof forceSaveInline === 'function') forceSaveInline();
+    setTimeout(function(){showScreen("home")}, 150); 
+  });
   document.getElementById("btnExportHtml").addEventListener("click",function(){openActionPasswordModal("Introduce la contraseña para descargar el HTML con cambios:", downloadEditedHtml)});
   document.getElementById("btnQuizEditorHome").addEventListener("click",function(){saveQuizEditorCurrent();doHome();});
   document.getElementById("btnActionPasswordOk").addEventListener("click",tryActionPassword);
