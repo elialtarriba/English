@@ -2,7 +2,7 @@
 .DS_Store
 
 # Copias de seguridad de datos de usuario
-English_Backup_Datos.json
+*English_Backup*.json
 
 # Scripts temporales de utilidades
 *.js

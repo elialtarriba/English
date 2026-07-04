@@ -686,7 +686,7 @@ window.addEventListener('message', function(event) {
 
   <p class="subtitle">Master vocabulary, verbs, conditionals, phrasal verbs and more...</p>
   <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V2</div>
+    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V4</div>
     <div class="total-badge" onclick="showStatsModal()" style="cursor:pointer;" title="Ver tarjetas por secciones">Total: <b id="totalFlashcards">0</b> flashcards</div>
   </div>
 
@@ -795,7 +795,6 @@ window.addEventListener('message', function(event) {
         <button class="study-filter-btn" id="btnStudyFav" type="button" onclick="toggleFavFilter()" style="background:var(--br1);">☆ Favoritos</button>
         <button class="study-filter-btn" id="btnStudyRandom" title="Palabra random">↯ Random</button>
         <button class="study-filter-btn" id="btnReverseStudy" type="button" onclick="toggleReverseStudy()">Al Revés (Off)</button>
-        <button class="study-filter-btn" id="btnAddFlashcard" type="button">Crear flashcard</button>
         <button class="study-filter-btn" id="btnToggleVerifyBtn" type="button" onclick="toggleHideVerify()">Ocultar Validar</button>
         <select id="lvlFilterSel" class="study-filter-btn">
           <option value="all">Nivel</option>
@@ -821,15 +820,12 @@ window.addEventListener('message', function(event) {
           <option value="c2">C2</option>
           <option value="none">Sin especificar</option>
         </select>
-        <select id="freqFilterSel" class="study-filter-btn" onchange="toggleFreqFilter(this.value)">
-          <option value="all">Frecuencia</option>
-          <option value="5">🔥🔥🔥🔥🔥</option>
-          <option value="4">🔥🔥🔥🔥</option>
-          <option value="3">🔥🔥🔥</option>
-          <option value="2">🔥🔥</option>
-          <option value="1">🔥</option>
-          <option value="0">Sin asignar</option>
+        <select id="verifyFilterSel" class="study-filter-btn" onchange="toggleVerifyFilter(this.value)">
+          <option value="all">Validación</option>
+          <option value="yes">🟢 Validado</option>
+          <option value="no">🔴 Validar</option>
         </select>
+        <button class="study-filter-btn" id="btnAddFlashcard" type="button" style="background:var(--br1);">Crear flashcard</button>
       </div>
     </div>
     <div class="filter-row" id="filterRow">
@@ -917,6 +913,7 @@ window.addEventListener('message', function(event) {
                 <option value="verb">Verbo</option>
                 <option value="adverb">Adverbio</option>
                 <option value="adjective">Adjetivo</option>
+                <option value="adjverb">Adjetivo y verbo</option>
                 <option value="connector">Conector</option>
                 <option value="starter">Inicio de frase</option>
                 <option value="other">Otros / Sin asignar</option>
@@ -971,7 +968,12 @@ window.addEventListener('message', function(event) {
           <div class="fc-sec" data-sec="struct">
             <div class="fc-sec-lbl" style="display:flex; justify-content:space-between; align-items:center;">
               <span>Estructura · Cómo se usa</span>
-              <button type="button" class="fc-edit-only btn-bold" style="background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 12px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:14px; color:#5d4037; line-height:1; transition:all 0.1s; margin-left:10px; box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('bold', false, null); this.classList.toggle('active');" onclick="event.stopPropagation()" title="Poner en negrita">B</button>
+              <div style="display:flex;">
+                <button type="button" class="fc-edit-only btn-bold" style="background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 12px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:14px; color:#5d4037; line-height:1; transition:all 0.1s; margin-left:10px; box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('bold', false, null); this.classList.toggle('active');" onclick="event.stopPropagation()" title="Poner en negrita">B</button>
+                <button type="button" class="fc-edit-only" style="background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 8px; border-radius:6px; cursor:pointer; font-size:14px; margin-left:5px; box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('insertText', false, '🇬🇧 ');" onclick="event.stopPropagation()" title="Insertar UK">🇬🇧</button>
+                <button type="button" class="fc-edit-only" style="background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 8px; border-radius:6px; cursor:pointer; font-size:14px; margin-left:5px; box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('insertText', false, '🇺🇸 ');" onclick="event.stopPropagation()" title="Insertar US">🇺🇸</button>
+                <button type="button" class="fc-edit-only" style="background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 12px; border-radius:6px; cursor:pointer; font-size:14px; margin-left:5px; box-shadow:0 2px 4px rgba(0,0,0,0.1); font-weight:bold;" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('insertText', false, '• ');" onclick="event.stopPropagation()" title="Insertar punto de lista">•</button>
+              </div>
             </div>
             <div class="fc-sec-val" id="fcStructVal" style="white-space: pre-wrap;">—</div>
           </div>
@@ -1577,6 +1579,7 @@ function _genExamplesForSense(cat, word, tr){
 function getTypeName(cat){
   if(cat==="adverb") return "Adverbio";
   if(cat==="adjective") return "Adjetivo";
+  if(cat==="adjverb") return "Adjetivo y verbo";
   if(cat==="phrasal") return "Phrasal Verb";
   if(cat==="connector") return "Conector";
   if(cat==="starter") return "Inicio de Frase";
@@ -2897,24 +2900,103 @@ function toggleHideVerify() {
 function copyCurrentCard() {
   var c = getCurrentCard();
   if(!c) return;
+  var ed = getEdit(c);
+  
+  function toPT(htmlStr) {
+    if(!htmlStr) return "";
+    var t = document.createElement("div");
+    t.innerHTML = htmlStr;
+    return t.innerText.trim();
+  }
+
+  var html = "<div><b>Inglés:</b> " + c.word + "</div>";
   var text = "Inglés: " + c.word + "\n";
-  text += "Español: " + c.trans + "\n";
-  if (c.meaning) text += "Significado: " + c.meaning + "\n";
-  var senses = (USER_EDITS[cardKey(c)] && USER_EDITS[cardKey(c)].examples) || c.examples || genExamples(c.cat, c.word);
+  
+  var tr = ed.trans !== undefined ? ed.trans : c.trans;
+  if(tr) {
+    html += "<div><b>Español:</b> " + tr + "</div>";
+    text += "Español: " + toPT(tr) + "\n";
+  }
+  
+  var typ = ed.cat !== undefined ? ed.cat : c.cat;
+  if(typ) {
+    html += "<div><b>Tipo:</b> " + getTypeName(typ) + "</div>";
+    text += "Tipo: " + getTypeName(typ) + "\n";
+  }
+  
+  var lvl = ed.level !== undefined ? ed.level : c.level;
+  if(lvl) {
+    html += "<div><b>Nivel:</b> " + lvl + "</div>";
+    text += "Nivel: " + lvl + "\n";
+  }
+  
+  var reg = ed.reg !== undefined ? ed.reg : c.reg;
+  if(reg) {
+    html += "<div><b>Registro:</b> " + getRegisterName(reg) + "</div>";
+    text += "Registro: " + getRegisterName(reg) + "\n";
+  }
+  
+  var cefr = ed.cefr !== undefined ? ed.cefr : c.cefr;
+  if(cefr) {
+    html += "<div><b>CEFR:</b> " + cefr + "</div>";
+    text += "CEFR: " + cefr + "\n";
+  }
+  
+  var str = ed.struct !== undefined ? ed.struct : c.struct;
+  if(str && toPT(str) !== "—") {
+    html += "<div><b>Estructura:</b> " + str + "</div>";
+    text += "Estructura: " + toPT(str) + "\n";
+  }
+  
+  if (c.meaning) {
+    html += "<div><b>Significado base:</b> " + c.meaning + "</div>";
+    text += "Significado base: " + c.meaning + "\n";
+  }
+  
+  var senses = ed.examples || c.examples || genExamples(c.cat, c.word);
   if (senses && senses.length) {
+    html += "<br><div><b>Ejemplos:</b></div>";
     text += "\nEjemplos:\n";
     senses.forEach(function(s) {
-      if (s.sense && s.sense !== c.word) text += "- " + s.sense + ":\n";
+      if (s.sense && s.sense !== c.word) {
+        html += "<div><i>- " + s.sense + ":</i></div>";
+        text += "- " + s.sense + ":\n";
+      }
       (s.examples || []).forEach(function(pair) {
-        text += "  • " + pair[0] + "\n  • " + pair[1] + "\n";
+        if(pair[0] || pair[1]) {
+          html += "<div style='margin-left:20px;'>• " + (pair[0]||"") + "</div>";
+          html += "<div style='margin-left:20px;'>• " + (pair[1]||"") + "</div>";
+          var en = toPT(pair[0]||"");
+          var es = toPT(pair[1]||"");
+          if(en) text += "  • " + en + "\n";
+          if(es) text += "  • " + es + "\n";
+        }
       });
     });
   }
-  navigator.clipboard.writeText(text).then(function() {
-    alert("Flashcard copiada al portapapeles.");
-  }).catch(function() {
-    alert("Error al copiar.");
-  });
+
+  try {
+    var htmlBlob = new Blob([html], { type: 'text/html' });
+    var textBlob = new Blob([text], { type: 'text/plain' });
+    var data = [new ClipboardItem({ 'text/html': htmlBlob, 'text/plain': textBlob })];
+    navigator.clipboard.write(data).then(function() {
+      alert("Flashcard copiada al portapapeles con formato.");
+    }).catch(function(e) {
+      console.error(e);
+      fallbackCopy(text);
+    });
+  } catch (err) {
+    console.error(err);
+    fallbackCopy(text);
+  }
+  
+  function fallbackCopy(txt) {
+    navigator.clipboard.writeText(txt).then(function() {
+      alert("Flashcard copiada (formato texto, se conservan los saltos de línea).");
+    }).catch(function() {
+      alert("Error al copiar.");
+    });
+  }
 }
 function getCurrentCard(){ if(!studyList || !studyList.length) return null; return studyList[studyIdx]; }
 function getEdit(c){ return USER_EDITS[cardKey(c)] || {}; }
@@ -2947,14 +3029,14 @@ function saveExamplesFromDom(){
   var k=cardKey(c);
   var rows=[];
   document.querySelectorAll('#fcExamplesContainer .fc-sense').forEach(function(senseEl){
-    var sense = senseEl.querySelector('.fc-sense-lbl') ? senseEl.querySelector('.fc-sense-lbl').textContent.replace(/^Significado\s*\d+\s*:\s*/i,'').trim() : '';
+    var sense = senseEl.querySelector('.fc-sense-lbl') ? senseEl.querySelector('.fc-sense-lbl').textContent.trim() : '';
     var examples=[];
     var exEls=senseEl.querySelectorAll('.fc-ex');
     var trEls=senseEl.querySelectorAll('.fc-ex-tr');
     for(var i=0;i<exEls.length;i++){
       examples.push([exEls[i].textContent.replace(/^\d+\.\s*/, '').trim(), (trEls[i]?trEls[i].textContent.trim():"")]);
     }
-    rows.push({sense:sense, examples:examples});
+    rows.push({sense:sense, examples:examples, edited:true});
   });
   USER_EDITS[k]=USER_EDITS[k]||{};
   USER_EDITS[k].examples=rows;
@@ -3162,8 +3244,8 @@ function studyFilteredList(){
     var ed = getEdit(c);
     if(studyFavFilter && !ed.favorite) return false;
     if(studyStatusFilter !== 0 && (ed.status || 0) !== studyStatusFilter) return false;
-    var cardFreq = ed.freq !== undefined ? ed.freq : (c.freq || 0);
-    if(studyFreqFilter !== "all" && cardFreq !== parseInt(studyFreqFilter)) return false;
+    if(studyVerifyFilter === "yes" && !ed.studyVerified) return false;
+    if(studyVerifyFilter === "no" && ed.studyVerified) return false;
     if(!s) return true;
     if(c.word.toLowerCase().indexOf(s)>=0) return true;
     if((c.trans||"").toLowerCase().indexOf(s)>=0) return true;
@@ -3175,24 +3257,47 @@ function studyFilteredList(){
 
 var studyFavFilter = false;
 var studyStatusFilter = 0;
-var studyFreqFilter = "all";
+var studyVerifyFilter = "all";
 
-function toggleFreqFilter(val) {
-  studyFreqFilter = val;
+function updateVerifyFilterColor(val) {
+  var sel = document.getElementById("verifyFilterSel");
+  if(!sel) return;
+  var svgWhite = "url('data:image/svg+xml;utf8,<svg fill=\"%23ffffff\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M7 10l5 5 5-5z\"/></svg>')";
+  if(val === "yes") {
+    sel.style.backgroundColor = "var(--green2)";
+    sel.style.color = "#fff";
+    sel.style.boxShadow = "0 4px 0 var(--green3)";
+    sel.style.backgroundImage = svgWhite;
+  } else if (val === "no") {
+    sel.style.backgroundColor = "var(--red2)";
+    sel.style.color = "#fff";
+    sel.style.boxShadow = "0 4px 0 var(--red3)";
+    sel.style.backgroundImage = svgWhite;
+  } else {
+    sel.style.backgroundColor = "";
+    sel.style.color = "";
+    sel.style.boxShadow = "";
+    sel.style.backgroundImage = "";
+  }
+}
+
+function toggleVerifyFilter(val) {
+  studyVerifyFilter = val;
   studyIdx = 0;
+  updateVerifyFilterColor(val);
   renderStudy();
 }
 
-function setFreq(level) {
+function setFreq(index) {
   if (!STUDY_EDIT_MODE) return;
   var c = studyList[studyIdx];
   var ed = getEdit(c);
-  var currentFreq = ed.freq !== undefined ? ed.freq : (c.freq || 0);
-  if (currentFreq === level) {
-    ed.freq = 0;
-  } else {
-    ed.freq = level;
+  if (!Array.isArray(ed.freq)) {
+    var oldFreq = ed.freq !== undefined ? ed.freq : (c.freq || 0);
+    ed.freq = [false, false, false, false, false];
+    for (var i = 0; i < oldFreq; i++) ed.freq[i] = true;
   }
+  ed.freq[index - 1] = !ed.freq[index - 1];
   saveEdits();
   renderStudy();
 }
@@ -3397,7 +3502,11 @@ function renderStudy(){
     var s = senses[si];
     html += '<div class="fc-sense">';
     if(showSenseLabels){
-      html += '<div class="fc-sense-lbl">Significado '+(si+1)+': '+escHtml(s.sense)+'</div>';
+      var senseText = s.sense || "";
+      if (!s.edited && !senseText.toUpperCase().includes("SIGNIFICADO")) {
+        senseText = "SIGNIFICADO " + (si+1) + ": " + senseText;
+      }
+      html += '<div class="fc-sense-lbl' + (STUDY_EDIT_MODE ? ' editable-field' : '') + '" contenteditable="' + (STUDY_EDIT_MODE ? 'true' : 'false') + '">' + escHtml(senseText) + '</div>';
     }
     var numSlots = STUDY_EDIT_MODE ? Math.max(4, s.examples.length) : s.examples.length;
     for(var ei=0; ei<numSlots; ei++){
@@ -3415,10 +3524,17 @@ function renderStudy(){
   container.innerHTML = html;
 
   var currentFreq = ed.freq !== undefined ? ed.freq : (c.freq || 0);
-  var freqHtml = '<div style="margin-top:20px; display:flex; justify-content:center; align-items:center; gap:10px;">';
-  freqHtml += '<span style="font-size:14px; color:#5d4037; font-weight:bold;">Frecuencia:</span><div style="display:flex; gap:5px;">';
+  if (!Array.isArray(currentFreq)) {
+    var arr = [false, false, false, false, false];
+    for (var i = 0; i < currentFreq; i++) arr[i] = true;
+    currentFreq = arr;
+  }
+  var freqHtml = '<div style="display:flex; justify-content:space-between; align-items:center; width:100%;">';
+  freqHtml += '<div class="fc-sec-lbl" style="margin-bottom:0;">Frecuencia</div>';
+  freqHtml += '<div style="display:flex; justify-content:center; align-items:center; gap:5px;">';
   for (var i = 1; i <= 5; i++) {
-    var style = i <= currentFreq ? 'cursor:pointer; font-size:24px; transition:transform 0.2s;' : 'cursor:pointer; font-size:24px; filter:grayscale(100%); opacity:0.4; transition:transform 0.2s;';
+    var isActive = currentFreq[i - 1];
+    var style = isActive ? 'cursor:pointer; font-size:18px; transition:transform 0.2s;' : 'cursor:pointer; font-size:18px; filter:grayscale(100%); opacity:0.4; transition:transform 0.2s;';
     freqHtml += '<span onclick="event.stopPropagation(); setFreq(' + i + ')" style="' + style + '" onmouseover="if(STUDY_EDIT_MODE)this.style.transform=\'scale(1.2)\'" onmouseout="if(STUDY_EDIT_MODE)this.style.transform=\'scale(1)\'">🔥</span>';
   }
   freqHtml += '</div></div>';
@@ -3427,8 +3543,11 @@ function renderStudy(){
   if(existingFreq) existingFreq.remove();
   var freqDiv = document.createElement("div");
   freqDiv.id = "fcFreqContainer";
+  freqDiv.className = "fc-sec";
+  freqDiv.style.padding = "8px 14px";
+  freqDiv.style.marginBottom = "12px";
   freqDiv.innerHTML = freqHtml;
-  container.parentNode.insertBefore(freqDiv, container.nextSibling);
+  container.parentNode.parentNode.insertBefore(freqDiv, container.parentNode.nextSibling);
 
   var vbtnFront = document.getElementById("fcVerifyFront");
   var vbtnBack = document.getElementById("fcVerifyBack");
@@ -3952,7 +4071,7 @@ document.addEventListener("DOMContentLoaded",function(){
     renderStudy();
   });
   document.getElementById("fcWord").addEventListener("blur", function(e){saveFrontWord(e.target)});
-  document.getElementById("fcExamplesContainer").addEventListener("blur",function(e){if(e.target.classList.contains("fc-ex")||e.target.classList.contains("fc-ex-tr")) saveExamplesFromDom();}, true);
+  document.getElementById("fcExamplesContainer").addEventListener("blur",function(e){if(e.target.classList.contains("fc-ex")||e.target.classList.contains("fc-ex-tr")||e.target.classList.contains("fc-sense-lbl")) saveExamplesFromDom();}, true);
 
   /* Flashcard click: section opens modal zoom, otherwise flip */
   document.getElementById("flashcard").addEventListener("click",function(e){
@@ -4030,13 +4149,16 @@ document.addEventListener("DOMContentLoaded",function(){
       studySearch = "";
       studyFavFilter = false;
       studyStatusFilter = 0;
-      studyFreqFilter = "all";
+      studyVerifyFilter = "all";
       studyIdx = 0;
       document.getElementById("searchInp").value = "";
       if (rfs) rfs.value = "all";
       if (lfs) lfs.value = "all";
-      var ffs = document.getElementById("freqFilterSel");
-      if (ffs) ffs.value = "all";
+      var vfs = document.getElementById("verifyFilterSel");
+      if (vfs) {
+        vfs.value = "all";
+        updateVerifyFilterColor("all");
+      }
       document.querySelectorAll(".flt-btn").forEach(function(b){
         b.classList.toggle("on", b.dataset.flt === "all");
       });
