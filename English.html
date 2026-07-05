@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>English</title>
+<title>English V14</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#f5ebe0">
 <link rel="apple-touch-icon" href="Logo_angles.JPG">
@@ -254,6 +254,9 @@ select.study-filter-btn{appearance:none;background-image:url('data:image/svg+xml
 .fc-sec-lbl{font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);font-weight:700;margin-bottom:4px;transition:all .25s ease}
 .fc-sec.zoom .fc-sec-lbl{font-size:11px;color:var(--br3);margin-bottom:6px}
 .fc-sec-val{font-size:12.5px;color:var(--text);line-height:1.5;transition:all .25s ease}
+.border-highlight{display:inline-block; max-width:100%; border:1.5px solid var(--br3);background:var(--br1);border-radius:4px;padding:2px 4px;margin:0 2px; vertical-align:middle;}
+.hide-scrollbar::-webkit-scrollbar{display:none}
+.hide-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
 .fc-sec[data-sec="trans"] .fc-sec-val{font-size:15.5px;font-weight:400}
 .fc-sec.zoom .fc-sec-val{font-size:17px;line-height:1.55;font-weight:500}
 .fc-sec[data-sec="trans"].zoom .fc-sec-val{font-size:19px;font-weight:400}
@@ -346,7 +349,7 @@ select.study-filter-btn{appearance:none;background-image:url('data:image/svg+xml
 .form-row input,.form-row select,.form-row textarea{width:100%;padding:10px 11px;border:1.5px solid var(--border);border-radius:10px;background:var(--cream);color:var(--text);font-family:Arial,sans-serif;font-size:13px;outline:none}.form-row textarea{min-height:70px;resize:vertical;line-height:1.45}.form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--br3);background:#fff8ef}
 .examples-form{display:flex;flex-direction:column;gap:8px}.example-pair{display:grid;grid-template-columns:1fr 1fr auto;gap:7px;align-items:start}.example-pair textarea{min-height:54px}.small-icon-btn{width:34px;height:34px;border-radius:999px;border:1.5px solid var(--red3);background:var(--red1);color:var(--red3);font-weight:700;cursor:pointer}
 .modal-actions{display:flex;justify-content:flex-end;gap:12px;flex-wrap:wrap;margin-top:14px}.modal-btn{border:none;border-radius:12px;padding:10px 20px;font-family:Arial,sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .15s;text-transform:uppercase;letter-spacing:1px}.modal-btn.primary{background:var(--green2);color:#fff;box-shadow:0 4px 0 var(--green3),0 6px 10px rgba(61,122,61,.2)}.modal-btn.primary:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--green3),0 4px 6px rgba(61,122,61,.2);filter:brightness(.95)}.modal-btn.primary:active{transform:translateY(4px);box-shadow:0 0 0 var(--green3),0 2px 4px rgba(61,122,61,.1)}.modal-btn.secondary{background:var(--white);color:var(--br4);box-shadow:0 4px 0 var(--br2),0 6px 10px rgba(58,41,24,.15)}.modal-btn.secondary:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--br2),0 4px 6px rgba(58,41,24,.15);filter:brightness(.95)}.modal-btn.secondary:active{transform:translateY(4px);box-shadow:0 0 0 var(--br2),0 2px 4px rgba(58,41,24,.1)}
-.fc-img-btn{cursor:pointer;background:var(--white);border:none;border-radius:12px;padding:6px 12px;font-size:12px;display:flex;align-items:center;color:var(--br4);font-weight:700;text-transform:uppercase;box-shadow:0 4px 0 var(--br2),0 6px 10px rgba(58,41,24,.15);transition:all .15s;height:32px;box-sizing:border-box}
+.fc-img-btn{cursor:pointer;background:var(--white);border:none;border-radius:12px;padding:6px 12px;font-size:12px;display:flex;align-items:center;color:var(--br4);font-weight:700;text-transform:uppercase;box-shadow:0 4px 0 var(--br2),0 6px 10px rgba(58,41,24,.15);transition:all .15s;height:32px;box-sizing:border-box;user-select:none;-webkit-user-select:none;}
 .fc-img-btn:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--br2),0 4px 6px rgba(58,41,24,.15);filter:brightness(.95)}
 .fc-img-btn:active{transform:translateY(4px);box-shadow:0 0 0 var(--br2),0 2px 4px rgba(58,41,24,.1)}
 .fc-img-btn-red{background:var(--red2);color:#fff;box-shadow:0 4px 0 var(--red3),0 6px 10px rgba(160,64,48,.2)}
@@ -686,7 +689,7 @@ window.addEventListener('message', function(event) {
 
   <p class="subtitle">Master vocabulary, verbs, conditionals, phrasal verbs and more...</p>
   <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V12</div>
+    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V14</div>
     <div class="total-badge" onclick="showStatsModal()" style="cursor:pointer;" title="Ver tarjetas por secciones">Total: <b id="totalFlashcards">0</b> flashcards</div>
   </div>
 
@@ -966,20 +969,32 @@ window.addEventListener('message', function(event) {
             </div>
           </div>
           <div class="fc-sec" data-sec="struct">
-            <div class="fc-sec-lbl" style="display:flex; justify-content:space-between; align-items:center;">
-              <span>Estructura · Cómo se usa</span>
-              <div style="display:flex;">
-                <button type="button" class="fc-edit-only btn-bold" style="background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 12px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:14px; color:#5d4037; line-height:1; transition:all 0.1s; margin-left:10px; box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('bold', false, null); this.classList.toggle('active');" onclick="event.stopPropagation()" title="Poner en negrita">B</button>
-                <button type="button" class="fc-edit-only" style="background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 8px; border-radius:6px; cursor:pointer; font-size:14px; margin-left:5px; box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('insertText', false, '🇬🇧 ');" onclick="event.stopPropagation()" title="Insertar UK">🇬🇧</button>
-                <button type="button" class="fc-edit-only" style="background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 8px; border-radius:6px; cursor:pointer; font-size:14px; margin-left:5px; box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('insertText', false, '🇺🇸 ');" onclick="event.stopPropagation()" title="Insertar US">🇺🇸</button>
-                <button type="button" class="fc-edit-only" style="background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 12px; border-radius:6px; cursor:pointer; font-size:14px; margin-left:5px; box-shadow:0 2px 4px rgba(0,0,0,0.1); font-weight:bold;" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('insertText', false, '• ');" onclick="event.stopPropagation()" title="Insertar punto de lista">•</button>
+            <div class="fc-sec-lbl" style="display:flex; flex-direction:column; gap:8px;">
+              <span>ESTRUCTURA - CÓMO SE USA</span>
+              <div style="display:flex; flex-wrap:nowrap; gap:5px; overflow-x:auto; padding-bottom:2px; flex-shrink:0; -webkit-overflow-scrolling: touch;" class="hide-scrollbar">
+                <button type="button" class="fc-edit-only btn-bold" style="flex-shrink:0; background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 8px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:14px; color:#5d4037; line-height:1; transition:all 0.1s; box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('bold', false, null); this.classList.toggle('active');" onclick="event.stopPropagation()" title="Poner en negrita">B</button>
+                <button type="button" class="fc-edit-only btn-strike" style="flex-shrink:0; background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 8px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:14px; color:#5d4037; line-height:1; transition:all 0.1s; box-shadow:0 2px 4px rgba(0,0,0,0.1); text-decoration:line-through;" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('strikeThrough', false, null); this.classList.toggle('active');" onclick="event.stopPropagation()" title="Tachar">S</button>
+                <button type="button" class="fc-edit-only" style="flex-shrink:0; background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 6px; border-radius:6px; cursor:pointer; font-size:14px; box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('insertText', false, '🇬🇧 ');" onclick="event.stopPropagation()" title="Insertar UK">🇬🇧</button>
+                <button type="button" class="fc-edit-only" style="flex-shrink:0; background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 6px; border-radius:6px; cursor:pointer; font-size:14px; box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('insertText', false, '🇺🇸 ');" onclick="event.stopPropagation()" title="Insertar US">🇺🇸</button>
+                <button type="button" class="fc-edit-only" style="flex-shrink:0; background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 6px; border-radius:6px; cursor:pointer; font-size:14px; box-shadow:0 2px 4px rgba(0,0,0,0.1); font-weight:bold;" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('insertText', false, '• ');" onclick="event.stopPropagation()" title="Insertar punto de lista">•</button>
+                <button type="button" class="fc-edit-only" style="flex-shrink:0; background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 6px; border-radius:6px; cursor:pointer; font-size:14px; box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('insertText', false, '✅ ');" onclick="event.stopPropagation()" title="Insertar Check">✅</button>
+                <button type="button" class="fc-edit-only" style="flex-shrink:0; background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 6px; border-radius:6px; cursor:pointer; font-size:14px; box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('insertText', false, '❗️ ');" onclick="event.stopPropagation()" title="Insertar Alerta">❗️</button>
+                <button type="button" class="fc-edit-only btn-border" style="flex-shrink:0; background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 6px; border-radius:6px; cursor:pointer; font-size:14px; color:#5d4037; font-weight:bold; box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmousedown="event.preventDefault(); event.stopPropagation(); toggleBorderHighlight(); this.classList.toggle('active');" onclick="event.stopPropagation()" title="Ribete (Rectángulo)">[ ]</button>
               </div>
             </div>
             <div class="fc-sec-val" id="fcStructVal" style="white-space: pre-wrap;">—</div>
           </div>
           <div class="fc-sec" data-sec="ex">
-            <div class="fc-sec-lbl">Ejemplos</div>
+            <div class="fc-sec-lbl" style="display:flex; flex-direction:column; gap:8px;">
+              <span>Ejemplos</span>
+              <div style="display:flex; flex-wrap:wrap; gap:5px;">
+                <button type="button" class="fc-edit-only btn-bold" style="background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 12px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:14px; color:#5d4037; line-height:1; transition:all 0.1s; box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('bold', false, null); this.classList.toggle('active');" onclick="event.stopPropagation()" title="Poner en negrita">B</button>
+              </div>
+            </div>
             <div id="fcExamplesContainer"></div>
+            <div class="fc-edit-only" style="margin-top:10px; text-align:center;">
+              <button type="button" class="fc-img-btn" style="display:inline-flex; background:#e8f0e8; color:#2d5a2d; border:1px solid #b8d0b8;" onclick="event.stopPropagation(); addStudyExample()">+ Añadir ejemplo</button>
+            </div>
           </div>
           <div class="fc-status-wrap" style="display:flex; justify-content:center; margin-top: 20px; margin-bottom: 20px;">
             <button type="button" class="fc-status-btn fc-status-0" id="fcStatusBack" onclick="event.stopPropagation(); toggleCardStatus(event)"></button>
@@ -3236,6 +3251,121 @@ function openQuizEditor(){
   renderQuizEditor();
 }
 
+function toggleBorderHighlight() {
+  document.querySelectorAll('.border-highlight').forEach(function(el){
+    if(el.textContent.trim() === '') {
+      var p = el.parentNode;
+      if(p) {
+        while(el.firstChild) p.insertBefore(el.firstChild, el);
+        p.removeChild(el);
+      }
+    }
+  });
+
+  var sel = window.getSelection();
+  if(!sel.rangeCount) return;
+  var range = sel.getRangeAt(0);
+  
+  var container = range.commonAncestorContainer;
+  if(container.nodeType === 3) container = container.parentNode;
+  
+  var spanInside = container.closest ? container.closest('.border-highlight') : null;
+  if (spanInside) {
+    var parent = spanInside.parentNode;
+    while(spanInside.firstChild) parent.insertBefore(spanInside.firstChild, spanInside);
+    parent.removeChild(spanInside);
+    return;
+  }
+  
+  if(range.collapsed) return;
+  
+  var extracted = range.extractContents();
+  
+  if(extracted.textContent.trim() === '') {
+    range.insertNode(extracted);
+    return;
+  }
+  
+  if(extracted.querySelector && extracted.querySelector('.border-highlight')) {
+    var spans = extracted.querySelectorAll('.border-highlight');
+    for(var i=0; i<spans.length; i++){
+      var s = spans[i];
+      var p = s.parentNode;
+      while(s.firstChild) p.insertBefore(s.firstChild, s);
+      p.removeChild(s);
+    }
+    range.insertNode(extracted);
+    return;
+  }
+  
+  var span = document.createElement("span");
+  span.className = "border-highlight";
+  span.appendChild(extracted);
+  range.insertNode(span);
+}
+
+window.addStudyExample = function() {
+  if(!STUDY_EDIT_MODE) return;
+
+  var zoomOpen = document.getElementById("sectionZoomModal").classList.contains("show");
+  if(zoomOpen) {
+    var modalContent = document.getElementById("sectionZoomContent");
+    if(modalContent.querySelector('.fc-sense')) {
+         var c = getCurrentCard();
+         if (c) {
+            var k = cardKey(c);
+            var rows = [];
+            var exEls = modalContent.querySelectorAll('.fc-ex');
+            var trEls = modalContent.querySelectorAll('.fc-ex-tr');
+            var examples = [];
+            for(var i=0;i<exEls.length;i++){
+              examples.push([exEls[i].textContent.replace(/^\d+\.\s*/, '').trim(), (trEls[i]?trEls[i].textContent.trim():"")]);
+            }
+            rows.push({sense:'', examples:examples, edited:true});
+            USER_EDITS[k]=USER_EDITS[k]||{};
+            USER_EDITS[k].examples=rows;
+         }
+    }
+  } else {
+    forceSaveInline();
+  }
+
+  var c=getCurrentCard(); if(!c) return;
+  var k=cardKey(c);
+  USER_EDITS[k] = USER_EDITS[k] || {};
+  var senses = USER_EDITS[k].examples || c.examples || [];
+  if(senses.length > 0 && senses[senses.length - 1].examples) {
+    senses[senses.length - 1].examples.push(["", ""]);
+  } else {
+    senses.push({sense: "", examples: [["", ""]], edited: true});
+  }
+  USER_EDITS[k].examples = senses;
+  saveEdits();
+  renderStudy();
+
+  if(zoomOpen) {
+    var newExSec = document.getElementById("fcExamplesContainer").closest('.fc-sec');
+    if(newExSec) {
+      document.getElementById("sectionZoomContent").innerHTML = newExSec.innerHTML;
+      var content = document.getElementById("sectionZoomContent");
+      var boldBtn = content.querySelector('.btn-bold');
+      if(boldBtn) {
+        boldBtn.style.display = 'block';
+        boldBtn.classList.remove('fc-edit-only');
+      }
+      setTimeout(function(){
+        var els = content.querySelectorAll('.fc-ex');
+        if(els.length) els[els.length-1].focus();
+      }, 50);
+    }
+  } else {
+    setTimeout(function(){
+      var els = document.querySelectorAll('#fcExamplesContainer .fc-ex');
+      if(els.length) els[els.length-1].focus();
+    }, 50);
+  }
+}
+
 /* STUDY MODE */
 function studyFilteredList(){
   var s=studySearch.toLowerCase().trim();
@@ -3250,8 +3380,19 @@ function studyFilteredList(){
     if(studyVerifyFilter === "yes" && !ed.studyVerified) return false;
     if(studyVerifyFilter === "no" && ed.studyVerified) return false;
     if(!s) return true;
-    if(c.word.toLowerCase().indexOf(s)>=0) return true;
-    if((c.trans||"").toLowerCase().indexOf(s)>=0) return true;
+    var searchStr = "";
+    var senses = (ed.examples && ed.examples.length) ? ed.examples : (c.examples || []);
+    var flatExamples = [];
+    senses.forEach(function(senseObj) { if(senseObj.examples) flatExamples = flatExamples.concat(senseObj.examples); else flatExamples.push(senseObj); });
+    
+    if (window.REVERSE_STUDY) {
+      searchStr = (c.trans||"") + " " + (ed.trans||"") + " ";
+      flatExamples.forEach(function(pair) { searchStr += (pair[1]||"") + " "; });
+    } else {
+      searchStr = (c.word||"") + " " + (ed.customWord||"") + " ";
+      flatExamples.forEach(function(pair) { searchStr += (pair[0]||"") + " "; });
+    }
+    if(searchStr.toLowerCase().indexOf(s)>=0) return true;
     if(getTypeName(c.cat).toLowerCase().indexOf(s)>=0) return true;
     if(getRegisterName(c.reg).toLowerCase().indexOf(s)>=0) return true;
     return false;
@@ -3494,34 +3635,36 @@ function renderStudy(){
   function escHtml(s){return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
   function highlight(text, word){
     var esc = escHtml(text);
-    var re = new RegExp("("+word.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","gi");
+    var re = new RegExp("("+word.replace(/[.*+?^${}()|[\\]\\\\]/g,"\\\\$&")+")","gi");
     return esc.replace(re,"<em>$1</em>");
   }
+
+  var flatExamples = [];
+  senses.forEach(function(s) {
+    if(s.examples) flatExamples = flatExamples.concat(s.examples);
+    else flatExamples.push(s);
+  });
+  if(flatExamples.length === 0 && STUDY_EDIT_MODE) flatExamples = [["", ""]];
+
   var container = document.getElementById("fcExamplesContainer");
   var html = "";
-  var globalIdx = 1;
-  var showSenseLabels = senses.length > 1;
-  for(var si=0; si<senses.length; si++){
-    var s = senses[si];
+  var nonEmpties = flatExamples.filter(function(pair) {
+    var txt = (pair[0]||"")+(pair[1]||"");
+    return txt.replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, '').trim().length > 0;
+  }).length;
+  var showNumbers = nonEmpties > 1 || (nonEmpties === 1 && STUDY_EDIT_MODE && flatExamples.length > 1);
+  var displayIdx = 1;
+
+  for(var ei=0; ei<flatExamples.length; ei++){
+    var pair = flatExamples[ei] || ["", ""];
+    var isEmpty = !(pair[0] || "").replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, '').trim() && !(pair[1] || "").replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, '').trim();
+    if (!STUDY_EDIT_MODE && isEmpty) continue;
+    var prefix = showNumbers ? (displayIdx + '. ') : '';
+    if(!isEmpty || STUDY_EDIT_MODE) displayIdx++;
+    var exText = pair[0] ? highlight(pair[0], c.word) : "";
     html += '<div class="fc-sense">';
-    if(showSenseLabels){
-      var senseText = s.sense || "";
-      if (!s.edited && !senseText.toUpperCase().includes("SIGNIFICADO")) {
-        senseText = "SIGNIFICADO " + (si+1) + ": " + senseText;
-      }
-      html += '<div class="fc-sense-lbl' + (STUDY_EDIT_MODE ? ' editable-field' : '') + '" contenteditable="' + (STUDY_EDIT_MODE ? 'true' : 'false') + '">' + escHtml(senseText) + '</div>';
-    }
-    var numSlots = STUDY_EDIT_MODE ? Math.max(4, s.examples.length) : s.examples.length;
-    for(var ei=0; ei<numSlots; ei++){
-      var pair = s.examples[ei] || ["", ""];
-      var isEmpty = !(pair[0] || "").replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, '').trim() && !(pair[1] || "").replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, '').trim();
-      if (!STUDY_EDIT_MODE && isEmpty) continue;
-      var prefix = globalIdx + '. ';
-      var exText = pair[0] ? highlight(pair[0], c.word) : "";
-      html += '<div class="fc-ex '+(STUDY_EDIT_MODE?'editable-field':'')+'" contenteditable="'+(STUDY_EDIT_MODE?'true':'false')+'" data-placeholder="Ejemplo en inglés">'+prefix+exText+'</div>';
-      html += '<div class="fc-ex-tr '+(STUDY_EDIT_MODE?'editable-field':'')+'" contenteditable="'+(STUDY_EDIT_MODE?'true':'false')+'" data-placeholder="Traducción">'+escHtml(pair[1]||"")+'</div>';
-      globalIdx++;
-    }
+    html += '<div class="fc-ex '+(STUDY_EDIT_MODE?'editable-field':'')+'" contenteditable="'+(STUDY_EDIT_MODE?'true':'false')+'" data-placeholder="Ejemplo en inglés">'+prefix+exText+'</div>';
+    html += '<div class="fc-ex-tr '+(STUDY_EDIT_MODE?'editable-field':'')+'" contenteditable="'+(STUDY_EDIT_MODE?'true':'false')+'" data-placeholder="Traducción">'+escHtml(pair[1]||"")+'</div>';
     html += '</div>';
   }
   container.innerHTML = html;
@@ -3599,11 +3742,11 @@ function toggleStudyVerify(e){
   }
 }
 
-function studyPrev(){if(studyIdx>0){studyIdx--;renderStudy()}}
-function studyNext(){if(studyIdx<studyList.length-1){studyIdx++;renderStudy()}}
-function studyRandom(){var list=studyFilteredList();studyIdx=list.length?Math.floor(Math.random()*list.length):0;renderStudy()}
-function setStudyFilter(f){studyCatFilter=f;studyIdx=0;document.querySelectorAll(".flt-btn:not(.lvl-flt-btn)").forEach(function(b){b.classList.toggle("on",b.dataset.flt===f)});renderStudy()}
-function setStudyLvlFilter(f){if(studyLvlFilter===f) studyLvlFilter="all"; else studyLvlFilter=f; studyIdx=0; document.querySelectorAll(".lvl-flt-btn").forEach(function(b){b.classList.toggle("on",b.dataset.lvlflt===studyLvlFilter)}); renderStudy()}
+function studyPrev(){if(typeof forceSaveInline==='function') forceSaveInline(); if(studyIdx>0){studyIdx--;renderStudy()}}
+function studyNext(){if(typeof forceSaveInline==='function') forceSaveInline(); if(studyIdx<studyList.length-1){studyIdx++;renderStudy()}}
+function studyRandom(){if(typeof forceSaveInline==='function') forceSaveInline(); var list=studyFilteredList();studyIdx=list.length?Math.floor(Math.random()*list.length):0;renderStudy()}
+function setStudyFilter(f){if(typeof forceSaveInline==='function') forceSaveInline(); studyCatFilter=f;studyIdx=0;document.querySelectorAll(".flt-btn:not(.lvl-flt-btn)").forEach(function(b){b.classList.toggle("on",b.dataset.flt===f)});renderStudy()}
+function setStudyLvlFilter(f){if(typeof forceSaveInline==='function') forceSaveInline(); if(studyLvlFilter===f) studyLvlFilter="all"; else studyLvlFilter=f; studyIdx=0; document.querySelectorAll(".lvl-flt-btn").forEach(function(b){b.classList.toggle("on",b.dataset.lvlflt===studyLvlFilter)}); renderStudy()}
 
 
 function resetNewCardForm(){
@@ -3822,6 +3965,10 @@ function closeAddCardModal(){document.getElementById("addCardModal").classList.r
 function addExampleRow(ex,tr){var wrap=document.getElementById("newExamples");var row=document.createElement("div");row.className="example-pair";row.innerHTML='<textarea class="newExText" placeholder="Example in English"></textarea><textarea class="newExTr" placeholder="Traducción del ejemplo"></textarea><button class="small-icon-btn" type="button" title="Borrar ejemplo">×</button>';row.querySelector(".newExText").value=ex||"";row.querySelector(".newExTr").value=tr||"";row.querySelector("button").addEventListener("click",function(){row.remove();if(!wrap.querySelector(".example-pair"))addExampleRow("","")});wrap.appendChild(row)}
 function saveNewFlashcard(){
   var word=document.getElementById("newWord").value.trim();var trans=document.getElementById("newTrans").value.trim();if(!word||!trans){alert("Pon como mínimo la palabra en inglés y la traducción.");return;}
+  var exactDup = ALL_CARDS.concat(USER_CARDS).some(function(c) { return c.word.trim().toLowerCase() === word.toLowerCase() && c.cat === document.getElementById("newCat").value; });
+  var nameDup = !exactDup && ALL_CARDS.concat(USER_CARDS).some(function(c) { return c.word.trim().toLowerCase() === word.toLowerCase(); });
+  if(exactDup) { alert("⚠️ Ya existe una flashcard con la misma PALABRA y la misma CATEGORÍA exacta. No se puede crear un duplicado idéntico."); return; }
+  if(nameDup && !confirm("⚠️ Ya existe una flashcard con la palabra '" + word + "'.\n¿Estás seguro de que quieres crear OTRA flashcard igual? (Asegúrate de que la categoría que has elegido sea diferente para que sean independientes).")) return;
   var examples=[];document.querySelectorAll("#newExamples .example-pair").forEach(function(row){var ex=row.querySelector(".newExText").value.trim();var tr=row.querySelector(".newExTr").value.trim();if(ex||tr)examples.push([ex,tr]);});if(!examples.length)examples.push(["Write your example here.","Escribe aquí tu traducción."]);
   var cat=document.getElementById("newCat").value;
   var lvl=document.getElementById("newLevel").value;
@@ -3896,6 +4043,7 @@ document.addEventListener("DOMContentLoaded",function(){
     }, 150);
   });
   document.getElementById("btnStudyTopView").addEventListener("click",function(){
+    if(typeof forceSaveInline==='function') forceSaveInline();
     setTimeout(function() {
       STUDY_EDIT_MODE = false;
       var screen = document.getElementById("studyScreen");
@@ -4019,6 +4167,7 @@ document.addEventListener("DOMContentLoaded",function(){
   document.getElementById("addCardModal").addEventListener("click",function(e){if(e.target===this)closeAddCardModal()});
   ["fcTrans","fcTypeVal","fcLevelVal","fcRegVal","fcStructVal"].forEach(function(id){document.getElementById(id).addEventListener("blur",function(e){saveFieldFromElement(e.target)});});
   document.getElementById("fcTypeSelect").addEventListener("change", function(e) {
+    if(typeof forceSaveInline==='function') forceSaveInline();
     if(!STUDY_EDIT_MODE) return;
     var c=getCurrentCard(); if(!c) return;
     var k=cardKey(c);
@@ -4029,6 +4178,7 @@ document.addEventListener("DOMContentLoaded",function(){
     updateHomeCounts();
   });
   document.getElementById("fcLevelSelect").addEventListener("change", function(e) {
+    if(typeof forceSaveInline==='function') forceSaveInline();
     if(!STUDY_EDIT_MODE) return;
     var c=getCurrentCard(); if(!c) return;
     var k=cardKey(c);
@@ -4044,6 +4194,7 @@ document.addEventListener("DOMContentLoaded",function(){
     renderStudy();
   });
   document.getElementById("fcRegSelect").addEventListener("change", function(e) {
+    if(typeof forceSaveInline==='function') forceSaveInline();
     if(!STUDY_EDIT_MODE) return;
     var c=getCurrentCard(); if(!c) return;
     var k=cardKey(c);
@@ -4054,6 +4205,7 @@ document.addEventListener("DOMContentLoaded",function(){
     renderStudy();
   });
   document.getElementById("fcCefrSelect").addEventListener("change", function(e) {
+    if(typeof forceSaveInline==='function') forceSaveInline();
     if(!STUDY_EDIT_MODE) return;
     var c=getCurrentCard(); if(!c) return;
     var k=cardKey(c);
@@ -4064,6 +4216,7 @@ document.addEventListener("DOMContentLoaded",function(){
     renderStudy();
   });
   document.getElementById("fcFlagSelect").addEventListener("change", function(e) {
+    if(typeof forceSaveInline==='function') forceSaveInline();
     if(!STUDY_EDIT_MODE) return;
     var c=getCurrentCard(); if(!c) return;
     var k=cardKey(c);
@@ -4165,6 +4318,7 @@ document.addEventListener("DOMContentLoaded",function(){
       document.querySelectorAll(".flt-btn").forEach(function(b){
         b.classList.toggle("on", b.dataset.flt === "all");
       });
+      document.getElementById("searchInp").focus();
       
       var btnFav = document.getElementById("btnStudyFav");
       if(btnFav) {
