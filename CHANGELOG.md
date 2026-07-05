@@ -4,6 +4,12 @@ Este archivo servirá para registrar todos los cambios que vayamos realizando en
 
 ## Historial de Cambios
 
+- **Versión V15 (5 de Julio)**:
+  - **Corrección de "Ribetes Fantasma"**: Se blindó la lógica del botón `[ ]` (ribete) para que barra y limpie automáticamente recuadros vacíos que quedaban atascados al borrar texto.
+  - **Mejora del Modo Zoom**: Se corrigió un error por el cual el botón "+ Añadir ejemplo" no refrescaba visualmente la caja al estar en la vista de lupa.
+  - **Restauración de Logo**: Se recuperó la imagen `logo.jpg` del reverso de la tarjeta de inicio, que se había eliminado por error en limpiezas previas. Se actualizó el Service Worker (`sw.js` a v4) para cachear también este logo y asegurar que se vea en modo sin conexión.
+  - **Mejora Visual del Ribete**: El estilo del ribete (`.border-highlight`) se ha actualizado a `display: inline-block` para que al seleccionar múltiples líneas de texto, se encapsulen perfectamente en una sola "caja/bloque" sólida en lugar de romperse el borde al final de cada línea.
+
 - **Conversión a PWA (Opción Offline) (3 de Julio)**:
   - Se creó el archivo `manifest.json` y `sw.js` (Service Worker) para que la aplicación funcione de forma offline y pueda instalarse como una Progressive Web App (PWA) real en dispositivos móviles.
   - Se vinculó el manifiesto y el icono `Logo_angles.JPG` en el archivo `English.html`.
