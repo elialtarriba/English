@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>English V15</title>
+<title>English V18</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#f5ebe0">
 <link rel="apple-touch-icon" href="Logo_angles.JPG">
@@ -222,15 +222,15 @@ select.study-filter-btn{appearance:none;background-image:url('data:image/svg+xml
 #studyScreen.show-answer .sbody{justify-content:flex-start}
 
 /* FLASHCARD - constrain to fit */
-.flashcard{width:100%;max-width:360px;flex:0 0 auto;height:clamp(360px,66dvh,560px);min-height:0;max-height:none;perspective:1400px;cursor:pointer;position:relative}
-.fc-inner{position:relative;width:100%;height:100%;transition:transform .65s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d}
-.flashcard.flipped{flex:0 0 auto;height:auto;min-height:0;max-height:none}
-.flashcard.flipped .fc-inner{height:auto;min-height:0;transform:none}
-.flashcard.flipped .fc-face{position:relative;height:auto;min-height:auto}
-.flashcard.flipped .fc-front{display:none}
-.flashcard.flipped .fc-back{transform:none;overflow:visible;max-height:none}
-.flashcard:not(.flipped) .fc-inner{transform:none}
-.fc-face{position:absolute;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;box-shadow:0 10px 32px rgba(107,68,35,.18);border:1px solid var(--border);overflow:hidden}
+.flashcard{width:100%;max-width:360px;flex:0 0 auto;height:clamp(360px,66dvh,560px);perspective:1600px;cursor:pointer;position:relative}
+.fc-inner{position:relative;width:100%;height:100%;transition:transform .95s cubic-bezier(0.23, 1, 0.32, 1), box-shadow .95s cubic-bezier(0.23, 1, 0.32, 1);transform-style:preserve-3d;border-radius:20px;box-shadow:0 6px 18px rgba(107,68,35,.12)}
+.flashcard.flipped .fc-inner{transform:rotateY(180deg);box-shadow:0 18px 48px rgba(107,68,35,.25)}
+/* Removed cornerCurl to prevent Firefox 3D transform bugs */
+.fc-face{position:absolute;top:0;left:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;border:1px solid var(--border);overflow:hidden;background-color:var(--white);isolation:isolate}
+.flashcard .fc-front { z-index: 2; }
+.flashcard .fc-back { z-index: 1; }
+.flashcard.flipped .fc-front { z-index: 1; }
+.flashcard.flipped .fc-back { z-index: 2; }
 /* FRONT */
 .fc-front{background:linear-gradient(135deg,var(--white) 0%,#f4ead8 50%,#ead9c0 100%);align-items:center;justify-content:center;padding:20px 16px 30px;gap:12px;position:relative;text-align:center}
 .fc-drawing{width:60px;height:60px;flex-shrink:0;opacity:.9}
@@ -265,22 +265,26 @@ select.study-filter-btn{appearance:none;background-image:url('data:image/svg+xml
 .fc-sec.zoom .fc-ex{font-size:16px;line-height:1.6;margin-top:8px;padding-left:13px;border-left-width:3.5px;color:var(--text)}
 .fc-tap{font-family:Arial,sans-serif;font-size:9px;color:var(--text3);text-align:center;letter-spacing:1.3px;text-transform:uppercase;flex-shrink:0;padding-top:2px;opacity:.75}
 
-.fc-flip-btn{background:var(--white);color:var(--br4);border:none;border-radius:12px;padding:6px 9px;font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.5px;cursor:pointer;box-shadow:0 4px 0 var(--br2),0 6px 10px rgba(58,41,24,.15);transition:all .15s;z-index:5;white-space:nowrap;text-transform:uppercase}
+.fc-flip-btn{background:var(--white);color:var(--br4);border:none;border-radius:12px;padding:0 12px;height:28px;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.5px;cursor:pointer;box-shadow:0 4px 0 var(--br2),0 6px 10px rgba(58,41,24,.15);transition:all .15s;z-index:5;white-space:nowrap;text-transform:uppercase}
 .fc-flip-btn:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--br2),0 4px 6px rgba(58,41,24,.15);filter:brightness(.95)}
 .fc-flip-btn:active{transform:translateY(4px);box-shadow:0 0 0 var(--br2),0 2px 4px rgba(58,41,24,.1)}
-.fc-flip-btn-back{padding:6px 9px;font-size:10px;line-height:1;flex-shrink:0}
+.fc-flip-btn-back{flex-shrink:0}
 
-.fc-home-btn{background:var(--br3);color:#fff;border:none;border-radius:12px;padding:6px 9px;font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.5px;cursor:pointer;box-shadow:0 4px 0 var(--br4),0 6px 10px rgba(58,41,24,.2);transition:all .15s;z-index:5;white-space:nowrap;text-transform:uppercase}
-.fc-home-btn:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--br4),0 4px 6px rgba(58,41,24,.2);filter:brightness(.95)}
-.fc-home-btn:active{transform:translateY(4px);box-shadow:0 0 0 var(--br4),0 2px 4px rgba(58,41,24,.1)}
+.fc-home-btn{background:var(--br2);color:var(--br5);border:none;border-radius:12px;padding:0 12px;height:28px;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.5px;cursor:pointer;box-shadow:0 4px 0 var(--br3),0 6px 10px rgba(107,68,35,.15);transition:all .15s;z-index:5;white-space:nowrap;text-transform:uppercase}
+.fc-home-btn:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--br3),0 4px 6px rgba(107,68,35,.15);filter:brightness(.95)}
+.fc-home-btn:active{transform:translateY(4px);box-shadow:0 0 0 var(--br3),0 2px 4px rgba(107,68,35,.1)}
 
-.fc-verify-btn{background:var(--red2);color:#fff;border:none;border-radius:12px;padding:6px 9px;font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.5px;cursor:pointer;box-shadow:0 4px 0 var(--red3),0 6px 10px rgba(160,64,48,.2);transition:all .15s;z-index:5;white-space:nowrap;text-transform:uppercase}
+.fc-verify-btn{background:var(--red2);color:#fff;border:none;border-radius:12px;padding:0 12px;height:28px;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.5px;cursor:pointer;box-shadow:0 4px 0 var(--red3),0 6px 10px rgba(160,64,48,.2);transition:all .15s;z-index:5;white-space:nowrap;text-transform:uppercase}
 .fc-verify-btn:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--red3),0 4px 6px rgba(160,64,48,.2);filter:brightness(.95)}
 .fc-verify-btn:active{transform:translateY(4px);box-shadow:0 0 0 var(--red3),0 2px 4px rgba(160,64,48,.1)}
 .fc-verify-btn.verified{background:var(--green2);box-shadow:0 4px 0 var(--green3),0 6px 10px rgba(61,122,61,.2)}
 .fc-verify-btn.verified:hover{box-shadow:0 2px 0 var(--green3),0 4px 6px rgba(61,122,61,.2)}
 .fc-verify-btn.verified:active{box-shadow:0 0 0 var(--green3),0 2px 4px rgba(61,122,61,.1)}
-.fc-verify-btn-back{padding:6px 9px;font-size:10px;line-height:1;flex-shrink:0}
+.fc-verify-btn.magic-verify{background:#c8b39a;box-shadow:0 4px 0 #b09c85,0 6px 10px rgba(200,179,154,.4);animation:magicPulse 1.5s ease-in-out forwards;pointer-events:none}
+.fc-verify-btn-back{flex-shrink:0}
+.magic-dust{display:inline-block;animation:writingAnim 1.5s linear forwards}
+@keyframes magicPulse{0%{transform:scale(1)}20%{transform:scale(1.05)}80%{transform:scale(1.05)}100%{transform:scale(1)}}
+@keyframes writingAnim{0%{transform:translate(-5px,0) scale(0.5);opacity:0}10%{opacity:1}25%{transform:translate(-2px,-3px) scale(1.2)}50%{transform:translate(2px,0) scale(0.9)}75%{transform:translate(5px,-3px) scale(1.1)}90%{opacity:1}100%{transform:translate(8px,0) scale(1);opacity:0}}
 
 .fc-top-btns{position:absolute;top:12px;left:8px;right:8px;display:flex;justify-content:space-between;gap:4px;z-index:5;pointer-events:none}
 .fc-top-btns > *{pointer-events:auto}
@@ -355,7 +359,7 @@ select.study-filter-btn{appearance:none;background-image:url('data:image/svg+xml
 .fc-img-btn-red{background:var(--red2);color:#fff;box-shadow:0 4px 0 var(--red3),0 6px 10px rgba(160,64,48,.2)}
 .fc-img-btn-red:hover{box-shadow:0 2px 0 var(--red3),0 4px 6px rgba(160,64,48,.2)}
 .fc-img-btn-red:active{box-shadow:0 0 0 var(--red3),0 2px 4px rgba(160,64,48,.1)}
-.fc-view-img-btn{background:var(--white);border:none;border-radius:12px;cursor:pointer;padding:6px 10px;font-size:14px;box-shadow:0 4px 0 var(--br2),0 6px 10px rgba(58,41,24,.15);transition:all .15s;display:flex;align-items:center;justify-content:center;height:32px;box-sizing:border-box}
+.fc-view-img-btn{background:var(--white);border:none;border-radius:12px;cursor:pointer;padding:0 10px;font-size:14px;box-shadow:0 4px 0 var(--br2),0 6px 10px rgba(58,41,24,.15);transition:all .15s;display:inline-flex;align-items:center;justify-content:center;height:28px;box-sizing:border-box}
 .fc-view-img-btn:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--br2),0 4px 6px rgba(58,41,24,.15);filter:brightness(.95)}
 .fc-view-img-btn:active{transform:translateY(4px);box-shadow:0 0 0 var(--br2),0 2px 4px rgba(58,41,24,.1)}
 /* Section Zoom Modal specifics */
@@ -437,7 +441,12 @@ select.study-filter-btn{appearance:none;background-image:url('data:image/svg+xml
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  isolation: isolate;
 }
+.title-flip-scene .title-flip-front { z-index: 2; }
+.title-flip-scene .title-flip-back { z-index: 1; }
+.title-flip-scene.flipped .title-flip-front { z-index: 1; }
+.title-flip-scene.flipped .title-flip-back { z-index: 2; }
 .title-flip-front {
   background: transparent;
 }
@@ -522,11 +531,19 @@ body.hide-verify:not(.show-edit) .verify-btn {
   color: var(--br5);
   outline: none;
   padding: 0;
-  transition: transform 0.2s;
+  transition: transform 0.2s, color 0.3s;
 }
 .fc-fav-btn:hover {
   transform: scale(1.1);
 }
+.fc-fav-btn.fav-active { color: #facc15; }
+@keyframes favPop {
+  0% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(250, 204, 21, 0)); }
+  40% { transform: scale(1.4) rotate(-15deg); filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.8)); }
+  70% { transform: scale(0.9) rotate(10deg); filter: drop-shadow(0 0 4px rgba(250, 204, 21, 0.5)); }
+  100% { transform: scale(1) rotate(0deg); filter: drop-shadow(0 0 0 rgba(250, 204, 21, 0)); }
+}
+.fc-fav-btn.pop { animation: favPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 .fc-status-btn {
   border: none;
   border-radius: 12px;
@@ -663,7 +680,7 @@ window.addEventListener('message', function(event) {
 </head>
 <body>
 
-<div id="home" class="screen active" style="position: relative;">
+<div id="home" class="screen active" style="position: relative; display:flex; flex-direction:column; min-height:100vh;">
 <div style="display: inline-flex; align-items: center; justify-content: center; gap: 15px; margin: 20px auto 0; max-width: 100%;">
   <!-- Logo_angles.JPG -->
   <img src="Logo_angles.JPG" style="width: clamp(80px, 20vw, 120px); height: clamp(80px, 20vw, 120px); object-fit: contain; border-radius: 12px; flex-shrink: 0; mix-blend-mode: multiply;">
@@ -689,7 +706,7 @@ window.addEventListener('message', function(event) {
 
   <p class="subtitle">Master vocabulary, verbs, conditionals, phrasal verbs and more...</p>
   <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V15</div>
+    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V18</div>
     <div class="total-badge" onclick="showStatsModal()" style="cursor:pointer;" title="Ver tarjetas por secciones">Total: <b id="totalFlashcards">0</b> flashcards</div>
   </div>
 
@@ -707,7 +724,9 @@ window.addEventListener('message', function(event) {
   Importar todos los datos
   <input type="file" id="inpImportData" accept=".json" style="display:none;">
 </label>
-<button class="btn-download" id="btnExportHtml" type="button"><strong>Download HTML</strong><span>Descargar HTML con mis cambios</span></button></div>
+<button class="btn-sec" id="btnExportHtml" type="button" style="opacity:0.6; font-size:11px;">Descargar HTML con mis cambios</button>
+<button class="btn-sec" type="button" onclick="openCopyright(event)" style="opacity:0.6; font-size:11px;"><span style="margin-right:8px;">©</span> Copyright y Licencia</button>
+</div>
 
   <div id="quizSetup" style="display:none;width:100%;flex-direction:column;align-items:center;gap:14px">
     <div class="section-label"><span class="must-pick">① Categorías</span> <span style="font-weight:400">(una o varias)</span></div>
@@ -791,9 +810,9 @@ window.addEventListener('message', function(event) {
         <button class="study-filter-btn" id="btnClearFilters" type="button">Limpiar Filtros</button>
         <select class="study-filter-btn" id="selStudyStatus" onchange="toggleStatusFilter(parseInt(this.value))">
           <option value="0">Estado: Todos</option>
-          <option value="1">Ya me la sé</option>
           <option value="2">Repasar</option>
           <option value="3">Siempre me equivoco</option>
+          <option value="1">Ya me la sé</option>
         </select>
         <button class="study-filter-btn" id="btnStudyFav" type="button" onclick="toggleFavFilter()" style="background:var(--br1);">☆ Favoritos</button>
         <button class="study-filter-btn" id="btnStudyRandom" title="Palabra random">↯ Random</button>
@@ -833,6 +852,7 @@ window.addEventListener('message', function(event) {
     </div>
     <div class="filter-row" id="filterRow">
       <div class="flt-btn on" data-flt="all">Todas (1300)</div>
+      <div class="flt-btn" data-flt="noun">Sustantivos</div>
       <div class="flt-btn" data-flt="adverb">Adverbios</div>
       <div class="flt-btn" data-flt="adjective">Adjetivos</div>
       <div class="flt-btn" data-flt="phrasal">Phrasal V.</div>
@@ -858,7 +878,8 @@ window.addEventListener('message', function(event) {
             <div style="display:flex; justify-content: center;">
               <button class="fc-verify-btn" id="fcVerifyFront" type="button" title="Marcar como validada" onclick="toggleStudyVerify(event)">○ Validar</button>
             </div>
-            <div style="display:flex; justify-content: flex-end;">
+            <div style="display:flex; justify-content: flex-end; align-items: center; gap: 15px;">
+              <button type="button" class="fc-fav-btn" id="fcFavFront" onclick="event.stopPropagation(); toggleCardFav(event)">☆</button>
               <button class="fc-flip-btn" id="fcFlipBtnFront" type="button" aria-label="Voltear carta">⟳ Voltear</button>
             </div>
           </div>
@@ -880,12 +901,13 @@ window.addEventListener('message', function(event) {
             <button type="button" class="fc-status-btn fc-status-0" id="fcStatusFront" onclick="event.stopPropagation(); toggleCardStatus(event)"></button>
           </div>
           <div class="fc-bottom-row" style="position:absolute; bottom:15px; left:15px; right:15px; display:flex; justify-content:space-between; align-items:flex-end; pointer-events:none;">
-            <div style="pointer-events:auto;">
+            <div style="pointer-events:auto; flex: 1; display:flex; justify-content:flex-start;">
               <span class="fc-reg-badge" id="fcRegBadge" style="font-size:11px; padding:4px 7px;">N</span>
             </div>
-            <div class="fc-tap-hint" style="position:absolute; left:50%; transform:translateX(-50%); white-space:nowrap;">Pulsa para girar</div>
-            <div style="pointer-events:auto;">
-              <button type="button" class="fc-fav-btn" id="fcFavFront" onclick="event.stopPropagation(); toggleCardFav(event)">☆</button>
+            <div style="display:flex; flex-direction:column; align-items:center; pointer-events:none; flex: 2;">
+              <div class="fc-tap-hint" style="position:relative; left:auto; transform:none; white-space:nowrap;">Pulsa para girar</div>
+            </div>
+            <div style="pointer-events:auto; flex: 1; display:flex; justify-content:flex-end;">
             </div>
           </div>
         </div>
@@ -893,10 +915,10 @@ window.addEventListener('message', function(event) {
           <div class="fc-back-header">
             <div style="display:flex; align-items:center; gap:8px; flex:1; min-width:0;">
               <span class="fc-back-word" id="fcBackWord">—</span>
+              <button class="fc-verify-btn fc-verify-btn-back" id="fcVerifyBack" type="button" title="Marcar como validada" onclick="toggleStudyVerify(event)">○ Validar</button>
               <button class="fc-view-img-btn" onclick="openImageZoomModal(event)" title="Ver Imagen">🖼️</button>
             </div>
             <div class="fc-back-header-right">
-              <button class="fc-verify-btn fc-verify-btn-back" id="fcVerifyBack" type="button" title="Marcar como validada" onclick="toggleStudyVerify(event)">○ Validar</button>
               <button class="fc-flip-btn fc-flip-btn-back" id="fcFlipBtnBack" type="button" aria-label="Voltear carta">⟳ Voltear</button>
             </div>
           </div>
@@ -917,6 +939,7 @@ window.addEventListener('message', function(event) {
                 <option value="adverb">Adverbio</option>
                 <option value="adjective">Adjetivo</option>
                 <option value="adjverb">Adjetivo y verbo</option>
+                <option value="noun">Sustantivo</option>
                 <option value="connector">Conector</option>
                 <option value="starter">Inicio de frase</option>
                 <option value="other">Otros / Sin asignar</option>
@@ -985,14 +1008,12 @@ window.addEventListener('message', function(event) {
             <div class="fc-sec-val" id="fcStructVal" style="white-space: pre-wrap;">—</div>
           </div>
           <div class="fc-sec" data-sec="ex">
-            <div class="fc-sec-lbl" style="display:flex; flex-direction:column; gap:8px;">
+            <div class="fc-sec-lbl" style="display:flex; justify-content:space-between; align-items:center;">
               <span>Ejemplos</span>
-              <div style="display:flex; flex-wrap:wrap; gap:5px;">
-                <button type="button" class="fc-edit-only btn-bold" style="background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 12px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:14px; color:#5d4037; line-height:1; transition:all 0.1s; box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('bold', false, null); this.classList.toggle('active');" onclick="event.stopPropagation()" title="Poner en negrita">B</button>
-              </div>
+              <button type="button" class="fc-edit-only btn-bold" style="background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 12px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:14px; color:#5d4037; line-height:1; transition:all 0.1s; margin-left:10px; box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('bold', false, null); this.classList.toggle('active');" onclick="event.stopPropagation()" title="Poner en negrita">B</button>
             </div>
             <div id="fcExamplesContainer"></div>
-            <div class="fc-edit-only" style="margin-top:10px; text-align:center;">
+            <div class="fc-edit-only" style="margin-top:10px; text-align:center; display:flex; justify-content:center; gap:10px;">
               <button type="button" class="fc-img-btn" style="display:inline-flex; background:#e8f0e8; color:#2d5a2d; border:1px solid #b8d0b8;" onclick="event.stopPropagation(); addStudyExample()">+ Añadir ejemplo</button>
             </div>
           </div>
@@ -1000,12 +1021,16 @@ window.addEventListener('message', function(event) {
             <button type="button" class="fc-status-btn fc-status-0" id="fcStatusBack" onclick="event.stopPropagation(); toggleCardStatus(event)"></button>
           </div>
           <div style="position:absolute; bottom:15px; right:15px; z-index:10;">
-             <button type="button" class="fc-fav-btn" id="fcFavBack" onclick="event.stopPropagation(); toggleCardFav(event)">☆</button>
           </div>
           <div class="fc-tap">Pulsa cada apartado para ampliar · Pulsa fuera para girar</div>
           <div class="editable-hint">✏️ Puedes editar la traducción, tipo, registro, estructura y ejemplos.</div>
         </div>
       </div>
+    
+<div style="text-align:center; padding: 20px 10px; font-size:12px; opacity:0.6; cursor:pointer; color:inherit; font-family:inherit; clear:both; margin-top:auto;" onclick="openCopyright(event)">
+  © 2025–Present Elisabeth Altarriba
+</div>
+
     </div>
     <div class="nav-row">
       <button class="nav-btn" id="fcPrev">←</button>
@@ -1051,7 +1076,7 @@ window.addEventListener('message', function(event) {
     <div class="form-grid">
       <div class="form-row"><label for="newWord">Palabra en inglés *</label><input id="newWord" type="text" placeholder="e.g. put up with"></div>
       <div class="form-row"><label for="newTrans">Traducción *</label><input id="newTrans" type="text" placeholder="e.g. aguantar / tolerar"></div>
-      <div class="form-row"><label for="newCat">Tipo</label><select id="newCat" style="width:100%; padding:12px 14px; border-radius:12px; background:#eef7eb; border:1.5px solid #c4e1c3; color:#2c4230; font-weight:800; font-family:var(--fb); cursor:pointer; outline:none; box-shadow:0 4px 0 #c4e1c3;"><option value="phrasal">Phrasal verb</option><option value="verb">Verbo</option><option value="adverb">Adverbio</option><option value="adjective">Adjetivo</option><option value="connector">Conector</option><option value="starter">Inicio de frase</option><option value="other">Otros / Sin asignar</option></select></div>
+      <div class="form-row"><label for="newCat">Tipo</label><select id="newCat" style="width:100%; padding:12px 14px; border-radius:12px; background:#eef7eb; border:1.5px solid #c4e1c3; color:#2c4230; font-weight:800; font-family:var(--fb); cursor:pointer; outline:none; box-shadow:0 4px 0 #c4e1c3;"><option value="phrasal">Phrasal verb</option><option value="verb">Verbo</option><option value="adverb">Adverbio</option><option value="adjective">Adjetivo</option><option value="adjverb">Adjetivo y verbo</option><option value="noun">Sustantivo</option><option value="connector">Conector</option><option value="starter">Inicio de frase</option><option value="other">Otros / Sin asignar</option></select></div>
       <div class="form-row"><label for="newLevel">Nivel</label><select id="newLevel" style="width:100%; padding:12px 14px; border-radius:12px; background:#eef7eb; border:1.5px solid #c4e1c3; color:#2c4230; font-weight:800; font-family:var(--fb); cursor:pointer; outline:none; box-shadow:0 4px 0 #c4e1c3;"><option value="">Ninguno</option><option value="b2_1">B2.1</option><option value="b2_2">B2.2</option><option value="c1">C1</option></select></div>
       <div class="form-row"><label for="newReg">Registro</label><select id="newReg"><option value="N">Neutral</option><option value="F">Formal</option><option value="I">Informal</option></select></div>
       <div class="form-row full"><label for="newStruct">Estructura / cómo se usa</label><textarea id="newStruct" placeholder="Opcional: estructura, preposición, patrón, notas de uso..."></textarea></div>
@@ -1595,6 +1620,7 @@ function getTypeName(cat){
   if(cat==="adverb") return "Adverbio";
   if(cat==="adjective") return "Adjetivo";
   if(cat==="adjverb") return "Adjetivo y verbo";
+  if(cat==="noun") return "Sustantivo";
   if(cat==="phrasal") return "Phrasal Verb";
   if(cat==="connector") return "Conector";
   if(cat==="starter") return "Inicio de Frase";
@@ -1894,7 +1920,13 @@ function showResults(){
 function retryWrong(){
   var all=[];for(var i=0;i<players.length;i++)for(var j=0;j<players[i].wrong.length;j++)all.push(players[i].wrong[j]);
   if(!all.length)return;
-  var pool=all.map(function(q){var w=getWrong(q.cat,q.correct,q.trans,3);return{cat:q.cat,item:q.item,sentence:q.sentence,correct:q.correct,trans:q.trans,opts:shuf([q.correct].concat(w)),explain:q.explain}});
+  var pool=all.map(function(q){
+    var allC = getStudyCards();
+    var cPool = allC.filter(function(x){ return x.cat === q.cat; });
+    if (cPool.length < 4) cPool = allC;
+    var w=getWrongFromCards(cPool,q.correct,q.trans,3);
+    return{cat:q.cat,item:q.item,sentence:q.sentence,correct:q.correct,trans:q.trans,opts:shuf([q.correct].concat(w)),explain:q.explain}
+  });
   for(var i=0;i<players.length;i++){players[i].ok=0;players[i].bad=0;players[i].wrong=[]}
   curP=0;curQ=0;genQs(pool);showScreen("quizScreen");renderQ();
 }
@@ -3046,13 +3078,16 @@ function saveExamplesFromDom(){
   var c=getCurrentCard(); if(!c) return;
   var k=cardKey(c);
   var rows=[];
-  document.querySelectorAll('#fcExamplesContainer .fc-sense').forEach(function(senseEl){
+  var container = document.getElementById("fcExamplesContainer");
+  if (!container) return;
+  container.querySelectorAll(':scope > .fc-sense').forEach(function(senseEl){
     var sense = senseEl.querySelector('.fc-sense-lbl') ? senseEl.querySelector('.fc-sense-lbl').textContent.trim() : '';
     var examples=[];
     var exEls=senseEl.querySelectorAll('.fc-ex');
     var trEls=senseEl.querySelectorAll('.fc-ex-tr');
     for(var i=0;i<exEls.length;i++){
-      examples.push([exEls[i].textContent.replace(/^\d+\.\s*/, '').trim(), (trEls[i]?trEls[i].textContent.trim():"")]);
+      var exHtml = exEls[i].innerHTML.replace(/<\/?em>/gi, '').replace(/&lt;\/?em&gt;/gi, '').trim();
+      examples.push([exHtml, (trEls[i]?trEls[i].innerHTML.trim():"")]);
     }
     rows.push({sense:sense, examples:examples, edited:true});
   });
@@ -3161,7 +3196,10 @@ function getCardTransForQuiz(c){
 function buildQuizQuestionFromCard(c, withEdits){
   var correct=c.word;
   var ctrans=getCardTransForQuiz(c);
-  var wrongs=getWrong(c.cat,correct,ctrans,3);
+  var allC = getStudyCards();
+  var cPool = allC.filter(function(x){ return x.cat === c.cat; });
+  if (cPool.length < 4) cPool = allC;
+  var wrongs=getWrongFromCards(cPool,correct,ctrans,3);
   while(wrongs.length<3){ wrongs.push("opción "+(wrongs.length+2)); }
   var qtxt;
   if(c.cat==="adverb") qtxt='¿Cuál es la traducción al inglés del adverbio "<strong>'+ctrans+'</strong>"?';
@@ -3319,7 +3357,8 @@ window.addStudyExample = function() {
             var trEls = modalContent.querySelectorAll('.fc-ex-tr');
             var examples = [];
             for(var i=0;i<exEls.length;i++){
-              examples.push([exEls[i].textContent.replace(/^\d+\.\s*/, '').trim(), (trEls[i]?trEls[i].textContent.trim():"")]);
+              var exHtml = exEls[i].innerHTML.replace(/<\/?em>/gi, '').replace(/&lt;\/?em&gt;/gi, '').trim();
+              examples.push([exHtml, (trEls[i]?trEls[i].innerHTML.trim():"")]);
             }
             rows.push({sense:'', examples:examples, edited:true});
             USER_EDITS[k]=USER_EDITS[k]||{};
@@ -3333,7 +3372,7 @@ window.addStudyExample = function() {
   var c=getCurrentCard(); if(!c) return;
   var k=cardKey(c);
   USER_EDITS[k] = USER_EDITS[k] || {};
-  var senses = USER_EDITS[k].examples || c.examples || [];
+  var senses = USER_EDITS[k].examples ? JSON.parse(JSON.stringify(USER_EDITS[k].examples)) : (c.examples ? JSON.parse(JSON.stringify(c.examples)) : []);
   if(senses.length > 0 && senses[senses.length - 1].examples) {
     senses[senses.length - 1].examples.push(["", ""]);
   } else {
@@ -3477,6 +3516,36 @@ function toggleStatusFilter(statusVal) {
   renderStudy();
 }
 
+function spawnFavParticles(btn) {
+  var rect = btn.getBoundingClientRect();
+  var cx = rect.left + rect.width/2;
+  var cy = rect.top + rect.height/2;
+  for(var i=0; i<8; i++){
+    var p = document.createElement("div");
+    p.textContent = "✨";
+    p.style.position = "fixed";
+    p.style.left = cx + "px";
+    p.style.top = cy + "px";
+    p.style.fontSize = (10 + Math.random()*8) + "px";
+    p.style.pointerEvents = "none";
+    p.style.zIndex = "9999";
+    p.style.transition = "all 0.6s cubic-bezier(0.25, 1, 0.5, 1)";
+    p.style.transform = "translate(-50%, -50%) scale(0.5)";
+    p.style.opacity = "1";
+    document.body.appendChild(p);
+    
+    let angle = (i / 8) * Math.PI * 2 + Math.random()*0.5;
+    let dist = 30 + Math.random() * 20;
+    let tx = Math.cos(angle) * dist;
+    let ty = Math.sin(angle) * dist;
+    
+    void p.offsetWidth;
+    p.style.transform = `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(1.2) rotate(${Math.random()*180}deg)`;
+    p.style.opacity = "0";
+    setTimeout((function(el){ return function(){ el.remove(); } })(p), 600);
+  }
+}
+
 function toggleCardFav(event) {
   var c = studyList[studyIdx];
   if(!c) return;
@@ -3485,10 +3554,110 @@ function toggleCardFav(event) {
   USER_EDITS[k].favorite = !USER_EDITS[k].favorite;
   saveEdits();
   var isFav = USER_EDITS[k].favorite;
+  
+  var targetBtn = event && event.currentTarget ? event.currentTarget : null;
+  if(targetBtn && isFav) {
+    targetBtn.classList.remove("pop");
+    void targetBtn.offsetWidth;
+    targetBtn.classList.add("pop");
+    spawnFavParticles(targetBtn);
+  }
+
   var btnFront = document.getElementById("fcFavFront");
   var btnBack = document.getElementById("fcFavBack");
-  if(btnFront) btnFront.textContent = isFav ? "⭐" : "☆";
-  if(btnBack) btnBack.textContent = isFav ? "⭐" : "☆";
+  if(btnFront) {
+    btnFront.textContent = isFav ? "★" : "☆";
+    btnFront.classList.toggle("fav-active", isFav);
+  }
+  if(btnBack) {
+    btnBack.textContent = isFav ? "★" : "☆";
+    btnBack.classList.toggle("fav-active", isFav);
+  }
+}
+
+window.confettiTimer = null;
+
+function showCongratulations() {
+  let existing = document.getElementById('congratsOverlay');
+  if (existing) existing.remove();
+
+  let overlay = document.createElement('div');
+  overlay.id = 'congratsOverlay';
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.width = '100vw';
+  overlay.style.height = '100vh';
+  overlay.style.pointerEvents = 'none';
+  overlay.style.zIndex = '999999';
+  overlay.style.display = 'flex';
+  overlay.style.justifyContent = 'center';
+  overlay.style.alignItems = 'center';
+  overlay.style.overflow = 'hidden';
+
+  let word = 'CONGRATULATIONS!';
+  let elegantColors = ['#1a365d', '#702459', '#276749', '#b7791f', '#2b6cb0', '#9b2c2c', '#2c7a7b', '#2d3748', '#b83280', '#2f855a', '#c05621', '#1a365d', '#702459', '#276749', '#b7791f', '#2b6cb0'];
+  
+  let text = document.createElement('div');
+  text.style.fontFamily = 'var(--fb), system-ui, -apple-system, sans-serif';
+  text.style.fontSize = 'clamp(14px, 4vw, 36px)'; // Más pequeño para móvil
+  text.style.fontWeight = '800';
+  text.style.whiteSpace = 'normal'; // Permitir salto de línea si es muy estrecho
+  text.style.textAlign = 'center';
+  text.style.letterSpacing = '1px';
+  text.style.webkitTextStroke = '0'; // Quitamos el ribete grueso que no gustaba
+  text.style.backgroundColor = 'rgba(255, 255, 255, 0.95)'; // Fondo blanco
+  text.style.padding = '16px 24px';
+  text.style.borderRadius = '16px';
+  text.style.boxShadow = '0 8px 32px rgba(0,0,0,0.15)';
+  text.style.border = '1px solid rgba(0,0,0,0.05)';
+  text.style.maxWidth = '90%'; // Que no se salga de la pantalla
+  text.style.margin = '0 auto';
+  text.style.transform = 'scale(0)';
+  text.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+  
+  for(let i=0; i<word.length; i++) {
+    let span = document.createElement('span');
+    span.textContent = word[i];
+    span.style.color = elegantColors[i] || '#1a365d';
+    text.appendChild(span);
+  }
+  overlay.appendChild(text);
+
+  let colors = ['#ff4757', '#2ed573', '#1e90ff', '#ffa502', '#ff6348', '#ffffff', '#eccc68'];
+  for (let i = 0; i < 150; i++) {
+    let conf = document.createElement('div');
+    conf.style.position = 'absolute';
+    conf.style.width = (Math.random() * 12 + 6) + 'px';
+    conf.style.height = (Math.random() * 24 + 12) + 'px';
+    conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    conf.style.top = '-50px';
+    conf.style.left = Math.random() * 100 + 'vw';
+    conf.style.opacity = Math.random() + 0.5;
+    conf.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+    
+    let duration = Math.random() * 3 + 2; 
+    let delay = Math.random() * 1.5;
+    conf.style.transition = `top ${duration}s linear ${delay}s, transform ${duration}s linear ${delay}s, opacity ${duration}s linear ${delay}s`;
+    
+    overlay.appendChild(conf);
+
+    setTimeout(() => {
+      conf.style.top = '120vh';
+      conf.style.transform = 'rotate(' + (Math.random() * 1080) + 'deg)';
+      conf.style.opacity = '0';
+    }, 50);
+  }
+
+  document.body.appendChild(overlay);
+
+  setTimeout(() => {
+    text.style.transform = 'scale(1)';
+  }, 100);
+
+  setTimeout(() => {
+    if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+  }, 5000);
 }
 
 function toggleCardStatus(event) {
@@ -3497,13 +3666,29 @@ function toggleCardStatus(event) {
   var k = cardKey(c);
   USER_EDITS[k] = USER_EDITS[k] || {};
   var s = USER_EDITS[k].status || 0;
-  s = (s + 1) % 4;
+  
+  if (s === 0) s = 2;
+  else if (s === 2) s = 3;
+  else if (s === 3) s = 1;
+  else if (s === 1) s = 0;
+
   USER_EDITS[k].status = s;
   saveEdits();
   var btnFront = document.getElementById("fcStatusFront");
   var btnBack = document.getElementById("fcStatusBack");
   if(btnFront) btnFront.className = "fc-status-btn fc-status-" + s;
   if(btnBack) btnBack.className = "fc-status-btn fc-status-" + s;
+
+  if (window.confettiTimer) clearTimeout(window.confettiTimer);
+  if (s === 1) {
+    window.confettiTimer = setTimeout(() => {
+      // Confirm still on same status
+      var currentS = (USER_EDITS[k] && USER_EDITS[k].status) || 0;
+      if (currentS === 1 && studyList[studyIdx] === c) {
+        showCongratulations();
+      }
+    }, 1000);
+  }
 }
 
 
@@ -3632,11 +3817,11 @@ function renderStudy(){
   setEditableText("fcStructVal", ed.struct || c.struct || "Sin instrucciones específicas. Esta palabra se usa según las reglas generales de su categoría.", "struct");
   
   var senses = (ed.examples && ed.examples.length) ? ed.examples : (c.examples && c.examples.length ? c.examples : genExamples(c.cat, c.word));
-  function escHtml(s){return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
   function highlight(text, word){
-    var esc = escHtml(text);
-    var re = new RegExp("("+word.replace(/[.*+?^${}()|[\\]\\\\]/g,"\\\\$&")+")","gi");
-    return esc.replace(re,"<em>$1</em>");
+    if (!text) return "";
+    var cleanText = text.replace(/<\/?em>/gi, '').replace(/&lt;\/?em&gt;/gi, '');
+    var re = new RegExp("("+word.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")(?![^<]*>)","gi");
+    return cleanText.replace(re,"<em>$1</em>");
   }
 
   var flatExamples = [];
@@ -3659,41 +3844,29 @@ function renderStudy(){
     var pair = flatExamples[ei] || ["", ""];
     var isEmpty = !(pair[0] || "").replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, '').trim() && !(pair[1] || "").replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, '').trim();
     if (!STUDY_EDIT_MODE && isEmpty) continue;
-    var prefix = showNumbers ? (displayIdx + '. ') : '';
+    var prefix = showNumbers ? '<div style="user-select:none; color:var(--br4); font-weight:bold; margin-right:6px; margin-top:2px;">' + displayIdx + '.</div>' : '';
     if(!isEmpty || STUDY_EDIT_MODE) displayIdx++;
-    var exText = pair[0] ? highlight(pair[0], c.word) : "";
-    html += '<div class="fc-sense">';
-    html += '<div class="fc-ex '+(STUDY_EDIT_MODE?'editable-field':'')+'" contenteditable="'+(STUDY_EDIT_MODE?'true':'false')+'" data-placeholder="Ejemplo en inglés">'+prefix+exText+'</div>';
-    html += '<div class="fc-ex-tr '+(STUDY_EDIT_MODE?'editable-field':'')+'" contenteditable="'+(STUDY_EDIT_MODE?'true':'false')+'" data-placeholder="Traducción">'+escHtml(pair[1]||"")+'</div>';
+    
+    var cleanEx = (pair[0] || "").replace(/<\/?em>/gi, '').replace(/&lt;\/?em&gt;/gi, '');
+    var exText = cleanEx;
+    if (!STUDY_EDIT_MODE && cleanEx) {
+       exText = highlight(cleanEx, c.word);
+    }
+    
+    html += '<div class="fc-sense" style="margin-bottom:8px; position:relative;">';
+    html += '<div style="display:flex; align-items:flex-start;">' + prefix + '<div class="fc-ex '+(STUDY_EDIT_MODE?'editable-field':'')+'" contenteditable="'+(STUDY_EDIT_MODE?'true':'false')+'" data-placeholder="Ejemplo en inglés" style="flex:1; padding-right:'+(STUDY_EDIT_MODE?'30px':'0')+';">'+exText+'</div></div>';
+    if (STUDY_EDIT_MODE || (pair[1] && pair[1].trim() !== "")) {
+      html += '<div class="fc-ex-tr '+(STUDY_EDIT_MODE?'editable-field':'')+'" contenteditable="'+(STUDY_EDIT_MODE?'true':'false')+'" data-placeholder="Traducción" style="margin-left:'+(showNumbers?'20px':'0')+'; margin-top:4px;">'+(pair[1]||"")+'</div>';
+    }
+    if (STUDY_EDIT_MODE) {
+      html += '<button type="button" class="fc-edit-only btn-del-ex" title="Borrar ejemplo" onclick="event.stopPropagation(); this.closest(\'.fc-sense\').remove(); saveExamplesFromDom();" style="position:absolute; top:2px; right:0; background:#ffebeb; border:1px solid #ffcaca; border-radius:6px; color:var(--red3); cursor:pointer; font-size:11px; font-weight:bold; padding:4px 8px; box-shadow:0 2px 0 #ffcaca;">Borrar</button>';
+    }
     html += '</div>';
   }
   container.innerHTML = html;
 
-  var currentFreq = ed.freq !== undefined ? ed.freq : (c.freq || 0);
-  if (!Array.isArray(currentFreq)) {
-    var arr = [false, false, false, false, false];
-    for (var i = 0; i < currentFreq; i++) arr[i] = true;
-    currentFreq = arr;
-  }
-  var freqHtml = '<div style="display:flex; justify-content:space-between; align-items:center; width:100%;">';
-  freqHtml += '<div class="fc-sec-lbl" style="margin-bottom:0;">Frecuencia</div>';
-  freqHtml += '<div style="display:flex; justify-content:center; align-items:center; gap:5px;">';
-  for (var i = 1; i <= 5; i++) {
-    var isActive = currentFreq[i - 1];
-    var style = isActive ? 'cursor:pointer; font-size:18px; transition:transform 0.2s;' : 'cursor:pointer; font-size:18px; filter:grayscale(100%); opacity:0.4; transition:transform 0.2s;';
-    freqHtml += '<span onclick="event.stopPropagation(); setFreq(' + i + ')" style="' + style + '" onmouseover="if(STUDY_EDIT_MODE)this.style.transform=\'scale(1.2)\'" onmouseout="if(STUDY_EDIT_MODE)this.style.transform=\'scale(1)\'">🔥</span>';
-  }
-  freqHtml += '</div></div>';
-  
   var existingFreq = document.getElementById("fcFreqContainer");
   if(existingFreq) existingFreq.remove();
-  var freqDiv = document.createElement("div");
-  freqDiv.id = "fcFreqContainer";
-  freqDiv.className = "fc-sec";
-  freqDiv.style.padding = "8px 14px";
-  freqDiv.style.marginBottom = "12px";
-  freqDiv.innerHTML = freqHtml;
-  container.parentNode.parentNode.insertBefore(freqDiv, container.parentNode.nextSibling);
 
   var vbtnFront = document.getElementById("fcVerifyFront");
   var vbtnBack = document.getElementById("fcVerifyBack");
@@ -3712,8 +3885,14 @@ function renderStudy(){
   var s = ed.status || 0;
   var favFront = document.getElementById("fcFavFront");
   var favBack = document.getElementById("fcFavBack");
-  if(favFront) favFront.textContent = isFav ? "⭐" : "☆";
-  if(favBack) favBack.textContent = isFav ? "⭐" : "☆";
+  if(favFront) {
+    favFront.textContent = isFav ? "★" : "☆";
+    favFront.classList.toggle("fav-active", isFav);
+  }
+  if(favBack) {
+    favBack.textContent = isFav ? "★" : "☆";
+    favBack.classList.toggle("fav-active", isFav);
+  }
 
   var stFront = document.getElementById("fcStatusFront");
   var stBack = document.getElementById("fcStatusBack");
@@ -3732,13 +3911,35 @@ function toggleStudyVerify(e){
   var verified = USER_EDITS[k].studyVerified;
   var vbtnFront = document.getElementById("fcVerifyFront");
   var vbtnBack = document.getElementById("fcVerifyBack");
-  if(vbtnFront) {
-    vbtnFront.classList.toggle("verified", verified);
-    vbtnFront.innerHTML = verified ? "✓ Validado" : "○ Validar";
-  }
-  if(vbtnBack) {
-    vbtnBack.classList.toggle("verified", verified);
-    vbtnBack.innerHTML = verified ? "✓ Validado" : "○ Validar";
+  
+  if (verified) {
+    if(vbtnFront) {
+      vbtnFront.classList.add("magic-verify");
+      vbtnFront.innerHTML = "✒️ <span class='magic-dust'>✨</span>";
+      setTimeout(function(){
+        vbtnFront.classList.remove("magic-verify");
+        vbtnFront.classList.add("verified");
+        vbtnFront.innerHTML = "✓ Validado";
+      }, 1500);
+    }
+    if(vbtnBack) {
+      vbtnBack.classList.add("magic-verify");
+      vbtnBack.innerHTML = "✒️ <span class='magic-dust'>✨</span>";
+      setTimeout(function(){
+        vbtnBack.classList.remove("magic-verify");
+        vbtnBack.classList.add("verified");
+        vbtnBack.innerHTML = "✓ Validado";
+      }, 1500);
+    }
+  } else {
+    if(vbtnFront) {
+      vbtnFront.classList.remove("verified", "magic-verify");
+      vbtnFront.innerHTML = "○ Validar";
+    }
+    if(vbtnBack) {
+      vbtnBack.classList.remove("verified", "magic-verify");
+      vbtnBack.innerHTML = "○ Validar";
+    }
   }
 }
 
@@ -3895,12 +4096,13 @@ function closeSectionZoomModal(){
          var k = cardKey(c);
          var rows = [];
          modalContent.querySelectorAll('.fc-sense').forEach(function(senseEl){
-           var sense = senseEl.querySelector('.fc-sense-lbl') ? senseEl.querySelector('.fc-sense-lbl').textContent.replace(/^Significado\s*\d+\s*:\s*/i,'').trim() : '';
+           var sense = senseEl.querySelector('.fc-sense-lbl') ? senseEl.querySelector('.fc-sense-lbl').innerHTML.replace(/^Significado\s*\d+\s*:\s*/i,'').trim() : '';
            var examples = [];
            var exEls = senseEl.querySelectorAll('.fc-ex');
            var trEls = senseEl.querySelectorAll('.fc-ex-tr');
            for(var i=0; i<exEls.length; i++){
-             examples.push([exEls[i].textContent.replace(/^\d+\.\s*/, '').trim(), (trEls[i]?trEls[i].textContent.trim():"")]);
+             var exHtml = exEls[i].innerHTML.replace(/<\/?em>/gi, '').replace(/&lt;\/?em&gt;/gi, '').trim();
+             examples.push([exHtml, (trEls[i]?trEls[i].innerHTML.trim():"")]);
            }
            rows.push({sense:sense, examples:examples});
          });
@@ -3973,7 +4175,7 @@ function saveNewFlashcard(){
   var cat=document.getElementById("newCat").value;
   var lvl=document.getElementById("newLevel").value;
   if(lvl && !cat) cat="other";
-  var card={cat:cat,word:word,trans:trans,reg:document.getElementById("newReg").value,struct:document.getElementById("newStruct").value.trim(),custom:true};
+  var card={cat:cat,word:word,trans:trans,reg:document.getElementById("newReg").value,struct:document.getElementById("newStruct").value.trim(),custom:true,originalWord:word,originalCat:cat};
   if(lvl) card.level = lvl;
   if(cat==="phrasal"||cat==="connector")card.meaning=trans;
   USER_CARDS.push(card);USER_EDITS[cardKey(card)]={trans:trans,typeText:getTypeName(cat),regText:getRegisterName(card.reg),struct:card.struct,examples:[{sense:trans,examples:examples}]};saveUserCards();saveEdits();updateHomeTotal();closeAddCardModal();
@@ -4265,7 +4467,19 @@ document.addEventListener("DOMContentLoaded",function(){
   /* Explicit flip buttons inside the card */
   function flipCard(){
     var card = document.getElementById("flashcard");
-    card.classList.toggle("flipped");
+    var isFlipped = card.classList.contains("flipped");
+    
+    card.classList.remove("flipping-forward", "flipping-backward");
+    void card.offsetWidth; // Trigger reflow for animation restart
+    
+    if(!isFlipped){
+      card.classList.add("flipping-forward");
+      card.classList.add("flipped");
+    } else {
+      card.classList.add("flipping-backward");
+      card.classList.remove("flipped");
+    }
+    
     document.getElementById("studyScreen").classList.toggle("show-answer", card.classList.contains("flipped"));
     if(!card.classList.contains("flipped")){
       document.querySelectorAll(".fc-sec.zoom").forEach(function(s){s.classList.remove("zoom")});
@@ -4341,8 +4555,8 @@ document.addEventListener("DOMContentLoaded",function(){
       else if(e.key==="ArrowRight") studyNext();
     }
   });
+  updateHomeCounts();
 });
-
 function updateHomeCounts() {
   var allCards = getStudyCards();
   var total = allCards.length;
@@ -4384,20 +4598,26 @@ function updateHomeCounts() {
   allCards.forEach(function(c) {
     var cat = c.cat || "other";
     counts[cat] = (counts[cat] || 0) + 1;
+    if (c.level) {
+      counts[c.level] = (counts[c.level] || 0) + 1;
+    }
   });
   var labels = {
     all: "Todas",
+    noun: "Sustantivos",
     adverb: "Adverbios",
     adjective: "Adjetivos",
     phrasal: "Phrasal V.",
     connector: "Conectores",
     starter: "Inicios",
     verb: "Verbos",
+    other: "Otros",
     b2_1: "B2.1",
-    b2_2: "B2.2"
+    b2_2: "B2.2",
+    c1: "C1"
   };
-  document.querySelectorAll(".flt-btn").forEach(function(b) {
-    var cat = b.dataset.flt;
+  document.querySelectorAll(".flt-btn, .lvl-flt-btn").forEach(function(b) {
+    var cat = b.dataset.flt || b.dataset.lvlflt;
     if (labels[cat]) {
       var count = counts[cat] || 0;
       b.textContent = labels[cat] + " (" + count + ")";
@@ -4449,11 +4669,11 @@ document.getElementById("inpImportData").addEventListener("change", function(e) 
 // Hook into showScreen('home') and initData
 var oldShowScreen = showScreen;
 showScreen = function(id) {
-  if (id === 'home') updateHomeCounts();
+  if (id === 'home') updateHomeTotal();
   oldShowScreen(id);
 };
 document.addEventListener("DOMContentLoaded", function() {
-  setTimeout(updateHomeCounts, 500);
+  setTimeout(updateHomeTotal, 500);
 });
 
 
@@ -4914,7 +5134,7 @@ function selectIcon(iconName) {
   USER_EDITS[k].icon = iconName;
   saveEdits();
   closeIconPicker();
-  renderStudyCard();
+  renderStudy();
 }
 </script>
 <script>
@@ -4926,6 +5146,60 @@ if ('serviceWorker' in navigator) {
       console.log('ServiceWorker registration failed: ', err);
     });
   });
+}
+</script>
+
+<div id="copyrightModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:99999; justify-content:center; align-items:center; opacity:0; transition:opacity 0.2s;">
+  <div class="modal-content" style="background:var(--bg, #fdfbf7); padding:30px; border-radius:12px; max-width:600px; width:90%; max-height:85vh; overflow-y:auto; color:var(--text, #5d4037); font-family:inherit; box-shadow:0 10px 30px rgba(0,0,0,0.2); position:relative; transform:translateY(20px); transition:transform 0.2s;">
+    <div style="font-size:22px; font-weight:bold; margin-bottom:20px; text-align:center; color:var(--bark, #5d4037);">Copyright y Licencia de Uso</div>
+    <div style="font-size:14px; line-height:1.6;">
+      <p style="text-align:center; font-weight:bold; margin-bottom:25px; font-size:16px;">© 2025–Present Elisabeth Altarriba<br>Todos los derechos reservados.</p>
+      
+      <p>Esta aplicación, incluyendo su código fuente, diseño, estructura, interfaz de usuario, imágenes, iconos, animaciones, documentación y cualquier otro elemento que forme parte de ella, es propiedad intelectual de Elisabeth Altarriba y está protegida por la legislación vigente sobre derechos de autor y propiedad intelectual.</p>
+
+      <div style="font-weight:bold; margin-top:25px; margin-bottom:12px; font-size:16px; border-bottom:1px solid rgba(0,0,0,0.1); padding-bottom:5px;">LICENCIA DE USO</div>
+      
+      <p style="font-weight:bold; margin-bottom:8px;">✅ Se permite:</p>
+      <ul style="margin-top:0; margin-bottom:20px; padding-left:25px;">
+        <li style="margin-bottom:4px;">Utilizar la aplicación para uso personal.</li>
+        <li style="margin-bottom:4px;">Utilizarla con fines educativos.</li>
+        <li style="margin-bottom:4px;">Compartir únicamente el enlace oficial de la aplicación.</li>
+      </ul>
+
+      <p style="font-weight:bold; margin-bottom:8px;">❌ No se permite:</p>
+      <ul style="margin-top:0; margin-bottom:20px; padding-left:25px;">
+        <li style="margin-bottom:4px;">Utilizar la aplicación con fines comerciales.</li>
+        <li style="margin-bottom:4px;">Venderla.</li>
+        <li style="margin-bottom:4px;">Redistribuirla como propia.</li>
+        <li style="margin-bottom:4px;">Copiar total o parcialmente su código fuente.</li>
+        <li style="margin-bottom:4px;">Reutilizar total o parcialmente su diseño, interfaz, imágenes, iconos, animaciones o documentación sin autorización expresa.</li>
+        <li style="margin-bottom:4px;">Eliminar o modificar este aviso de copyright.</li>
+      </ul>
+
+      <p>Si esta aplicación, o cualquier parte de ella, es utilizada, modificada o incorporada en otro proyecto, tanto total como parcialmente, deberá citarse expresamente la autoría de Elisabeth Altarriba.</p>
+
+      <p>Para cualquier uso distinto del permitido anteriormente, será necesaria autorización previa por escrito.</p>
+
+      <div style="margin-top:30px; text-align:center; background:rgba(0,0,0,0.03); padding:15px; border-radius:8px;">
+        <p style="font-weight:bold; margin-bottom:5px;">Autora</p>
+        <p style="margin-top:0; margin-bottom:15px; font-size:16px;">Elisabeth Altarriba</p>
+        <p style="font-weight:bold; margin-bottom:5px;">Contacto:</p>
+        <p style="margin-top:0;">lisaltarriba@gmail.com</p>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:25px;">
+      <button onclick="document.getElementById('copyrightModal').style.opacity='0'; document.getElementById('copyrightModal').firstElementChild.style.transform='translateY(20px)'; setTimeout(function(){document.getElementById('copyrightModal').style.display='none'}, 200);" style="background:var(--btn, #e0d4c3); color:var(--btn-text, #5d4037); border:none; padding:10px 24px; border-radius:20px; font-weight:bold; font-size:15px; cursor:pointer; font-family:inherit;">Cerrar</button>
+    </div>
+  </div>
+</div>
+<script>
+function openCopyright(e) {
+  if (e) e.stopPropagation();
+  var m = document.getElementById('copyrightModal');
+  m.style.display = 'flex';
+  m.offsetWidth;
+  m.style.opacity = '1';
+  m.firstElementChild.style.transform = 'translateY(0)';
 }
 </script>
 </body>

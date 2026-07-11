@@ -4,6 +4,31 @@ Este archivo servirá para registrar todos los cambios que vayamos realizando en
 
 ## Historial de Cambios
 
+
+- **Versión V18 (11 de Julio)**:
+  - **Modal de Copyright y Licencia**: Se ha integrado en el inicio un enlace al pie de la página ("Copyright © Elisabeth Altarriba 2026") que abre un modal explicando que la app es exclusivamente para uso personal y sin fines de lucro.
+  - **Mejora en Contador de Filtros**: La función de recuento de palabras en la pantalla de inicio ahora suma correctamente todas las tarjetas, incluyendo niveles B2.1, B2.2, C1 y la categoría "Sustantivos". 
+  - **Corrección Visual de Botones en Flashcards**:
+    - Se movió el botón de Favoritos (⭐) a la fila superior de la tarjeta frontal para evitar que se superponga con el texto inferior de "Pulsa para girar".
+    - Se ha reubicado el botón de "Negrita" (B) en el modo edición para que se encuentre elegantemente en la cabecera de la sección de traducción, evitando solapamientos.
+    - Se ha eliminado la estrella de favoritos que aparecía de manera residual en el modo de vista trasera/ejemplos.
+  - **Gestión de Ejemplos Mejorada**: Se ha añadido un botón rojo de "Borrar" explícito dentro de la edición de ejemplos, permitiendo al usuario eliminar un bloque de ejemplo directamente de la tarjeta sin tener que borrar el texto a mano y de forma intuitiva.
+  - **Arreglo del Mensaje Congratulations**: Se ha rediseñado la interfaz del mensaje final de felicitación. Se eliminó el reborde de las letras que causaba problemas de solapamiento y se ha implementado una caja blanca translúcida con sombras elegantes, adaptando el tamaño del texto para que no se salga de las pantallas de dispositivos móviles.
+  - **Limpieza de Repositorio**: Se ha eliminado un archivo de configuración intruso (`Labores.code-workspace`) que se había colado por error en el entorno de English.
+- **Versión V17**:
+  - **Corrección Crítica de Ejemplos Duplicados**: Se arregló un bug severo que causaba que la numeración (`1. `) y las etiquetas de resaltado (negritas `<em>`) se guardaran como parte del texto del usuario en el modo edición. Ahora, la UI de los números está completamente aislada del texto, y el resaltado dinámico de la palabra objetivo se deshabilita temporalmente mientras se edita la tarjeta.
+  - **Limpieza Automática**: Se ha añadido lógica que limpiará de forma silenciosa el código residual y los duplicados en las tarjetas afectadas por este bug tan pronto como se vuelvan a abrir.
+
+- **Versión V16**:
+  - **Categoría Sustantivo**: Se añadió "Sustantivo" a las categorías de palabras.
+  - **Layout de UI**: El botón "Validar" en el reverso de la flashcard ahora aparece a la izquierda del botón de Foto.
+  - **Correcciones al guardar**: Los ejemplos ahora mantienen su formato (negritas, cursivas, etc.) al ser guardados, usando `innerHTML` en vez de texto plano.
+  - **Solapamiento al guardar**: Se arregló un bug crítico de sobrescritura de datos (ej. entre "advice" y "advise") basado en posiciones; ahora el guardado utiliza las claves únicas de las tarjetas, haciendo la búsqueda, edición y borrado mucho más seguros y robustos.
+  - **Nuevas Animaciones de UI**:
+    - **Giro Orgánico**: Girar las flashcards ahora simula un efecto 3D físico, incluyendo sombras dinámicas y curvas de aceleración para sentirse menos robótico.
+    - **Botón Favorito**: Al marcar una tarjeta como favorita se activa una animación de salto de estrellitas doradas (partículas) muy satisfactoria.
+    - **Botón Validar**: Se ha implementado un elegante efecto de trazo tipo pluma para la animación de las tarjetas marcadas como aprendidas (efecto "Magia" / Tinta).
+
 - **Versión V15 (5 de Julio)**:
   - **Corrección de "Ribetes Fantasma"**: Se blindó la lógica del botón `[ ]` (ribete) para que barra y limpie automáticamente recuadros vacíos que quedaban atascados al borrar texto.
   - **Mejora del Modo Zoom**: Se corrigió un error por el cual el botón "+ Añadir ejemplo" no refrescaba visualmente la caja al estar en la vista de lupa.
