@@ -4,6 +4,15 @@ Este archivo servirá para registrar todos los cambios que vayamos realizando en
 
 ## Historial de Cambios
 
+- **Versión V20 (12 de Julio)**:
+  - **Ajustes Visuales Flashcards**: Se ha aumentado el margen superior en la cara frontal de las flashcards para evitar que la palabra principal se solape con los botones superiores ("Inicio", "Validado", "Voltear") cuando hay una imagen de gran tamaño.
+  - **Posición de Estrella de Favoritos**: Se ha sacado la estrella de la caja inferior y se ha centrado verticalmente entre el botón de estado (ej. "Neutro") y el texto "Pulsa para girar", evitando que se superponga al texto.
+  - **Copyright**: Se ha devuelto el botón de Copyright a la fila de botones de exportación/importación (en la pantalla de inicio). Ahora es un botón cuadrado pequeño, con estética similar a los botones grises (`.btn-sec`), que contiene únicamente el símbolo "©" sin ningún texto. Se ha eliminado de la esquina superior derecha del inicio.
+
+- **Versión V19 (12 de Julio)**:
+  - **Botones Conditionals y Verb Tenses**: Se ha corregido el problema que hacía que el inicio no desapareciera. Ahora, al pulsar cualquiera de estos botones, la pantalla de inicio se oculta correctamente, evitando tener que hacer scroll hacia abajo.
+  - **Posición de Estrella de Favoritos**: Se ha corregido la duplicación de la estrella. Ahora solo aparece en un único lugar, justo encima de la frase "Pulsa para girar", perfectamente centrada.
+  - **Copyright Discreto**: El botón de copyright se ha simplificado a un discreto icono "©" con una opacidad muy baja (casi invisible a simple vista) en la esquina superior derecha del inicio, para evitar pulsaciones accidentales, y se ha retirado de todas las demás pantallas.
 
 - **Versión V18 (11 de Julio)**:
   - **Modal de Copyright y Licencia**: Se ha integrado en el inicio un enlace al pie de la página ("Copyright © Elisabeth Altarriba 2026") que abre un modal explicando que la app es exclusivamente para uso personal y sin fines de lucro.

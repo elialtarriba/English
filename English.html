@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>English V18</title>
+<title>English V20</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#f5ebe0">
 <link rel="apple-touch-icon" href="Logo_angles.JPG">
@@ -232,7 +232,7 @@ select.study-filter-btn{appearance:none;background-image:url('data:image/svg+xml
 .flashcard.flipped .fc-front { z-index: 1; }
 .flashcard.flipped .fc-back { z-index: 2; }
 /* FRONT */
-.fc-front{background:linear-gradient(135deg,var(--white) 0%,#f4ead8 50%,#ead9c0 100%);align-items:center;justify-content:center;padding:20px 16px 30px;gap:12px;position:relative;text-align:center}
+.fc-front{background:linear-gradient(135deg,var(--white) 0%,#f4ead8 50%,#ead9c0 100%);align-items:center;justify-content:center;padding:55px 16px 30px;gap:12px;position:relative;text-align:center}
 .fc-drawing{width:60px;height:60px;flex-shrink:0;opacity:.9}
 .fc-front .fc-word{font-size:clamp(24px,6vw,42px);font-weight:700;color:var(--text);font-family:Georgia,serif;line-height:1.1;word-break:break-word;hyphens:auto;letter-spacing:-.5px;padding:0 4px;text-align:center}
 .fc-tap-hint{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-family:Arial,sans-serif;font-size:9.5px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;opacity:.7}
@@ -681,14 +681,14 @@ window.addEventListener('message', function(event) {
 </head>
 <body>
 
-<div id="home" class="screen active" style="position: relative; display:flex; flex-direction:column; min-height:100vh;">
+<div id="home" class="screen active" style="position: relative;">
 <div style="display: inline-flex; align-items: center; justify-content: center; gap: 15px; margin: 20px auto 0; max-width: 100%;">
   <!-- Logo_angles.JPG -->
   <img src="Logo_angles.JPG" style="width: clamp(80px, 20vw, 120px); height: clamp(80px, 20vw, 120px); object-fit: contain; border-radius: 12px; flex-shrink: 0; mix-blend-mode: multiply;">
   
   <!-- Titulo y Badge -->
-  <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 4px;">
-    <div class="badge">English</div>
+  <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 4px; margin-top: 5px;">
+    <div class="badge" style="margin-bottom: -5px;">English</div>
     
     <div class="title-flip-scene" onclick="this.classList.toggle('flipped')">
       <div class="title-flip-card">
@@ -707,7 +707,7 @@ window.addEventListener('message', function(event) {
 
   <p class="subtitle">Master vocabulary, verbs, conditionals, phrasal verbs and more...</p>
   <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V18</div>
+    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V20</div>
     <div class="total-badge" onclick="showStatsModal()" style="cursor:pointer;" title="Ver tarjetas por secciones">Total: <b id="totalFlashcards">0</b> flashcards</div>
   </div>
 
@@ -726,7 +726,8 @@ window.addEventListener('message', function(event) {
   <input type="file" id="inpImportData" accept=".json" style="display:none;">
 </label>
 <button class="btn-sec" id="btnExportHtml" type="button" style="opacity:0.6; font-size:11px;">Descargar HTML con mis cambios</button>
-<button class="btn-sec" type="button" onclick="openCopyright(event)" style="opacity:0.6; font-size:11px;"><span style="margin-right:8px;">©</span> Copyright y Licencia</button>
+<button class="btn-sec" type="button" onclick="openCopyright(event)" style="opacity:0.6; font-size:16px; width:32px; height:32px; padding:0; display:flex; align-items:center; justify-content:center; border-radius:8px;" title="Copyright y Licencia">©</button>
+
 </div>
 
   <div id="quizSetup" style="display:none;width:100%;flex-direction:column;align-items:center;gap:14px">
@@ -880,7 +881,6 @@ window.addEventListener('message', function(event) {
               <button class="fc-verify-btn" id="fcVerifyFront" type="button" title="Marcar como validada" onclick="toggleStudyVerify(event)">○ Validar</button>
             </div>
             <div style="display:flex; justify-content: flex-end; align-items: center; gap: 15px;">
-              <button type="button" class="fc-fav-btn" id="fcFavFront" onclick="event.stopPropagation(); toggleCardFav(event)">☆</button>
               <button class="fc-flip-btn" id="fcFlipBtnFront" type="button" aria-label="Voltear carta">⟳ Voltear</button>
             </div>
           </div>
@@ -898,8 +898,9 @@ window.addEventListener('message', function(event) {
               <button type="button" class="fc-img-btn fc-img-btn-red" id="fcImageDelete" title="Borrar foto" onclick="handleImageDelete(event)" style="display:none;">🗑️ Borrar</button>
             </div>
           </div>
-          <div class="fc-status-wrap" style="display:flex; justify-content:center; margin-top: 15px; z-index: 10;">
+          <div class="fc-status-wrap" style="display:flex; flex-direction:column; align-items:center; justify-content:center; margin-top: 15px; margin-bottom: 25px; z-index: 10;">
             <button type="button" class="fc-status-btn fc-status-0" id="fcStatusFront" onclick="event.stopPropagation(); toggleCardStatus(event)"></button>
+            <button type="button" class="fc-fav-btn" id="fcFavFront" onclick="event.stopPropagation(); toggleCardFav(event)" style="pointer-events:auto; margin-top: 25px;">☆</button>
           </div>
           <div class="fc-bottom-row" style="position:absolute; bottom:15px; left:15px; right:15px; display:flex; justify-content:space-between; align-items:flex-end; pointer-events:none;">
             <div style="pointer-events:auto; flex: 1; display:flex; justify-content:flex-start;">
@@ -913,13 +914,11 @@ window.addEventListener('message', function(event) {
           </div>
         </div>
         <div class="fc-face fc-back">
-          <div class="fc-back-header">
-            <div style="display:flex; align-items:center; gap:8px; flex:1; min-width:0;">
-              <span class="fc-back-word" id="fcBackWord">—</span>
+          <div class="fc-back-header" style="flex-direction: column; align-items: center; gap: 12px;">
+            <span class="fc-back-word" id="fcBackWord" style="text-align: center; width: 100%; display: block;">—</span>
+            <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
               <button class="fc-verify-btn fc-verify-btn-back" id="fcVerifyBack" type="button" title="Marcar como validada" onclick="toggleStudyVerify(event)">○ Validar</button>
               <button class="fc-view-img-btn" onclick="openImageZoomModal(event)" title="Ver Imagen">🖼️</button>
-            </div>
-            <div class="fc-back-header-right">
               <button class="fc-flip-btn fc-flip-btn-back" id="fcFlipBtnBack" type="button" aria-label="Voltear carta">⟳ Voltear</button>
             </div>
           </div>
@@ -1028,9 +1027,7 @@ window.addEventListener('message', function(event) {
         </div>
       </div>
     
-<div style="text-align:center; padding: 20px 10px; font-size:12px; opacity:0.6; cursor:pointer; color:inherit; font-family:inherit; clear:both; margin-top:auto;" onclick="openCopyright(event)">
-  © 2025–Present Elisabeth Altarriba
-</div>
+
 
     </div>
     <div class="nav-row">
@@ -1181,7 +1178,12 @@ function loadConditionals(){
   var bin = atob(CONDITIONALSEMBED);
   var bytes = new Uint8Array(bin.length);
   for(var i=0;i<bin.length;i++) bytes[i] = bin.charCodeAt(i);
-  var htmlStr = new TextDecoder("utf-8").decode(bytes);
+  var htmlStr;
+  try {
+    htmlStr = new TextDecoder("utf-8").decode(bytes);
+  } catch(e) {
+    htmlStr = decodeURIComponent(escape(bin));
+  }
   var tempEdits = JSON.parse(JSON.stringify(USER_EDITS));
   if(tempEdits.cond_study && (!Array.isArray(tempEdits.cond_study) || tempEdits.cond_study.length === 0 || (tempEdits.cond_study[0] && !tempEdits.cond_study[0].type && !tempEdits.cond_study[0].title))) delete tempEdits.cond_study;
   if(tempEdits.cond_quiz && (!Array.isArray(tempEdits.cond_quiz) || tempEdits.cond_quiz.length === 0 || (tempEdits.cond_quiz[0] && !tempEdits.cond_quiz[0].type && !tempEdits.cond_quiz[0].cond))) delete tempEdits.cond_quiz;
@@ -1235,7 +1237,13 @@ function loadEmbeddedHtml(frameId, payload){
   var bin = atob(payload);
   var bytes = new Uint8Array(bin.length);
   for(var i=0;i<bin.length;i++) bytes[i] = bin.charCodeAt(i);
-  frame.srcdoc = injectMojibakeCleaner(new TextDecoder("utf-8").decode(bytes));
+  var htmlStr;
+  try {
+    htmlStr = new TextDecoder("utf-8").decode(bytes);
+  } catch(e) {
+    htmlStr = decodeURIComponent(escape(bin));
+  }
+  frame.srcdoc = injectMojibakeCleaner(htmlStr);
   frame.dataset.loaded = "1";
 }
 function loadVerbTenses(){loadEmbeddedHtml("verbTensesFrame", VERBTENSESEMBED)}
@@ -4213,19 +4221,27 @@ document.addEventListener("DOMContentLoaded",function(){
   });
   document.getElementById("btnConditionalsMode").addEventListener("click",function(){
     hideQuizSetup();
+    showScreen("conditionalsScreen");
     var frame=document.getElementById("conditionalsFrame");
     if(frame) delete frame.dataset.loaded;
-    loadConditionals();
-    showScreen("conditionalsScreen");
+    try {
+      loadConditionals();
+    } catch(e) {
+      alert("Error loading conditionals: " + e.message);
+    }
   });
   document.getElementById("btnConditionalsHome").addEventListener("click",function(){showScreen("home")});
   
   document.getElementById("btnVerbTensesMode").addEventListener("click",function(){
     hideQuizSetup();
+    showScreen("verbTensesScreen");
     var frame=document.getElementById("verbTensesFrame");
     if(frame) delete frame.dataset.loaded;
-    loadVerbTenses();
-    showScreen("verbTensesScreen");
+    try {
+      loadVerbTenses();
+    } catch(e) {
+      alert("Error loading verb tenses: " + e.message);
+    }
   });
   document.getElementById("btnVerbTensesHome").addEventListener("click",function(){showScreen("home")});
 
