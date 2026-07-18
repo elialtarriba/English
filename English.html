@@ -666,6 +666,7 @@ select.study-filter-btn {
 .fc-flames-wrap { display: flex; justify-content: center; gap: 12px; margin-bottom: 10px; margin-top: 10px; }
 .flame-icon { font-size: 28px; cursor: pointer; filter: grayscale(100%) opacity(0.3); transition: filter 0.3s, transform 0.2s; user-select: none; }
 .flame-icon.active { filter: grayscale(0%) opacity(1); text-shadow: 0 0 10px rgba(255, 215, 0, 0.6); transform: scale(1.15); }
+.read-only-study .flame-icon { cursor: default; }
 .m-estudio-focus .sctrl { display: none !important; }
 .m-estudio-focus .shdr #btnStudyHome { display: none !important; }
 .m-estudio-focus .shdr .top-btns-inner > button:not([onclick="toggleMEstudio()"]) { display: none !important; }
@@ -3725,6 +3726,7 @@ function fallbackCopy(text) {
 }
 
 function toggleFlame(level) {
+  if (typeof STUDY_EDIT_MODE !== 'undefined' && !STUDY_EDIT_MODE) return;
   var c = studyList[studyIdx];
   if(!c) return;
   var k = cardKey(c);
