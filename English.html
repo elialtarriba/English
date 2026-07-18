@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>English V21</title>
+<title>English V22</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#f5ebe0">
 <link rel="apple-touch-icon" href="Logo_angles.JPG">
@@ -671,7 +671,9 @@ select.study-filter-btn {
 .m-estudio-focus .shdr #btnStudyHome { display: none !important; }
 .m-estudio-focus .shdr .top-btns-inner > button:not([onclick="toggleMEstudio()"]) { display: none !important; }
 .m-estudio-focus .shdr { justify-content: flex-end; border-bottom: none; }
-.m-estudio-focus .fc-container { flex-grow: 1; height: auto !important; min-height: 70vh !important; max-height: none !important; }
+.m-estudio-focus .sbody { flex: 1 1 auto !important; justify-content: flex-start !important; padding: 12px 10px !important; min-height: 0 !important; gap: 12px !important; }
+.m-estudio-focus .flashcard { flex: 1 1 0 !important; height: auto !important; max-height: none !important; width: 100% !important; max-width: 100% !important; margin: 0 !important; }
+.m-estudio-focus .nav-row { position: static !important; width: 100% !important; box-sizing: border-box !important; margin-top: 0 !important; }
 .toast-msg { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: white; padding: 10px 20px; border-radius: 20px; z-index: 10000; font-family: Arial, sans-serif; font-weight: bold; opacity: 1; transition: opacity 0.5s; pointer-events: none; }
 </style>
 
@@ -716,7 +718,7 @@ window.addEventListener('message', function(event) {
 
   <p class="subtitle">Master vocabulary, verbs, conditionals, phrasal verbs and more...</p>
   <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V21</div>
+    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V22</div>
     <div class="total-badge" onclick="showStatsModal()" style="cursor:pointer;" title="Ver tarjetas por secciones">Total: <b id="totalFlashcards">0</b> flashcards</div>
   </div>
 
