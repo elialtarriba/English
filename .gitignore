@@ -11,3 +11,6 @@
 # Configuración de entornos y editores
 .agents/
 *.code-workspace
+
+# Utilidades extra
+GeneraldorMP3/
