@@ -4,6 +4,9 @@ Este archivo servirá para registrar todos los cambios que vayamos realizando en
 
 ## Historial de Cambios
 
+- **Versión V21 (18 de Julio)**:
+  - **Actualización de Service Worker**: Se actualizó el `CACHE_NAME` en `sw.js` de `v4` a `v21` para forzar a los dispositivos Android/iOS a borrar la caché antigua y descargar los últimos cambios de la aplicación.
+
 - **Versión V20 (12 de Julio)**:
   - **Ajustes Visuales Flashcards**: Se ha aumentado el margen superior en la cara frontal de las flashcards para evitar que la palabra principal se solape con los botones superiores ("Inicio", "Validado", "Voltear") cuando hay una imagen de gran tamaño.
   - **Posición de Estrella de Favoritos**: Se ha sacado la estrella de la caja inferior y se ha centrado verticalmente entre el botón de estado (ej. "Neutro") y el texto "Pulsa para girar", evitando que se superponga al texto.
