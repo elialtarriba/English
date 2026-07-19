@@ -236,7 +236,7 @@ select.study-filter-btn{appearance:none;background-image:url('data:image/svg+xml
 .flashcard.flipped .fc-front { z-index: 1; }
 .flashcard.flipped .fc-back { z-index: 2; }
 /* FRONT */
-.fc-front{background:linear-gradient(135deg,var(--white) 0%,#f4ead8 50%,#ead9c0 100%);align-items:center;justify-content:center;padding:55px 16px 30px;gap:12px;position:relative;text-align:center}
+.fc-front{background:linear-gradient(135deg,var(--white) 0%,#f4ead8 50%,#ead9c0 100%);align-items:center;justify-content:center;justify-content:safe center;padding:55px 16px 30px;gap:12px;position:relative;text-align:center}
 .fc-drawing{width:60px;height:60px;flex-shrink:0;opacity:.9}
 .fc-front .fc-word{font-size:clamp(24px,6vw,42px);font-weight:700;color:var(--text);font-family:Georgia,serif;line-height:1.1;word-break:break-word;hyphens:auto;letter-spacing:-.5px;padding:0 4px;text-align:center}
 .fc-tap-hint{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-family:Arial,sans-serif;font-size:9.5px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;opacity:.7}
@@ -919,8 +919,8 @@ window.addEventListener('message', function(event) {
             <div class="fc-word" id="fcWord" onclick="copyToClipboard(event, this.textContent)" style="cursor:pointer;" title="Copiar palabra">—</div>
             <div class="fc-edit-icon">✏️</div>
           </div>
-          <div class="fc-image-container" style="position:relative; display:flex; flex-direction:column; align-items:center;">
-            <div id="fcDrawingWrap" class="fc-drawing" style="display:flex; justify-content:center; align-items:center; overflow:hidden; border-radius:8px;"></div>
+          <div class="fc-image-container" style="position:relative; display:flex; flex-direction:column; align-items:center; flex: 1 1 auto; min-height: 0; width: 100%;">
+            <div id="fcDrawingWrap" class="fc-drawing" style="display:flex; justify-content:center; align-items:center; overflow:hidden; border-radius:8px; flex: 1 1 auto; min-height: 0; width: 100%;"></div>
             <div class="fc-image-actions fc-edit-only" style="display:flex; gap: 8px; margin-top: 12px;" onclick="event.stopPropagation()">
               <label class="fc-img-btn" title="Subir foto">
                 📷 Subir
@@ -4141,7 +4141,7 @@ function renderStudy(){
   var drawWrap = document.getElementById("fcDrawingWrap");
   var drawingHtml = "";
   if (ed.customImage) {
-    drawingHtml = '<img src="' + ed.customImage + '" style="max-width:100%; max-height:220px; object-fit:contain; border-radius:8px; box-shadow:0 3px 10px rgba(0,0,0,0.1);">';
+    drawingHtml = '<img src="' + ed.customImage + '" style="max-width:100%; max-height:220px; object-fit:contain; border-radius:8px; box-shadow:0 3px 10px rgba(0,0,0,0.1); flex: 1 1 auto; min-height: 0; height: 100%;">';
     document.getElementById("fcImageDelete").style.display = "flex";
     drawWrap.style.width = "100%";
     drawWrap.style.height = "auto";

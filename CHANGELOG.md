@@ -6,6 +6,7 @@ Este archivo servirá para registrar todos los cambios que vayamos realizando en
 
 - **Versión V25 (19 de Julio)**:
   - **Reubicación y Ajuste de Botones de Pronunciación**: Se movieron los botones de pronunciación (🇬🇧 y 🇺🇸) de su posición original junto a la palabra hacia una nueva posición debajo de la imagen (entre la foto y el botón de estado) para mejorar el diseño visual. Se ha ajustado su tamaño a petición del usuario.
+  - **Corrección de Solapamiento Visual**: Se ha incrementado el margen y el relleno superior de las flashcards en la cara principal. Esto soluciona un problema visual por el cual palabras muy largas o con letras muy grandes (como "disappointed") llegaban a chocar o superponerse con los botones superiores ("Inicio", "Validado", "Voltear") en dispositivos como Mac, iPad o Android.
   - Se ha actualizado la versión a V25 en la portada (`English.html`) y en el Service Worker (`sw.js`).
 
 - **Versión V24 (19 de Julio)**:
