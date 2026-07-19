@@ -4,9 +4,13 @@ Este archivo servirá para registrar todos los cambios que vayamos realizando en
 
 ## Historial de Cambios
 
-- **Versión V22 (18 de Julio)**:
+- **Versión V23 (19 de Julio)**:
+  - **Copia de Flashcard como Imagen**: El botón de copiar de la tarjeta ahora abre un menú desplegable. Permite copiar solo el texto (como antes) o generar una captura de pantalla perfecta de la tarjeta (con la cara frontal a la izquierda y la cruz a la derecha) en formato PNG y pegarla en el portapapeles. Se ha descargado e integrado `html2canvas.min.js` para que esto funcione totalmente sin conexión.
+  - **Identificador visual en Ejemplos**: En el Modo Edición, ahora aparece la palabra o frase en inglés al lado del título "Ejemplos" (tanto en la tarjeta principal como en el modo lupa) para no olvidar qué palabra se está editando.
+  - **Sellos rápidos de Llamitas**: En la sección de Traducción (modo edición), se han añadido dos pequeños botones ("🔥" y "🔥 B/N") que permiten insertar rápidamente una llamita a color o en blanco y negro (escala de grises) como si fueran sellos.
   - **Ajustes M.Estudio**: Al pulsar el botón "M.Estudio", la tarjeta y la barra de navegación se estiran ocupando el 100% de la pantalla en dispositivos móviles.
-  - Se ha actualizado la versión a V22 en portada y en el Service Worker (`sw.js`).
+  - **Sonidos y Estética 3D**: Se han añadido sonidos suaves de pulsación a los botones del menú principal y un botón de Altavoz para silenciarlos. Además, se han modernizado los botones de los modos de juego y etiquetas totales dándoles un diseño en 3D.
+  - Se ha actualizado la versión a V23 en portada y en el Service Worker (`sw.js`).
 
 - **Versión V21 (18 de Julio)**:
   - **Actualización de Service Worker**: Se actualizó el `CACHE_NAME` en `sw.js` de `v4` a `v21` para forzar a los dispositivos Android/iOS a borrar la caché antigua y descargar los últimos cambios de la aplicación.
@@ -121,3 +125,6 @@ Este archivo servirá para registrar todos los cambios que vayamos realizando en
   - **Nuevos Botones de Formato**: Añadidos botones `B` (Negrita), `S` (Tachar), `✅`, `❗️` y `[ ]` (Ribete del color del Tema) a la barra de Estructura. El botón del Ribete cuenta con una función inteligente para poner y quitar resaltados transparentes seleccionando una palabra.
   - **Sincronización Zoom-Modal**: Corregido un fallo por el que presionar "Añadir ejemplo" mientras se tenía la flashcard abierta en grande (Zoom) borraba los cambios recién escritos.
   - Se añadió la versión "V14" en la pantalla de inicio (junto al contador Total).
+
+- **Mejora en Copia de Tarjetas como Imagen (19 de Julio)**:
+  - Se modificó la captura de imagen de la flashcard (`html2canvas`) para que **no elimine** los corazones de favoritos, el estado de aprendizaje (Validado, Repasar, etc.) y los iconos de las llamas de dificultad. Ahora estos elementos sí aparecerán en las fotos copiadas al portapapeles.

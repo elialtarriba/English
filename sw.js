@@ -1,10 +1,11 @@
-const CACHE_NAME = 'english-app-v22';
+const CACHE_NAME = 'english-app-v23';
 const urlsToCache = [
   './English.html',
   './Logo_angles.JPG',
   './logo.jpg',
   './English_Backup_Datos.json',
-  './manifest.json'
+  './manifest.json',
+  './html2canvas.min.js'
 ];
 
 self.addEventListener('install', event => {
