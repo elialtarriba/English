@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>English V23</title>
+<title>English V24</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#f5ebe0">
 <link rel="apple-touch-icon" href="Logo_angles.JPG">
@@ -696,7 +696,7 @@ window.addEventListener('message', function(event) {
 });
 </script>
 </head>
-<body>
+<body ontouchstart="">
 
 <div id="home" class="screen active" style="position: relative;">
 <div style="display: inline-flex; align-items: center; justify-content: center; gap: 15px; margin: 20px auto 0; max-width: 100%;">
@@ -724,8 +724,8 @@ window.addEventListener('message', function(event) {
 
   <p class="subtitle">Master vocabulary, verbs, conditionals, phrasal verbs and more...</p>
   <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V23</div>
-    <div class="total-badge" onclick="playPopSound(); showStatsModal()" style="cursor:pointer;" title="Ver tarjetas por secciones">Total: <b id="totalFlashcards">0</b> flashcards</div>
+    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V24</div>
+    <div class="total-badge" onclick="playPopSound(); showStatsModal()" style="cursor:pointer;" title="Ver tarjetas por secciones">Total: <b id="totalFlashcards">0</b> &nbsp;&nbsp;flashcards</div>
     <button id="btnToggleSound" class="btn-toggle-sound" onclick="toggleSound(event)" title="Activar/Desactivar Sonidos">🔊</button>
   </div>
 
@@ -872,17 +872,20 @@ window.addEventListener('message', function(event) {
     </div>
     <div class="filter-row" id="filterRow">
       <div class="flt-btn on" data-flt="all">Todas (1300)</div>
-      <div class="flt-btn" data-flt="noun">Sustantivos</div>
-      <div class="flt-btn" data-flt="adverb">Adverbios</div>
-      <div class="flt-btn" data-flt="adjective">Adjetivos</div>
-      <div class="flt-btn" data-flt="phrasal">Phrasal V.</div>
-      <div class="flt-btn" data-flt="connector">Conectores</div>
-      <div class="flt-btn" data-flt="starter">Inicios</div>
-      <div class="flt-btn" data-flt="verb">Verbos</div>
-      <div class="flt-btn" data-flt="other">Otros</div>
       <div class="flt-btn lvl-flt-btn" data-lvlflt="b2_1">B2.1</div>
       <div class="flt-btn lvl-flt-btn" data-lvlflt="b2_2">B2.2</div>
       <div class="flt-btn lvl-flt-btn" data-lvlflt="c1">C1</div>
+      <div class="flt-btn" data-flt="noun">Sustantivos</div>
+      <div class="flt-btn" data-flt="verb">Verbos</div>
+      <div class="flt-btn" data-flt="adjective">Adjetivos</div>
+      <div class="flt-btn" data-flt="adverb">Adverbios</div>
+      <div class="flt-btn" data-flt="idiom">Idioms</div>
+      <div class="flt-btn" data-flt="nounverb">Sust & Verb</div>
+      <div class="flt-btn" data-flt="adjverb">Adj & Verb</div>
+      <div class="flt-btn" data-flt="phrasal">Phrasal V.</div>
+      <div class="flt-btn" data-flt="connector">Conectores</div>
+      <div class="flt-btn" data-flt="starter">Inicios</div>
+      <div class="flt-btn" data-flt="other">Otros</div>
     </div>
   </div>
   <div class="sbody">
@@ -966,6 +969,8 @@ window.addEventListener('message', function(event) {
                 <option value="verb">Verbo</option>
                 <option value="adverb">Adverbio</option>
                 <option value="adjective">Adjetivo</option>
+                <option value="idiom">Idioms</option>
+                <option value="nounverb">Sustantivo y verbo</option>
                 <option value="adjverb">Adjetivo y verbo</option>
                 <option value="noun">Sustantivo</option>
                 <option value="connector">Conector</option>
@@ -1109,7 +1114,7 @@ window.addEventListener('message', function(event) {
     <div class="form-grid">
       <div class="form-row"><label for="newWord">Palabra en inglés *</label><input id="newWord" type="text" placeholder="e.g. put up with"></div>
       <div class="form-row"><label for="newTrans">Traducción *</label><input id="newTrans" type="text" placeholder="e.g. aguantar / tolerar"></div>
-      <div class="form-row"><label for="newCat">Tipo</label><select id="newCat" style="width:100%; padding:12px 14px; border-radius:12px; background:#eef7eb; border:1.5px solid #c4e1c3; color:#2c4230; font-weight:800; font-family:var(--fb); cursor:pointer; outline:none; box-shadow:0 4px 0 #c4e1c3;"><option value="phrasal">Phrasal verb</option><option value="verb">Verbo</option><option value="adverb">Adverbio</option><option value="adjective">Adjetivo</option><option value="adjverb">Adjetivo y verbo</option><option value="noun">Sustantivo</option><option value="connector">Conector</option><option value="starter">Inicio de frase</option><option value="other">Otros / Sin asignar</option></select></div>
+      <div class="form-row"><label for="newCat">Tipo</label><select id="newCat" style="width:100%; padding:12px 14px; border-radius:12px; background:#eef7eb; border:1.5px solid #c4e1c3; color:#2c4230; font-weight:800; font-family:var(--fb); cursor:pointer; outline:none; box-shadow:0 4px 0 #c4e1c3;"><option value="phrasal">Phrasal verb</option><option value="verb">Verbo</option><option value="adverb">Adverbio</option><option value="adjective">Adjetivo</option><option value="idiom">Idioms</option><option value="nounverb">Sustantivo y verbo</option><option value="adjverb">Adjetivo y verbo</option><option value="noun">Sustantivo</option><option value="connector">Conector</option><option value="starter">Inicio de frase</option><option value="other">Otros / Sin asignar</option></select></div>
       <div class="form-row"><label for="newLevel">Nivel</label><select id="newLevel" style="width:100%; padding:12px 14px; border-radius:12px; background:#eef7eb; border:1.5px solid #c4e1c3; color:#2c4230; font-weight:800; font-family:var(--fb); cursor:pointer; outline:none; box-shadow:0 4px 0 #c4e1c3;"><option value="">Ninguno</option><option value="b2_1">B2.1</option><option value="b2_2">B2.2</option><option value="c1">C1</option></select></div>
       <div class="form-row"><label for="newReg">Registro</label><select id="newReg"><option value="N">Neutral</option><option value="F">Formal</option><option value="I">Informal</option></select></div>
       <div class="form-row full"><label for="newStruct">Estructura / cómo se usa</label><textarea id="newStruct" placeholder="Opcional: estructura, preposición, patrón, notas de uso..."></textarea></div>
@@ -3033,17 +3038,30 @@ function updateHomeTotal(){
   updateHomeCounts();
 }
 function showStatsModal() {
-  var stats = {adverb:0, adjective:0, phrasal:0, connector:0, starter:0, verb:0, b2_1:0, b2_2:0};
-  getStudyCards().forEach(function(c){ if(stats[c.cat]!==undefined) stats[c.cat]++; });
+  var stats = {
+    noun: 0, verb: 0, adjective: 0, adverb: 0, idiom: 0, nounverb: 0, adjverb: 0, 
+    phrasal: 0, connector: 0, starter: 0, other: 0, b2_1: 0, b2_2: 0, c1: 0
+  };
+  getStudyCards().forEach(function(c){ 
+    var cat = c.cat || "other";
+    if(stats[cat] !== undefined) stats[cat]++; 
+    if(c.level && stats[c.level] !== undefined) stats[c.level]++;
+  });
   var html = '';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Adverbios:</span><strong style="color:var(--br3);">' + stats.adverb + '</strong></div>';
+  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>B2.1:</span><strong style="color:var(--br3);">' + stats.b2_1 + '</strong></div>';
+  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>B2.2:</span><strong style="color:var(--br3);">' + stats.b2_2 + '</strong></div>';
+  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>C1:</span><strong style="color:var(--br3);">' + stats.c1 + '</strong></div>';
+  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Sustantivos:</span><strong style="color:var(--br3);">' + stats.noun + '</strong></div>';
+  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Verbos:</span><strong style="color:var(--br3);">' + stats.verb + '</strong></div>';
   html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Adjetivos:</span><strong style="color:var(--br3);">' + stats.adjective + '</strong></div>';
+  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Adverbios:</span><strong style="color:var(--br3);">' + stats.adverb + '</strong></div>';
+  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Idioms:</span><strong style="color:var(--br3);">' + stats.idiom + '</strong></div>';
+  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Sust & Verb:</span><strong style="color:var(--br3);">' + stats.nounverb + '</strong></div>';
+  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Adj & Verb:</span><strong style="color:var(--br3);">' + stats.adjverb + '</strong></div>';
   html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Phrasal Verbs:</span><strong style="color:var(--br3);">' + stats.phrasal + '</strong></div>';
   html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Conectores:</span><strong style="color:var(--br3);">' + stats.connector + '</strong></div>';
   html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Inicios de Frase:</span><strong style="color:var(--br3);">' + stats.starter + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>B2.1:</span><strong style="color:var(--br3);">' + stats.b2_1 + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>B2.2:</span><strong style="color:var(--br3);">' + stats.b2_2 + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between;"><span>Verbos:</span><strong style="color:var(--br3);">' + stats.verb + '</strong></div>';
+  html += '<div style="display:flex; justify-content:space-between;"><span>Otros:</span><strong style="color:var(--br3);">' + stats.other + '</strong></div>';
   var content = document.getElementById('statsContent');
   if(content) content.innerHTML = html;
   var modal = document.getElementById('statsModal');
@@ -4506,7 +4524,7 @@ document.addEventListener("DOMContentLoaded",function(){
   document.getElementById("qc5").addEventListener("click",function(){toggleQCount(5)});
   document.getElementById("qc10").addEventListener("click",function(){toggleQCount(10)});
   document.getElementById("qc20").addEventListener("click",function(){toggleQCount(20)});
-  document.getElementById("btnQuizMode").addEventListener("click",function(){ showQuizSetup(); });
+  document.getElementById("btnQuizMode").addEventListener("click",function(){ setTimeout(function(){ showQuizSetup(); }, 150); });
   document.getElementById("btnQuizTopEdit").addEventListener("click",function(){
     openActionPasswordModal("Introduce la contraseña para editar el quiz:", function(){
       showScreen("quizEditorScreen");
@@ -4514,32 +4532,36 @@ document.addEventListener("DOMContentLoaded",function(){
     });
   });
   document.getElementById("btnConditionalsMode").addEventListener("click",function(){
-    hideQuizSetup();
-    showScreen("conditionalsScreen");
-    var frame=document.getElementById("conditionalsFrame");
-    if(frame) delete frame.dataset.loaded;
-    try {
-      loadConditionals();
-    } catch(e) {
-      alert("Error loading conditionals: " + e.message);
-    }
+    setTimeout(function() {
+      hideQuizSetup();
+      showScreen("conditionalsScreen");
+      var frame=document.getElementById("conditionalsFrame");
+      if(frame) delete frame.dataset.loaded;
+      try {
+        loadConditionals();
+      } catch(e) {
+        alert("Error loading conditionals: " + e.message);
+      }
+    }, 150);
   });
   document.getElementById("btnConditionalsHome").addEventListener("click",function(){showScreen("home")});
   
   document.getElementById("btnVerbTensesMode").addEventListener("click",function(){
-    hideQuizSetup();
-    showScreen("verbTensesScreen");
-    var frame=document.getElementById("verbTensesFrame");
-    if(frame) delete frame.dataset.loaded;
-    try {
-      loadVerbTenses();
-    } catch(e) {
-      alert("Error loading verb tenses: " + e.message);
-    }
+    setTimeout(function() {
+      hideQuizSetup();
+      showScreen("verbTensesScreen");
+      var frame=document.getElementById("verbTensesFrame");
+      if(frame) delete frame.dataset.loaded;
+      try {
+        loadVerbTenses();
+      } catch(e) {
+        alert("Error loading verb tenses: " + e.message);
+      }
+    }, 150);
   });
   document.getElementById("btnVerbTensesHome").addEventListener("click",function(){showScreen("home")});
 
-  document.getElementById("btnStudyMode").addEventListener("click",function(){ enterStudyMode(false); });
+  document.getElementById("btnStudyMode").addEventListener("click",function(){ setTimeout(function(){ enterStudyMode(false); }, 150); });
   document.getElementById("btnStudyTopEdit").addEventListener("click",function(){
     setTimeout(function() {
       openActionPasswordModal("Introduce la contraseña para editar las flashcards:", function(){
@@ -4923,6 +4945,9 @@ function updateHomeCounts() {
     connector: "Conectores",
     starter: "Inicios",
     verb: "Verbos",
+    idiom: "Idioms",
+    nounverb: "Sust & Verb",
+    adjverb: "Adj & Verb",
     other: "Otros",
     b2_1: "B2.1",
     b2_2: "B2.2",

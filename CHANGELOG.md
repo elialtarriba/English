@@ -4,6 +4,13 @@ Este archivo servirá para registrar todos los cambios que vayamos realizando en
 
 ## Historial de Cambios
 
+- **Versión V24 (19 de Julio)**:
+  - **Corrección en Modal "Tarjetas por secciones"**: Se ha corregido un error en el conteo donde los niveles (B2.1, B2.2) aparecían siempre a 0. Además, se han incluido todas las nuevas categorías (C1, Sustantivos, Idioms, Sust & Verb, Adj & Verb, Otros) para que el desglose sea 100% fiel al inventario real.
+  - **Nuevos Filtros y Tipos de Palabras**: Se han añadido "Idioms", "Sust & Verb" (Sustantivo y verbo) y "Adj & Verb" (Adjetivo y verbo) a los tipos de flashcards que se pueden elegir, y se han incluido los correspondientes botones de filtro en el Modo Estudio.
+  - **Reordenación de Filtros**: Se han ordenado los botones de la barra de filtros del Modo Estudio para que los niveles (B2.1, B2.2, C1) aparezcan antes que los tipos gramaticales.
+  - **Mejora Visual Inicio**: Se ha añadido un pequeño margen para separar visualmente el número total de la palabra "flashcards", y se ha añadido un retraso de 150ms a los botones de navegación junto con soporte para iOS (`ontouchstart`) que permite apreciar la animación 3D de hundido (`:active`) en los dispositivos táctiles.
+  - Se ha actualizado la versión a V24 en portada y en el Service Worker (`sw.js`).
+
 - **Versión V23 (19 de Julio)**:
   - **Copia de Flashcard como Imagen**: El botón de copiar de la tarjeta ahora abre un menú desplegable. Permite copiar solo el texto (como antes) o generar una captura de pantalla perfecta de la tarjeta (con la cara frontal a la izquierda y la cruz a la derecha) en formato PNG y pegarla en el portapapeles. Se ha descargado e integrado `html2canvas.min.js` para que esto funcione totalmente sin conexión.
   - **Identificador visual en Ejemplos**: En el Modo Edición, ahora aparece la palabra o frase en inglés al lado del título "Ejemplos" (tanto en la tarjeta principal como en el modo lupa) para no olvidar qué palabra se está editando.
