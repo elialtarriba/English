@@ -52,6 +52,11 @@ body{font-family:Georgia,serif;background:#f5ebe0;color:#3a2918;min-height:100vh
 .cond-edit-btns button{background:transparent;border:none;color:var(--text2);font-size:11px;opacity:0.4;cursor:pointer;transition:all 0.2s;}
 .cond-edit-btns button:hover{opacity:1;color:var(--br3);}
 .mode-row{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;width:100%;max-width:520px;margin:24px 0 10px}
+.motivational-btn{background:linear-gradient(135deg,rgba(255,255,255,0.8) 0%,rgba(244,234,216,0.8) 100%);border:1px solid rgba(139,69,19,0.15);border-radius:12px;padding:12px 16px;width:100%;max-width:520px;margin:0 auto;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.05);transition:all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);display:block;text-align:left;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.motivational-btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,0.08);background:linear-gradient(135deg,rgba(255,255,255,0.95) 0%,rgba(244,234,216,0.95) 100%)}
+.motivational-btn:active{transform:translateY(1px);box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+.motivational-text{font-size:clamp(13px, 3.5vw, 15px);color:#5d3b1f;font-style:italic;font-weight:600;line-height:1.4;flex:1}
+.motivational-lang{background:rgba(255,255,255,0.6);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 4px rgba(0,0,0,0.05)}
 .mode-btn{flex:1;min-width:170px;background:var(--white);border:2px solid var(--border);border-radius:14px;padding:14px 18px;font-family:Arial,sans-serif;cursor:pointer;transition:all .15s ease-out;display:flex;flex-direction:column;align-items:center;gap:4px;box-shadow:0 6px 0 var(--border),0 10px 15px rgba(107,68,35,.15);transform:translateY(0)}
 .mode-btn:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--border),0 14px 20px rgba(107,68,35,.2);background:#f4ead8;}
 .mode-btn:active{transform:translateY(4px);box-shadow:0 2px 0 var(--border),0 4px 6px rgba(107,68,35,.1)}
@@ -698,6 +703,151 @@ window.addEventListener('message', function(event) {
     if (event.data.action === 'openCondQuizEditor') openCondQuizEditor(true);
   }
 });
+
+  // Frases Motivadoras
+  window.QUOTES_ES = [
+    "El éxito es la suma de pequeños esfuerzos repetidos día tras día.",
+    "No cuentes los días, haz que los días cuenten.",
+    "Cree en ti mismo y todo será posible.",
+    "El único modo de hacer un gran trabajo es amar lo que haces.",
+    "Nunca es demasiado tarde para ser lo que podrías haber sido.",
+    "La motivación nos impulsa a comenzar, el hábito nos permite continuar.",
+    "Haz de cada día tu obra maestra.",
+    "La mejor forma de predecir el futuro es creándolo.",
+    "Si puedes soñarlo, puedes hacerlo.",
+    "No importa lo lento que vayas, siempre y cuando no te detengas.",
+    "Tu único límite es tu mente.",
+    "Un viaje de mil millas comienza con un solo paso.",
+    "La disciplina es el puente entre las metas y los logros.",
+    "El fracaso es solo la oportunidad de comenzar de nuevo de forma más inteligente.",
+    "Si no te desafía, no te cambiará.",
+    "Todo lo que siempre has querido está al otro lado del miedo.",
+    "Empieza donde estás. Usa lo que tienes. Haz lo que puedes.",
+    "El secreto para salir adelante es empezar.",
+    "No mires el reloj; haz lo que él hace. Sigue avanzando.",
+    "Haz hoy lo que otros no quieren, haz mañana lo que otros no pueden.",
+    "Pequeños pasos todos los días.",
+    "No te detengas cuando estés cansado. Detente cuando hayas terminado.",
+    "La educación es el arma más poderosa que puedes usar para cambiar el mundo.",
+    "No desees que sea más fácil, desea ser mejor.",
+    "Apunta a la luna. Si fallas, podrías darle a una estrella.",
+    "Invierte en ti mismo. Es la mejor inversión que puedes hacer.",
+    "Las grandes cosas nunca vinieron de las zonas de confort.",
+    "Lo único imposible es aquello que no intentas.",
+    "Nunca te rindas en un sueño por el tiempo que tomará lograrlo.",
+    "Conviértete en la mejor versión de ti mismo.",
+    "Cree que puedes y estarás a medio camino.",
+    "Las dificultades a menudo preparan a personas comunes para un destino extraordinario.",
+    "Si quieres resultados diferentes, no hagas siempre lo mismo.",
+    "El momento perfecto no existe. Toma el momento y hazlo perfecto.",
+    "Tu actitud, no tu aptitud, determinará tu altitud.",
+    "Aprende del ayer, vive para el hoy, ten esperanza para el mañana.",
+    "Cada día es una nueva oportunidad para cambiar tu vida.",
+    "Hazlo con pasión o no lo hagas.",
+    "El esfuerzo constante produce resultados consistentes.",
+    "Las excusas no queman calorías ni aprenden idiomas.",
+    "Trabaja duro en silencio, deja que tu éxito haga todo el ruido.",
+    "Tú eres tu única competencia.",
+    "Da siempre lo mejor de ti. Lo que plantes ahora, lo cosecharás más tarde.",
+    "Convierte tus heridas en sabiduría.",
+    "No hay atajos para los lugares a los que vale la pena ir.",
+    "Los errores son prueba de que lo estás intentando.",
+    "El dolor que sientes hoy será la fuerza que sentirás mañana.",
+    "La acción es la clave fundamental de todo éxito.",
+    "Cualquier cosa que valga la pena tener merece que se trabaje por ella.",
+    "Hoy es el comienzo de todo lo que quieres."
+  ];
+
+  window.QUOTES_EN = [
+    "Success is the sum of small efforts repeated day in and day out.",
+    "Don't count the days, make the days count.",
+    "Believe in yourself and anything is possible.",
+    "The only way to do great work is to love what you do.",
+    "It is never too late to be what you might have been.",
+    "Motivation is what gets you started, habit is what keeps you going.",
+    "Make each day your masterpiece.",
+    "The best way to predict the future is to create it.",
+    "If you can dream it, you can do it.",
+    "It does not matter how slowly you go as long as you do not stop.",
+    "Your only limit is your mind.",
+    "A journey of a thousand miles begins with a single step.",
+    "Discipline is the bridge between goals and accomplishment.",
+    "Failure is simply the opportunity to begin again, this time more intelligently.",
+    "If it doesn't challenge you, it won't change you.",
+    "Everything you've ever wanted is on the other side of fear.",
+    "Start where you are. Use what you have. Do what you can.",
+    "The secret of getting ahead is getting started.",
+    "Don't watch the clock; do what it does. Keep going.",
+    "Do today what others won't, so tomorrow you can do what others can't.",
+    "Small steps every day.",
+    "Don't stop when you are tired. Stop when you are done.",
+    "Education is the most powerful weapon which you can use to change the world.",
+    "Don't wish it were easier, wish you were better.",
+    "Shoot for the moon. Even if you miss, you'll land among the stars.",
+    "Invest in yourself. It pays the best interest.",
+    "Great things never came from comfort zones.",
+    "The only impossible journey is the one you never begin.",
+    "Never give up on a dream just because of the time it will take to accomplish it.",
+    "Become the best version of yourself.",
+    "Believe you can and you're halfway there.",
+    "Difficulties in life are intended to make us better, not bitter.",
+    "If you want different results, do not do the same things.",
+    "Don't wait for the perfect moment. Take the moment and make it perfect.",
+    "Your attitude, not your aptitude, will determine your altitude.",
+    "Learn from yesterday, live for today, hope for tomorrow.",
+    "Every day is a new opportunity to change your life.",
+    "Do it with passion, or not at all.",
+    "Consistent effort yields consistent results.",
+    "Excuses don't burn calories, nor do they learn languages.",
+    "Work hard in silence, let your success be your noise.",
+    "You are your only competition.",
+    "Always do your best. What you plant now, you will harvest later.",
+    "Turn your wounds into wisdom.",
+    "There are no shortcuts to any place worth going.",
+    "Mistakes are proof that you are trying.",
+    "The pain you feel today will be the strength you feel tomorrow.",
+    "Action is the foundational key to all success.",
+    "Anything worth having is worth working for.",
+    "Today is the beginning of everything you want."
+  ];
+
+  window.currentQuoteIndex = -1;
+  window.currentQuoteLang = 'es';
+
+  window.nextMotivationalQuote = function(e) {
+    if (e && typeof playPopSound === 'function') playPopSound();
+    
+    if (window.currentQuoteIndex === -1) {
+      window.currentQuoteIndex = Math.floor(Math.random() * window.QUOTES_ES.length);
+      window.currentQuoteLang = 'es';
+    } else if (window.currentQuoteLang === 'es') {
+      window.currentQuoteLang = 'en';
+    } else {
+      window.currentQuoteIndex = (window.currentQuoteIndex + 1) % window.QUOTES_ES.length;
+      window.currentQuoteLang = 'es';
+    }
+    
+    const textEl = document.getElementById('motivationalText');
+    const langEl = document.getElementById('motivationalLang');
+    if (!textEl || !langEl) return;
+    
+    textEl.style.transition = 'opacity 0.2s';
+    langEl.style.transition = 'opacity 0.2s';
+    textEl.style.opacity = 0;
+    langEl.style.opacity = 0;
+    
+    setTimeout(() => {
+      if (window.currentQuoteLang === 'es') {
+        textEl.textContent = window.QUOTES_ES[window.currentQuoteIndex];
+        langEl.textContent = '🇪🇸';
+      } else {
+        textEl.textContent = window.QUOTES_EN[window.currentQuoteIndex];
+        langEl.textContent = '🇬🇧';
+      }
+      textEl.style.opacity = 1;
+      langEl.style.opacity = 1;
+    }, 200);
+  };
 </script>
 </head>
 <body ontouchstart="">
@@ -728,7 +878,7 @@ window.addEventListener('message', function(event) {
 
   <p class="subtitle">Master vocabulary, verbs, conditionals, phrasal verbs and more...</p>
   <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V25</div>
+    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V27</div>
     <div class="total-badge" onclick="playPopSound(); showStatsModal()" style="cursor:pointer;" title="Ver tarjetas por secciones">Total: <b id="totalFlashcards">0</b> &nbsp;&nbsp;flashcards</div>
     <button id="btnToggleSound" class="btn-toggle-sound" onclick="toggleSound(event)" title="Activar/Desactivar Sonidos">🔊</button>
   </div>
@@ -740,6 +890,16 @@ window.addEventListener('message', function(event) {
       <div class="mode-btn tenses" id="btnVerbTensesMode" onclick="playPopSound();"><div class="ico">✎</div><div class="lbl"><strong>Verb Tenses</strong><span>Tiempos verbales</span></div><div class="slbl">Practica los tiempos verbales</div></div>
 
   </div>
+  
+  <div style="padding: 0 20px; margin: 15px 0 20px 0;">
+    <button id="btnMotivational" type="button" class="motivational-btn" onclick="nextMotivationalQuote(event)" title="Cambiar frase">
+      <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 10px;">
+        <span class="motivational-text" id="motivationalText">Pulsa aquí para inspirarte ✨</span>
+        <span class="motivational-lang" id="motivationalLang" style="font-size: 16px; flex-shrink: 0;">🇪🇸</span>
+      </div>
+    </button>
+  </div>
+
   <div class="export-row">
 
 <button class="btn-sec" id="btnExportData" type="button" style="opacity:0.6; font-size:11px;">Exportar todos los datos</button>
@@ -2989,10 +3149,15 @@ function loadVoices() {
   
   ukVoices.sort(function(a, b) {
     function getScore(v) {
-      if (v.name.indexOf("Google UK English Female") !== -1) return 100;
-      if (v.name.indexOf("Google UK English Male") !== -1) return 90;
-      if (v.name.indexOf("Microsoft Sonia") !== -1) return 80;
-      if (v.name.indexOf("Microsoft Ryan") !== -1) return 70;
+      // Priorizar voces masculinas de alta calidad (Apple)
+      if (v.name.indexOf("Arthur") !== -1) return 100;
+      if (v.name.indexOf("Oliver") !== -1) return 95;
+      if (v.name.indexOf("Daniel") !== -1) return 90;
+      // Google / Microsoft male voices
+      if (v.name.indexOf("Google UK English Male") !== -1) return 85;
+      if (v.name.indexOf("Microsoft Ryan") !== -1) return 80;
+      // Otras voces buenas
+      if (v.name.indexOf("Premium") !== -1 || v.name.indexOf("Enhanced") !== -1) return 50;
       return 10;
     }
     return getScore(b) - getScore(a);
@@ -3000,9 +3165,18 @@ function loadVoices() {
 
   usVoices.sort(function(a, b) {
     function getScore(v) {
-      if (v.name.indexOf("Google US English") !== -1) return 100;
-      if (v.name.indexOf("Microsoft Zira") !== -1) return 80;
-      if (v.name.indexOf("Microsoft David") !== -1) return 70;
+      // Priorizar voces masculinas de alta calidad (Apple)
+      if (v.name.indexOf("Tom") !== -1) return 100;
+      if (v.name.indexOf("Evan") !== -1) return 95;
+      if (v.name.indexOf("Aaron") !== -1) return 90;
+      if (v.name.indexOf("Alex") !== -1) return 85;
+      if (v.name.indexOf("Fred") !== -1) return 80;
+      // Google / Microsoft male voices
+      if (v.name.indexOf("Google US English") !== -1 && v.name.indexOf("Male") !== -1) return 85;
+      if (v.name.indexOf("Microsoft David") !== -1) return 80;
+      if (v.name.indexOf("Microsoft Guy") !== -1) return 75;
+      // Otras voces buenas
+      if (v.name.indexOf("Premium") !== -1 || v.name.indexOf("Enhanced") !== -1) return 50;
       return 10;
     }
     return getScore(b) - getScore(a);
@@ -3035,6 +3209,10 @@ function playCurrentWordAudio(accent) {
   if (ukVoices.length === 0 && usVoices.length === 0) loadVoices();
 
   var utterance = new SpeechSynthesisUtterance(text);
+  // Ajustes para que la voz suene mejor y más pausada para aprender
+  utterance.rate = 0.85; 
+  utterance.pitch = 0.95;
+  
   var targetVoices = (accent === 'US') ? usVoices : ukVoices;
   
   if (targetVoices.length > 0) {

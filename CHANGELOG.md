@@ -4,6 +4,16 @@ Este archivo servirá para registrar todos los cambios que vayamos realizando en
 
 ## Historial de Cambios
 
+- **Versión V27 (19 de Julio)**:
+  - **Ubicación de Frases Motivadoras**: Se ha cambiado la ubicación del botón de frases motivadoras. Ahora se encuentra en la pantalla de inicio, por encima de los botones de importar/exportar, pero debajo de los modos de juego ("Study Mode", "Quiz Mode", etc.).
+  - Se ha actualizado la versión a V27 en la portada (`English.html`) y en el Service Worker (`sw.js`).
+
+- **Versión V26 (19 de Julio)**:
+  - **Frases Motivadoras Integradas**: Se ha introducido un nuevo sistema de frases motivadoras en la pantalla de inicio. Se trata de un botón estilizado (transparente, con bordes redondeados y sombra sutil) que permite leer frases que inspiran a seguir aprendiendo.
+  - Al pulsar el botón, el idioma de la frase alterna entre Español e Inglés de forma dinámica y aleatoria (incluyendo banderas 🇪🇸/🇬🇧 correspondientes), con una agradable animación de desvanecimiento ("fade") al cambiar el texto.
+  - Se corrigió un error por el cual el bloque de JavaScript que controla las frases había quedado atrapado erróneamente dentro de un "event listener", impidiendo que el botón respondiera a los toques.
+  - Se ha actualizado la versión a V26 en la portada (`English.html`).
+
 - **Versión V25 (19 de Julio)**:
   - **Reubicación y Ajuste de Botones de Pronunciación**: Se movieron los botones de pronunciación (🇬🇧 y 🇺🇸) de su posición original junto a la palabra hacia una nueva posición debajo de la imagen (entre la foto y el botón de estado) para mejorar el diseño visual. Se ha ajustado su tamaño a petición del usuario.
   - **Corrección de Solapamiento Visual**: Se ha incrementado el margen y el relleno superior de las flashcards en la cara principal. Esto soluciona un problema visual por el cual palabras muy largas o con letras muy grandes (como "disappointed") llegaban a chocar o superponerse con los botones superiores ("Inicio", "Validado", "Voltear") en dispositivos como Mac, iPad o Android.
