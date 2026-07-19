@@ -4,7 +4,12 @@ Este archivo servirá para registrar todos los cambios que vayamos realizando en
 
 ## Historial de Cambios
 
+- **Versión V25 (19 de Julio)**:
+  - **Reubicación y Ajuste de Botones de Pronunciación**: Se movieron los botones de pronunciación (🇬🇧 y 🇺🇸) de su posición original junto a la palabra hacia una nueva posición debajo de la imagen (entre la foto y el botón de estado) para mejorar el diseño visual. Se ha ajustado su tamaño a petición del usuario.
+  - Se ha actualizado la versión a V25 en la portada (`English.html`) y en el Service Worker (`sw.js`).
+
 - **Versión V24 (19 de Julio)**:
+  - **Pronunciación Nativa (TTS)**: Se ha integrado la Web Speech API nativa del navegador para reproducir las palabras y frases en inglés sin necesidad de conexión ni APIs de pago. Se han añadido dos botones (🇬🇧 y 🇺🇸) para poder escuchar tanto la pronunciación británica como la estadounidense. Estos botones han sido ubicados estratégicamente debajo de la imagen de la flashcard, entre la foto y el botón de estado ("Repasar", "Siempre me equivoco").
   - **Corrección en Modal "Tarjetas por secciones"**: Se ha corregido un error en el conteo donde los niveles (B2.1, B2.2) aparecían siempre a 0. Además, se han incluido todas las nuevas categorías (C1, Sustantivos, Idioms, Sust & Verb, Adj & Verb, Otros) para que el desglose sea 100% fiel al inventario real.
   - **Nuevos Filtros y Tipos de Palabras**: Se han añadido "Idioms", "Sust & Verb" (Sustantivo y verbo) y "Adj & Verb" (Adjetivo y verbo) a los tipos de flashcards que se pueden elegir, y se han incluido los correspondientes botones de filtro en el Modo Estudio.
   - **Reordenación de Filtros**: Se han ordenado los botones de la barra de filtros del Modo Estudio para que los niveles (B2.1, B2.2, C1) aparezcan antes que los tipos gramaticales.

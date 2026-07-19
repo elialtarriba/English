@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>English V24</title>
+<title>English V25</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#f5ebe0">
 <link rel="apple-touch-icon" href="Logo_angles.JPG">
@@ -342,6 +342,10 @@ select.study-filter-btn{appearance:none;background-image:url('data:image/svg+xml
 .fc-edit-icon{position:absolute;right:-28px;top:5px;font-size:18px;opacity:0.6;display:none;pointer-events:none;}
 .show-edit .fc-edit-icon{display:block;}
 .read-only-study .show-edit .fc-delete-btn, .read-only-study .show-edit .fc-copy-btn, .read-only-study .show-edit .fc-edit-icon{display:none!important;}
+.btn-audio{background:var(--br1);color:var(--text);border:1px solid var(--border);border-radius:50%;width:38px;height:38px;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 6px rgba(0,0,0,0.1); flex-shrink:0; padding:0; margin-top: 4px;}
+.btn-audio:hover{transform:scale(1.1);background:var(--white);}
+.btn-audio:active{transform:scale(0.95);}
+.btn-audio:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
 .btn-download{background:var(--white);color:var(--br4);border:none;border-radius:12px;padding:10px 20px;font-size:12px;font-weight:700;font-family:Arial,sans-serif;cursor:pointer;box-shadow:0 4px 0 var(--br2),0 6px 10px rgba(58,41,24,.15);transition:all .15s;display:flex;flex-direction:column;align-items:center;gap:2px;line-height:1.25}.btn-download strong{font-size:13px;color:var(--br4)}.btn-download span{font-size:11px;font-weight:600;color:var(--text3)}
 .btn-download:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--br2),0 4px 6px rgba(58,41,24,.15);filter:brightness(.95)}
 .btn-download:active{transform:translateY(4px);box-shadow:0 0 0 var(--br2),0 2px 4px rgba(58,41,24,.1)}
@@ -724,7 +728,7 @@ window.addEventListener('message', function(event) {
 
   <p class="subtitle">Master vocabulary, verbs, conditionals, phrasal verbs and more...</p>
   <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V24</div>
+    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V25</div>
     <div class="total-badge" onclick="playPopSound(); showStatsModal()" style="cursor:pointer;" title="Ver tarjetas por secciones">Total: <b id="totalFlashcards">0</b> &nbsp;&nbsp;flashcards</div>
     <button id="btnToggleSound" class="btn-toggle-sound" onclick="toggleSound(event)" title="Activar/Desactivar Sonidos">🔊</button>
   </div>
@@ -911,7 +915,7 @@ window.addEventListener('message', function(event) {
               <button class="fc-flip-btn" id="fcFlipBtnFront" type="button" aria-label="Voltear carta">⟳ Voltear</button>
             </div>
           </div>
-          <div class="fc-word-wrap" style="margin-bottom: 15px; margin-top: 5px;">
+          <div class="fc-word-wrap" style="margin-bottom: 15px; margin-top: 5px; display:inline-flex; align-items:center; justify-content:center; gap:8px;">
             <div class="fc-word" id="fcWord" onclick="copyToClipboard(event, this.textContent)" style="cursor:pointer;" title="Copiar palabra">—</div>
             <div class="fc-edit-icon">✏️</div>
           </div>
@@ -924,6 +928,10 @@ window.addEventListener('message', function(event) {
               </label>
               <button type="button" class="fc-img-btn fc-img-btn-red" id="fcImageDelete" title="Borrar foto" onclick="handleImageDelete(event)" style="display:none;">🗑️ Borrar</button>
             </div>
+          </div>
+          <div style="display:flex; justify-content:center; gap:15px; margin-top: 10px;">
+            <button class="btn-audio" id="btnPlayAudioUK" type="button" onclick="event.stopPropagation(); playCurrentWordAudio('UK')" title="Escuchar en Británico (UK)">🇬🇧</button>
+            <button class="btn-audio" id="btnPlayAudioUS" type="button" onclick="event.stopPropagation(); playCurrentWordAudio('US')" title="Escuchar en Americano (US)">🇺🇸</button>
           </div>
           <div class="fc-status-wrap" style="display:flex; flex-direction:column; align-items:center; justify-content:center; margin-top: 15px; margin-bottom: 25px; z-index: 10;">
             <button type="button" class="fc-status-btn fc-status-0" id="fcStatusFront" onclick="event.stopPropagation(); toggleCardStatus(event)"></button>
@@ -2966,6 +2974,82 @@ document.addEventListener("DOMContentLoaded", function() {
   var btn = document.getElementById('btnToggleSound');
   if(btn) btn.innerHTML = soundsEnabled ? "🔊" : "🔇";
 });
+
+// --- SPEECH SYNTHESIS (TTS) ---
+var mySynth = window.speechSynthesis;
+var ukVoices = [];
+var usVoices = [];
+
+function loadVoices() {
+  if (!mySynth) return;
+  var voices = mySynth.getVoices();
+  
+  ukVoices = voices.filter(function(v) { return v.lang === "en-GB" || v.lang === "en-GB-x-gb-network" || v.name.indexOf("UK English") !== -1; });
+  usVoices = voices.filter(function(v) { return v.lang === "en-US" || v.lang === "en-US-x-us-network" || v.name.indexOf("US English") !== -1; });
+  
+  ukVoices.sort(function(a, b) {
+    function getScore(v) {
+      if (v.name.indexOf("Google UK English Female") !== -1) return 100;
+      if (v.name.indexOf("Google UK English Male") !== -1) return 90;
+      if (v.name.indexOf("Microsoft Sonia") !== -1) return 80;
+      if (v.name.indexOf("Microsoft Ryan") !== -1) return 70;
+      return 10;
+    }
+    return getScore(b) - getScore(a);
+  });
+
+  usVoices.sort(function(a, b) {
+    function getScore(v) {
+      if (v.name.indexOf("Google US English") !== -1) return 100;
+      if (v.name.indexOf("Microsoft Zira") !== -1) return 80;
+      if (v.name.indexOf("Microsoft David") !== -1) return 70;
+      return 10;
+    }
+    return getScore(b) - getScore(a);
+  });
+}
+
+if (mySynth) {
+  mySynth.onvoiceschanged = loadVoices;
+  setTimeout(loadVoices, 100); // Fallback
+}
+
+function playCurrentWordAudio(accent) {
+  var btnUK = document.getElementById("btnPlayAudioUK");
+  var btnUS = document.getElementById("btnPlayAudioUS");
+  if (!mySynth) {
+    alert("Tu navegador no soporta pronunciación por voz (SpeechSynthesis).");
+    if(btnUK) btnUK.disabled = true;
+    if(btnUS) btnUS.disabled = true;
+    return;
+  }
+  
+  if (typeof studyList === 'undefined' || !studyList || studyList.length === 0 || typeof studyIdx === 'undefined') return;
+  
+  var c = studyList[studyIdx];
+  var text = c ? c.word : "";
+  if (!text || text === "—" || text === "Sin resultados") return;
+
+  mySynth.cancel();
+
+  if (ukVoices.length === 0 && usVoices.length === 0) loadVoices();
+
+  var utterance = new SpeechSynthesisUtterance(text);
+  var targetVoices = (accent === 'US') ? usVoices : ukVoices;
+  
+  if (targetVoices.length > 0) {
+    utterance.voice = targetVoices[0];
+    console.log("Pronunciando (" + accent + ") usando voz:", targetVoices[0].name, "(" + targetVoices[0].lang + ")");
+  } else {
+    var allVoices = mySynth.getVoices().filter(function(v) { return v.lang.startsWith("en"); });
+    if(allVoices.length > 0) {
+       utterance.voice = allVoices[0];
+       console.log("No se encontró acento específico " + accent + ", usando fallback:", allVoices[0].name);
+    }
+  }
+  
+  mySynth.speak(utterance);
+}
 
 function playPopSound() {
   if (!soundsEnabled) return;
