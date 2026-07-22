@@ -696,9 +696,7 @@ select.study-filter-btn {
 .m-estudio-focus #fcDrawingWrap img { max-height: 55vh !important; width: auto !important; max-width: 100% !important; box-shadow: none !important; border-radius: 0 !important; background: transparent !important; object-fit: contain !important; margin: 0 auto !important; }
 .m-estudio-focus #fcDrawingWrap svg { width: 45vh !important; height: 45vh !important; max-width: 100% !important; max-height: 100% !important; }
 .m-estudio-focus .fc-image-container { flex: 1 1 auto !important; justify-content: center !important; margin-top: 10px !important; }
-.m-estudio-focus .btn-audio { transform: scale(1.4) !important; margin: 10px 20px !important; }
-.m-estudio-focus .fc-status-btn { transform: scale(1.4) !important; margin-top: 20px !important; }
-.m-estudio-focus .fc-fav-btn { transform: scale(1.4) !important; margin-top: 25px !important; }
+.m-estudio-focus .fc-status-btn { transform: scale(1.4) !important; margin-top: 10px !important; margin-bottom: 15px !important; }
 .toast-msg { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: white; padding: 10px 20px; border-radius: 20px; z-index: 10000; font-family: Arial, sans-serif; font-weight: bold; opacity: 1; transition: opacity 0.5s; pointer-events: none; }
 </style>
 
@@ -888,7 +886,7 @@ window.addEventListener('message', function(event) {
 
   <p class="subtitle">Master vocabulary, verbs, conditionals, phrasal verbs and more...</p>
   <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V23</div>
+    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V24</div>
     <div class="total-badge" onclick="playPopSound(); showStatsModal()" style="cursor:pointer;" title="Ver tarjetas por secciones">Total: <b id="totalFlashcards">0</b> &nbsp;&nbsp;flashcards</div>
     <button id="btnToggleSound" class="btn-toggle-sound" onclick="toggleSound(event)" title="Activar/Desactivar Sonidos">🔊</button>
   </div>
@@ -1099,20 +1097,20 @@ window.addEventListener('message', function(event) {
               <button type="button" class="fc-img-btn fc-img-btn-red" id="fcImageDelete" title="Borrar foto" onclick="handleImageDelete(event)" style="display:none;">🗑️ Borrar</button>
             </div>
           </div>
-          <div style="display:flex; justify-content:center; gap:15px; margin-top: 10px;">
+          <div style="display:flex; justify-content:center; align-items:center; gap:15px; margin-top: 10px; margin-bottom: 5px;">
             <button class="btn-audio" id="btnPlayAudioUK" type="button" onclick="event.stopPropagation(); playCurrentWordAudio('UK')" title="Escuchar en Británico (UK)">🇬🇧</button>
             <button class="btn-audio" id="btnPlayAudioUS" type="button" onclick="event.stopPropagation(); playCurrentWordAudio('US')" title="Escuchar en Americano (US)">🇺🇸</button>
+            <button type="button" class="btn-audio fc-fav-btn" id="fcFavFront" onclick="event.stopPropagation(); toggleCardFav(event)" style="pointer-events:auto;" title="Favoritos">☆</button>
           </div>
-          <div class="fc-status-wrap" style="display:flex; flex-direction:column; align-items:center; justify-content:center; margin-top: 15px; margin-bottom: 25px; z-index: 10;">
+          <div class="fc-status-wrap" style="display:flex; flex-direction:column; align-items:center; justify-content:center; margin-top: 10px; margin-bottom: 25px; z-index: 10;">
             <button type="button" class="fc-status-btn fc-status-0" id="fcStatusFront" onclick="event.stopPropagation(); toggleCardStatus(event)"></button>
-            <button type="button" class="fc-fav-btn" id="fcFavFront" onclick="event.stopPropagation(); toggleCardFav(event)" style="pointer-events:auto; margin-top: 25px;">☆</button>
           </div>
           <div class="fc-bottom-row" style="position:absolute; bottom:15px; left:15px; right:15px; display:flex; justify-content:space-between; align-items:flex-end; pointer-events:none;">
             <div style="pointer-events:auto; flex: 1; display:flex; justify-content:flex-start;">
               <span class="fc-reg-badge" id="fcRegBadge" style="font-size:11px; padding:4px 7px;">N</span>
             </div>
             <div style="display:flex; flex-direction:column; align-items:center; pointer-events:none; flex: 2;">
-              <div class="fc-tap-hint" style="position:relative; left:auto; transform:none; white-space:nowrap;">Pulsa para girar</div>
+              <!-- Hint text removed as requested -->
             </div>
             <div style="pointer-events:auto; flex: 1; display:flex; justify-content:flex-end;">
             </div>
@@ -4311,10 +4309,7 @@ function renderStudy(){
   var c = studyList[studyIdx];
   var ed = getEdit(c);
   var wasFlipped = document.getElementById("flashcard").classList.contains("flipped");
-  if (!STUDY_EDIT_MODE || !wasFlipped) {
-    document.getElementById("flashcard").classList.remove("flipped");
-    document.getElementById("studyScreen").classList.remove("show-answer");
-  }
+  document.getElementById("studyScreen").classList.toggle("show-answer", wasFlipped);
   document.querySelectorAll(".fc-sec.zoom").forEach(function(s){s.classList.remove("zoom")});
   var bf = document.querySelector(".fc-back");
   if(bf) bf.scrollTop = 0;

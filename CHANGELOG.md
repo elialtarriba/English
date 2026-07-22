@@ -4,6 +4,14 @@ Este archivo servirá para registrar todos los cambios que vayamos realizando en
 
 ## Historial de Cambios
 
+- **Versión V24 (22 de Julio)**:
+  - **Ajustes en Tarjetas y M.Estudio**: 
+    - Se agruparon los botones de las banderas (UK, US) y el botón de favoritos (estrella) dándoles el mismo estilo circular pequeño.
+    - Se eliminó el texto "Pulsa para girar" de la parte frontal de las tarjetas.
+    - Se modificó la regla CSS del modo M.Estudio para que la barra inferior quede visible y no haga falta hacer scroll.
+    - Se ha modificado el comportamiento al avanzar o retroceder tarjetas: ahora, si la tarjeta estaba girada (mostrando la parte de atrás), la siguiente tarjeta se mostrará también girada.
+  - Se ha actualizado el Service Worker a V30 para forzar la actualización de estos cambios en los dispositivos.
+
 - **Versión V28 (22 de Julio)**:
   - **Mejora del Modo M.Estudio**: Se ha hecho el diseño más adaptativo para pantallas de móvil e iPad. Ahora la foto se expande aprovechando el espacio, se ha eliminado el recuadro alrededor de la foto en este modo y el tamaño general de los textos y botones ha aumentado para un mejor uso.
   - Se ha actualizado el Service Worker a V28.
