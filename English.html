@@ -689,6 +689,16 @@ select.study-filter-btn {
 .m-estudio-focus .sbody { flex: 1 1 auto !important; justify-content: flex-start !important; padding: 12px 10px !important; min-height: 0 !important; gap: 12px !important; }
 .m-estudio-focus .flashcard { flex: 1 1 0 !important; height: auto !important; max-height: none !important; width: 100% !important; max-width: 100% !important; margin: 0 !important; }
 .m-estudio-focus .nav-row { position: static !important; width: 100% !important; box-sizing: border-box !important; margin-top: 0 !important; }
+
+/* Ajustes solicitados para M.Estudio (Todo más grande, sin recuadros) */
+.m-estudio-focus .fc-front .fc-word { font-size: clamp(34px, 12vw, 64px) !important; padding-top: 15px !important; padding-bottom: 10px !important; }
+.m-estudio-focus #fcDrawingWrap { background: transparent !important; box-shadow: none !important; border: none !important; }
+.m-estudio-focus #fcDrawingWrap img { max-height: 55vh !important; width: auto !important; max-width: 100% !important; box-shadow: none !important; border-radius: 0 !important; background: transparent !important; object-fit: contain !important; margin: 0 auto !important; }
+.m-estudio-focus #fcDrawingWrap svg { width: 45vh !important; height: 45vh !important; max-width: 100% !important; max-height: 100% !important; }
+.m-estudio-focus .fc-image-container { flex: 1 1 auto !important; justify-content: center !important; margin-top: 10px !important; }
+.m-estudio-focus .btn-audio { transform: scale(1.4) !important; margin: 10px 20px !important; }
+.m-estudio-focus .fc-status-btn { transform: scale(1.4) !important; margin-top: 20px !important; }
+.m-estudio-focus .fc-fav-btn { transform: scale(1.4) !important; margin-top: 25px !important; }
 .toast-msg { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: white; padding: 10px 20px; border-radius: 20px; z-index: 10000; font-family: Arial, sans-serif; font-weight: bold; opacity: 1; transition: opacity 0.5s; pointer-events: none; }
 </style>
 

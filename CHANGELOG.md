@@ -4,6 +4,10 @@ Este archivo servirá para registrar todos los cambios que vayamos realizando en
 
 ## Historial de Cambios
 
+- **Versión V28 (22 de Julio)**:
+  - **Mejora del Modo M.Estudio**: Se ha hecho el diseño más adaptativo para pantallas de móvil e iPad. Ahora la foto se expande aprovechando el espacio, se ha eliminado el recuadro alrededor de la foto en este modo y el tamaño general de los textos y botones ha aumentado para un mejor uso.
+  - Se ha actualizado el Service Worker a V28.
+
 - **Versión V27 (19 de Julio)**:
   - **Ubicación de Frases Motivadoras**: Se ha cambiado la ubicación del botón de frases motivadoras. Ahora se encuentra en la pantalla de inicio, por encima de los botones de importar/exportar, pero debajo de los modos de juego ("Study Mode", "Quiz Mode", etc.).
   - Se ha actualizado la versión a V27 en la portada (`English.html`) y en el Service Worker (`sw.js`).
