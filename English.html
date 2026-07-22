@@ -757,6 +757,14 @@ select.study-filter-btn {
 .m-estudio-focus .fc-image-container { flex: 1 1 auto !important; justify-content: center !important; margin-top: 10px !important; }
 .m-estudio-focus .fc-status-btn { transform: scale(1.4) !important; margin-top: 10px !important; margin-bottom: 15px !important; }
 .m-estudio-focus .fc-image-container #fcDrawingWrap img{max-height:100%!important}
+/* En M.Estudio enfocado la tarjeta no puede crecer con la imagen y empujar la navegación fuera de la pantalla. */
+.m-estudio-focus .flashcard { flex: 0 0 auto !important; height: clamp(280px, min(60dvh, calc(100dvh - 150px)), 560px) !important; max-height: 560px !important; }
+.m-estudio-focus .fc-image-container { min-height: 0 !important; overflow: hidden !important; }
+.m-estudio-focus .nav-row { position: sticky !important; bottom: 0 !important; z-index: 30 !important; min-height: 56px; padding: 6px 8px !important; background: rgba(245,235,224,.94); border-radius: 999px; backdrop-filter: blur(6px); }
+@media (max-width:1024px), (pointer:coarse) {
+  .m-estudio-focus .sbody { padding-bottom: max(12px, env(safe-area-inset-bottom)) !important; }
+  .m-estudio-focus .nav-row { max-width: min(100%, 520px) !important; }
+}
 .theme-screen{align-items:center;justify-content:center;padding:24px 16px;background:linear-gradient(160deg,#f5ebe0 0%,#ead9c0 50%,#e0c9a0 100%)}
 /* Complete mint palette: also overrides legacy hard-coded beige/white colours. */
 html[data-theme="menta"] body{background:#dff7ef!important;color:#214b40!important}
@@ -3038,14 +3046,12 @@ function updateHomeTotal(){
   updateHomeCounts();
 }
 function showStatsModal() {
-  var stats = {
-    noun: 0, verb: 0, adjective: 0, adverb: 0, idiom: 0, nounverb: 0, adjverb: 0, 
-    phrasal: 0, connector: 0, starter: 0, other: 0, b2_1: 0, b2_2: 0, c1: 0
-  };
-  getStudyCards().forEach(function(c){ 
-    var cat = c.cat || "other";
-    if(stats[cat] !== undefined) stats[cat]++; 
-    if(c.level && stats[c.level] !== undefined) stats[c.level]++;
+  var stats = {};
+  ['noun','verb','adjective','adverb','idiom','nounverb','adjverb','phrasal','connector','starter','other'].forEach(function(key){
+    stats[key] = countStudyFilterCards('category', key);
+  });
+  ['b2_1','b2_2','c1'].forEach(function(key){
+    stats[key] = countStudyFilterCards('level', key);
   });
   var html = '';
   function row(label, key, kind) {
@@ -4043,6 +4049,7 @@ function toggleReverseStudy(){
 function renderStudy(){
   document.getElementById("studyScreen").classList.toggle("read-only-study", !STUDY_EDIT_MODE);
   studyList = studyFilteredList();
+  updateStudyFilterCounts();
   var tot = studyList.length;
   document.getElementById("fcTot").textContent = tot;
   if(studyIdx >= tot) studyIdx = 0;
@@ -4985,6 +4992,49 @@ function updateHomeCounts() {
     var btn = document.querySelector('.cat-btn[data-cat="'+cat+'"] b');
     if(btn) btn.textContent = counts[cat] || 0;
   });
+}
+
+function updateStudyFilterCounts() {
+  var labels = {
+    all: "All",
+    noun: "Nouns",
+    adverb: "Adverbs",
+    adjective: "Adjectives",
+    phrasal: "Phrasal V.",
+    connector: "Connectors",
+    starter: "Starters",
+    verb: "Verbs",
+    idiom: "Idioms",
+    nounverb: "Sust & Verb",
+    adjverb: "Adj & Verb",
+    other: "Other",
+    b2_1: "B2.1",
+    b2_2: "B2.2",
+    c1: "C1"
+  };
+  document.querySelectorAll(".flt-btn, .lvl-flt-btn").forEach(function(btn) {
+    var key = btn.dataset.flt || btn.dataset.lvlflt;
+    if(!labels[key]) return;
+    var count = key === "all" ? countStudyFilterCards('all', 'all') : countStudyFilterCards(btn.classList.contains("lvl-flt-btn") ? 'level' : 'category', key);
+    btn.textContent = labels[key] + " (" + count + ")";
+  });
+}
+
+function countStudyFilterCards(kind, value) {
+  var savedCat = studyCatFilter;
+  var savedLvl = studyLvlFilter;
+  if(kind === 'all') {
+    studyCatFilter = 'all';
+    studyLvlFilter = 'all';
+  } else if(kind === 'level') {
+    studyLvlFilter = value;
+  } else {
+    studyCatFilter = value;
+  }
+  var count = studyFilteredList().length;
+  studyCatFilter = savedCat;
+  studyLvlFilter = savedLvl;
+  return count;
 }
 
 
