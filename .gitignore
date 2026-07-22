@@ -7,6 +7,8 @@
 # Scripts temporales de utilidades
 *.js
 !sw.js
+!english_data.js
+!html2canvas.min.js
 
 # Configuración de entornos y editores
 .agents/

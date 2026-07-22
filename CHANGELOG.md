@@ -4,6 +4,12 @@ Este archivo servirá para registrar todos los cambios que vayamos realizando en
 
 ## Historial de Cambios
 
+- **Versión V32 (22 de Julio)**:
+  - **Gran Fusión de Datos (201 Tarjetas Nuevas)**: Se ha extraído todo el diccionario antiguo de nivel C1 (YanAngles) con sus 161 palabras y sus 20 fotos incrustadas. También se han extraído las 40 tarjetas personalizadas creadas recientemente por el usuario junto con sus 69 fotos.
+  - **Base de Datos Externa**: Todo este contenido masivo (tarjetas, fotos, ejemplos y colores) se ha inyectado de forma nativa en un nuevo archivo externo `english_data.js` para aligerar la página principal y limpiar la memoria local del navegador, permitiendo al usuario volver a tener el 100% del almacenamiento disponible para futuras cartas y fotos.
+  - **Detección de Duplicados Inteligente**: Se ha mejorado la lógica de carga para que, si el usuario aún conservaba sus cartas personalizadas antiguas en su memoria local (`localStorage`), la app reconozca automáticamente que ya están integradas de forma nativa y no las duplique visualmente.
+  - Se ha actualizado el Service Worker a V32.
+
 - **Versión V24 (22 de Julio)**:
   - **Ajustes en Tarjetas y M.Estudio**: 
     - Se agruparon los botones de las banderas (UK, US) y el botón de favoritos (estrella) dándoles el mismo estilo circular pequeño.
