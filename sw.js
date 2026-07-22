@@ -1,9 +1,10 @@
-const CACHE_NAME = 'english-app-v33-fix1';
+const CACHE_NAME = 'english-app-v34';
 const urlsToCache = [
   './English.html',
   './english_data.js',
   './Logo_angles.JPG',
   './logo.jpg',
+  './copyright-license.jpg',
   './English_Backup_Datos.json',
   './manifest.json',
   './html2canvas.min.js'

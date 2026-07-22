@@ -110,6 +110,26 @@ body{font-family:Georgia,serif;background:#f5ebe0;color:#3a2918;min-height:100vh
 .btn-cancel-3d strong { font-size: 14px; font-weight: 700; color: var(--text2); }
 .btn-edit-subtle { background: transparent; color: var(--text3); border: none; font-family: Arial, sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; text-decoration: underline; transition: color 0.2s; padding: 8px; margin-top: 4px; margin-bottom: 24px; }
 .btn-edit-subtle:hover { color: var(--br3); }
+.stats-row-btn{appearance:none;width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:7px 0 8px;background:transparent;border:0;border-bottom:1px solid #eee;color:var(--text2);font:inherit;text-align:left;cursor:pointer;transition:transform .12s ease,background .12s ease,box-shadow .12s ease;border-radius:7px}
+.stats-row-btn strong{color:var(--br3)}
+.stats-row-btn:hover{background:var(--br1);padding-left:8px;padding-right:8px}
+.stats-row-btn:active{transform:translateY(4px);background:var(--br2);box-shadow:0 0 0 var(--br3);}
+.stats-level-links{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
+.stats-level-link{appearance:none;min-height:42px;padding:7px 5px;background:var(--br1);border:1.5px solid var(--border);border-radius:10px;color:var(--br5);font:700 12px Arial,sans-serif;cursor:pointer;box-shadow:0 4px 0 var(--br2);transition:transform .12s ease,box-shadow .12s ease,background .12s ease}
+.stats-level-link strong{display:block;font-size:14px;color:var(--br4);margin-top:2px}
+.stats-level-link:hover{background:var(--br2)}
+.stats-level-link:active{transform:translateY(4px);box-shadow:0 0 0 var(--br2)}
+.copyright-license-image{display:block;width:100%;height:auto;border-radius:8px}
+.copyright-email{margin:12px 0 0;text-align:center;color:var(--text2);font:700 14px Arial,sans-serif;word-break:break-word}
+.quiz-setup-active > .home-hero,
+.quiz-setup-active > .subtitle,
+.quiz-setup-active > .stats-row,
+.quiz-setup-active > .mode-row,
+.quiz-setup-active > .motivational-wrap,
+.quiz-setup-active > .theme-btn,
+.quiz-setup-active > .export-row { display:none!important; }
+.quiz-setup-cancel-row{width:100%;max-width:520px;display:flex;justify-content:flex-start;margin:0 0 2px;}
+.quiz-setup-cancel-row .btn-cancel-3d{padding:10px 22px;}
 .btn-sec{background:transparent;border:1.5px solid var(--border);color:var(--text2);border-radius:999px;padding:10px 26px;font-size:13px;font-family:Arial,sans-serif;cursor:pointer;transition:all .2s}
 .btn-sec:hover{border-color:var(--br3);color:var(--br3)}
 .val-hint{font-family:Arial,sans-serif;font-size:12px;color:var(--red3);display:none;animation:fadeU .3s ease}
@@ -363,7 +383,16 @@ select.study-filter-btn{appearance:none;background-image:url('data:image/svg+xml
 .btn-download{background:var(--white);color:var(--br4);border:none;border-radius:12px;padding:10px 20px;font-size:12px;font-weight:700;font-family:Arial,sans-serif;cursor:pointer;box-shadow:0 4px 0 var(--br2),0 6px 10px rgba(58,41,24,.15);transition:all .15s;display:flex;flex-direction:column;align-items:center;gap:2px;line-height:1.25}.btn-download strong{font-size:13px;color:var(--br4)}.btn-download span{font-size:11px;font-weight:600;color:var(--text3)}
 .btn-download:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--br2),0 4px 6px rgba(58,41,24,.15);filter:brightness(.95)}
 .btn-download:active{transform:translateY(4px);box-shadow:0 0 0 var(--br2),0 2px 4px rgba(58,41,24,.1)}
-.export-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:auto;width:100%;max-width:520px;padding-bottom:10px}.password-modal{position:fixed;inset:0;background:rgba(58,41,24,.45);display:none;align-items:center;justify-content:center;z-index:10000;padding:16px}.password-modal.show{display:flex}.password-dialog{width:min(420px,100%);background:var(--white);border:1.5px solid var(--border);border-radius:20px;box-shadow:0 16px 46px rgba(58,41,24,.24);padding:18px;text-align:left}.password-dialog h3{font-family:Georgia,serif;font-size:22px;color:var(--br5);margin-bottom:8px}.password-dialog p{font-family:Arial,sans-serif;font-size:13px;line-height:1.5;color:var(--text2);margin-bottom:12px}.password-dialog input{width:100%;padding:12px;border:1.5px solid var(--border);border-radius:12px;background:var(--cream);font-family:Arial,sans-serif;font-size:15px;outline:none}.password-dialog input:focus{border-color:var(--br3);background:#fff8ef}.password-error{display:none;color:var(--red3);font-family:Arial,sans-serif;font-size:12px;margin-top:8px}.password-error.show{display:block}.password-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:14px}.password-actions button{border:none;border-radius:999px;padding:10px 16px;font-family:Arial,sans-serif;font-size:13px;font-weight:700;cursor:pointer}.password-actions .primary{background:var(--br3);color:#fff}.password-actions .secondary{background:transparent;color:var(--text2);border:1.5px solid var(--border)}
+.export-row{display:flex;flex-direction:column;gap:8px;justify-content:center;margin-top:auto;width:100%;max-width:520px;padding-bottom:10px}.export-subrow{width:100%;display:grid;gap:8px}.export-data-row{grid-template-columns:repeat(2,minmax(0,1fr))}.export-tools-row{grid-template-columns:32px minmax(0,1fr) 32px}.export-subrow > .btn-sec,.export-subrow > label{width:100%;min-width:0;display:flex;align-items:center;justify-content:center}.export-tools-row > .settings-icon-btn,.export-tools-row > .btn-sec:last-child{width:32px;height:32px;padding:0}.password-modal{position:fixed;inset:0;background:rgba(58,41,24,.45);display:none;align-items:center;justify-content:center;z-index:10000;padding:16px}.password-modal.show{display:flex}.password-dialog{width:min(420px,100%);background:var(--white);border:1.5px solid var(--border);border-radius:20px;box-shadow:0 16px 46px rgba(58,41,24,.24);padding:18px;text-align:left}.password-dialog h3{font-family:Georgia,serif;font-size:22px;color:var(--br5);margin-bottom:8px}.password-dialog p{font-family:Arial,sans-serif;font-size:13px;line-height:1.5;color:var(--text2);margin-bottom:12px}.password-dialog input{width:100%;padding:12px;border:1.5px solid var(--border);border-radius:12px;background:var(--cream);font-family:Arial,sans-serif;font-size:15px;outline:none}.password-dialog input:focus{border-color:var(--br3);background:#fff8ef}.password-error{display:none;color:var(--red3);font-family:Arial,sans-serif;font-size:12px;margin-top:8px}.password-error.show{display:block}.password-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:14px}.password-actions button{border:none;border-radius:999px;padding:10px 16px;font-family:Arial,sans-serif;font-size:13px;font-weight:700;cursor:pointer}.password-actions .primary{background:var(--br3);color:#fff}.password-actions .secondary{background:transparent;color:var(--text2);border:1.5px solid var(--border)}
+.settings-icon-btn{opacity:.6;font-size:16px;width:32px;height:32px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:8px}
+.export-row .btn-sec,.export-row label{opacity:.35!important}
+.settings-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 14px;background:var(--cream);border:1.5px solid var(--border);border-radius:13px;color:var(--text2);font:700 13px Arial,sans-serif;text-align:left;cursor:pointer;transition:all .15s}
+.settings-toggle:hover{transform:translateY(2px)}
+.settings-sound-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px;padding:4px 2px;color:var(--text2);font:700 13px Arial,sans-serif}
+.settings-sound-row .btn-toggle-sound{width:42px;height:32px;padding:0;font-size:16px}
+.settings-state{min-width:48px;padding:5px 9px;border-radius:999px;color:#fff;text-align:center;font-size:11px;box-shadow:0 3px 0 rgba(0,0,0,.14)}
+.settings-state.on{background:var(--green2);box-shadow:0 3px 0 var(--green3)}
+.settings-state.off{background:var(--red2);box-shadow:0 3px 0 var(--red3)}
 
 .btn-add-card{background:var(--br3);color:#fff;border:none;border-radius:12px;padding:9px 16px;font-size:12px;font-weight:700;font-family:Arial,sans-serif;cursor:pointer;box-shadow:0 4px 0 var(--br4),0 6px 10px rgba(58,41,24,.2);transition:all .15s;white-space:nowrap;text-transform:uppercase}
 .btn-add-card:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--br4),0 4px 6px rgba(58,41,24,.2);filter:brightness(.95)}
@@ -445,6 +474,7 @@ select.study-filter-btn{appearance:none;background-image:url('data:image/svg+xml
   cursor: pointer;
   display: inline-block;
   margin-bottom: 5px;
+  margin-top: 5px;
 }
 .title-flip-card {
   position: relative;
@@ -495,8 +525,9 @@ select.study-filter-btn{appearance:none;background-image:url('data:image/svg+xml
   justify-content: flex-start;
 }
 .home-title-wrap{width:clamp(165px,45vw,260px);align-items:stretch!important}
-.home-title-wrap .badge{align-self:flex-end}
+.home-title-wrap .badge{align-self:flex-end;margin-bottom:0!important}
 .home-title-wrap .title-flip-scene{width:100%}
+.title-flip-back .logo-img{height:clamp(32px,10vw,48px)!important;max-height:48px!important}
 .logo-img {
   max-height: 40px;
   border-radius: 8px;
@@ -762,8 +793,8 @@ html[data-theme] .theme-btn .ico{font-size:18px!important;line-height:1!importan
 html[data-theme] .fc-verify-btn:not(.verified),html[data-theme] .fc-verify-btn:not(.verified):hover{background:#d95f59!important;color:#fff!important;border-color:#c94b45!important;box-shadow:0 4px 0 #b83f3a,0 6px 10px rgba(184,63,58,.18)!important;filter:none!important}
 html[data-theme] .fc-verify-btn.verified,html[data-theme] .fc-verify-btn.verified:hover{background:#55a66b!important;color:#fff!important;border-color:#438e58!important;box-shadow:0 4px 0 #367a49,0 6px 10px rgba(54,122,73,.18)!important;filter:none!important}
 html[data-theme] .title-flip-back{background:var(--white)!important;border-color:var(--border)!important;color:var(--text)!important;overflow:visible!important;flex-wrap:wrap!important;align-content:center!important;padding:6px 8px!important}
-html[data-theme] .title-flip-back .logo-img{flex:0 0 auto!important;max-width:42px!important}
-html[data-theme] .title-flip-back div{white-space:normal!important;overflow-wrap:anywhere!important;word-break:break-word!important;line-height:1.15!important;flex:1 1 100%!important;text-align:left!important;font-size:clamp(8px,2.5vw,12px)!important}
+html[data-theme] .title-flip-back .logo-img{flex:0 0 auto!important;max-width:54px!important;height:clamp(32px,10vw,48px)!important;margin:0 auto!important}
+html[data-theme] .title-flip-back div{white-space:normal!important;overflow-wrap:anywhere!important;word-break:break-word!important;line-height:1.15!important;flex:1 1 100%!important;text-align:center!important;font-size:clamp(8px,2.5vw,12px)!important}
 .toast-msg { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: white; padding: 10px 20px; border-radius: 20px; z-index: 10000; font-family: Arial, sans-serif; font-weight: bold; opacity: 1; transition: opacity 0.5s; pointer-events: none; }
 .flag-intro{position:fixed;inset:0;z-index:99990;display:flex;align-items:center;justify-content:center;overflow:hidden;opacity:0;visibility:hidden;pointer-events:none;background:transparent;transition:opacity 1s ease,visibility 0s linear 1s;isolation:isolate}
 .flag-intro.is-visible{opacity:1;visibility:visible;transition:opacity 1s ease}
@@ -951,13 +982,13 @@ window.addEventListener('message', function(event) {
 </div>
 
 <div id="home" class="screen active" style="position: relative;">
-<div style="display: inline-flex; align-items: center; justify-content: center; gap: 15px; margin: 20px auto 0; max-width: 100%;">
+<div class="home-hero" style="display: inline-flex; align-items: center; justify-content: center; gap: 15px; margin: 20px auto 0; max-width: 100%;">
   <!-- Logo_angles.JPG -->
   <img id="homeLogo" src="Logo_angles.JPG" onclick="replayFlagIntro()" onerror="this.src=document.querySelector('link[rel=\"apple-touch-icon\"]')?.href || 'Logo_angles.JPG';" alt="English App — replay flags" title="Replay flags" style="width: clamp(80px, 20vw, 120px); height: clamp(80px, 20vw, 120px); object-fit: contain; border-radius: 12px; flex-shrink: 0; mix-blend-mode: multiply; cursor:pointer;">
   
   <!-- Titulo y Badge -->
   <div class="home-title-wrap" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 4px; margin-top: 5px;">
-    <div class="badge" style="margin-bottom: -5px;">English</div>
+    <div class="badge">English</div>
     
     <div class="title-flip-scene" onclick="this.classList.toggle('flipped')">
       <div class="title-flip-card">
@@ -966,7 +997,7 @@ window.addEventListener('message', function(event) {
         </div>
         
         <div class="title-flip-face title-flip-back">
-          <img src="logo.jpg" class="logo-img" style="height:clamp(24px, 8vw, 38px); width:auto; border-radius:8px;">
+          <img src="logo.jpg" class="logo-img" style="height:clamp(32px, 10vw, 48px); width:auto; border-radius:8px;">
           <div style="font-size: clamp(10px, 3vw, 14px); font-weight:700; color:#6b4423; letter-spacing:0.5px; white-space:nowrap;">lisaltarriba@gmail.com</div>
         </div>
       </div>
@@ -975,10 +1006,9 @@ window.addEventListener('message', function(event) {
 </div>
 
   <p class="subtitle">Master vocabulary, verbs, conditionals, phrasal verbs and more...</p>
-  <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V33</div>
+  <div class="stats-row" style="display: flex; align-items: center; justify-content: center; gap: 15px;">
+    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V34</div>
     <div class="total-badge" onclick="playPopSound(); showStatsModal()" style="cursor:pointer;" title="Ver tarjetas por secciones">Total: <b id="totalFlashcards">0</b> &nbsp;&nbsp;flashcards</div>
-    <button id="btnToggleSound" class="btn-toggle-sound" onclick="toggleSound(event)" title="Activar/Desactivar Sonidos">🔊</button>
   </div>
 
   <div class="mode-row">
@@ -989,7 +1019,7 @@ window.addEventListener('message', function(event) {
 
   </div>
   
-  <div style="padding: 0 20px; margin: 15px 0 20px 0;">
+  <div class="motivational-wrap" style="padding: 0 20px; margin: 15px 0 20px 0;">
     <button id="btnMotivational" type="button" class="motivational-btn" onclick="nextMotivationalQuote(event)" title="Change quote">
       <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 10px;">
         <span class="motivational-text" id="motivationalText">Tap here for inspiration ✨</span>
@@ -1003,18 +1033,24 @@ window.addEventListener('message', function(event) {
   </button>
 
   <div class="export-row">
-
+<div class="export-subrow export-data-row">
 <button class="btn-sec" id="btnExportData" type="button" style="opacity:0.6; font-size:11px;">Export all data</button>
 <label class="btn-sec" style="opacity:0.6; font-size:11px; cursor:pointer;">
   Import all data
   <input type="file" id="inpImportData" accept=".json" style="display:none;">
 </label>
+</div>
+<div class="export-subrow export-tools-row">
+<button class="btn-sec settings-icon-btn" id="btnSettings" type="button" onclick="openSettings(event)" title="Settings" aria-label="Settings">⚙️</button>
 <button class="btn-sec" id="btnExportHtml" type="button" style="opacity:0.6; font-size:11px;">Download HTML with my changes</button>
 <button class="btn-sec" type="button" onclick="openCopyright(event)" style="opacity:0.6; font-size:16px; width:32px; height:32px; padding:0; display:flex; align-items:center; justify-content:center; border-radius:8px;" title="Copyright and licence">©</button>
-
+</div>
 </div>
 
   <div id="quizSetup" style="display:none;width:100%;flex-direction:column;align-items:center;gap:14px">
+    <div class="quiz-setup-cancel-row">
+      <button class="btn-cancel-3d" id="btnCancelQuizSetup" type="button" onclick="hideQuizSetup()"><strong>← Cancel</strong></button>
+    </div>
     <div class="section-label"><span class="must-pick">① Categories</span> <span style="font-weight:400">(choose one or more)</span></div>
     <div class="cat-grid" id="catGrid">
       <div class="cat-btn on" data-cat="adverb"><b>300</b>Adverbs<span class="ck">✓</span></div>
@@ -1044,10 +1080,27 @@ window.addEventListener('message', function(event) {
       <div class="pcard" id="btn2p"><div class="ico">👫</div><div class="lbl"><strong>2 Players</strong><span>Two players</span></div><div class="slbl">Take turns</div></div>
     </div>
     <div style="display:flex; gap:16px; margin-top:20px; align-items:flex-end;">
-    <button class="btn-cancel-3d" id="btnCancelQuizSetup" type="button" onclick="hideQuizSetup()"><strong>← Cancel</strong></button>
       <button class="btn-start-3d" id="btnStart"><strong>Start Quiz →</strong><span>Start the quiz</span></button>
     </div>
     <button class="btn-edit-subtle" id="btnQuizTopEdit" type="button">✎ Edit quiz questions</button>
+  </div>
+</div>
+
+<div id="appSettingsModal" class="card-modal" aria-hidden="true" onclick="if(event.target===this) closeSettings();">
+  <div class="card-dialog" style="max-width:420px;">
+    <h3 style="text-align:center;">Settings</h3>
+    <p style="text-align:center;">Personalise the app startup effect.</p>
+    <button id="flagIntroSetting" class="settings-toggle" type="button" onclick="toggleFlagIntroSetting()">
+      <span>Sacar/poner bandera al inicio</span>
+      <span id="flagIntroToggleState" class="settings-state on">SI</span>
+    </button>
+    <div class="settings-sound-row">
+      <span>Sounds</span>
+      <button id="btnToggleSound" class="btn-toggle-sound" type="button" onclick="toggleSound(event)" title="Activar/Desactivar Sonidos">🔊</button>
+    </div>
+    <div class="modal-actions" style="margin-top:22px;">
+      <button class="modal-btn secondary" type="button" onclick="closeSettings()" style="width:100%;">Close</button>
+    </div>
   </div>
 </div>
 
@@ -1514,7 +1567,7 @@ function shuf(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(
 function pick(a,n){return shuf(a).slice(0,n)}
 function showScreen(id){document.querySelectorAll(".screen").forEach(function(s){s.classList.remove("active");});var tgt=document.getElementById(id);if(tgt)tgt.classList.add("active");}
 
-/* V33: temas persistentes y adaptados a todos los dispositivos */
+/* V34: temas persistentes y adaptados a todos los dispositivos */
 var APP_THEMES = {
   rosa:{name:"Pastel Pink",swatch:"#f6c7d8",vars:{cream:"#fff0f5",white:"#fff9fb",br1:"#f5d5e1",br2:"#d99ab2",br3:"#b96d89",br4:"#7f3f59",br5:"#51283a",text:"#51283a",text2:"#7f3f59",text3:"#a77d8d",border:"#e6b9c9"}},
   morado:{name:"Purple",swatch:"#d9c9ef",vars:{cream:"#f5f0fb",white:"#fcf9ff",br1:"#e5d8f4",br2:"#b79ad8",br3:"#8863ae",br4:"#60407f",br5:"#3d2857",text:"#3d2857",text2:"#60407f",text3:"#927da8",border:"#cdb9e5"}},
@@ -1538,11 +1591,13 @@ function initTheme(){applyTheme(localStorage.getItem('englishAppTheme')||'cafe')
 function getTrans(cat,w){if(cat==="adverb")return ADV_TR[w]||"";if(cat==="adjective")return ADJ_TR[w]||"";if(cat==="phrasal")return PHR_TR[w]||"";if(cat==="connector")return CON_TR[w]||"";if(cat==="starter")return STR_TR[w]||"";if(cat==="verb")return VRB_TR[w]||"";return ""}
 
 function showQuizSetup(){
+  document.getElementById("home").classList.add("quiz-setup-active");
   var mr=document.querySelector(".mode-row"); if(mr) mr.style.display="none";
   var er=document.querySelector(".export-row"); if(er) er.style.display="none";
   document.getElementById("quizSetup").style.display="flex";
 }
 function hideQuizSetup(){
+  document.getElementById("home").classList.remove("quiz-setup-active");
   var mr=document.querySelector(".mode-row"); if(mr) mr.style.display="";
   var er=document.querySelector(".export-row"); if(er) er.style.display="";
   document.getElementById("quizSetup").style.display="none";
@@ -2956,24 +3011,42 @@ function showStatsModal() {
     if(c.level && stats[c.level] !== undefined) stats[c.level]++;
   });
   var html = '';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>B2.1:</span><strong style="color:var(--br3);">' + stats.b2_1 + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>B2.2:</span><strong style="color:var(--br3);">' + stats.b2_2 + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>C1:</span><strong style="color:var(--br3);">' + stats.c1 + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Nouns:</span><strong style="color:var(--br3);">' + stats.noun + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Verbs:</span><strong style="color:var(--br3);">' + stats.verb + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Adjectives:</span><strong style="color:var(--br3);">' + stats.adjective + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Adverbs:</span><strong style="color:var(--br3);">' + stats.adverb + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Idioms:</span><strong style="color:var(--br3);">' + stats.idiom + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Sust & Verb:</span><strong style="color:var(--br3);">' + stats.nounverb + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Adj & Verb:</span><strong style="color:var(--br3);">' + stats.adjverb + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Phrasal Verbs:</span><strong style="color:var(--br3);">' + stats.phrasal + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Connectors:</span><strong style="color:var(--br3);">' + stats.connector + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Sentence Starters:</span><strong style="color:var(--br3);">' + stats.starter + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between;"><span>Otros:</span><strong style="color:var(--br3);">' + stats.other + '</strong></div>';
+  function row(label, key, kind) {
+    return '<button type="button" class="stats-row-btn" onclick="openStudyFromStats(\'' + kind + '\',\'' + key + '\')" aria-label="Open ' + label + ' in Study Mode"><span>' + label + ':</span><strong>' + stats[key] + '</strong></button>';
+  }
+  html += row('B2.1', 'b2_1', 'level');
+  html += row('B2.2', 'b2_2', 'level');
+  html += row('C1', 'c1', 'level');
+  html += row('Nouns', 'noun', 'category');
+  html += row('Verbs', 'verb', 'category');
+  html += row('Adjectives', 'adjective', 'category');
+  html += row('Adverbs', 'adverb', 'category');
+  html += row('Idioms', 'idiom', 'category');
+  html += row('Sust & Verb', 'nounverb', 'category');
+  html += row('Adj & Verb', 'adjverb', 'category');
+  html += row('Phrasal Verbs', 'phrasal', 'category');
+  html += row('Connectors', 'connector', 'category');
+  html += row('Sentence Starters', 'starter', 'category');
+  html += row('Otros', 'other', 'category');
+  html += '<div class="stats-level-links" aria-label="Open level filters in Study Mode">';
+  html += '<button type="button" class="stats-level-link" onclick="openStudyFromStats(\'level\',\'b2_1\')">B2.1<strong>' + stats.b2_1 + '</strong></button>';
+  html += '<button type="button" class="stats-level-link" onclick="openStudyFromStats(\'level\',\'b2_2\')">B2.2<strong>' + stats.b2_2 + '</strong></button>';
+  html += '<button type="button" class="stats-level-link" onclick="openStudyFromStats(\'level\',\'c1\')">C1<strong>' + stats.c1 + '</strong></button>';
+  html += '</div>';
   var content = document.getElementById('statsContent');
   if(content) content.innerHTML = html;
   var modal = document.getElementById('statsModal');
   if(modal) modal.classList.add('show');
+}
+function openStudyFromStats(kind, value) {
+  var modal = document.getElementById('statsModal');
+  if (modal) {
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+  if (kind === 'level') enterStudyMode(false, 'all', value);
+  else enterStudyMode(false, value, 'all');
+  if (!document.body.classList.contains('m-estudio-focus')) toggleMEstudio();
 }
 function toggleHideVerify() {
   document.body.classList.toggle('hide-verify');
@@ -3268,7 +3341,8 @@ function tryActionPassword(){
     document.getElementById("actionPasswordInput").select();
   }
 }
-function enterStudyMode(edit){
+function enterStudyMode(edit, initialCat, initialLvl){
+  document.body.classList.remove("m-estudio-focus");
   STUDY_EDIT_MODE = !!edit;
   var screen = document.getElementById("studyScreen");
   screen.classList.toggle("read-only-study", !STUDY_EDIT_MODE);
@@ -3277,13 +3351,14 @@ function enterStudyMode(edit){
   document.getElementById("btnStudyTopView").style.display = STUDY_EDIT_MODE ? "" : "none";
   document.getElementById("btnStudyTopSave").style.display = STUDY_EDIT_MODE ? "" : "none";
   document.getElementById("btnStudyTopPdf").style.display = STUDY_EDIT_MODE ? "" : "none";
-  studyCatFilter="all"; studyLvlFilter="all"; studyRegFilter="all"; studySearch=""; studyIdx=0;
+  studyCatFilter=initialCat || "all"; studyLvlFilter=initialLvl || "all"; studyRegFilter="all"; studySearch=""; studyIdx=0;
   document.getElementById("searchInp").value="";
   var regSel = document.getElementById("regFilterSel");
   if(regSel) regSel.value = "all";
   var lvlSelFilter = document.getElementById("lvlFilterSel");
-  if(lvlSelFilter) lvlSelFilter.value = "all";
-  document.querySelectorAll(".flt-btn").forEach(function(b){b.classList.toggle("on",b.dataset.flt==="all")});
+  if(lvlSelFilter) lvlSelFilter.value = studyLvlFilter;
+  document.querySelectorAll(".flt-btn:not(.lvl-flt-btn)").forEach(function(b){b.classList.toggle("on",b.dataset.flt===studyCatFilter)});
+  document.querySelectorAll(".lvl-flt-btn").forEach(function(b){b.classList.toggle("on",b.dataset.lvlflt===studyLvlFilter)});
   showScreen("studyScreen"); studyRandom();
 }
 window.quizPasswordEntered = false;
@@ -4591,7 +4666,7 @@ document.addEventListener("DOMContentLoaded",function(){
   document.getElementById("btnStudyTopPdf").addEventListener("click", function(){ setTimeout(generatePdfExport, 150); });
   document.getElementById("btnStudyHome").addEventListener("click",function(){ 
     if(typeof forceSaveInline === 'function') forceSaveInline();
-    setTimeout(function(){showScreen("home")}, 150); 
+    setTimeout(function(){document.body.classList.remove("m-estudio-focus");showScreen("home")}, 150);
   });
   document.getElementById("btnExportHtml").addEventListener("click",function(){openActionPasswordModal("Introduce la contraseña para descargar el HTML con cambios:", downloadEditedHtml)});
   document.getElementById("btnQuizEditorHome").addEventListener("click",function(){saveQuizEditorCurrent();doHome();});
@@ -5395,44 +5470,10 @@ if ('serviceWorker' in navigator) {
 </script>
 
 <div id="copyrightModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:99999; justify-content:center; align-items:center; opacity:0; transition:opacity 0.2s;">
-  <div class="modal-content" style="background:var(--bg, #fdfbf7); padding:30px; border-radius:12px; max-width:600px; width:90%; max-height:85vh; overflow-y:auto; color:var(--text, #5d4037); font-family:inherit; box-shadow:0 10px 30px rgba(0,0,0,0.2); position:relative; transform:translateY(20px); transition:transform 0.2s;">
-    <div style="font-size:22px; font-weight:bold; margin-bottom:20px; text-align:center; color:var(--bark, #5d4037);">Copyright and licence</div>
-    <div style="font-size:14px; line-height:1.6;">
-      <p style="text-align:center; font-weight:bold; margin-bottom:25px; font-size:16px;">© 2025–Present Elisabeth Altarriba<br>All rights reserved.</p>
-      
-      <p>This app, including its source code, design, structure, user interface, images, icons, animations, documentation and every other element that forms part of it, is the intellectual property of Elisabeth Altarriba and is protected by applicable copyright and intellectual-property law.</p>
-
-      <div style="font-weight:bold; margin-top:25px; margin-bottom:12px; font-size:16px; border-bottom:1px solid rgba(0,0,0,0.1); padding-bottom:5px;">LICENCE</div>
-      
-      <p style="font-weight:bold; margin-bottom:8px;">✅ Permitted:</p>
-      <ul style="margin-top:0; margin-bottom:20px; padding-left:25px;">
-        <li style="margin-bottom:4px;">Use the app for personal purposes.</li>
-        <li style="margin-bottom:4px;">Use it for educational purposes.</li>
-        <li style="margin-bottom:4px;">Share only the official app link.</li>
-      </ul>
-
-      <p style="font-weight:bold; margin-bottom:8px;">❌ Not permitted:</p>
-      <ul style="margin-top:0; margin-bottom:20px; padding-left:25px;">
-        <li style="margin-bottom:4px;">Use the app for commercial purposes.</li>
-        <li style="margin-bottom:4px;">Sell it.</li>
-        <li style="margin-bottom:4px;">Redistribute it as your own.</li>
-        <li style="margin-bottom:4px;">Copy all or part of its source code.</li>
-        <li style="margin-bottom:4px;">Reuse all or part of its design, interface, images, icons, animations or documentation without express permission.</li>
-        <li style="margin-bottom:4px;">Remove or modify this copyright notice.</li>
-      </ul>
-
-      <p>If this app, or any part of it, is used, modified or incorporated into another project, in whole or in part, Elisabeth Altarriba must be expressly credited.</p>
-
-      <p>Any use beyond the permissions above requires prior written authorisation.</p>
-
-      <div style="margin-top:30px; text-align:center; background:rgba(0,0,0,0.03); padding:15px; border-radius:8px;">
-        <p style="font-weight:bold; margin-bottom:5px;">Author</p>
-        <p style="margin-top:0; margin-bottom:15px; font-size:16px;">Elisabeth Altarriba</p>
-        <p style="font-weight:bold; margin-bottom:5px;">Contact:</p>
-        <p style="margin-top:0;">lisaltarriba@gmail.com</p>
-      </div>
-    </div>
-    <div style="text-align:center; margin-top:25px;">
+  <div class="modal-content copyright-content" style="background:var(--bg, #fdfbf7); padding:18px; border-radius:12px; max-width:680px; width:92%; max-height:85vh; overflow-y:auto; color:var(--text, #5d4037); font-family:inherit; box-shadow:0 10px 30px rgba(0,0,0,0.2); position:relative; transform:translateY(20px); transition:transform 0.2s;">
+    <img class="copyright-license-image" src="copyright-license.jpg" alt="Copyright and licence: 2026 Elisabeth Altarriba. Personal use permitted. Commercial use prohibited. Attribution required when sharing this app.">
+    <p class="copyright-email">lisaltarriba@gmail.com</p>
+    <div style="text-align:center; margin-top:18px;">
       <button onclick="document.getElementById('copyrightModal').style.opacity='0'; document.getElementById('copyrightModal').firstElementChild.style.transform='translateY(20px)'; setTimeout(function(){document.getElementById('copyrightModal').style.display='none'}, 200);" style="background:var(--btn, #e0d4c3); color:var(--btn-text, #5d4037); border:none; padding:10px 24px; border-radius:20px; font-weight:bold; font-size:15px; cursor:pointer; font-family:inherit;">Close</button>
     </div>
   </div>
@@ -5449,15 +5490,53 @@ function openCopyright(e) {
 }
 </script>
 <script>
+function isFlagIntroEnabled(){
+  return localStorage.getItem('englishFlagIntroEnabled') !== 'false';
+}
+function renderFlagIntroSetting(){
+  var state=document.getElementById('flagIntroToggleState');
+  var btn=document.getElementById('flagIntroSetting');
+  if(!state) return;
+  var enabled=isFlagIntroEnabled();
+  state.textContent=enabled ? 'SI' : 'NO';
+  state.classList.toggle('on',enabled);
+  state.classList.toggle('off',!enabled);
+  if(btn) btn.setAttribute('aria-pressed',enabled?'true':'false');
+}
+function openSettings(e){
+  if(e) e.stopPropagation();
+  renderFlagIntroSetting();
+  var m=document.getElementById('appSettingsModal');
+  if(!m) return;
+  m.classList.add('show');
+  m.setAttribute('aria-hidden','false');
+}
+function closeSettings(){
+  var m=document.getElementById('appSettingsModal');
+  if(m){m.classList.remove('show');m.setAttribute('aria-hidden','true');}
+}
+function toggleFlagIntroSetting(){
+  var enabled=!isFlagIntroEnabled();
+  localStorage.setItem('englishFlagIntroEnabled',enabled?'true':'false');
+  if(!enabled) stopFlagIntro();
+  renderFlagIntroSetting();
+}
+
 var flagIntroTimers = [];
+function stopFlagIntro(){
+  flagIntroTimers.forEach(function(t){clearTimeout(t)});
+  flagIntroTimers=[];
+  var overlay=document.getElementById('flagIntro');
+  if(overlay){overlay.classList.remove('is-visible');overlay.setAttribute('aria-hidden','true');}
+}
 function replayFlagIntro(){
   var overlay=document.getElementById('flagIntro');
   var flag=document.getElementById('flagWave');
   if(!overlay || !flag) return;
-  flagIntroTimers.forEach(function(t){clearTimeout(t)});
-  flagIntroTimers=[];
+  stopFlagIntro();
   flag.classList.remove('is-us');
   overlay.classList.remove('is-visible');
+  overlay.setAttribute('aria-hidden','false');
   void overlay.offsetWidth;
   overlay.classList.add('is-visible');
   flagIntroTimers.push(setTimeout(function(){
@@ -5467,7 +5546,7 @@ function replayFlagIntro(){
     overlay.classList.remove('is-visible');
   },6300));
 }
-window.addEventListener('load',function(){setTimeout(replayFlagIntro,180);});
+window.addEventListener('load',function(){setTimeout(function(){if(isFlagIntroEnabled()) replayFlagIntro();},180);});
 </script>
 </body>
 </html>
