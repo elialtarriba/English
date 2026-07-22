@@ -48,6 +48,20 @@ body{font-family:Georgia,serif;background:#f5ebe0;color:#3a2918;min-height:100vh
 .total-badge:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--border),0 10px 15px rgba(107,68,35,.2);background:#fdf3f0;}
 .total-badge:active{transform:translateY(2px);box-shadow:0 2px 0 var(--border),0 3px 5px rgba(107,68,35,.1);}
 .total-badge b{color:var(--br3);font-size:15px;margin-left:4px;}
+.internet-notice{position:absolute;top:6px;left:0;right:0;height:15px;overflow:hidden;pointer-events:none;color:rgba(107,68,35,.42);font:9px Arial,sans-serif;letter-spacing:.4px;white-space:nowrap}
+.internet-notice span{display:inline-block;padding-left:100%;animation:internetMarquee 24s linear infinite}
+@keyframes internetMarquee{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+.translator-btn{width:38px;height:38px;padding:0;background:var(--white);border:2px solid var(--border);border-radius:12px;color:var(--br3);font-size:18px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 0 var(--border),0 6px 10px rgba(107,68,35,.15);transition:all .15s}
+.translator-btn:hover{transform:translateY(-2px)}.translator-btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--border)}
+.translator-input-wrap{display:flex;gap:8px;align-items:flex-end}
+.translator-input{flex:1;min-height:88px;resize:vertical;padding:11px 12px;border:1.5px solid var(--border);border-radius:12px;background:var(--cream);color:var(--text);font:14px Arial,sans-serif;outline:none}
+.translator-input:focus{border-color:var(--br3)}
+.translator-mic{width:44px;height:44px;flex:0 0 44px;padding:0;border:0;border-radius:50%;background:var(--br3);color:#fff;font-size:20px;cursor:pointer;box-shadow:0 4px 0 var(--br4)}
+.translator-mic:active,.translator-mic.listening{transform:translateY(4px);box-shadow:0 0 0 var(--br4);background:var(--red3)}
+.translator-mic.keyboard-help{background:var(--br4)}
+.translator-status{min-height:18px;margin-top:8px;color:var(--text3);font:11px Arial,sans-serif}
+.translator-result{margin-top:10px;padding:12px;border-radius:12px;background:var(--cream);border:1.5px solid var(--border);color:var(--text);font:14px/1.5 Arial,sans-serif;white-space:pre-wrap;min-height:48px}
+.translator-actions{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:8px;margin-top:4px}.translator-actions .modal-btn{width:100%;padding-left:8px;padding-right:8px}.translator-result-line+.translator-result-line{margin-top:10px}.translator-result-language{display:block;margin-bottom:2px;color:var(--br5);font-weight:800}
 .cond-edit-btns{display:flex;justify-content:center;gap:10px;margin-top:-8px;margin-bottom:8px;}
 .cond-edit-btns button{background:transparent;border:none;color:var(--text2);font-size:11px;opacity:0.4;cursor:pointer;transition:all 0.2s;}
 .cond-edit-btns button:hover{opacity:1;color:var(--br3);}
@@ -982,6 +996,7 @@ window.addEventListener('message', function(event) {
 </div>
 
 <div id="home" class="screen active" style="position: relative;">
+<div class="internet-notice" aria-label="Se requiere internet para usar el traductor y el micrófono"><span>Se requiere internet para usar el traductor y el micrófono</span></div>
 <div class="home-hero" style="display: inline-flex; align-items: center; justify-content: center; gap: 15px; margin: 20px auto 0; max-width: 100%;">
   <!-- Logo_angles.JPG -->
   <img id="homeLogo" src="Logo_angles.JPG" onclick="replayFlagIntro()" onerror="this.src=document.querySelector('link[rel=\"apple-touch-icon\"]')?.href || 'Logo_angles.JPG';" alt="English App — replay flags" title="Replay flags" style="width: clamp(80px, 20vw, 120px); height: clamp(80px, 20vw, 120px); object-fit: contain; border-radius: 12px; flex-shrink: 0; mix-blend-mode: multiply; cursor:pointer;">
@@ -1007,8 +1022,9 @@ window.addEventListener('message', function(event) {
 
   <p class="subtitle">Master vocabulary, verbs, conditionals, phrasal verbs and more...</p>
   <div class="stats-row" style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V34</div>
+    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V35</div>
     <div class="total-badge" onclick="playPopSound(); showStatsModal()" style="cursor:pointer;" title="Ver tarjetas por secciones">Total: <b id="totalFlashcards">0</b> &nbsp;&nbsp;flashcards</div>
+    <button class="translator-btn" type="button" onclick="openTranslator(event)" title="Translator" aria-label="Open translator">🌐</button>
   </div>
 
   <div class="mode-row">
@@ -1100,6 +1116,27 @@ window.addEventListener('message', function(event) {
     </div>
     <div class="modal-actions" style="margin-top:22px;">
       <button class="modal-btn secondary" type="button" onclick="closeSettings()" style="width:100%;">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="translatorModal" class="card-modal" aria-hidden="true" onclick="if(event.target===this) closeTranslator();">
+  <div class="card-dialog" style="max-width:520px;">
+    <h3 style="text-align:center;">Translator</h3>
+    <p style="text-align:center;">Write or speak. The language is detected automatically.</p>
+    <div class="translator-input-wrap">
+      <textarea id="translatorInput" class="translator-input" placeholder="Write or speak here..."></textarea>
+      <button id="translatorMic" class="translator-mic" type="button" onclick="startTranslatorMic(event)" title="Speak">🎙️</button>
+    </div>
+    <div id="translatorStatus" class="translator-status" aria-live="polite"></div>
+    <div class="translator-actions">
+      <button class="modal-btn primary" type="button" onclick="translateText()">Translate</button>
+      <button class="modal-btn secondary" type="button" onclick="clearTranslator()">Clear</button>
+      <button class="modal-btn secondary" type="button" onclick="copyTranslator()">Copy</button>
+    </div>
+    <div id="translatorResult" class="translator-result" aria-live="polite">Translation will appear here.</div>
+    <div class="modal-actions">
+      <button class="modal-btn secondary" type="button" onclick="closeTranslator()" style="width:100%;">Close</button>
     </div>
   </div>
 </div>
@@ -1567,7 +1604,7 @@ function shuf(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(
 function pick(a,n){return shuf(a).slice(0,n)}
 function showScreen(id){document.querySelectorAll(".screen").forEach(function(s){s.classList.remove("active");});var tgt=document.getElementById(id);if(tgt)tgt.classList.add("active");}
 
-/* V34: temas persistentes y adaptados a todos los dispositivos */
+/* V35: temas persistentes y adaptados a todos los dispositivos */
 var APP_THEMES = {
   rosa:{name:"Pastel Pink",swatch:"#f6c7d8",vars:{cream:"#fff0f5",white:"#fff9fb",br1:"#f5d5e1",br2:"#d99ab2",br3:"#b96d89",br4:"#7f3f59",br5:"#51283a",text:"#51283a",text2:"#7f3f59",text3:"#a77d8d",border:"#e6b9c9"}},
   morado:{name:"Purple",swatch:"#d9c9ef",vars:{cream:"#f5f0fb",white:"#fcf9ff",br1:"#e5d8f4",br2:"#b79ad8",br3:"#8863ae",br4:"#60407f",br5:"#3d2857",text:"#3d2857",text2:"#60407f",text3:"#927da8",border:"#cdb9e5"}},
@@ -5490,6 +5527,137 @@ function openCopyright(e) {
 }
 </script>
 <script>
+var translatorRecognition=null;
+var translatorLastPlainText='';
+function openTranslator(e){
+  if(e) e.stopPropagation();
+  var modal=document.getElementById('translatorModal');
+  if(!modal) return;
+  modal.classList.add('show');
+  modal.setAttribute('aria-hidden','false');
+  var input=document.getElementById('translatorInput');
+  if(input) setTimeout(function(){input.focus()},80);
+}
+function closeTranslator(){
+  if(translatorRecognition){try{translatorRecognition.stop()}catch(err){} translatorRecognition=null;}
+  var mic=document.getElementById('translatorMic');
+  if(mic) mic.classList.remove('listening');
+  var modal=document.getElementById('translatorModal');
+  if(modal){modal.classList.remove('show');modal.setAttribute('aria-hidden','true');}
+}
+function setTranslatorStatus(text){
+  var el=document.getElementById('translatorStatus');
+  if(el) el.textContent=text||'';
+}
+function setTranslatorResult(text){
+  var el=document.getElementById('translatorResult');
+  if(!el) return;
+  if(!Array.isArray(text)){translatorLastPlainText=text||'';el.textContent=text||'';return;}
+  translatorLastPlainText=text.map(function(line){return line.language+': '+line.text}).join('\\n');
+  el.innerHTML=text.map(function(line){
+    return '<div class="translator-result-line"><span class="translator-result-language">'+escapeTranslatorHtml(line.language)+'</span><span>'+escapeTranslatorHtml(line.text)+'</span></div>';
+  }).join('');
+}
+function escapeTranslatorHtml(text){
+  return String(text||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\"/g,'&quot;').replace(/'/g,'&#39;');
+}
+function clearTranslator(){
+  var input=document.getElementById('translatorInput');
+  if(input) input.value='';
+  translatorLastPlainText='';
+  setTranslatorStatus('');
+  setTranslatorResult('Translation will appear here.');
+  if(input) input.focus();
+}
+function copyTranslator(){
+  if(!translatorLastPlainText){setTranslatorStatus('There is no translation to copy.');return;}
+  var done=function(){setTranslatorStatus('Translation copied.');};
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(translatorLastPlainText).then(done).catch(function(){fallbackCopyTranslator(done)});
+  }else fallbackCopyTranslator(done);
+}
+function fallbackCopyTranslator(done){
+  var area=document.createElement('textarea');
+  area.value=translatorLastPlainText;
+  area.style.position='fixed';area.style.opacity='0';
+  document.body.appendChild(area);area.select();
+  try{document.execCommand('copy');}catch(error){}
+  area.remove();done();
+}
+function googleTranslateRequest(text,target){
+  var url='https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl='+encodeURIComponent(target)+'&dt=t&q='+encodeURIComponent(text);
+  return fetch(url).then(function(response){
+    if(!response.ok) throw new Error('Translation service unavailable');
+    return response.json();
+  }).then(function(data){
+    var translated=(data[0]||[]).map(function(part){return part[0]||''}).join('');
+    return {text:translated,source:(data[2]||'').toLowerCase()};
+  });
+}
+function translateText(){
+  var input=document.getElementById('translatorInput');
+  var text=(input&&input.value||'').trim();
+  if(!text){setTranslatorStatus('Write or speak something first.');return;}
+  setTranslatorStatus('Detecting language and translating…');
+  setTranslatorResult('');
+  googleTranslateRequest(text,'en').then(function(first){
+    var source=first.source.split('-')[0];
+    if(source==='en'){
+      return Promise.all([googleTranslateRequest(text,'ca'),googleTranslateRequest(text,'es')]).then(function(results){
+        setTranslatorResult([{language:'Catalan',text:results[0].text},{language:'Spanish',text:results[1].text}]);
+        return source;
+      });
+    }
+    setTranslatorResult([{language:'English',text:first.text}]);
+    return source;
+  }).then(function(source){
+    setTranslatorStatus('Detected: '+(source==='ca'?'Catalan':source==='es'?'Spanish':source==='en'?'English':source));
+  }).catch(function(error){
+    setTranslatorStatus('Internet connection required for translation.');
+    setTranslatorResult('The translation could not be completed.');
+    console.error(error);
+  });
+}
+function startTranslatorMic(e){
+  if(e) e.stopPropagation();
+  var Recognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!Recognition){
+    var input=document.getElementById('translatorInput');
+    var mic=document.getElementById('translatorMic');
+    if(input){input.focus();input.click();}
+    if(mic){mic.classList.add('keyboard-help');setTimeout(function(){mic.classList.remove('keyboard-help')},900);}
+    setTranslatorStatus('Use the microphone on your device keyboard to dictate here.');
+    return;
+  }
+  if(translatorRecognition){try{translatorRecognition.stop()}catch(err){}return;}
+  var recognition=new Recognition();
+  translatorRecognition=recognition;
+  recognition.lang=navigator.language||'es-ES';
+  recognition.interimResults=false;
+  recognition.maxAlternatives=1;
+  var mic=document.getElementById('translatorMic');
+  if(mic) mic.classList.add('listening');
+  setTranslatorStatus('Listening…');
+  recognition.onresult=function(event){
+    var transcript=event.results[0][0].transcript||'';
+    var input=document.getElementById('translatorInput');
+    if(input) input.value=transcript;
+    translateText();
+  };
+  recognition.onerror=function(){
+    setTranslatorStatus('Microphone or internet error.');
+  };
+  recognition.onend=function(){
+    translatorRecognition=null;
+    if(mic) mic.classList.remove('listening');
+  };
+  try{recognition.start()}catch(error){
+    translatorRecognition=null;
+    if(mic) mic.classList.remove('listening');
+    setTranslatorStatus('Could not start the microphone.');
+  }
+}
+
 function isFlagIntroEnabled(){
   return localStorage.getItem('englishFlagIntroEnabled') !== 'false';
 }
