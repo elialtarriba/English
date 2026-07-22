@@ -54,11 +54,16 @@ body{font-family:Georgia,serif;background:#f5ebe0;color:#3a2918;min-height:100vh
 .translator-btn{width:38px;height:38px;padding:0;background:var(--white);border:2px solid var(--border);border-radius:12px;color:var(--br3);font-size:18px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 0 var(--border),0 6px 10px rgba(107,68,35,.15);transition:all .15s}
 .translator-btn:hover{transform:translateY(-2px)}.translator-btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--border)}
 .translator-input-wrap{display:flex;gap:8px;align-items:flex-end}
-.translator-input{flex:1;min-height:88px;resize:vertical;padding:11px 12px;border:1.5px solid var(--border);border-radius:12px;background:var(--cream);color:var(--text);font:14px Arial,sans-serif;outline:none}
+.translator-input{flex:1;min-height:88px;resize:vertical;padding:11px 12px;border:1.5px solid var(--border);border-radius:12px;background:var(--cream);color:var(--text);font:14px Arial,sans-serif;outline:none;transition:box-shadow .2s,border-color .2s,background .2s}
 .translator-input:focus{border-color:var(--br3)}
+.translator-input.listening{border-color:var(--red3);background:color-mix(in srgb,var(--cream) 88%,var(--red1));box-shadow:0 0 0 3px color-mix(in srgb,var(--red2) 38%,transparent),0 0 18px color-mix(in srgb,var(--red2) 28%,transparent)}
 .translator-mic{width:44px;height:44px;flex:0 0 44px;padding:0;border:0;border-radius:50%;background:var(--br3);color:#fff;font-size:20px;cursor:pointer;box-shadow:0 4px 0 var(--br4)}
 .translator-mic:active,.translator-mic.listening{transform:translateY(4px);box-shadow:0 0 0 var(--br4);background:var(--red3)}
 .translator-mic.keyboard-help{background:var(--br4)}
+.translator-language-row{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}
+.translator-language-btn{border:1.5px solid var(--border);border-radius:10px;padding:7px 5px;background:var(--white);color:var(--br4);font:700 11px Arial,sans-serif;cursor:pointer;box-shadow:0 3px 0 var(--br2);transition:all .15s}
+.translator-language-btn:active{transform:translateY(3px);box-shadow:0 0 0 var(--br2)}
+.translator-language-btn.active{background:var(--br3);border-color:var(--br4);color:#fff;box-shadow:0 3px 0 var(--br4)}
 .translator-status{min-height:18px;margin-top:8px;color:var(--text3);font:11px Arial,sans-serif}
 .translator-result{margin-top:10px;padding:12px;border-radius:12px;background:var(--cream);border:1.5px solid var(--border);color:var(--text);font:14px/1.5 Arial,sans-serif;white-space:pre-wrap;min-height:48px}
 .translator-actions{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:8px;margin-top:4px}.translator-actions .modal-btn{width:100%;padding-left:8px;padding-right:8px}.translator-result-line+.translator-result-line{margin-top:10px}.translator-result-language{display:block;margin-bottom:2px;color:var(--br5);font-weight:800}
@@ -1030,7 +1035,7 @@ window.addEventListener('message', function(event) {
 
   <p class="subtitle">Master vocabulary, verbs, conditionals, phrasal verbs and more...</p>
   <div class="stats-row" style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V35</div>
+    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V36</div>
     <div class="total-badge" onclick="playPopSound(); showStatsModal()" style="cursor:pointer;" title="Ver tarjetas por secciones">Total: <b id="totalFlashcards">0</b> &nbsp;&nbsp;flashcards</div>
     <button class="translator-btn" type="button" onclick="openTranslator(event)" title="Translator" aria-label="Open translator">🌐</button>
   </div>
@@ -1135,6 +1140,11 @@ window.addEventListener('message', function(event) {
     <div class="translator-input-wrap">
       <textarea id="translatorInput" class="translator-input" placeholder="Write or speak here..."></textarea>
       <button id="translatorMic" class="translator-mic" type="button" onclick="startTranslatorMic(event)" title="Speak">🎙️</button>
+    </div>
+    <div class="translator-language-row" aria-label="Voice language">
+      <button type="button" class="translator-language-btn" data-voice-lang="ca-ES" onclick="setTranslatorVoiceLanguage('ca-ES',event)">Català</button>
+      <button type="button" class="translator-language-btn" data-voice-lang="es-ES" onclick="setTranslatorVoiceLanguage('es-ES',event)">Español</button>
+      <button type="button" class="translator-language-btn" data-voice-lang="en-US" onclick="setTranslatorVoiceLanguage('en-US',event)">English</button>
     </div>
     <div id="translatorStatus" class="translator-status" aria-live="polite"></div>
     <div class="translator-actions">
@@ -1612,7 +1622,7 @@ function shuf(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(
 function pick(a,n){return shuf(a).slice(0,n)}
 function showScreen(id){document.querySelectorAll(".screen").forEach(function(s){s.classList.remove("active");});var tgt=document.getElementById(id);if(tgt)tgt.classList.add("active");}
 
-/* V35: temas persistentes y adaptados a todos los dispositivos */
+/* V36: temas persistentes y adaptados a todos los dispositivos */
 var APP_THEMES = {
   rosa:{name:"Pastel Pink",swatch:"#f6c7d8",vars:{cream:"#fff0f5",white:"#fff9fb",br1:"#f5d5e1",br2:"#d99ab2",br3:"#b96d89",br4:"#7f3f59",br5:"#51283a",text:"#51283a",text2:"#7f3f59",text3:"#a77d8d",border:"#e6b9c9"}},
   morado:{name:"Purple",swatch:"#d9c9ef",vars:{cream:"#f5f0fb",white:"#fcf9ff",br1:"#e5d8f4",br2:"#b79ad8",br3:"#8863ae",br4:"#60407f",br5:"#3d2857",text:"#3d2857",text2:"#60407f",text3:"#927da8",border:"#cdb9e5"}},
@@ -5579,19 +5589,45 @@ function openCopyright(e) {
 <script>
 var translatorRecognition=null;
 var translatorLastPlainText='';
+var translatorVoiceLanguage='es-ES';
+function translatorLanguageName(lang){
+  return lang==='ca-ES'?'Català':lang==='en-US'?'English':'Español';
+}
+function renderTranslatorVoiceLanguage(){
+  document.querySelectorAll('.translator-language-btn').forEach(function(btn){
+    btn.classList.toggle('active',btn.dataset.voiceLang===translatorVoiceLanguage);
+  });
+}
+function setTranslatorVoiceLanguage(lang,e){
+  if(e) e.stopPropagation();
+  if(translatorRecognition){
+    try{translatorRecognition.stop()}catch(err){}
+    translatorRecognition=null;
+    setTranslatorListening(false);
+  }
+  translatorVoiceLanguage=lang;
+  renderTranslatorVoiceLanguage();
+  setTranslatorStatus('Voice language: '+translatorLanguageName(lang)+'.');
+}
+function setTranslatorListening(active){
+  var input=document.getElementById('translatorInput');
+  var mic=document.getElementById('translatorMic');
+  if(input) input.classList.toggle('listening',!!active);
+  if(mic) mic.classList.toggle('listening',!!active);
+}
 function openTranslator(e){
   if(e) e.stopPropagation();
   var modal=document.getElementById('translatorModal');
   if(!modal) return;
   modal.classList.add('show');
   modal.setAttribute('aria-hidden','false');
+  renderTranslatorVoiceLanguage();
   var input=document.getElementById('translatorInput');
   if(input) setTimeout(function(){input.focus()},80);
 }
 function closeTranslator(){
   if(translatorRecognition){try{translatorRecognition.stop()}catch(err){} translatorRecognition=null;}
-  var mic=document.getElementById('translatorMic');
-  if(mic) mic.classList.remove('listening');
+  setTranslatorListening(false);
   var modal=document.getElementById('translatorModal');
   if(modal){modal.classList.remove('show');modal.setAttribute('aria-hidden','true');}
 }
@@ -5670,28 +5706,37 @@ function translateText(){
 }
 function startTranslatorMic(e){
   if(e) e.stopPropagation();
+  if(translatorRecognition){
+    try{translatorRecognition.stop()}catch(err){}
+    translatorRecognition=null;
+    setTranslatorListening(false);
+    setTranslatorStatus('Listening stopped.');
+    return;
+  }
   var Recognition=window.SpeechRecognition||window.webkitSpeechRecognition;
   if(!Recognition){
     var input=document.getElementById('translatorInput');
     var mic=document.getElementById('translatorMic');
     if(input){input.focus();input.click();}
     if(mic){mic.classList.add('keyboard-help');setTimeout(function(){mic.classList.remove('keyboard-help')},900);}
-    setTranslatorStatus('Use the microphone on your device keyboard to dictate here.');
+    setTranslatorStatus('Use the '+translatorLanguageName(translatorVoiceLanguage)+' keyboard microphone to dictate here.');
     return;
   }
-  if(translatorRecognition){try{translatorRecognition.stop()}catch(err){}return;}
   var recognition=new Recognition();
   translatorRecognition=recognition;
-  recognition.lang=navigator.language||'es-ES';
+  recognition.lang=translatorVoiceLanguage;
   recognition.interimResults=false;
   recognition.maxAlternatives=1;
-  var mic=document.getElementById('translatorMic');
-  if(mic) mic.classList.add('listening');
-  setTranslatorStatus('Listening…');
+  setTranslatorListening(true);
+  setTranslatorStatus('Listening in '+translatorLanguageName(translatorVoiceLanguage)+'…');
   recognition.onresult=function(event){
     var transcript=event.results[0][0].transcript||'';
     var input=document.getElementById('translatorInput');
-    if(input) input.value=transcript;
+    if(input){
+      var existing=input.value.trim();
+      input.value=existing ? existing+' '+transcript : transcript;
+      input.focus();
+    }
     translateText();
   };
   recognition.onerror=function(){
@@ -5699,11 +5744,11 @@ function startTranslatorMic(e){
   };
   recognition.onend=function(){
     translatorRecognition=null;
-    if(mic) mic.classList.remove('listening');
+    setTranslatorListening(false);
   };
   try{recognition.start()}catch(error){
     translatorRecognition=null;
-    if(mic) mic.classList.remove('listening');
+    setTranslatorListening(false);
     setTranslatorStatus('Could not start the microphone.');
   }
 }
