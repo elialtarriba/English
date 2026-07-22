@@ -1,4 +1,4 @@
-const CACHE_NAME = 'english-app-v32';
+const CACHE_NAME = 'english-app-v33-fix1';
 const urlsToCache = [
   './English.html',
   './english_data.js',

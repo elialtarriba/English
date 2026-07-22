@@ -62,6 +62,14 @@ body{font-family:Georgia,serif;background:#f5ebe0;color:#3a2918;min-height:100vh
 .mode-btn:active{transform:translateY(4px);box-shadow:0 2px 0 var(--border),0 4px 6px rgba(107,68,35,.1)}
 .mode-btn .ico{font-size:28px}.mode-btn .lbl{font-size:14px;font-weight:700;color:var(--text)}.mode-btn .lbl strong{display:block;font-weight:800}.mode-btn .lbl span{display:block;font-size:12px;font-weight:600;color:var(--text3);margin-top:2px}.mode-btn .slbl{font-size:11px;color:var(--text3)}
 .mode-btn.study .lbl, .mode-btn.quiz .lbl, .mode-btn.cond .lbl, .mode-btn.tenses .lbl, .mode-btn.useful .lbl {color:var(--br3)}
+.theme-btn{width:100%;max-width:520px;min-width:0;flex-basis:100%;min-height:70px;padding:8px 12px!important;gap:2px!important;}
+.theme-btn .ico{font-size:20px}.theme-btn .lbl{color:var(--br3);font-size:12px}.theme-btn .lbl span{font-size:10px}.theme-btn .slbl{font-size:9px}
+.theme-panel{display:flex;flex-direction:column;gap:16px;width:100%;max-width:620px;max-height:90dvh;overflow:auto;background:var(--white);border:2px solid var(--border);border-radius:22px;padding:22px;box-shadow:0 14px 34px rgba(58,41,24,.22)}
+.theme-panel h2{font-size:clamp(24px,6vw,34px);color:var(--br5)}
+.theme-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(105px,1fr));gap:10px}
+.theme-option{display:flex;align-items:center;gap:8px;padding:10px;border:1.5px solid var(--border);border-radius:13px;background:var(--cream);color:var(--text2);font:700 12px Arial,sans-serif;cursor:pointer;min-height:48px;text-align:left}
+.theme-option.on{border-color:var(--br4);box-shadow:0 0 0 3px color-mix(in srgb,var(--br2) 35%,transparent)}
+.theme-swatch{width:26px;height:26px;border-radius:50%;flex:0 0 26px;border:1px solid rgba(0,0,0,.12)}
 .btn-toggle-sound{background:var(--white);border:2px solid var(--border);border-radius:12px;padding:6px 10px;font-size:16px;cursor:pointer;transition:all .15s ease-out;box-shadow:0 4px 0 var(--border),0 6px 10px rgba(107,68,35,.15);display:inline-flex;align-items:center;justify-content:center;user-select:none;color:var(--br3);}
 .btn-toggle-sound:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--border),0 10px 15px rgba(107,68,35,.2);background:#fdf3f0;}
 .btn-toggle-sound:active{transform:translateY(2px);box-shadow:0 2px 0 var(--border),0 3px 5px rgba(107,68,35,.1);}
@@ -243,6 +251,7 @@ select.study-filter-btn{appearance:none;background-image:url('data:image/svg+xml
 /* FRONT */
 .fc-front{background:linear-gradient(135deg,var(--white) 0%,#f4ead8 50%,#ead9c0 100%);align-items:center;justify-content:center;justify-content:safe center;padding:55px 16px 30px;gap:12px;position:relative;text-align:center}
 .fc-drawing{width:60px;height:60px;flex-shrink:0;opacity:.9}
+.fc-image-container #fcDrawingWrap img{max-width:100%!important;max-height:100%!important;width:auto!important;height:auto!important;object-fit:contain!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;display:block}
 .fc-front .fc-word{font-size:clamp(24px,6vw,42px);font-weight:700;color:var(--text);font-family:Georgia,serif;line-height:1.1;word-break:break-word;hyphens:auto;letter-spacing:-.5px;padding:0 4px;text-align:center}
 .fc-tap-hint{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-family:Arial,sans-serif;font-size:9.5px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;opacity:.7}
 /* BACK - scrollable inside */
@@ -464,6 +473,7 @@ select.study-filter-btn{appearance:none;background-image:url('data:image/svg+xml
 .title-flip-scene.flipped .title-flip-back { z-index: 2; }
 .title-flip-front {
   background: transparent;
+  justify-content: flex-end;
 }
 .title-flip-front h1 {
   margin: 0;
@@ -482,7 +492,11 @@ select.study-filter-btn{appearance:none;background-image:url('data:image/svg+xml
   flex-direction: row;
   gap: clamp(6px, 2vw, 12px);
   overflow: hidden;
+  justify-content: flex-start;
 }
+.home-title-wrap{width:clamp(165px,45vw,260px);align-items:stretch!important}
+.home-title-wrap .badge{align-self:flex-end}
+.home-title-wrap .title-flip-scene{width:100%}
 .logo-img {
   max-height: 40px;
   border-radius: 8px;
@@ -587,19 +601,19 @@ body.hide-verify:not(.show-edit) .verify-btn {
   color: #155724;
   box-shadow: 0 4px 0 #c3e6cb;
 }
-.fc-status-1::after { content: "Ya me la sé"; }
+.fc-status-1::after { content: "Already know"; }
 .fc-status-2 {
   background: #fff3cd;
   color: #856404;
   box-shadow: 0 4px 0 #ffeeba;
 }
-.fc-status-2::after { content: "Repasar"; }
+.fc-status-2::after { content: "Review"; }
 .fc-status-3 {
   background: #f8d7da;
   color: #721c24;
   box-shadow: 0 4px 0 #f5c6cb;
 }
-.fc-status-3::after { content: "Siempre me equivoco"; }
+.fc-status-3::after { content: "Always wrong"; }
 
 .filter-row .fc-filter-status {
   border-radius: 12px;
@@ -697,6 +711,59 @@ select.study-filter-btn {
 .m-estudio-focus #fcDrawingWrap svg { width: 45vh !important; height: 45vh !important; max-width: 100% !important; max-height: 100% !important; }
 .m-estudio-focus .fc-image-container { flex: 1 1 auto !important; justify-content: center !important; margin-top: 10px !important; }
 .m-estudio-focus .fc-status-btn { transform: scale(1.4) !important; margin-top: 10px !important; margin-bottom: 15px !important; }
+.m-estudio-focus .fc-image-container #fcDrawingWrap img{max-height:100%!important}
+.theme-screen{align-items:center;justify-content:center;padding:24px 16px;background:linear-gradient(160deg,#f5ebe0 0%,#ead9c0 50%,#e0c9a0 100%)}
+/* Complete mint palette: also overrides legacy hard-coded beige/white colours. */
+html[data-theme="menta"] body{background:#dff7ef!important;color:#214b40!important}
+html[data-theme="menta"] #home,html[data-theme="menta"] #nameScreen,html[data-theme="menta"] #resultsScreen,html[data-theme="menta"] #studyScreen,html[data-theme="menta"] .theme-screen{background:linear-gradient(160deg,#effcf8 0%,#d8f2e9 52%,#bfe5d6 100%)!important}
+html[data-theme="menta"] .mode-btn,html[data-theme="menta"] .total-badge,html[data-theme="menta"] .btn-toggle-sound,html[data-theme="menta"] .motivational-btn,html[data-theme="menta"] .theme-panel,html[data-theme="menta"] .theme-option,html[data-theme="menta"] .pcard,html[data-theme="menta"] .cat-btn,html[data-theme="menta"] .lvl-btn,html[data-theme="menta"] .qc-btn,html[data-theme="menta"] .qcard,html[data-theme="menta"] .rcard,html[data-theme="menta"] .fc-face,html[data-theme="menta"] .fc-sec,html[data-theme="menta"] .search-inp,html[data-theme="menta"] .ninp{background:#f4fffb!important;border-color:#9bd8c7!important;color:#214b40!important}
+html[data-theme="menta"] .mode-btn:hover,html[data-theme="menta"] .cat-btn.on,html[data-theme="menta"] .lvl-btn.on,html[data-theme="menta"] .qc-btn.on{background:#d9f4e9!important}
+html[data-theme="menta"] .mode-btn,html[data-theme="menta"] .total-badge,html[data-theme="menta"] .btn-toggle-sound,html[data-theme="menta"] .fc-inner{box-shadow:0 6px 0 #8ecbb8,0 10px 15px rgba(52,114,95,.18)!important}
+html[data-theme="menta"] .sctrl,html[data-theme="menta"] .shdr,html[data-theme="menta"] .qhdr{background:#f4fffb!important;border-color:#9bd8c7!important}
+html[data-theme="menta"] .motivational-btn{background:linear-gradient(135deg,#f8fffc,#d9f4e9)!important;color:#34725f!important}
+html[data-theme="menta"] .motivational-text,html[data-theme="menta"] .subtitle,html[data-theme="menta"] .mode-btn .lbl,html[data-theme="menta"] .mode-btn .slbl{color:#34725f!important}
+html[data-theme="menta"] .badge{background:#f4fffb!important;border-color:#9bd8c7!important;color:#34725f!important}
+html[data-theme="menta"] .flt-btn,html[data-theme="menta"] .study-filter-btn{background:#bfe5d6!important;color:#214b40!important;box-shadow:0 4px 0 #72b99f!important}
+html[data-theme="menta"] .flt-btn.on,html[data-theme="menta"] .study-filter-btn.active{background:#4f9d82!important;color:#fff!important;box-shadow:0 4px 0 #34725f!important}
+html[data-theme="menta"] .fc-status-1,html[data-theme="menta"] .fc-status-2,html[data-theme="menta"] .fc-status-3{background:#c7eddf!important;color:#214b40!important;box-shadow:0 4px 0 #8ecbb8!important}
+html[data-theme="menta"] .fc-status-1::after{content:"Already know"}html[data-theme="menta"] .fc-status-2::after{content:"Review"}html[data-theme="menta"] .fc-status-3::after{content:"Always wrong"}
+html[data-theme="menta"] #conditionalsScreen,html[data-theme="menta"] #verbTensesScreen,html[data-theme="menta"] .cond-hdr,html[data-theme="menta"] .cond-frame,html[data-theme="menta"] .sbody,html[data-theme="menta"] .sctrl,html[data-theme="menta"] .qhdr,html[data-theme="menta"] .qbody,html[data-theme="menta"] .shdr,html[data-theme="menta"] .nav-row,html[data-theme="menta"] .fc-back,html[data-theme="menta"] .fc-front,html[data-theme="menta"] .card-modal,html[data-theme="menta"] .card-dialog,html[data-theme="menta"] .modal-content,html[data-theme="menta"] .qe-card,html[data-theme="menta"] .turn-banner,html[data-theme="menta"] .score-card{background:#effcf8!important;color:#214b40!important;border-color:#9bd8c7!important}
+html[data-theme="menta"] .hbtn,html[data-theme="menta"] .btn-main,html[data-theme="menta"] .btn-sec,html[data-theme="menta"] .btn-start-3d,html[data-theme="menta"] .btn-cancel-3d,html[data-theme="menta"] .modal-btn,html[data-theme="menta"] .rbtn,html[data-theme="menta"] .nav-btn,html[data-theme="menta"] .fc-home-btn,html[data-theme="menta"] .fc-flip-btn,html[data-theme="menta"] .fc-verify-btn,html[data-theme="menta"] .fc-img-btn,html[data-theme="menta"] .fc-view-img-btn,html[data-theme="menta"] .fc-icon-edit-btn,html[data-theme="menta"] .btn-audio{background:#d8f2e9!important;color:#214b40!important;border-color:#9bd8c7!important;box-shadow:0 4px 0 #8ecbb8!important}
+html[data-theme="menta"] .hbtn:hover,html[data-theme="menta"] .btn-main:hover,html[data-theme="menta"] .btn-sec:hover,html[data-theme="menta"] .modal-btn:hover,html[data-theme="menta"] .nav-btn:hover{background:#bfe5d6!important}
+html[data-theme="menta"] input,html[data-theme="menta"] textarea,html[data-theme="menta"] select{background:#f8fffc!important;color:#214b40!important;border-color:#9bd8c7!important;box-shadow:0 3px 0 #b7e2d3!important}
+html[data-theme="menta"] .cond-title,html[data-theme="menta"] .shdr-title,html[data-theme="menta"] .qtitle,html[data-theme="menta"] .fc-word,html[data-theme="menta"] .fc-back-word,html[data-theme="menta"] .card-dialog h3,html[data-theme="menta"] .card-dialog label{color:#34725f!important}
+html[data-theme="menta"] .fc-sec,html[data-theme="menta"] .fc-sec-row,html[data-theme="menta"] .fc-sec-row-3{background:#dff7ef!important;border-color:#b7e2d3!important;color:#214b40!important}
+html[data-theme="menta"] .fc-ex-tr,html[data-theme="menta"] .fc-tap,html[data-theme="menta"] .editable-hint{color:#4f8f7a!important}
+html[data-theme="menta"] .fc-status-0{background:#bfe5d6!important;color:#214b40!important;border-color:#8ecbb8!important}
+html[data-theme="menta"] .fc-status-btn.verified{background:#4f9d82!important;color:#fff!important}
+html[data-theme="menta"] .theme-btn{background:#d8f2e9!important;border-color:#9bd8c7!important;color:#34725f!important;box-shadow:0 3px 0 #8ecbb8!important}
+/* Every selected palette must cover the whole app, including components with legacy fixed colours. */
+html[data-theme] #home,html[data-theme] #nameScreen,html[data-theme] #quizScreen,html[data-theme] #resultsScreen,html[data-theme] #studyScreen,html[data-theme] #quizEditorScreen,html[data-theme] #conditionalsScreen,html[data-theme] #verbTensesScreen,html[data-theme] #usefulEnglishScreen,html[data-theme] #themeScreen{background:var(--cream)!important;color:var(--text)!important}
+html[data-theme] body{background:var(--cream)!important;color:var(--text)!important}
+html[data-theme] .mode-btn,html[data-theme] .total-badge,html[data-theme] .btn-toggle-sound,html[data-theme] .motivational-btn,html[data-theme] .theme-panel,html[data-theme] .theme-option,html[data-theme] .pcard,html[data-theme] .cat-btn,html[data-theme] .lvl-btn,html[data-theme] .qc-btn,html[data-theme] .qcard,html[data-theme] .rcard,html[data-theme] .sctrl,html[data-theme] .shdr,html[data-theme] .qhdr,html[data-theme] .qbody,html[data-theme] .sbody,html[data-theme] .cond-hdr,html[data-theme] .cond-frame,html[data-theme] .nav-row,html[data-theme] .fc-face,html[data-theme] .fc-sec,html[data-theme] .card-modal,html[data-theme] .card-dialog,html[data-theme] .modal-content,html[data-theme] .qe-card,html[data-theme] .turn-banner,html[data-theme] .score-card{background:var(--white)!important;color:var(--text)!important;border-color:var(--border)!important}
+html[data-theme] .mode-btn,html[data-theme] .total-badge,html[data-theme] .btn-toggle-sound,html[data-theme] .nav-btn,html[data-theme] .hbtn,html[data-theme] .btn-main,html[data-theme] .btn-sec,html[data-theme] .btn-start-3d,html[data-theme] .btn-cancel-3d,html[data-theme] .modal-btn,html[data-theme] .rbtn,html[data-theme] .fc-home-btn,html[data-theme] .fc-flip-btn,html[data-theme] .fc-verify-btn,html[data-theme] .fc-img-btn,html[data-theme] .fc-view-img-btn,html[data-theme] .fc-icon-edit-btn,html[data-theme] .btn-audio{background:var(--br1)!important;color:var(--br5)!important;border-color:var(--border)!important;box-shadow:0 4px 0 var(--br2)!important}
+html[data-theme] .mode-btn .lbl,html[data-theme] .mode-btn .slbl,html[data-theme] .subtitle,html[data-theme] .motivational-text,html[data-theme] .section-label,html[data-theme] .fc-counter,html[data-theme] .fc-tap,html[data-theme] .editable-hint,html[data-theme] .fc-ex-tr{color:var(--text2)!important}
+html[data-theme] .badge,html[data-theme] input,html[data-theme] textarea,html[data-theme] select{background:var(--white)!important;color:var(--text)!important;border-color:var(--border)!important}
+html[data-theme] .cat-btn.on,html[data-theme] .lvl-btn.on,html[data-theme] .qc-btn.on,html[data-theme] .flt-btn.on,html[data-theme] .study-filter-btn.active{background:var(--br2)!important;color:var(--br5)!important}
+html[data-theme] .study-filter-btn{background:var(--br1)!important;color:var(--br5)!important;border:1px solid var(--border)!important;box-shadow:0 3px 0 var(--br2)!important}
+html[data-theme] .study-filter-btn.active{background:var(--br2)!important;color:var(--br5)!important;box-shadow:0 3px 0 var(--br3)!important}
+html[data-theme] .flt-btn{background:var(--br1)!important;color:var(--br4)!important;border:1px solid var(--border)!important;box-shadow:0 3px 0 var(--br2)!important}
+html[data-theme] .flt-btn.on{background:var(--br2)!important;color:var(--br5)!important;box-shadow:0 3px 0 var(--br2)!important}
+html[data-theme] .flt-btn[data-flt="all"],html[data-theme] .flt-btn[data-flt="all"].on{background:var(--br1)!important;color:var(--br5)!important;border:1.5px solid var(--br2)!important;box-shadow:0 2px 0 color-mix(in srgb,var(--br2) 65%,var(--white))!important}
+html[data-theme] .flt-btn[data-flt="all"]:hover{box-shadow:0 1px 0 color-mix(in srgb,var(--br2) 65%,var(--white))!important}
+html[data-theme] .filter-row::-webkit-scrollbar-thumb{background:var(--br2)!important}
+html[data-theme] .theme-btn{width:min(100%,360px)!important;box-sizing:border-box!important;height:44px!important;min-height:44px!important;max-height:44px!important;flex:0 0 44px!important;flex-direction:row!important;align-self:center!important;justify-content:center!important;padding:5px 14px!important;gap:8px!important;box-shadow:0 3px 0 var(--br2)!important;overflow:hidden!important}
+html[data-theme] .theme-btn .ico{font-size:18px!important;line-height:1!important}html[data-theme] .theme-btn .lbl{font-size:11px!important;line-height:1.1!important}html[data-theme] .theme-btn .lbl strong,html[data-theme] .theme-btn .lbl span{display:inline!important;font-size:11px!important;margin:0!important}html[data-theme] .theme-btn .lbl span:before{content:" · "}html[data-theme] .theme-btn .slbl{display:none!important}
+/* Verification state is intentionally independent from the selected palette. */
+.fc-verify-btn:not(.verified){background:#d95f59!important;color:#fff!important;border-color:#c94b45!important;box-shadow:0 4px 0 #b83f3a,0 6px 10px rgba(184,63,58,.18)!important}
+.fc-verify-btn:not(.verified):hover{background:#e36f68!important;box-shadow:0 2px 0 #b83f3a,0 4px 6px rgba(184,63,58,.18)!important}
+.fc-verify-btn.verified{background:#55a66b!important;color:#fff!important;border-color:#438e58!important;box-shadow:0 4px 0 #367a49,0 6px 10px rgba(54,122,73,.18)!important}
+.fc-verify-btn.verified:hover{background:#65b77a!important;box-shadow:0 2px 0 #367a49,0 4px 6px rgba(54,122,73,.18)!important}
+html[data-theme] .fc-verify-btn:not(.verified),html[data-theme] .fc-verify-btn:not(.verified):hover{background:#d95f59!important;color:#fff!important;border-color:#c94b45!important;box-shadow:0 4px 0 #b83f3a,0 6px 10px rgba(184,63,58,.18)!important;filter:none!important}
+html[data-theme] .fc-verify-btn.verified,html[data-theme] .fc-verify-btn.verified:hover{background:#55a66b!important;color:#fff!important;border-color:#438e58!important;box-shadow:0 4px 0 #367a49,0 6px 10px rgba(54,122,73,.18)!important;filter:none!important}
+html[data-theme] .title-flip-back{background:var(--white)!important;border-color:var(--border)!important;color:var(--text)!important;overflow:visible!important;flex-wrap:wrap!important;align-content:center!important;padding:6px 8px!important}
+html[data-theme] .title-flip-back .logo-img{flex:0 0 auto!important;max-width:42px!important}
+html[data-theme] .title-flip-back div{white-space:normal!important;overflow-wrap:anywhere!important;word-break:break-word!important;line-height:1.15!important;flex:1 1 100%!important;text-align:left!important;font-size:clamp(8px,2.5vw,12px)!important}
 .toast-msg { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: white; padding: 10px 20px; border-radius: 20px; z-index: 10000; font-family: Arial, sans-serif; font-weight: bold; opacity: 1; transition: opacity 0.5s; pointer-events: none; }
 </style>
 
@@ -819,20 +886,22 @@ window.addEventListener('message', function(event) {
     "Today is the beginning of everything you want."
   ];
 
+  window.QUOTES_ES.push("No hay mal que por bien no venga.");
+  window.QUOTES_EN.push("Every cloud has a silver lining.");
+  window.QUOTES_ES.push("No sabían que era imposible, así que lo hicieron.");
+  window.QUOTES_EN.push("They did not know it was impossible, so they did it.");
   window.currentQuoteIndex = -1;
-  window.currentQuoteLang = 'es';
+  window.currentQuoteLang = 'en';
 
   window.nextMotivationalQuote = function(e) {
     if (e && typeof playPopSound === 'function') playPopSound();
     
     if (window.currentQuoteIndex === -1) {
-      window.currentQuoteIndex = Math.floor(Math.random() * window.QUOTES_ES.length);
+      window.currentQuoteIndex = Math.floor(Math.random() * Math.min(window.QUOTES_ES.length, window.QUOTES_EN.length));
       window.currentQuoteLang = 'es';
-    } else if (window.currentQuoteLang === 'es') {
-      window.currentQuoteLang = 'en';
     } else {
-      window.currentQuoteIndex = (window.currentQuoteIndex + 1) % window.QUOTES_ES.length;
-      window.currentQuoteLang = 'es';
+      window.currentQuoteLang = window.currentQuoteLang === 'es' ? 'en' : 'es';
+      if (window.currentQuoteLang === 'es') window.currentQuoteIndex = (window.currentQuoteIndex + 1) % window.QUOTES_ES.length;
     }
     
     const textEl = document.getElementById('motivationalText');
@@ -863,10 +932,10 @@ window.addEventListener('message', function(event) {
 <div id="home" class="screen active" style="position: relative;">
 <div style="display: inline-flex; align-items: center; justify-content: center; gap: 15px; margin: 20px auto 0; max-width: 100%;">
   <!-- Logo_angles.JPG -->
-  <img src="Logo_angles.JPG" style="width: clamp(80px, 20vw, 120px); height: clamp(80px, 20vw, 120px); object-fit: contain; border-radius: 12px; flex-shrink: 0; mix-blend-mode: multiply;">
+  <img id="homeLogo" src="Logo_angles.JPG" onerror="this.src=document.querySelector('link[rel=\"apple-touch-icon\"]')?.href || 'Logo_angles.JPG';" alt="English App" style="width: clamp(80px, 20vw, 120px); height: clamp(80px, 20vw, 120px); object-fit: contain; border-radius: 12px; flex-shrink: 0; mix-blend-mode: multiply;">
   
   <!-- Titulo y Badge -->
-  <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 4px; margin-top: 5px;">
+  <div class="home-title-wrap" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 4px; margin-top: 5px;">
     <div class="badge" style="margin-bottom: -5px;">English</div>
     
     <div class="title-flip-scene" onclick="this.classList.toggle('flipped')">
@@ -886,81 +955,94 @@ window.addEventListener('message', function(event) {
 
   <p class="subtitle">Master vocabulary, verbs, conditionals, phrasal verbs and more...</p>
   <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V32</div>
+    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V33</div>
     <div class="total-badge" onclick="playPopSound(); showStatsModal()" style="cursor:pointer;" title="Ver tarjetas por secciones">Total: <b id="totalFlashcards">0</b> &nbsp;&nbsp;flashcards</div>
     <button id="btnToggleSound" class="btn-toggle-sound" onclick="toggleSound(event)" title="Activar/Desactivar Sonidos">🔊</button>
   </div>
 
   <div class="mode-row">
-    <div class="mode-btn study" id="btnStudyMode" onclick="playPopSound();"><div class="ico">📚</div><div class="lbl"><strong>Study Mode</strong><span>Modo Estudio</span></div><div class="slbl">Repasa las flashcards</div></div>
-    <div class="mode-btn quiz" id="btnQuizMode" onclick="playPopSound();"><div class="ico">🎯</div><div class="lbl"><strong>Quiz Mode</strong><span>Modo Quiz</span></div><div class="slbl">Ponte a prueba</div></div>
-      <div class="mode-btn cond" id="btnConditionalsMode" onclick="playPopSound();"><div class="ico">📖</div><div class="lbl"><strong>Conditionals</strong><span>Condicionales</span></div><div class="slbl">Repasa todos los condicionales</div></div>
-      <div class="mode-btn tenses" id="btnVerbTensesMode" onclick="playPopSound();"><div class="ico">✎</div><div class="lbl"><strong>Verb Tenses</strong><span>Tiempos verbales</span></div><div class="slbl">Practica los tiempos verbales</div></div>
+    <div class="mode-btn study" id="btnStudyMode" onclick="playPopSound();"><div class="ico">📚</div><div class="lbl"><strong>Study Mode</strong><span>Review flashcards</span></div><div class="slbl">Practise your vocabulary</div></div>
+    <div class="mode-btn quiz" id="btnQuizMode" onclick="playPopSound();"><div class="ico">🎯</div><div class="lbl"><strong>Quiz Mode</strong><span>Test yourself</span></div><div class="slbl">Put your knowledge to the test</div></div>
+      <div class="mode-btn cond" id="btnConditionalsMode" onclick="playPopSound();"><div class="ico">📖</div><div class="lbl"><strong>Conditionals</strong><span>Conditionals</span></div><div class="slbl">Review all conditionals</div></div>
+      <div class="mode-btn tenses" id="btnVerbTensesMode" onclick="playPopSound();"><div class="ico">✎</div><div class="lbl"><strong>Verb Tenses</strong><span>Verb tenses</span></div><div class="slbl">Practise verb tenses</div></div>
 
   </div>
   
   <div style="padding: 0 20px; margin: 15px 0 20px 0;">
-    <button id="btnMotivational" type="button" class="motivational-btn" onclick="nextMotivationalQuote(event)" title="Cambiar frase">
+    <button id="btnMotivational" type="button" class="motivational-btn" onclick="nextMotivationalQuote(event)" title="Change quote">
       <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 10px;">
-        <span class="motivational-text" id="motivationalText">Pulsa aquí para inspirarte ✨</span>
-        <span class="motivational-lang" id="motivationalLang" style="font-size: 16px; flex-shrink: 0;">🇪🇸</span>
+        <span class="motivational-text" id="motivationalText">Tap here for inspiration ✨</span>
+        <span class="motivational-lang" id="motivationalLang" style="font-size: 16px; flex-shrink: 0;">🇬🇧</span>
       </div>
     </button>
   </div>
 
+  <button id="btnThemeMode" type="button" class="mode-btn theme-btn" onclick="openThemePicker(); playPopSound();" title="Change app theme" style="width:min(100%,360px)!important; box-sizing:border-box!important; height:44px!important; min-height:44px!important; max-height:44px!important; flex:0 0 44px!important; flex-direction:row!important; align-self:center!important; justify-content:center!important; overflow:hidden!important;">
+    <div class="ico">🎨</div><div class="lbl"><strong>Theme</strong><span>App colours</span></div><div class="slbl">Choose a pastel palette</div>
+  </button>
+
   <div class="export-row">
 
-<button class="btn-sec" id="btnExportData" type="button" style="opacity:0.6; font-size:11px;">Exportar todos los datos</button>
+<button class="btn-sec" id="btnExportData" type="button" style="opacity:0.6; font-size:11px;">Export all data</button>
 <label class="btn-sec" style="opacity:0.6; font-size:11px; cursor:pointer;">
-  Importar todos los datos
+  Import all data
   <input type="file" id="inpImportData" accept=".json" style="display:none;">
 </label>
-<button class="btn-sec" id="btnExportHtml" type="button" style="opacity:0.6; font-size:11px;">Descargar HTML con mis cambios</button>
-<button class="btn-sec" type="button" onclick="openCopyright(event)" style="opacity:0.6; font-size:16px; width:32px; height:32px; padding:0; display:flex; align-items:center; justify-content:center; border-radius:8px;" title="Copyright y Licencia">©</button>
+<button class="btn-sec" id="btnExportHtml" type="button" style="opacity:0.6; font-size:11px;">Download HTML with my changes</button>
+<button class="btn-sec" type="button" onclick="openCopyright(event)" style="opacity:0.6; font-size:16px; width:32px; height:32px; padding:0; display:flex; align-items:center; justify-content:center; border-radius:8px;" title="Copyright and licence">©</button>
 
 </div>
 
   <div id="quizSetup" style="display:none;width:100%;flex-direction:column;align-items:center;gap:14px">
-    <div class="section-label"><span class="must-pick">① Categorías</span> <span style="font-weight:400">(una o varias)</span></div>
+    <div class="section-label"><span class="must-pick">① Categories</span> <span style="font-weight:400">(choose one or more)</span></div>
     <div class="cat-grid" id="catGrid">
-      <div class="cat-btn on" data-cat="adverb"><b>300</b>Adverbios<span class="ck">✓</span></div>
-      <div class="cat-btn on" data-cat="adjective"><b>300</b>Adjetivos<span class="ck">✓</span></div>
+      <div class="cat-btn on" data-cat="adverb"><b>300</b>Adverbs<span class="ck">✓</span></div>
+      <div class="cat-btn on" data-cat="adjective"><b>300</b>Adjectives<span class="ck">✓</span></div>
       <div class="cat-btn on" data-cat="phrasal"><b>300</b>Phrasal V.<span class="ck">✓</span></div>
-      <div class="cat-btn on" data-cat="connector"><b>100</b>Conectores<span class="ck">✓</span></div>
-      <div class="cat-btn on" data-cat="starter"><b>150</b>Inicios<span class="ck">✓</span></div>
-      <div class="cat-btn on" data-cat="verb"><b>150</b>Verbos<span class="ck">✓</span></div>
-      <div class="cat-btn on" data-cat="other"><b>0</b>Otros<span class="ck">✓</span></div>
+      <div class="cat-btn on" data-cat="connector"><b>100</b>Connectors<span class="ck">✓</span></div>
+      <div class="cat-btn on" data-cat="starter"><b>150</b>Starters<span class="ck">✓</span></div>
+      <div class="cat-btn on" data-cat="verb"><b>150</b>Verbs<span class="ck">✓</span></div>
+      <div class="cat-btn on" data-cat="other"><b>0</b>Other<span class="ck">✓</span></div>
     </div>
-    <span class="val-hint" id="catHint">⚠ Selecciona al menos una categoría</span>
-    <div class="section-label"><span>Niveles</span> <span style="font-weight:400">(opcional)</span></div>
+    <span class="val-hint" id="catHint">⚠ Select at least one category</span>
+    <div class="section-label"><span>Levels</span> <span style="font-weight:400">(optional)</span></div>
     <div class="cat-grid" id="lvlGrid">
       <div class="lvl-btn" data-lvl="b2_1"><b>0</b>B2.1<span class="ck">✓</span></div>
       <div class="lvl-btn" data-lvl="b2_2"><b>0</b>B2.2<span class="ck">✓</span></div>
       <div class="lvl-btn" data-lvl="c1"><b>0</b>C1<span class="ck">✓</span></div>
     </div>
-    <div class="section-label"><span class="must-pick">② Nº de preguntas</span></div>
+    <div class="section-label"><span class="must-pick">② Number of questions</span></div>
     <div class="qcount-row">
-      <div class="qc-btn" id="qc5" data-n="5"><b>5</b>Preguntas<span class="ck">✓</span></div>
-      <div class="qc-btn" id="qc10" data-n="10"><b>10</b>Preguntas<span class="ck">✓</span></div>
-      <div class="qc-btn on" id="qc20" data-n="20"><b>20</b>Preguntas<span class="ck">✓</span></div>
+      <div class="qc-btn" id="qc5" data-n="5"><b>5</b>Questions<span class="ck">✓</span></div>
+      <div class="qc-btn" id="qc10" data-n="10"><b>10</b>Questions<span class="ck">✓</span></div>
+      <div class="qc-btn on" id="qc20" data-n="20"><b>20</b>Questions<span class="ck">✓</span></div>
     </div>
-    <div class="section-label"><span class="must-pick">③ Jugadores</span></div>
+    <div class="section-label"><span class="must-pick">③ Players</span></div>
     <div class="pcards">
-      <div class="pcard sel" id="btn1p"><div class="ico">🧑</div><div class="lbl"><strong>1 Player</strong><span>1 Jugador</span></div><div class="slbl">Solitario</div></div>
-      <div class="pcard" id="btn2p"><div class="ico">👫</div><div class="lbl"><strong>2 Players</strong><span>2 Jugadores</span></div><div class="slbl">Turno a turno</div></div>
+      <div class="pcard sel" id="btn1p"><div class="ico">🧑</div><div class="lbl"><strong>1 Player</strong><span>Solo player</span></div><div class="slbl">Solo mode</div></div>
+      <div class="pcard" id="btn2p"><div class="ico">👫</div><div class="lbl"><strong>2 Players</strong><span>Two players</span></div><div class="slbl">Take turns</div></div>
     </div>
     <div style="display:flex; gap:16px; margin-top:20px; align-items:flex-end;">
-      <button class="btn-cancel-3d" id="btnCancelQuizSetup" type="button" onclick="hideQuizSetup()"><strong>← Cancelar</strong></button>
-      <button class="btn-start-3d" id="btnStart"><strong>Start Quiz →</strong><span>Empezar Quiz</span></button>
+    <button class="btn-cancel-3d" id="btnCancelQuizSetup" type="button" onclick="hideQuizSetup()"><strong>← Cancel</strong></button>
+      <button class="btn-start-3d" id="btnStart"><strong>Start Quiz →</strong><span>Start the quiz</span></button>
     </div>
-    <button class="btn-edit-subtle" id="btnQuizTopEdit" type="button">✎ Editar preguntas del quiz</button>
+    <button class="btn-edit-subtle" id="btnQuizTopEdit" type="button">✎ Edit quiz questions</button>
+  </div>
+</div>
+
+<div id="themeScreen" class="screen theme-screen">
+  <div class="theme-panel">
+    <h2>🎨 Colour themes</h2>
+    <p class="subtitle" style="max-width:none;">Customise the app colours. Your choice will be saved on this device.</p>
+    <div id="themeGrid" class="theme-grid"></div>
+    <button class="btn-sec" type="button" onclick="showScreen('home')">← Back to home</button>
   </div>
 </div>
 
 <div id="conditionalsScreen" class="screen">
   <div class="cond-hdr">
     <span class="cond-title">📖 Conditionals</span>
-    <button class="hbtn" id="btnConditionalsHome">⌂ Inicio</button>
+    <button class="hbtn" id="btnConditionalsHome">⌂ Home</button>
   </div>
   <iframe class="cond-frame" id="conditionalsFrame" title="Conditionals"></iframe>
 
@@ -970,7 +1052,7 @@ window.addEventListener('message', function(event) {
 <div id="verbTensesScreen" class="screen">
   <div class="cond-hdr">
     <span class="cond-title">Verb Tenses</span>
-    <button class="hbtn" id="btnVerbTensesHome">Inicio</button>
+    <button class="hbtn" id="btnVerbTensesHome">Home</button>
   </div>
   <iframe class="cond-frame" id="verbTensesFrame" title="Verb Tenses"></iframe>
 
@@ -979,13 +1061,13 @@ window.addEventListener('message', function(event) {
 
 <div id="studyScreen" class="screen">
   <div class="shdr">
-    <button class="hbtn" id="btnStudyHome">⌂ Inicio</button>
+    <button class="hbtn" id="btnStudyHome">⌂ Home</button>
     <div class="top-btns-scroll">
       <div class="top-btns-inner">
-        <button class="hbtn" id="btnStudyTopEdit" type="button" style="--btn-bg:var(--br4); --btn-sh:var(--br5);">✎ Editar</button>
+        <button class="hbtn" id="btnStudyTopEdit" type="button" style="--btn-bg:var(--br4); --btn-sh:var(--br5);">✎ Edit</button>
         <button class="hbtn" id="btnStudyTopView" type="button" style="display:none; --btn-bg:#e0e5cd; --btn-sh:#c4ccaa; --btn-color:#4b5e3d;">👁️ Editando</button>
-        <button class="hbtn" id="btnStudyTopSave" type="button" style="display:none; --btn-bg:#cce5ff; --btn-sh:#b8daff; --btn-color:#004085;">💾 Exportar</button>
-        <button class="hbtn" id="btnStudyTopPdf" type="button" style="display:none; --btn-bg:#e0d0b8; --btn-sh:#c4b094; --btn-color:#5d3b1f;">📄 Exportar PDF</button>
+        <button class="hbtn" id="btnStudyTopSave" type="button" style="display:none; --btn-bg:#cce5ff; --btn-sh:#b8daff; --btn-color:#004085;">💾 Export</button>
+        <button class="hbtn" id="btnStudyTopPdf" type="button" style="display:none; --btn-bg:#e0d0b8; --btn-sh:#c4b094; --btn-color:#5d3b1f;">📄 Export PDF</button>
         <button class="hbtn" onclick="toggleMEstudio()" type="button" style="--btn-bg:var(--br2); --btn-sh:var(--br3); --btn-color:var(--br5); padding-left:10px; padding-right:10px; text-transform:none; letter-spacing:normal;">M.Estudio</button>
       </div>
     </div>
@@ -994,93 +1076,93 @@ window.addEventListener('message', function(event) {
     <div class="study-search-row" style="flex-direction: column; gap: 10px; width: 100%;">
       <!-- Buscador entero -->
       <div class="search-box" style="width: 100%;">
-        <input class="search-inp" id="searchInp" placeholder="Buscar por inglés, español o tipo..." style="padding-left: 12px; width: 100%; box-sizing: border-box;" onfocus="this.value=''; this.dispatchEvent(new Event('input', { bubbles: true }));">
+        <input class="search-inp" id="searchInp" placeholder="Search by English word, translation or type..." style="padding-left: 12px; width: 100%; box-sizing: border-box;" onfocus="this.value=''; this.dispatchEvent(new Event('input', { bubbles: true }));">
       </div>
       
       <!-- Botones de control (Scrollable) -->
       <div class="filter-row" style="gap: 8px; align-items: stretch; width: 100%; margin-bottom: 0; padding-bottom: 8px;">
-        <button class="study-filter-btn" id="btnClearFilters" type="button">Limpiar Filtros</button>
+        <button class="study-filter-btn" id="btnClearFilters" type="button">Clear filters</button>
         <select class="study-filter-btn" id="selStudyStatus" onchange="toggleStatusFilter(parseInt(this.value))">
-          <option value="0">Estado: Todos</option>
-          <option value="2">Repasar</option>
-          <option value="3">Siempre me equivoco</option>
-          <option value="1">Ya me la sé</option>
+          <option value="0">Status: All</option>
+          <option value="2">Review</option>
+          <option value="3">Always wrong</option>
+          <option value="1">Already know</option>
         </select>
-        <button class="study-filter-btn" id="btnStudyFav" type="button" onclick="toggleFavFilter()" style="background:var(--br1);">☆ Favoritos</button>
+        <button class="study-filter-btn" id="btnStudyFav" type="button" onclick="toggleFavFilter()" style="background:var(--br1);">☆ Favourites</button>
         <button class="study-filter-btn" id="btnStudyRandom" title="Palabra random">↯ Random</button>
-        <button class="study-filter-btn" id="btnReverseStudy" type="button" onclick="toggleReverseStudy()">Al Revés (Off)</button>
-        <button class="study-filter-btn" id="btnToggleVerifyBtn" type="button" onclick="toggleHideVerify()">Ocultar Validar</button>
+        <button class="study-filter-btn" id="btnReverseStudy" type="button" onclick="toggleReverseStudy()">Reverse (Off)</button>
+        <button class="study-filter-btn" id="btnToggleVerifyBtn" type="button" onclick="toggleHideVerify()">Hide verify</button>
         <select id="lvlFilterSel" class="study-filter-btn">
-          <option value="all">Nivel</option>
+          <option value="all">Level</option>
           <option value="b2_1">B2.1</option>
           <option value="b2_2">B2.2</option>
           <option value="c1">C1</option>
-          <option value="none">Sin nivel asignado</option>
+          <option value="none">No level assigned</option>
         </select>
         <select id="regFilterSel" class="study-filter-btn">
-          <option value="all">Registro</option>
-          <option value="neutral">Neutro</option>
+          <option value="all">Register</option>
+          <option value="neutral">Neutral</option>
           <option value="formal">Formal</option>
           <option value="informal">Informal</option>
-          <option value="">No informado</option>
+          <option value="">Not specified</option>
         </select>
         <select id="cefrFilterSel" class="study-filter-btn">
-          <option value="all">Curso (CEFR)</option>
+          <option value="all">Course (CEFR)</option>
           <option value="a1">A1</option>
           <option value="a2">A2</option>
           <option value="b1">B1</option>
           <option value="b2">B2</option>
           <option value="c1">C1</option>
           <option value="c2">C2</option>
-          <option value="none">Sin especificar</option>
+          <option value="none">Not specified</option>
         </select>
         <select id="verifyFilterSel" class="study-filter-btn" onchange="toggleVerifyFilter(this.value)">
-          <option value="all">Validación</option>
+          <option value="all">Verification</option>
           <option value="yes">🟢 Validado</option>
-          <option value="no">🔴 Validar</option>
+          <option value="no">🔴 No validado</option>
         </select>
-        <button class="study-filter-btn" id="btnAddFlashcard" type="button" style="background:var(--br1);">Crear flashcard</button>
+        <button class="study-filter-btn" id="btnAddFlashcard" type="button" style="background:var(--br1);">Create flashcard</button>
       </div>
     </div>
     <div class="filter-row" id="filterRow">
-      <div class="flt-btn on" data-flt="all">Todas (1300)</div>
+      <div class="flt-btn on" data-flt="all">All (1300)</div>
       <div class="flt-btn lvl-flt-btn" data-lvlflt="b2_1">B2.1</div>
       <div class="flt-btn lvl-flt-btn" data-lvlflt="b2_2">B2.2</div>
       <div class="flt-btn lvl-flt-btn" data-lvlflt="c1">C1</div>
-      <div class="flt-btn" data-flt="noun">Sustantivos</div>
-      <div class="flt-btn" data-flt="verb">Verbos</div>
-      <div class="flt-btn" data-flt="adjective">Adjetivos</div>
-      <div class="flt-btn" data-flt="adverb">Adverbios</div>
+      <div class="flt-btn" data-flt="noun">Nouns</div>
+      <div class="flt-btn" data-flt="verb">Verbs</div>
+      <div class="flt-btn" data-flt="adjective">Adjectives</div>
+      <div class="flt-btn" data-flt="adverb">Adverbs</div>
       <div class="flt-btn" data-flt="idiom">Idioms</div>
-      <div class="flt-btn" data-flt="nounverb">Sust & Verb</div>
+      <div class="flt-btn" data-flt="nounverb">Noun & Verb</div>
       <div class="flt-btn" data-flt="adjverb">Adj & Verb</div>
       <div class="flt-btn" data-flt="phrasal">Phrasal V.</div>
-      <div class="flt-btn" data-flt="connector">Conectores</div>
-      <div class="flt-btn" data-flt="starter">Inicios</div>
-      <div class="flt-btn" data-flt="other">Otros</div>
+      <div class="flt-btn" data-flt="connector">Connectors</div>
+      <div class="flt-btn" data-flt="starter">Starters</div>
+      <div class="flt-btn" data-flt="other">Other</div>
     </div>
   </div>
   <div class="sbody">
     <div class="flashcard" id="flashcard">
-      <button class="fc-delete-btn" id="fcDeleteBtn" title="Borrar flashcard" type="button" onclick="event.stopPropagation(); deleteCurrentCard();">🗑️</button>
+      <button class="fc-delete-btn" id="fcDeleteBtn" title="Delete flashcard" type="button" onclick="event.stopPropagation(); deleteCurrentCard();">🗑️</button>
       <div id="fcCopyMenuWrap" class="fc-edit-only" style="position:absolute; bottom:12px; left:12px; z-index:25; display:none;">
         <button class="fc-copy-btn" id="fcCopyBtn" title="Opciones de copia" type="button" onclick="event.stopPropagation(); toggleCopyMenu();" style="position:static; display:flex !important;">📋</button>
         <div id="fcCopyMenu" style="display:none; position:absolute; bottom:50px; left:0; background:white; border:2px solid var(--border1); border-radius:12px; box-shadow:0 8px 16px rgba(0,0,0,0.15); padding:8px; flex-direction:column; gap:6px; width:260px; text-align:left;">
           <button type="button" class="btn-sec" onclick="event.stopPropagation(); toggleCopyMenu(); copyCurrentCard();" style="width:100%; text-align:left; justify-content:flex-start;">📋 Copiar Solo Texto</button>
-          <button type="button" class="btn-sec" onclick="event.stopPropagation(); toggleCopyMenu(); copyCardAsImage();" style="width:100%; text-align:left; justify-content:flex-start;">🖼️ Copiar Imagen (Cara y Cruz)</button>
+          <button type="button" class="btn-sec" onclick="event.stopPropagation(); toggleCopyMenu(); copyCardAsImage();" style="width:100%; text-align:left; justify-content:flex-start;">🖼️ Copy image (front and back)</button>
         </div>
       </div>
       <div class="fc-inner">
         <div class="fc-face fc-front">
           <div class="fc-top-btns" style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;">
             <div style="display:flex; justify-content: flex-start;">
-              <button class="fc-home-btn" id="fcHomeBtnFront" type="button" aria-label="Ir al inicio">⌂ Inicio</button>
+              <button class="fc-home-btn" id="fcHomeBtnFront" type="button" aria-label="Go home">⌂ Home</button>
             </div>
             <div style="display:flex; justify-content: center;">
-              <button class="fc-verify-btn" id="fcVerifyFront" type="button" title="Marcar como validada" onclick="toggleStudyVerify(event)">○ Validar</button>
+              <button class="fc-verify-btn" id="fcVerifyFront" type="button" title="Mark as verified" onclick="toggleStudyVerify(event)">○ NO VALIDADO</button>
             </div>
             <div style="display:flex; justify-content: flex-end; align-items: center; gap: 15px;">
-              <button class="fc-flip-btn" id="fcFlipBtnFront" type="button" aria-label="Voltear carta">⟳ Voltear</button>
+              <button class="fc-flip-btn" id="fcFlipBtnFront" type="button" aria-label="Flip card">⟳ Flip</button>
             </div>
           </div>
           <div class="fc-word-wrap" style="margin-bottom: 15px; margin-top: 5px; display:inline-flex; align-items:center; justify-content:center; gap:8px;">
@@ -1091,14 +1173,14 @@ window.addEventListener('message', function(event) {
             <div id="fcDrawingWrap" class="fc-drawing" style="display:flex; justify-content:center; align-items:center; overflow:hidden; border-radius:8px; flex: 1 1 auto; min-height: 0; width: 100%;"></div>
             <div class="fc-image-actions fc-edit-only" style="display:flex; gap: 8px; margin-top: 12px;" onclick="event.stopPropagation()">
               <label class="fc-img-btn" title="Subir foto">
-                📷 Subir
+                📷 Upload
                 <input type="file" id="fcImageUpload" accept="image/png, image/jpeg, image/webp" style="display:none;" onchange="handleImageUpload(event)">
               </label>
-              <button type="button" class="fc-img-btn fc-img-btn-red" id="fcImageDelete" title="Borrar foto" onclick="handleImageDelete(event)" style="display:none;">🗑️ Borrar</button>
+              <button type="button" class="fc-img-btn fc-img-btn-red" id="fcImageDelete" title="Delete photo" onclick="handleImageDelete(event)" style="display:none;">🗑️ Delete</button>
             </div>
           </div>
           <div style="display:flex; justify-content:center; align-items:center; gap:15px; margin-top: 10px; margin-bottom: 5px;">
-            <button class="btn-audio" id="btnPlayAudioUK" type="button" onclick="event.stopPropagation(); playCurrentWordAudio('UK')" title="Escuchar en Británico (UK)">🇬🇧</button>
+            <button class="btn-audio" id="btnPlayAudioUK" type="button" onclick="event.stopPropagation(); playCurrentWordAudio('UK')" title="Listen in British English (UK)">🇬🇧</button>
             <button class="btn-audio" id="btnPlayAudioUS" type="button" onclick="event.stopPropagation(); playCurrentWordAudio('US')" title="Escuchar en Americano (US)">🇺🇸</button>
             <button type="button" class="btn-audio fc-fav-btn" id="fcFavFront" onclick="event.stopPropagation(); toggleCardFav(event)" style="pointer-events:auto;" title="Favoritos">☆</button>
           </div>
@@ -1120,14 +1202,14 @@ window.addEventListener('message', function(event) {
           <div class="fc-back-header" style="flex-direction: column; align-items: center; gap: 12px;">
             <span class="fc-back-word" id="fcBackWord" onclick="copyToClipboard(event, this.textContent)" style="text-align: center; width: 100%; display: block; cursor:pointer;" title="Copiar palabra">—</span>
             <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
-              <button class="fc-verify-btn fc-verify-btn-back" id="fcVerifyBack" type="button" title="Marcar como validada" onclick="toggleStudyVerify(event)">○ Validar</button>
+              <button class="fc-verify-btn fc-verify-btn-back" id="fcVerifyBack" type="button" title="Mark as verified" onclick="toggleStudyVerify(event)">○ NO VALIDADO</button>
               <button class="fc-view-img-btn" onclick="openImageZoomModal(event)" title="Ver Imagen">🖼️</button>
-              <button class="fc-flip-btn fc-flip-btn-back" id="fcFlipBtnBack" type="button" aria-label="Voltear carta">⟳ Voltear</button>
+              <button class="fc-flip-btn fc-flip-btn-back" id="fcFlipBtnBack" type="button" aria-label="Flip card">⟳ Flip</button>
             </div>
           </div>
           <div class="fc-sec" data-sec="trans">
             <div class="fc-sec-lbl" style="display:flex; justify-content:space-between; align-items:center;">
-              <span>Traducción</span>
+              <span>Translation</span>
               <div style="display:flex; align-items:center;">
                 <button type="button" class="fc-edit-only" style="background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 6px; border-radius:6px; cursor:pointer; font-size:14px; box-shadow:0 2px 4px rgba(0,0,0,0.1); margin-right:4px;" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('insertText', false, '🔥 ');" onclick="event.stopPropagation()" title="Llamita color">🔥</button>
                 <button type="button" class="fc-edit-only" style="background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 6px; border-radius:6px; cursor:pointer; font-size:14px; box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('insertHTML', false, '<span style=\'filter: grayscale(100%);\'>🔥</span> ');" onclick="event.stopPropagation()" title="Llamita B/N"><span style="filter: grayscale(100%);">🔥</span></button>
@@ -1142,23 +1224,23 @@ window.addEventListener('message', function(event) {
               <div class="fc-sec-val" id="fcTypeVal">—</div>
               <select id="fcTypeSelect" class="fc-select-edit fc-edit-only" style="width:100%; margin-top:6px; padding:10px 14px; border-radius:12px; background:#eef7eb; border:1.5px solid #c4e1c3; color:#2c4230; font-weight:800; font-family:var(--fb); cursor:pointer; outline:none; box-shadow:0 4px 0 #c4e1c3;">
                 <option value="phrasal">Phrasal verb</option>
-                <option value="verb">Verbo</option>
-                <option value="adverb">Adverbio</option>
-                <option value="adjective">Adjetivo</option>
+                <option value="verb">Verb</option>
+                <option value="adverb">Adverb</option>
+                <option value="adjective">Adjective</option>
                 <option value="idiom">Idioms</option>
-                <option value="nounverb">Sustantivo y verbo</option>
-                <option value="adjverb">Adjetivo y verbo</option>
-                <option value="noun">Sustantivo</option>
-                <option value="connector">Conector</option>
-                <option value="starter">Inicio de frase</option>
-                <option value="other">Otros / Sin asignar</option>
+                <option value="nounverb">Noun and verb</option>
+                <option value="adjverb">Adjective and verb</option>
+                <option value="noun">Noun</option>
+                <option value="connector">Connector</option>
+                <option value="starter">Sentence starter</option>
+                <option value="other">Other / Unassigned</option>
               </select>
             </div>
             <div class="fc-sec" data-sec="level">
               <div class="fc-sec-lbl">Nivel</div>
               <div class="fc-sec-val" id="fcLevelVal">—</div>
               <select id="fcLevelSelect" class="fc-select-edit fc-edit-only" style="width:100%; margin-top:6px; padding:10px 14px; border-radius:12px; background:#eef7eb; border:1.5px solid #c4e1c3; color:#2c4230; font-weight:800; font-family:var(--fb); cursor:pointer; outline:none; box-shadow:0 4px 0 #c4e1c3;">
-                <option value="">Ninguno</option>
+                <option value="">None</option>
                 <option value="b2_1">B2.1</option>
                 <option value="b2_2">B2.2</option>
                 <option value="c1">C1</option>
@@ -1170,17 +1252,17 @@ window.addEventListener('message', function(event) {
               <div class="fc-sec-lbl">Registro</div>
               <div class="fc-sec-val" id="fcRegVal">—</div>
               <select id="fcRegSelect" class="fc-select-edit fc-edit-only" style="width:100%; margin-top:6px; padding:10px 14px; border-radius:12px; background:#eef7eb; border:1.5px solid #c4e1c3; color:#2c4230; font-weight:800; font-family:var(--fb); cursor:pointer; outline:none; box-shadow:0 4px 0 #c4e1c3;">
-                <option value="neutral">Neutro</option>
+                <option value="neutral">Neutral</option>
                 <option value="formal">Formal</option>
                 <option value="informal">Informal</option>
-                <option value="">No informado</option>
+                <option value="">Not specified</option>
               </select>
             </div>
             <div class="fc-sec" data-sec="cefr" style="flex:1;">
               <div class="fc-sec-lbl">Curso</div>
               <div class="fc-sec-val" id="fcCefrVal">—</div>
               <select id="fcCefrSelect" class="fc-select-edit fc-edit-only" style="width:100%; margin-top:6px; padding:10px 14px; border-radius:12px; background:#eef7eb; border:1.5px solid #c4e1c3; color:#2c4230; font-weight:800; font-family:var(--fb); cursor:pointer; outline:none; box-shadow:0 4px 0 #c4e1c3;">
-                <option value="">Sin especificar</option>
+                <option value="">Not specified</option>
                 <option value="a1">A1</option>
                 <option value="a2">A2</option>
                 <option value="b1">B1</option>
@@ -1190,19 +1272,19 @@ window.addEventListener('message', function(event) {
               </select>
             </div>
             <div class="fc-sec" data-sec="flag" style="flex:1;">
-              <div class="fc-sec-lbl">Variante</div>
+              <div class="fc-sec-lbl">Variant</div>
               <div class="fc-sec-val" id="fcFlagVal">—</div>
               <select id="fcFlagSelect" class="fc-select-edit fc-edit-only" style="width:100%; margin-top:6px; padding:10px 14px; border-radius:12px; background:#eef7eb; border:1.5px solid #c4e1c3; color:#2c4230; font-weight:800; font-family:var(--fb); cursor:pointer; outline:none; box-shadow:0 4px 0 #c4e1c3;">
-                <option value="">Sin especificar</option>
+                <option value="">Not specified</option>
                 <option value="uk">🇬🇧 UK</option>
                 <option value="us">🇺🇸 US</option>
-                <option value="both">🇬🇧🇺🇸 Ambas</option>
+                <option value="both">🇬🇧🇺🇸 Both</option>
               </select>
             </div>
           </div>
           <div class="fc-sec" data-sec="struct">
             <div class="fc-sec-lbl" style="display:flex; flex-direction:column; gap:8px;">
-              <span>ESTRUCTURA - CÓMO SE USA</span>
+              <span>STRUCTURE - HOW IT IS USED</span>
               <div style="display:flex; flex-wrap:nowrap; gap:5px; overflow-x:auto; padding-bottom:2px; flex-shrink:0; -webkit-overflow-scrolling: touch;" class="hide-scrollbar">
                 <button type="button" class="fc-edit-only btn-bold" style="flex-shrink:0; background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 8px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:14px; color:#5d4037; line-height:1; transition:all 0.1s; box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('bold', false, null); this.classList.toggle('active');" onclick="event.stopPropagation()" title="Poner en negrita">B</button>
                 <button type="button" class="fc-edit-only btn-strike" style="flex-shrink:0; background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 8px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:14px; color:#5d4037; line-height:1; transition:all 0.1s; box-shadow:0 2px 4px rgba(0,0,0,0.1); text-decoration:line-through;" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('strikeThrough', false, null); this.classList.toggle('active');" onclick="event.stopPropagation()" title="Tachar">S</button>
@@ -1218,12 +1300,12 @@ window.addEventListener('message', function(event) {
           </div>
           <div class="fc-sec" data-sec="ex">
             <div class="fc-sec-lbl" style="display:flex; justify-content:space-between; align-items:center;">
-              <span id="fcExamplesTitle">Ejemplos</span>
+                <span id="fcExamplesTitle">Examples</span>
               <button type="button" class="fc-edit-only btn-bold" style="background:#f4ead8; border:1px solid #c4b5a3; border-bottom-width:3px; padding:4px 12px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:14px; color:#5d4037; line-height:1; transition:all 0.1s; margin-left:10px; box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmousedown="event.preventDefault(); event.stopPropagation(); document.execCommand('bold', false, null); this.classList.toggle('active');" onclick="event.stopPropagation()" title="Poner en negrita">B</button>
             </div>
             <div id="fcExamplesContainer"></div>
             <div class="fc-edit-only" style="margin-top:10px; text-align:center; display:flex; justify-content:center; gap:10px;">
-              <button type="button" class="fc-img-btn" style="display:inline-flex; background:#e8f0e8; color:#2d5a2d; border:1px solid #b8d0b8;" onclick="event.stopPropagation(); addStudyExample()">+ Añadir ejemplo</button>
+              <button type="button" class="fc-img-btn" style="display:inline-flex; background:#e8f0e8; color:#2d5a2d; border:1px solid #b8d0b8;" onclick="event.stopPropagation(); addStudyExample()">+ Add example</button>
             </div>
           </div>
           <div class="fc-flames-wrap" id="fcFlamesBack" onclick="event.stopPropagation()">
@@ -1238,8 +1320,8 @@ window.addEventListener('message', function(event) {
           </div>
           <div style="position:absolute; bottom:15px; right:15px; z-index:10;">
           </div>
-          <div class="fc-tap">Pulsa cada apartado para ampliar · Pulsa fuera para girar</div>
-          <div class="editable-hint">✏️ Puedes editar la traducción, tipo, registro, estructura y ejemplos.</div>
+          <div class="fc-tap">Tap each section to enlarge · Tap outside to flip</div>
+          <div class="editable-hint">✏️ You can edit the translation, type, register, structure and examples.</div>
         </div>
       </div>
     
@@ -1256,12 +1338,12 @@ window.addEventListener('message', function(event) {
 
   <div id="statsModal" class="card-modal" aria-hidden="true" onclick="if(event.target===this) this.classList.remove('show');">
     <div class="card-dialog" style="max-width: 320px;">
-      <h3 style="font-family:Georgia,serif; font-size:20px; color:var(--br5); margin-bottom:12px; text-align:center;">Tarjetas por secciones</h3>
+      <h3 style="font-family:Georgia,serif; font-size:20px; color:var(--br5); margin-bottom:12px; text-align:center;">Cards by section</h3>
       <div id="statsContent" style="display:flex; flex-direction:column; gap:12px; margin-top:16px; font-size:15px; color:var(--text2);">
         <!-- stats here -->
       </div>
       <div class="modal-actions" style="margin-top:24px;">
-        <button class="modal-btn secondary" onclick="document.getElementById('statsModal').classList.remove('show')" style="width:100%;">Cerrar</button>
+        <button class="modal-btn secondary" onclick="document.getElementById('statsModal').classList.remove('show')" style="width:100%;">Close</button>
       </div>
     </div>
   </div>
@@ -1270,7 +1352,7 @@ window.addEventListener('message', function(event) {
   <div class="card-dialog" role="dialog" aria-modal="true" onclick="event.stopPropagation();">
     <div id="sectionZoomContent" style="padding: 10px; font-size: 1.1em; line-height: 1.6;"></div>
     <div class="modal-actions" style="margin-top: 20px;">
-      <button type="button" class="modal-btn secondary" onclick="closeSectionZoomModal()">Cerrar</button>
+      <button type="button" class="modal-btn secondary" onclick="closeSectionZoomModal()">Close</button>
     </div>
   </div>
 </div>
@@ -1279,38 +1361,38 @@ window.addEventListener('message', function(event) {
   <div class="card-dialog" role="dialog" aria-modal="true" onclick="event.stopPropagation();" style="text-align:center; padding:30px;">
     <div id="imageZoomContent" style="display:flex; justify-content:center; align-items:center; min-height:150px;"></div>
     <div class="modal-actions" style="margin-top: 20px; justify-content:center;">
-      <button type="button" class="modal-btn secondary" onclick="closeImageZoomModal()">Cerrar</button>
+      <button type="button" class="modal-btn secondary" onclick="closeImageZoomModal()">Close</button>
     </div>
   </div>
 </div>
 <div id="addCardModal" class="card-modal" aria-hidden="true">
   <div class="card-dialog" role="dialog" aria-modal="true" aria-labelledby="addCardTitle">
-    <h3 id="addCardTitle">Crear nueva flashcard</h3>
-    <p>Rellena los campos. Después vuelve al inicio y genera un nuevo HTML para guardar la flashcard dentro del archivo.</p>
+    <h3 id="addCardTitle">Create new flashcard</h3>
+    <p>Fill in the fields. Then return home and generate a new HTML file to save the flashcard inside the app.</p>
     <div class="form-grid">
       <div class="form-row"><label for="newWord">Palabra en inglés *</label><input id="newWord" type="text" placeholder="e.g. put up with"></div>
-      <div class="form-row"><label for="newTrans">Traducción *</label><input id="newTrans" type="text" placeholder="e.g. aguantar / tolerar"></div>
-      <div class="form-row"><label for="newCat">Tipo</label><select id="newCat" style="width:100%; padding:12px 14px; border-radius:12px; background:#eef7eb; border:1.5px solid #c4e1c3; color:#2c4230; font-weight:800; font-family:var(--fb); cursor:pointer; outline:none; box-shadow:0 4px 0 #c4e1c3;"><option value="phrasal">Phrasal verb</option><option value="verb">Verbo</option><option value="adverb">Adverbio</option><option value="adjective">Adjetivo</option><option value="idiom">Idioms</option><option value="nounverb">Sustantivo y verbo</option><option value="adjverb">Adjetivo y verbo</option><option value="noun">Sustantivo</option><option value="connector">Conector</option><option value="starter">Inicio de frase</option><option value="other">Otros / Sin asignar</option></select></div>
-      <div class="form-row"><label for="newLevel">Nivel</label><select id="newLevel" style="width:100%; padding:12px 14px; border-radius:12px; background:#eef7eb; border:1.5px solid #c4e1c3; color:#2c4230; font-weight:800; font-family:var(--fb); cursor:pointer; outline:none; box-shadow:0 4px 0 #c4e1c3;"><option value="">Ninguno</option><option value="b2_1">B2.1</option><option value="b2_2">B2.2</option><option value="c1">C1</option></select></div>
+      <div class="form-row"><label for="newTrans">Translation *</label><input id="newTrans" type="text" placeholder="e.g. endure / tolerate"></div>
+      <div class="form-row"><label for="newCat">Type</label><select id="newCat" style="width:100%; padding:12px 14px; border-radius:12px; background:#eef7eb; border:1.5px solid #c4e1c3; color:#2c4230; font-weight:800; font-family:var(--fb); cursor:pointer; outline:none; box-shadow:0 4px 0 #c4e1c3;"><option value="phrasal">Phrasal verb</option><option value="verb">Verb</option><option value="adverb">Adverb</option><option value="adjective">Adjective</option><option value="idiom">Idioms</option><option value="nounverb">Noun and verb</option><option value="adjverb">Adjective and verb</option><option value="noun">Noun</option><option value="connector">Connector</option><option value="starter">Sentence starter</option><option value="other">Other / Unassigned</option></select></div>
+      <div class="form-row"><label for="newLevel">Level</label><select id="newLevel" style="width:100%; padding:12px 14px; border-radius:12px; background:#eef7eb; border:1.5px solid #c4e1c3; color:#2c4230; font-weight:800; font-family:var(--fb); cursor:pointer; outline:none; box-shadow:0 4px 0 #c4e1c3;"><option value="">None</option><option value="b2_1">B2.1</option><option value="b2_2">B2.2</option><option value="c1">C1</option></select></div>
       <div class="form-row"><label for="newReg">Registro</label><select id="newReg"><option value="N">Neutral</option><option value="F">Formal</option><option value="I">Informal</option></select></div>
-      <div class="form-row full"><label for="newStruct">Estructura / cómo se usa</label><textarea id="newStruct" placeholder="Opcional: estructura, preposición, patrón, notas de uso..."></textarea></div>
-      <div class="form-row full"><label>Ejemplos con traducción</label><div id="newExamples" class="examples-form"></div><button class="btn-sec" id="btnNewExample" type="button">＋ Añadir ejemplo</button></div>
+      <div class="form-row full"><label for="newStruct">Structure / how it is used</label><textarea id="newStruct" placeholder="Optional: structure, preposition, pattern, usage notes..."></textarea></div>
+      <div class="form-row full"><label>Examples with translation</label><div id="newExamples" class="examples-form"></div><button class="btn-sec" id="btnNewExample" type="button">＋ Add example</button></div>
     </div>
-    <div class="modal-actions"><button class="modal-btn secondary" id="btnCancelNewCard" type="button">Cancelar</button><button class="modal-btn primary" id="btnSaveNewCard" type="button">Guardar flashcard</button></div>
+    <div class="modal-actions"><button class="modal-btn secondary" id="btnCancelNewCard" type="button">Cancel</button><button class="modal-btn primary" id="btnSaveNewCard" type="button">Save flashcard</button></div>
   </div>
 </div>
 
 
 <div id="quizEditorScreen" class="screen">
   <div class="shdr">
-    <span class="shdr-title">✏️ Editor de preguntas del Quiz</span>
-    <button class="hbtn" id="btnQuizEditorHome">⌂ Inicio</button>
+    <span class="shdr-title">✏️ Quiz question editor</span>
+    <button class="hbtn" id="btnQuizEditorHome">⌂ Home</button>
   </div>
   <div class="qe-wrap">
     <div class="qe-card">
       <div class="qe-top"><div class="qe-title" id="qeWord">—</div><div class="qe-pill" id="qeCat">—</div></div>
-      <div class="qe-help">Modifica la pregunta y, si quieres, las 4 respuestas. La respuesta correcta es la opción marcada en verde. Después vuelve al inicio y pulsa <b>Descargar HTML con mis cambios</b>.</div>
-      <div class="qe-search"><span>🔍</span><input id="qeSearch" type="search" placeholder="Buscar por inglés o español..."></div>
+      <div class="qe-help">Edit the question and, if you wish, the four answers. The correct answer is marked in green. Then return home and press <b>Download HTML with my changes</b>.</div>
+      <div class="qe-search"><span>🔍</span><input id="qeSearch" type="search" placeholder="Search in English or Spanish..."></div>
       <div class="qe-empty" id="qeEmpty">No hay preguntas que coincidan con esta búsqueda.</div>      <div class="qe-field"><label>Pregunta del quiz</label><textarea id="qeSentence"></textarea></div>
       <div class="qe-options">
         <div class="qe-field qe-option correct"><label>Respuesta correcta</label><input id="qeOpt0" type="text"></div>
@@ -1335,7 +1417,7 @@ window.addEventListener('message', function(event) {
     <input id="actionPasswordInput" type="password" autocomplete="off" placeholder="Contraseña">
     <div class="password-error" id="actionPasswordError">Contraseña incorrecta. Vuelve a intentarlo.</div>
     <div class="password-actions">
-      <button class="secondary" id="btnActionPasswordCancel" type="button">Cancelar</button>
+        <button class="secondary" id="btnActionPasswordCancel" type="button">Cancel</button>
       <button class="primary" id="btnActionPasswordOk" type="button">Entrar</button>
     </div>
   </div>
@@ -1344,9 +1426,9 @@ window.addEventListener('message', function(event) {
 
 </div>
 <div id="nameScreen" class="screen">
-  <div class="badge">Jugadores</div>
-  <h2>¿Cómo os llamáis?</h2>
-  <div class="nform" id="nform"><input class="ninp" id="n1" placeholder="Jugador 1" maxlength="18"></div>
+  <div class="badge">Players</div>
+  <h2>What are your names?</h2>
+  <div class="nform" id="nform"><input class="ninp" id="n1" placeholder="Player 1" maxlength="18"></div>
   <button class="btn-main" id="btnGo">Comenzar →</button>
   <button class="btn-sec" id="btnBackHome">← Volver</button>
 </div>
@@ -1357,7 +1439,7 @@ window.addEventListener('message', function(event) {
     <div class="chips" id="chips"></div>
     <div class="hbtns">
       <button class="hbtn" id="btnReset">↺ Reiniciar</button>
-      <button class="hbtn" id="btnHome2">⌂ Inicio</button>
+      <button class="hbtn" id="btnHome2">⌂ Home</button>
     </div>
   </div>
   <div class="prog"><div class="prog-fill" id="prog"></div></div>
@@ -1377,8 +1459,8 @@ window.addEventListener('message', function(event) {
   <div id="perfectMsg" style="display:none"></div>
   <div class="rcards" id="rcards"></div>
   <div class="ract">
-    <button class="rbtn prim" id="btnRetry">🔄 Repetir Fallos</button>
-    <button class="rbtn sec" id="btnHome3">⌂ Menú Principal</button>
+    <button class="rbtn prim" id="btnRetry">🔄 Retry mistakes</button>
+    <button class="rbtn sec" id="btnHome3">⌂ Main menu</button>
   </div>
 </div>
 <div id="printContainer" style="display:none;"></div>
@@ -1399,7 +1481,7 @@ if (typeof YAN_CARDS !== 'undefined') YAN_CARDS.forEach(function(c) { ALL_CARDS.
 if (typeof CUSTOM_CARDS !== 'undefined') CUSTOM_CARDS.forEach(function(c) { ALL_CARDS.push(c); });
 
 /* STATE */
-var numP=1, pNames=["Jugador 1","Jugador 2"], players=[], curP=0, qs=[], curQ=0, answered=false;
+var numP=1, pNames=["Player 1","Player 2"], players=[], curP=0, qs=[], curQ=0, answered=false;
 var quizPerPlayerTotal=20, quizTotalQuestions=20;
 var dragVal=null, touchGhost=null, touchEl=null;
 var selCats={adverb:true,adjective:true,phrasal:true,connector:true,starter:true,verb:true,other:true};
@@ -1410,6 +1492,28 @@ var studyCatFilter="all", studyLvlFilter="all", studyRegFilter="all", studySearc
 function shuf(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t}return b}
 function pick(a,n){return shuf(a).slice(0,n)}
 function showScreen(id){document.querySelectorAll(".screen").forEach(function(s){s.classList.remove("active");});var tgt=document.getElementById(id);if(tgt)tgt.classList.add("active");}
+
+/* V33: temas persistentes y adaptados a todos los dispositivos */
+var APP_THEMES = {
+  rosa:{name:"Pastel Pink",swatch:"#f6c7d8",vars:{cream:"#fff0f5",white:"#fff9fb",br1:"#f5d5e1",br2:"#d99ab2",br3:"#b96d89",br4:"#7f3f59",br5:"#51283a",text:"#51283a",text2:"#7f3f59",text3:"#a77d8d",border:"#e6b9c9"}},
+  morado:{name:"Purple",swatch:"#d9c9ef",vars:{cream:"#f5f0fb",white:"#fcf9ff",br1:"#e5d8f4",br2:"#b79ad8",br3:"#8863ae",br4:"#60407f",br5:"#3d2857",text:"#3d2857",text2:"#60407f",text3:"#927da8",border:"#cdb9e5"}},
+  verde:{name:"Green",swatch:"#c8e6c8",vars:{cream:"#eff9ef",white:"#fbfffb",br1:"#d8eed8",br2:"#9bc99b",br3:"#5c9b67",br4:"#397247",br5:"#234b30",text:"#234b30",text2:"#397247",text3:"#789d7d",border:"#b8d9b8"}},
+  azul:{name:"Blue",swatch:"#c7def2",vars:{cream:"#eff7fd",white:"#fbfdff",br1:"#d7e9f7",br2:"#9dc2df",br3:"#5d91bd",br4:"#376485",br5:"#23445c",text:"#23445c",text2:"#376485",text3:"#7694aa",border:"#b8d4e8"}},
+  amarillo:{name:"Yellow",swatch:"#f8e4a8",vars:{cream:"#fffaf0",white:"#fffdf7",br1:"#faedc8",br2:"#dfbd67",br3:"#b58b27",br4:"#795d18",br5:"#4f3d12",text:"#4f3d12",text2:"#795d18",text3:"#a28c58",border:"#e4ce94"}},
+  naranja:{name:"Orange",swatch:"#f5c49d",vars:{cream:"#fff3e9",white:"#fffaf6",br1:"#f8dcc2",br2:"#dfa06e",br3:"#bb7040",br4:"#864728",br5:"#542b1a",text:"#542b1a",text2:"#864728",text3:"#aa8068",border:"#e6bea0"}},
+  lavanda:{name:"Lavender",swatch:"#dcd5f2",vars:{cream:"#f7f5ff",white:"#fdfcff",br1:"#e9e4f8",br2:"#b9addd",br3:"#8879b7",br4:"#5e518d",br5:"#3f355f",text:"#3f355f",text2:"#5e518d",text3:"#8e87a8",border:"#cbc2e8"}},
+  menta:{name:"Mint",swatch:"#bfe9dc",vars:{cream:"#effcf8",white:"#fbfffd",br1:"#d3f1e8",br2:"#8ecbb8",br3:"#4f9d82",br4:"#34725f",br5:"#214b40",text:"#214b40",text2:"#34725f",text3:"#719d90",border:"#b1dfd0"}},
+  cafe:{name:"Light Brown",swatch:"#d8b895",vars:{cream:"#f7eee4",white:"#fffaf4",br1:"#ead7c3",br2:"#c9a27c",br3:"#9a6b43",br4:"#6b4423",br5:"#4a2e1a",text:"#3a2918",text2:"#6b4423",text3:"#9b8268",border:"#d4bea0"}},
+  blanco:{name:"White",swatch:"#ffffff",vars:{cream:"#fafafa",white:"#ffffff",br1:"#eeeeee",br2:"#c9c9c9",br3:"#777777",br4:"#444444",br5:"#222222",text:"#222222",text2:"#444444",text3:"#888888",border:"#d5d5d5"}},
+  negro:{name:"Black",swatch:"#242424",vars:{cream:"#171717",white:"#262626",br1:"#3b3b3b",br2:"#777777",br3:"#bda27c",br4:"#e0c29b",br5:"#f5e6d2",text:"#fff7ed",text2:"#f0d7b7",text3:"#c2aa91",border:"#6a5745"}},
+  gris:{name:"Grey",swatch:"#c7cbd1",vars:{cream:"#eef0f3",white:"#fafbfc",br1:"#e0e3e8",br2:"#afb6c0",br3:"#707985",br4:"#4e5662",br5:"#303640",text:"#303640",text2:"#4e5662",text3:"#858d99",border:"#c4c9d1"}},
+  mar:{name:"Pink & Lavender",swatch:"linear-gradient(135deg,#f6c7d8,#dcd5f2)",vars:{cream:"#fbf3fa",white:"#fffaff",br1:"#f0d9eb",br2:"#c9a6d0",br3:"#a16b9e",br4:"#70456f",br5:"#4b2c4c",text:"#4b2c4c",text2:"#70456f",text3:"#9b7d9a",border:"#dfc2dc"}},
+  oceano:{name:"Blue & Mint",swatch:"linear-gradient(135deg,#c7def2,#bfe9dc)",vars:{cream:"#f0fafa",white:"#fbffff",br1:"#d4eded",br2:"#9fcaca",br3:"#5d9b9a",br4:"#39706f",br5:"#254b50",text:"#254b50",text2:"#39706f",text3:"#759a9b",border:"#b9dddd"}}
+};
+function applyTheme(key){var theme=APP_THEMES[key]||APP_THEMES.cafe;Object.keys(theme.vars).forEach(function(k){document.documentElement.style.setProperty('--'+k,theme.vars[k]);});document.documentElement.dataset.theme=key;var meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=theme.vars.cream||theme.vars.bg||'#f5ebe0';localStorage.setItem('englishAppTheme',key);document.querySelectorAll('.theme-option').forEach(function(b){b.classList.toggle('on',b.dataset.theme===key);});}
+function openThemePicker(){renderThemePicker();showScreen('themeScreen');}
+function renderThemePicker(){var grid=document.getElementById('themeGrid');if(!grid)return;var current=localStorage.getItem('englishAppTheme')||'cafe';grid.innerHTML=Object.keys(APP_THEMES).map(function(key){var t=APP_THEMES[key];return '<button type="button" class="theme-option '+(key===current?'on':'')+'" data-theme="'+key+'" onclick="applyTheme(\''+key+'\')"><span class="theme-swatch" style="background:'+t.swatch+'"></span><span>'+t.name+'</span></button>';}).join('');}
+function initTheme(){applyTheme(localStorage.getItem('englishAppTheme')||'cafe');}
 function getTrans(cat,w){if(cat==="adverb")return ADV_TR[w]||"";if(cat==="adjective")return ADJ_TR[w]||"";if(cat==="phrasal")return PHR_TR[w]||"";if(cat==="connector")return CON_TR[w]||"";if(cat==="starter")return STR_TR[w]||"";if(cat==="verb")return VRB_TR[w]||"";return ""}
 
 function showQuizSetup(){
@@ -1427,8 +1531,8 @@ function selPlayers(n){numP=n;document.getElementById("btn1p").classList.toggle(
 function toggleCat(btn){var cat=btn.dataset.cat;var active=Object.keys(selCats).filter(function(c){return selCats[c]});if(selCats[cat]&&active.length===1)return;selCats[cat]=!selCats[cat];btn.classList.toggle("on",selCats[cat]);document.getElementById("catHint").classList.remove("show")}
 function toggleLvl(btn){var lvl=btn.dataset.lvl;selLvls[lvl]=!selLvls[lvl];btn.classList.toggle("on",selLvls[lvl]);}
 function toggleQCount(n){selQCount=n;document.getElementById("qc5").classList.toggle("on",n===5);document.getElementById("qc10").classList.toggle("on",n===10);document.getElementById("qc20").classList.toggle("on",n===20)}
-function goNames(){var active=Object.keys(selCats).filter(function(c){return selCats[c]});if(!active.length){document.getElementById("catHint").classList.add("show");return}var nf=document.getElementById("nform");nf.innerHTML='<input class="ninp" id="n1" placeholder="Jugador 1" maxlength="18">';if(numP===2)nf.innerHTML+='<input class="ninp" id="n2" placeholder="Jugador 2" maxlength="18">';showScreen("nameScreen")}
-function startQ(){var n1=document.getElementById("n1");pNames[0]=(n1&&n1.value.trim())||"Jugador 1";if(numP===2){var n2=document.getElementById("n2");pNames[1]=(n2&&n2.value.trim())||"Jugador 2"}players=[];for(var i=0;i<numP;i++)players.push({name:pNames[i],ok:0,bad:0,wrong:[]});curP=0;genQs();curQ=0;showScreen("quizScreen");renderQ()}
+function goNames(){var active=Object.keys(selCats).filter(function(c){return selCats[c]});if(!active.length){document.getElementById("catHint").classList.add("show");return}var nf=document.getElementById("nform");nf.innerHTML='<input class="ninp" id="n1" placeholder="Player 1" maxlength="18">';if(numP===2)nf.innerHTML+='<input class="ninp" id="n2" placeholder="Player 2" maxlength="18">';showScreen("nameScreen")}
+function startQ(){var n1=document.getElementById("n1");pNames[0]=(n1&&n1.value.trim())||"Player 1";if(numP===2){var n2=document.getElementById("n2");pNames[1]=(n2&&n2.value.trim())||"Player 2"}players=[];for(var i=0;i<numP;i++)players.push({name:pNames[i],ok:0,bad:0,wrong:[]});curP=0;genQs();curQ=0;showScreen("quizScreen");renderQ()}
 function doReset(){for(var i=0;i<players.length;i++){players[i].ok=0;players[i].bad=0;players[i].wrong=[]}curP=0;genQs();curQ=0;renderQ()}
 function doHome(){hideQuizSetup();showScreen("home")}
 
@@ -1459,15 +1563,15 @@ function buildDefaultQuizQuestion(c, allCards){
   var wrongs=getWrongFromCards(pool, correct, ctrans, 3);
   var opts=[correct].concat(wrongs);
   var qtxt;
-  if(cat==="adverb") qtxt='¿Cuál es la traducción al inglés del adverbio "<strong>'+ctrans+'</strong>"?';
-  else if(cat==="adjective") qtxt='¿Cuál es la traducción al inglés del adjetivo "<strong>'+ctrans+'</strong>"?';
-  else if(cat==="phrasal") qtxt='¿Cuál es el phrasal verb en inglés que significa "<strong>'+ctrans+'</strong>"?';
-  else if(cat==="connector") qtxt='¿Cuál es el conector en inglés que equivale a "<strong>'+ctrans+'</strong>"?';
-  else if(cat==="starter") qtxt='¿Cuál es la frase de inicio en inglés que equivale a "<strong>'+ctrans+'</strong>"?';
-  else if(cat==="verb") qtxt='¿Cuál es el verbo en inglés que significa "<strong>'+ctrans+'</strong>"?';
-  else qtxt='¿Cuál es la traducción al inglés de "<strong>'+ctrans+'</strong>"?';
+  if(cat==="adverb") qtxt='Which English adverb means "<strong>'+ctrans+'</strong>"?';
+  else if(cat==="adjective") qtxt='Which English adjective means "<strong>'+ctrans+'</strong>"?';
+  else if(cat==="phrasal") qtxt='Which English phrasal verb means "<strong>'+ctrans+'</strong>"?';
+  else if(cat==="connector") qtxt='Which English connector is equivalent to "<strong>'+ctrans+'</strong>"?';
+  else if(cat==="starter") qtxt='Which English sentence starter is equivalent to "<strong>'+ctrans+'</strong>"?';
+  else if(cat==="verb") qtxt='Which English verb means "<strong>'+ctrans+'</strong>"?';
+  else qtxt='What is the English translation of "<strong>'+ctrans+'</strong>"?';
   
-  var explain = '"'+correct+'" significa "'+ctrans+'" en español. '+(c.struct||"");
+  var explain = '"'+correct+'" means "'+ctrans+'". '+(c.struct||"");
   
   return {cat:cat,item:correct,sentence:qtxt,correct:correct,trans:ctrans,opts:opts,explain:explain};
 }
@@ -1515,7 +1619,7 @@ function genQs(pool){
   qs=shuf(qs);
 }
 
-var BADGE={adverb:{cls:"b-adverb",lbl:"Adverbio"},adjective:{cls:"b-adjective",lbl:"Adjetivo"},phrasal:{cls:"b-phrasal",lbl:"Phrasal Verb"},connector:{cls:"b-connector",lbl:"Conector"},starter:{cls:"b-starter",lbl:"Inicio de Frase"},verb:{cls:"b-verb",lbl:"Verbo"}};
+var BADGE={adverb:{cls:"b-adverb",lbl:"Adverb"},adjective:{cls:"b-adjective",lbl:"Adjective"},phrasal:{cls:"b-phrasal",lbl:"Phrasal Verb"},connector:{cls:"b-connector",lbl:"Connector"},starter:{cls:"b-starter",lbl:"Sentence Starter"},verb:{cls:"b-verb",lbl:"Verb"}};
 
 function renderQ(){
   var q=qs[curQ],total=qs.length;answered=false;
@@ -2834,16 +2938,16 @@ function showStatsModal() {
   html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>B2.1:</span><strong style="color:var(--br3);">' + stats.b2_1 + '</strong></div>';
   html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>B2.2:</span><strong style="color:var(--br3);">' + stats.b2_2 + '</strong></div>';
   html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>C1:</span><strong style="color:var(--br3);">' + stats.c1 + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Sustantivos:</span><strong style="color:var(--br3);">' + stats.noun + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Verbos:</span><strong style="color:var(--br3);">' + stats.verb + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Adjetivos:</span><strong style="color:var(--br3);">' + stats.adjective + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Adverbios:</span><strong style="color:var(--br3);">' + stats.adverb + '</strong></div>';
+  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Nouns:</span><strong style="color:var(--br3);">' + stats.noun + '</strong></div>';
+  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Verbs:</span><strong style="color:var(--br3);">' + stats.verb + '</strong></div>';
+  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Adjectives:</span><strong style="color:var(--br3);">' + stats.adjective + '</strong></div>';
+  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Adverbs:</span><strong style="color:var(--br3);">' + stats.adverb + '</strong></div>';
   html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Idioms:</span><strong style="color:var(--br3);">' + stats.idiom + '</strong></div>';
   html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Sust & Verb:</span><strong style="color:var(--br3);">' + stats.nounverb + '</strong></div>';
   html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Adj & Verb:</span><strong style="color:var(--br3);">' + stats.adjverb + '</strong></div>';
   html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Phrasal Verbs:</span><strong style="color:var(--br3);">' + stats.phrasal + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Conectores:</span><strong style="color:var(--br3);">' + stats.connector + '</strong></div>';
-  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Inicios de Frase:</span><strong style="color:var(--br3);">' + stats.starter + '</strong></div>';
+  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Connectors:</span><strong style="color:var(--br3);">' + stats.connector + '</strong></div>';
+  html += '<div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:4px;"><span>Sentence Starters:</span><strong style="color:var(--br3);">' + stats.starter + '</strong></div>';
   html += '<div style="display:flex; justify-content:space-between;"><span>Otros:</span><strong style="color:var(--br3);">' + stats.other + '</strong></div>';
   var content = document.getElementById('statsContent');
   if(content) content.innerHTML = html;
@@ -2856,10 +2960,10 @@ function toggleHideVerify() {
   if (btn) {
     if (document.body.classList.contains('hide-verify')) {
       btn.classList.add('active');
-      btn.innerHTML = '👁️ Mostrar Validar';
+      btn.innerHTML = '👁️ Show verify';
     } else {
       btn.classList.remove('active');
-      btn.innerHTML = '👁️ Ocultar Validar';
+      btn.innerHTML = '👁️ Hide verify';
     }
   }
 }
@@ -3224,12 +3328,12 @@ function buildQuizQuestionFromCard(c, withEdits){
   var wrongs=getWrongFromCards(cPool,correct,ctrans,3);
   while(wrongs.length<3){ wrongs.push("opción "+(wrongs.length+2)); }
   var qtxt;
-  if(c.cat==="adverb") qtxt='¿Cuál es la traducción al inglés del adverbio "<strong>'+ctrans+'</strong>"?';
-  else if(c.cat==="adjective") qtxt='¿Cuál es la traducción al inglés del adjetivo "<strong>'+ctrans+'</strong>"?';
-  else if(c.cat==="phrasal") qtxt='¿Cuál es el phrasal verb en inglés que significa "<strong>'+ctrans+'</strong>"?';
-  else if(c.cat==="connector") qtxt='¿Cuál es el conector en inglés que equivale a "<strong>'+ctrans+'</strong>"?';
-  else if(c.cat==="starter") qtxt='¿Cuál es la frase de inicio en inglés que equivale a "<strong>'+ctrans+'</strong>"?';
-  else qtxt='¿Cuál es el verbo en inglés que significa "<strong>'+ctrans+'</strong>"?';
+  if(c.cat==="adverb") qtxt='Which English adverb means "<strong>'+ctrans+'</strong>"?';
+  else if(c.cat==="adjective") qtxt='Which English adjective means "<strong>'+ctrans+'</strong>"?';
+  else if(c.cat==="phrasal") qtxt='Which English phrasal verb means "<strong>'+ctrans+'</strong>"?';
+  else if(c.cat==="connector") qtxt='Which English connector is equivalent to "<strong>'+ctrans+'</strong>"?';
+  else if(c.cat==="starter") qtxt='Which English sentence starter is equivalent to "<strong>'+ctrans+'</strong>"?';
+  else qtxt='Which English verb means "<strong>'+ctrans+'</strong>"?';
   var q={cat:c.cat,item:(c.cat==="phrasal"||c.cat==="connector")?[c.word,c.meaning||ctrans]:c.word,sentence:qtxt,correct:correct,trans:ctrans,opts:[correct].concat(wrongs),explain:getExplain(c.cat,(c.cat==="phrasal"||c.cat==="connector")?[c.word,c.meaning||ctrans]:c.word,ctrans)||''};
   return withEdits ? applyQuizEdit(q) : q;
 }
@@ -3793,7 +3897,7 @@ function toggleReverseStudy(){
   window.REVERSE_STUDY = !window.REVERSE_STUDY;
   var btn = document.getElementById("btnReverseStudy");
   if(btn){
-    btn.textContent = window.REVERSE_STUDY ? "Al Revés (On)" : "Al Revés (Off)";
+    btn.textContent = window.REVERSE_STUDY ? "Reverse (On)" : "Reverse (Off)";
     if(window.REVERSE_STUDY){
       btn.classList.add("active");
     } else {
@@ -3837,7 +3941,7 @@ function renderStudy(){
   var drawWrap = document.getElementById("fcDrawingWrap");
   var drawingHtml = "";
   if (ed.customImage) {
-    drawingHtml = '<img src="' + ed.customImage + '" style="max-width:100%; max-height:220px; object-fit:contain; border-radius:8px; box-shadow:0 3px 10px rgba(0,0,0,0.1); flex: 1 1 auto; min-height: 0; height: 100%;">';
+    drawingHtml = '<img src="' + ed.customImage + '" alt="Imagen de la flashcard" style="max-width:100%; max-height:100%; object-fit:contain; flex: 1 1 auto; min-height: 0;">';
     document.getElementById("fcImageDelete").style.display = "flex";
     drawWrap.style.width = "100%";
     drawWrap.style.height = "auto";
@@ -3853,7 +3957,7 @@ function renderStudy(){
     }
   }
   if (STUDY_EDIT_MODE && !ed.customImage) {
-    drawingHtml += '<button type="button" class="fc-icon-edit-btn fc-edit-only" onclick="openIconPicker()">Elegir Icono</button>';
+    drawingHtml += '<button type="button" class="fc-icon-edit-btn fc-edit-only" onclick="openIconPicker()">Choose icon</button>';
   }
   document.getElementById("fcDrawingWrap").innerHTML = drawingHtml;
   document.getElementById("fcCur").textContent = studyIdx+1;
@@ -3882,7 +3986,7 @@ function renderStudy(){
   if(sel) sel.value = c.cat;
   
   var lvlNames = {"b2_1":"B2.1", "b2_2":"B2.2", "c1":"C1"};
-  var lvlText = c.level ? lvlNames[c.level] || c.level : "Ninguno";
+  var lvlText = c.level ? lvlNames[c.level] || c.level : "None";
   setEditableText("fcLevelVal", ed.levelText || lvlText, "levelText");
   var lvlSel = document.getElementById("fcLevelSelect");
   if(lvlSel) lvlSel.value = c.level || "";
@@ -3891,7 +3995,7 @@ function renderStudy(){
   var regSel = document.getElementById("fcRegSelect");
   if(regSel) regSel.value = getRegisterValue(c.reg);
   
-  setEditableText("fcCefrVal", ed.cefrText || (c.cefr ? c.cefr.toUpperCase() : "Sin especificar"), "cefrText");
+  setEditableText("fcCefrVal", ed.cefrText || (c.cefr ? c.cefr.toUpperCase() : "Not specified"), "cefrText");
   var cefrSel = document.getElementById("fcCefrSelect");
   if(cefrSel) cefrSel.value = c.cefr || "";
 
@@ -3899,20 +4003,20 @@ function renderStudy(){
   if(c.flag === "uk") flagName = "🇬🇧 UK";
   else if(c.flag === "us") flagName = "🇺🇸 US";
   else if(c.flag === "both") flagName = "🇬🇧🇺🇸 Ambas";
-  else flagName = "Sin especificar";
+  else flagName = "Not specified";
 
   setEditableText("fcFlagVal", ed.flagText || flagName, "flagText");
   var flagSel = document.getElementById("fcFlagSelect");
   if(flagSel) flagSel.value = c.flag || "";
   
-  setEditableText("fcStructVal", ed.struct || c.struct || "Sin instrucciones específicas. Esta palabra se usa según las reglas generales de su categoría.", "struct");
+  setEditableText("fcStructVal", ed.struct || c.struct || "No specific instructions. Use this word according to the general rules for its category.", "struct");
   
   var exTitleSpan = document.getElementById("fcExamplesTitle");
   if(exTitleSpan) {
     if(STUDY_EDIT_MODE) {
-      exTitleSpan.innerHTML = "Ejemplos <span style='font-size:13px; font-weight:normal; opacity:0.8; color:var(--text3); margin-left:6px;'>- " + c.word + "</span>";
+      exTitleSpan.innerHTML = "Examples <span style='font-size:13px; font-weight:normal; opacity:0.8; color:var(--text3); margin-left:6px;'>- " + c.word + "</span>";
     } else {
-      exTitleSpan.innerHTML = "Ejemplos";
+      exTitleSpan.innerHTML = "Examples";
     }
   }
 
@@ -3959,7 +4063,7 @@ function renderStudy(){
       html += '<div class="fc-ex-tr '+(STUDY_EDIT_MODE?'editable-field':'')+'" contenteditable="'+(STUDY_EDIT_MODE?'true':'false')+'" data-placeholder="Traducción" style="margin-left:'+(showNumbers?'20px':'0')+'; margin-top:4px;">'+(pair[1]||"")+'</div>';
     }
     if (STUDY_EDIT_MODE) {
-      html += '<button type="button" class="fc-edit-only btn-del-ex" title="Borrar ejemplo" onclick="event.stopPropagation(); this.closest(\'.fc-sense\').remove(); saveExamplesFromDom();" style="position:absolute; top:2px; right:0; background:#ffebeb; border:1px solid #ffcaca; border-radius:6px; color:var(--red3); cursor:pointer; font-size:11px; font-weight:bold; padding:4px 8px; box-shadow:0 2px 0 #ffcaca;">Borrar</button>';
+      html += '<button type="button" class="fc-edit-only btn-del-ex" title="Delete example" onclick="event.stopPropagation(); this.closest(\'.fc-sense\').remove(); saveExamplesFromDom();" style="position:absolute; top:2px; right:0; background:#ffebeb; border:1px solid #ffcaca; border-radius:6px; color:var(--red3); cursor:pointer; font-size:11px; font-weight:bold; padding:4px 8px; box-shadow:0 2px 0 #ffcaca;">Delete</button>';
     }
     html += '</div>';
   }
@@ -3973,11 +4077,11 @@ function renderStudy(){
   var verified = ed.studyVerified === true;
   if(vbtnFront) {
     vbtnFront.classList.toggle("verified", verified);
-    vbtnFront.innerHTML = verified ? "✓ Validado" : "○ Validar";
+    vbtnFront.innerHTML = verified ? "✓ VALIDADO" : "○ NO VALIDADO";
   }
   if(vbtnBack) {
     vbtnBack.classList.toggle("verified", verified);
-    vbtnBack.innerHTML = verified ? "✓ Validado" : "○ Validar";
+    vbtnBack.innerHTML = verified ? "✓ VALIDADO" : "○ NO VALIDADO";
   }
 
   // Update Favorite and Status visual states
@@ -4020,7 +4124,7 @@ function toggleStudyVerify(e){
       setTimeout(function(){
         vbtnFront.classList.remove("magic-verify");
         vbtnFront.classList.add("verified");
-        vbtnFront.innerHTML = "✓ Validado";
+        vbtnFront.innerHTML = "✓ VALIDADO";
       }, 1500);
     }
     if(vbtnBack) {
@@ -4029,17 +4133,17 @@ function toggleStudyVerify(e){
       setTimeout(function(){
         vbtnBack.classList.remove("magic-verify");
         vbtnBack.classList.add("verified");
-        vbtnBack.innerHTML = "✓ Validado";
+        vbtnBack.innerHTML = "✓ VALIDADO";
       }, 1500);
     }
   } else {
     if(vbtnFront) {
       vbtnFront.classList.remove("verified", "magic-verify");
-      vbtnFront.innerHTML = "○ Validar";
+      vbtnFront.innerHTML = "○ NO VALIDADO";
     }
     if(vbtnBack) {
       vbtnBack.classList.remove("verified", "magic-verify");
-      vbtnBack.innerHTML = "○ Validar";
+      vbtnBack.innerHTML = "○ NO VALIDADO";
     }
   }
 }
@@ -4265,7 +4369,7 @@ function closeImageZoomModal(){
   modal.setAttribute("aria-hidden","true");
 }
 function closeAddCardModal(){document.getElementById("addCardModal").classList.remove("show");document.getElementById("addCardModal").setAttribute("aria-hidden","true")}
-function addExampleRow(ex,tr){var wrap=document.getElementById("newExamples");var row=document.createElement("div");row.className="example-pair";row.innerHTML='<textarea class="newExText" placeholder="Example in English"></textarea><textarea class="newExTr" placeholder="Traducción del ejemplo"></textarea><button class="small-icon-btn" type="button" title="Borrar ejemplo">×</button>';row.querySelector(".newExText").value=ex||"";row.querySelector(".newExTr").value=tr||"";row.querySelector("button").addEventListener("click",function(){row.remove();if(!wrap.querySelector(".example-pair"))addExampleRow("","")});wrap.appendChild(row)}
+function addExampleRow(ex,tr){var wrap=document.getElementById("newExamples");var row=document.createElement("div");row.className="example-pair";row.innerHTML='<textarea class="newExText" placeholder="Example in English"></textarea><textarea class="newExTr" placeholder="Example translation"></textarea><button class="small-icon-btn" type="button" title="Delete example">×</button>';row.querySelector(".newExText").value=ex||"";row.querySelector(".newExTr").value=tr||"";row.querySelector("button").addEventListener("click",function(){row.remove();if(!wrap.querySelector(".example-pair"))addExampleRow("","")});wrap.appendChild(row)}
 function saveNewFlashcard(){
   var word=document.getElementById("newWord").value.trim();var trans=document.getElementById("newTrans").value.trim();if(!word||!trans){alert("Pon como mínimo la palabra en inglés y la traducción.");return;}
   var exactDup = ALL_CARDS.concat(USER_CARDS).some(function(c) { return c.word.trim().toLowerCase() === word.toLowerCase() && c.cat === document.getElementById("newCat").value; });
@@ -4288,6 +4392,9 @@ function saveNewFlashcard(){
 }
 
 document.addEventListener("DOMContentLoaded",function(){
+  initTheme();
+  var homeLogo=document.getElementById('homeLogo');
+  if(homeLogo && homeLogo.complete && homeLogo.naturalWidth===0){homeLogo.src=document.querySelector('link[rel="apple-touch-icon"]')?.href || homeLogo.src;}
   updateHomeTotal();
   document.getElementById("btn1p").addEventListener("click",function(){selPlayers(1)});
   document.getElementById("btn2p").addEventListener("click",function(){selPlayers(2)});
@@ -4717,18 +4824,18 @@ function updateHomeCounts() {
     }
   });
   var labels = {
-    all: "Todas",
-    noun: "Sustantivos",
-    adverb: "Adverbios",
-    adjective: "Adjetivos",
+    all: "All",
+    noun: "Nouns",
+    adverb: "Adverbs",
+    adjective: "Adjectives",
     phrasal: "Phrasal V.",
-    connector: "Conectores",
-    starter: "Inicios",
-    verb: "Verbos",
+    connector: "Connectors",
+    starter: "Starters",
+    verb: "Verbs",
     idiom: "Idioms",
     nounverb: "Sust & Verb",
     adjverb: "Adj & Verb",
-    other: "Otros",
+    other: "Other",
     b2_1: "B2.1",
     b2_2: "B2.2",
     c1: "C1"
@@ -5197,7 +5304,7 @@ function saveVerbQuizEdits() {
     <div id="iconPickerGrid" style="flex:1; overflow-y:auto; display:grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 10px; padding: 5px;">
     </div>
     <div class="modal-actions" style="margin-top: 15px;">
-      <button class="modal-btn secondary" type="button" onclick="closeIconPicker()" style="width:100%">Cerrar</button>
+      <button class="modal-btn secondary" type="button" onclick="closeIconPicker()" style="width:100%">Close</button>
     </div>
   </div>
 </div>
@@ -5268,44 +5375,44 @@ if ('serviceWorker' in navigator) {
 
 <div id="copyrightModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:99999; justify-content:center; align-items:center; opacity:0; transition:opacity 0.2s;">
   <div class="modal-content" style="background:var(--bg, #fdfbf7); padding:30px; border-radius:12px; max-width:600px; width:90%; max-height:85vh; overflow-y:auto; color:var(--text, #5d4037); font-family:inherit; box-shadow:0 10px 30px rgba(0,0,0,0.2); position:relative; transform:translateY(20px); transition:transform 0.2s;">
-    <div style="font-size:22px; font-weight:bold; margin-bottom:20px; text-align:center; color:var(--bark, #5d4037);">Copyright y Licencia de Uso</div>
+    <div style="font-size:22px; font-weight:bold; margin-bottom:20px; text-align:center; color:var(--bark, #5d4037);">Copyright and licence</div>
     <div style="font-size:14px; line-height:1.6;">
-      <p style="text-align:center; font-weight:bold; margin-bottom:25px; font-size:16px;">© 2025–Present Elisabeth Altarriba<br>Todos los derechos reservados.</p>
+      <p style="text-align:center; font-weight:bold; margin-bottom:25px; font-size:16px;">© 2025–Present Elisabeth Altarriba<br>All rights reserved.</p>
       
-      <p>Esta aplicación, incluyendo su código fuente, diseño, estructura, interfaz de usuario, imágenes, iconos, animaciones, documentación y cualquier otro elemento que forme parte de ella, es propiedad intelectual de Elisabeth Altarriba y está protegida por la legislación vigente sobre derechos de autor y propiedad intelectual.</p>
+      <p>This app, including its source code, design, structure, user interface, images, icons, animations, documentation and every other element that forms part of it, is the intellectual property of Elisabeth Altarriba and is protected by applicable copyright and intellectual-property law.</p>
 
-      <div style="font-weight:bold; margin-top:25px; margin-bottom:12px; font-size:16px; border-bottom:1px solid rgba(0,0,0,0.1); padding-bottom:5px;">LICENCIA DE USO</div>
+      <div style="font-weight:bold; margin-top:25px; margin-bottom:12px; font-size:16px; border-bottom:1px solid rgba(0,0,0,0.1); padding-bottom:5px;">LICENCE</div>
       
-      <p style="font-weight:bold; margin-bottom:8px;">✅ Se permite:</p>
+      <p style="font-weight:bold; margin-bottom:8px;">✅ Permitted:</p>
       <ul style="margin-top:0; margin-bottom:20px; padding-left:25px;">
-        <li style="margin-bottom:4px;">Utilizar la aplicación para uso personal.</li>
-        <li style="margin-bottom:4px;">Utilizarla con fines educativos.</li>
-        <li style="margin-bottom:4px;">Compartir únicamente el enlace oficial de la aplicación.</li>
+        <li style="margin-bottom:4px;">Use the app for personal purposes.</li>
+        <li style="margin-bottom:4px;">Use it for educational purposes.</li>
+        <li style="margin-bottom:4px;">Share only the official app link.</li>
       </ul>
 
-      <p style="font-weight:bold; margin-bottom:8px;">❌ No se permite:</p>
+      <p style="font-weight:bold; margin-bottom:8px;">❌ Not permitted:</p>
       <ul style="margin-top:0; margin-bottom:20px; padding-left:25px;">
-        <li style="margin-bottom:4px;">Utilizar la aplicación con fines comerciales.</li>
-        <li style="margin-bottom:4px;">Venderla.</li>
-        <li style="margin-bottom:4px;">Redistribuirla como propia.</li>
-        <li style="margin-bottom:4px;">Copiar total o parcialmente su código fuente.</li>
-        <li style="margin-bottom:4px;">Reutilizar total o parcialmente su diseño, interfaz, imágenes, iconos, animaciones o documentación sin autorización expresa.</li>
-        <li style="margin-bottom:4px;">Eliminar o modificar este aviso de copyright.</li>
+        <li style="margin-bottom:4px;">Use the app for commercial purposes.</li>
+        <li style="margin-bottom:4px;">Sell it.</li>
+        <li style="margin-bottom:4px;">Redistribute it as your own.</li>
+        <li style="margin-bottom:4px;">Copy all or part of its source code.</li>
+        <li style="margin-bottom:4px;">Reuse all or part of its design, interface, images, icons, animations or documentation without express permission.</li>
+        <li style="margin-bottom:4px;">Remove or modify this copyright notice.</li>
       </ul>
 
-      <p>Si esta aplicación, o cualquier parte de ella, es utilizada, modificada o incorporada en otro proyecto, tanto total como parcialmente, deberá citarse expresamente la autoría de Elisabeth Altarriba.</p>
+      <p>If this app, or any part of it, is used, modified or incorporated into another project, in whole or in part, Elisabeth Altarriba must be expressly credited.</p>
 
-      <p>Para cualquier uso distinto del permitido anteriormente, será necesaria autorización previa por escrito.</p>
+      <p>Any use beyond the permissions above requires prior written authorisation.</p>
 
       <div style="margin-top:30px; text-align:center; background:rgba(0,0,0,0.03); padding:15px; border-radius:8px;">
-        <p style="font-weight:bold; margin-bottom:5px;">Autora</p>
+        <p style="font-weight:bold; margin-bottom:5px;">Author</p>
         <p style="margin-top:0; margin-bottom:15px; font-size:16px;">Elisabeth Altarriba</p>
-        <p style="font-weight:bold; margin-bottom:5px;">Contacto:</p>
+        <p style="font-weight:bold; margin-bottom:5px;">Contact:</p>
         <p style="margin-top:0;">lisaltarriba@gmail.com</p>
       </div>
     </div>
     <div style="text-align:center; margin-top:25px;">
-      <button onclick="document.getElementById('copyrightModal').style.opacity='0'; document.getElementById('copyrightModal').firstElementChild.style.transform='translateY(20px)'; setTimeout(function(){document.getElementById('copyrightModal').style.display='none'}, 200);" style="background:var(--btn, #e0d4c3); color:var(--btn-text, #5d4037); border:none; padding:10px 24px; border-radius:20px; font-weight:bold; font-size:15px; cursor:pointer; font-family:inherit;">Cerrar</button>
+      <button onclick="document.getElementById('copyrightModal').style.opacity='0'; document.getElementById('copyrightModal').firstElementChild.style.transform='translateY(20px)'; setTimeout(function(){document.getElementById('copyrightModal').style.display='none'}, 200);" style="background:var(--btn, #e0d4c3); color:var(--btn-text, #5d4037); border:none; padding:10px 24px; border-radius:20px; font-weight:bold; font-size:15px; cursor:pointer; font-family:inherit;">Close</button>
     </div>
   </div>
 </div>
