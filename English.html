@@ -50,6 +50,8 @@ body{font-family:Georgia,serif;background:#f5ebe0;color:#3a2918;min-height:100vh
 .total-badge b{color:var(--br3);font-size:15px;margin-left:4px;}
 .internet-notice{position:absolute;top:6px;left:0;right:0;height:15px;overflow:hidden;pointer-events:none;color:rgba(107,68,35,.42);font:9px Arial,sans-serif;letter-spacing:.4px;white-space:nowrap}
 .internet-notice span{display:inline-block;padding-left:100%;animation:internetMarquee 24s linear infinite}
+.translator-internet-notice{position:relative;top:auto;left:auto;right:auto;width:100%;height:15px;margin:-2px 0 8px;overflow:hidden;pointer-events:none;color:rgba(107,68,35,.42);font:9px Arial,sans-serif;letter-spacing:.4px;white-space:nowrap;text-align:center}
+.translator-internet-notice span{display:inline-block;padding-left:100%;animation:internetMarquee 24s linear infinite}
 @keyframes internetMarquee{from{transform:translateX(0)}to{transform:translateX(-100%)}}
 .translator-btn{width:38px;height:38px;padding:0;background:var(--white);border:2px solid var(--border);border-radius:12px;color:var(--br3);font-size:18px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 0 var(--border),0 6px 10px rgba(107,68,35,.15);transition:all .15s}
 .translator-btn:hover{transform:translateY(-2px)}.translator-btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--border)}
@@ -1009,7 +1011,6 @@ window.addEventListener('message', function(event) {
 </div>
 
 <div id="home" class="screen active" style="position: relative;">
-<div class="internet-notice" aria-label="Se requiere internet para usar el traductor y el micrófono"><span>Se requiere internet para usar el traductor y el micrófono</span></div>
 <div class="home-hero" style="display: inline-flex; align-items: center; justify-content: center; gap: 15px; margin: 20px auto 0; max-width: 100%;">
   <!-- Logo_angles.JPG -->
   <img id="homeLogo" src="Logo_angles.JPG" onclick="replayFlagIntro()" onerror="this.src=document.querySelector('link[rel=\"apple-touch-icon\"]')?.href || 'Logo_angles.JPG';" alt="English App — replay flags" title="Replay flags" style="width: clamp(80px, 20vw, 120px); height: clamp(80px, 20vw, 120px); object-fit: contain; border-radius: 12px; flex-shrink: 0; mix-blend-mode: multiply; cursor:pointer;">
@@ -1035,7 +1036,7 @@ window.addEventListener('message', function(event) {
 
   <p class="subtitle">Master vocabulary, verbs, conditionals, phrasal verbs and more...</p>
   <div class="stats-row" style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V36</div>
+    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V40</div>
     <div class="total-badge" onclick="playPopSound(); showStatsModal()" style="cursor:pointer;" title="Ver tarjetas por secciones">Total: <b id="totalFlashcards">0</b> &nbsp;&nbsp;flashcards</div>
     <button class="translator-btn" type="button" onclick="openTranslator(event)" title="Translator" aria-label="Open translator">🌐</button>
   </div>
@@ -1123,6 +1124,10 @@ window.addEventListener('message', function(event) {
       <span>Sacar/poner bandera al inicio</span>
       <span id="flagIntroToggleState" class="settings-state on">SI</span>
     </button>
+    <label class="settings-sound-row" for="flagIntroDuration">
+      <span>Duración de la bandera (segundos)</span>
+      <input id="flagIntroDuration" type="number" min="0.5" max="600" step="0.1" value="6.3" oninput="saveFlagIntroDuration(this.value)" style="width:76px;text-align:center;border:2px solid var(--border);border-radius:10px;padding:7px;background:var(--white);color:var(--text);font-weight:700;">
+    </label>
     <div class="settings-sound-row">
       <span>Sounds</span>
       <button id="btnToggleSound" class="btn-toggle-sound" type="button" onclick="toggleSound(event)" title="Activar/Desactivar Sonidos">🔊</button>
@@ -1135,6 +1140,7 @@ window.addEventListener('message', function(event) {
 
 <div id="translatorModal" class="card-modal" aria-hidden="true" onclick="if(event.target===this) closeTranslator();">
   <div class="card-dialog" style="max-width:520px;">
+    <div class="translator-internet-notice" aria-label="Se requiere internet para usar el traductor y el micrófono"><span>Se requiere internet para usar el traductor y el micrófono</span></div>
     <h3 style="text-align:center;">Translator</h3>
     <p style="text-align:center;">Write or speak. The language is detected automatically.</p>
     <div class="translator-input-wrap">
@@ -1622,7 +1628,7 @@ function shuf(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(
 function pick(a,n){return shuf(a).slice(0,n)}
 function showScreen(id){document.querySelectorAll(".screen").forEach(function(s){s.classList.remove("active");});var tgt=document.getElementById(id);if(tgt)tgt.classList.add("active");}
 
-/* V36: temas persistentes y adaptados a todos los dispositivos */
+/* V40: duración configurable de la bandera inicial */
 var APP_THEMES = {
   rosa:{name:"Pastel Pink",swatch:"#f6c7d8",vars:{cream:"#fff0f5",white:"#fff9fb",br1:"#f5d5e1",br2:"#d99ab2",br3:"#b96d89",br4:"#7f3f59",br5:"#51283a",text:"#51283a",text2:"#7f3f59",text3:"#a77d8d",border:"#e6b9c9"}},
   morado:{name:"Purple",swatch:"#d9c9ef",vars:{cream:"#f5f0fb",white:"#fcf9ff",br1:"#e5d8f4",br2:"#b79ad8",br3:"#8863ae",br4:"#60407f",br5:"#3d2857",text:"#3d2857",text2:"#60407f",text3:"#927da8",border:"#cdb9e5"}},
@@ -5588,6 +5594,10 @@ function openCopyright(e) {
 </script>
 <script>
 var translatorRecognition=null;
+var translatorRecognitionStopRequested=false;
+var translatorRecognitionStarting=false;
+var translatorRecognitionRetryCount=0;
+var translatorRecognitionRetryTimer=null;
 var translatorLastPlainText='';
 var translatorVoiceLanguage='es-ES';
 function translatorLanguageName(lang){
@@ -5601,8 +5611,12 @@ function renderTranslatorVoiceLanguage(){
 function setTranslatorVoiceLanguage(lang,e){
   if(e) e.stopPropagation();
   if(translatorRecognition){
+    translatorRecognitionStopRequested=true;
+    if(translatorRecognitionRetryTimer){clearTimeout(translatorRecognitionRetryTimer);translatorRecognitionRetryTimer=null;}
     try{translatorRecognition.stop()}catch(err){}
     translatorRecognition=null;
+    translatorRecognitionStarting=false;
+    translatorRecognitionRetryCount=0;
     setTranslatorListening(false);
   }
   translatorVoiceLanguage=lang;
@@ -5626,7 +5640,10 @@ function openTranslator(e){
   if(input) setTimeout(function(){input.focus()},80);
 }
 function closeTranslator(){
-  if(translatorRecognition){try{translatorRecognition.stop()}catch(err){} translatorRecognition=null;}
+  if(translatorRecognitionRetryTimer){clearTimeout(translatorRecognitionRetryTimer);translatorRecognitionRetryTimer=null;}
+  if(translatorRecognition){translatorRecognitionStopRequested=true;try{translatorRecognition.stop()}catch(err){} translatorRecognition=null;}
+  translatorRecognitionStarting=false;
+  translatorRecognitionRetryCount=0;
   setTranslatorListening(false);
   var modal=document.getElementById('translatorModal');
   if(modal){modal.classList.remove('show');modal.setAttribute('aria-hidden','true');}
@@ -5706,9 +5723,13 @@ function translateText(){
 }
 function startTranslatorMic(e){
   if(e) e.stopPropagation();
+  if(translatorRecognitionStarting){setTranslatorStatus('Preparing the microphone…');return;}
   if(translatorRecognition){
+    translatorRecognitionStopRequested=true;
+    if(translatorRecognitionRetryTimer){clearTimeout(translatorRecognitionRetryTimer);translatorRecognitionRetryTimer=null;}
     try{translatorRecognition.stop()}catch(err){}
     translatorRecognition=null;
+    translatorRecognitionRetryCount=0;
     setTranslatorListening(false);
     setTranslatorStatus('Listening stopped.');
     return;
@@ -5724,11 +5745,15 @@ function startTranslatorMic(e){
   }
   var recognition=new Recognition();
   translatorRecognition=recognition;
+  translatorRecognitionStopRequested=false;
+  translatorRecognitionStarting=true;
+  translatorRecognitionRetryCount=0;
   recognition.lang=translatorVoiceLanguage;
+  recognition.continuous=true;
   recognition.interimResults=false;
   recognition.maxAlternatives=1;
   setTranslatorListening(true);
-  setTranslatorStatus('Listening in '+translatorLanguageName(translatorVoiceLanguage)+'…');
+  setTranslatorStatus('Preparing the microphone…');
   recognition.onresult=function(event){
     var transcript=event.results[0][0].transcript||'';
     var input=document.getElementById('translatorInput');
@@ -5739,15 +5764,49 @@ function startTranslatorMic(e){
     }
     translateText();
   };
-  recognition.onerror=function(){
-    setTranslatorStatus('Microphone or internet error.');
+  recognition.onerror=function(event){
+    translatorRecognitionStarting=false;
+    if(translatorRecognitionStopRequested) return;
+    var error=event&&event.error;
+    if(error==='not-allowed'||error==='service-not-allowed'){
+      setTranslatorStatus('Microphone permission is required.');
+    }else if(error==='network'){
+      setTranslatorStatus('Internet connection required for voice recognition.');
+    }else if(error!=='aborted'){
+      setTranslatorStatus('No voice detected. Try again.');
+    }
   };
   recognition.onend=function(){
-    translatorRecognition=null;
-    setTranslatorListening(false);
+    translatorRecognitionStarting=false;
+    if(translatorRecognitionStopRequested||translatorRecognition!==recognition){
+      if(translatorRecognition===recognition) translatorRecognition=null;
+      translatorRecognitionRetryCount=0;
+      translatorRecognitionStopRequested=false;
+      setTranslatorListening(false);
+      return;
+    }
+    if(translatorRecognitionRetryCount<3){
+      translatorRecognitionRetryCount++;
+      setTranslatorStatus('Listening ended; reconnecting ('+translatorRecognitionRetryCount+'/3)…');
+      translatorRecognitionRetryTimer=setTimeout(function(){
+        translatorRecognitionRetryTimer=null;
+        if(translatorRecognitionStopRequested||translatorRecognition!==recognition)return;
+        translatorRecognitionStarting=true;
+        try{recognition.start();setTranslatorStatus('Listening in '+translatorLanguageName(translatorVoiceLanguage)+'…');}
+        catch(error){translatorRecognitionStarting=false;setTranslatorStatus('Press the microphone again to retry.');}
+      },250);
+    }else{
+      translatorRecognition=null;
+      translatorRecognitionRetryCount=0;
+      setTranslatorListening(false);
+      setTranslatorStatus('Listening stopped. Press the microphone to try again.');
+    }
   };
-  try{recognition.start()}catch(error){
+  try{recognition.start();setTranslatorStatus('Listening in '+translatorLanguageName(translatorVoiceLanguage)+'…');}
+  catch(error){
     translatorRecognition=null;
+    translatorRecognitionStarting=false;
+    translatorRecognitionStopRequested=false;
     setTranslatorListening(false);
     setTranslatorStatus('Could not start the microphone.');
   }
@@ -5765,6 +5824,19 @@ function renderFlagIntroSetting(){
   state.classList.toggle('on',enabled);
   state.classList.toggle('off',!enabled);
   if(btn) btn.setAttribute('aria-pressed',enabled?'true':'false');
+  var duration=document.getElementById('flagIntroDuration');
+  if(duration) duration.value=String(getFlagIntroDurationSeconds());
+}
+function getFlagIntroDurationSeconds(){
+  var value=parseFloat(localStorage.getItem('englishFlagIntroDurationSeconds')||'6.3');
+  if(!isFinite(value)) value=6.3;
+  return Math.max(0.5,Math.min(600,value));
+}
+function saveFlagIntroDuration(value){
+  var seconds=parseFloat(value);
+  if(!isFinite(seconds)) return;
+  seconds=Math.max(0.5,Math.min(600,seconds));
+  localStorage.setItem('englishFlagIntroDurationSeconds',String(seconds));
 }
 function openSettings(e){
   if(e) e.stopPropagation();
@@ -5802,12 +5874,13 @@ function replayFlagIntro(){
   overlay.setAttribute('aria-hidden','false');
   void overlay.offsetWidth;
   overlay.classList.add('is-visible');
+  var durationMs=getFlagIntroDurationSeconds()*1000;
   flagIntroTimers.push(setTimeout(function(){
     flag.classList.add('is-us');
-  },3500));
+  },Math.max(250,durationMs/2)));
   flagIntroTimers.push(setTimeout(function(){
     overlay.classList.remove('is-visible');
-  },6300));
+  },durationMs));
 }
 window.addEventListener('load',function(){setTimeout(function(){if(isFlagIntroEnabled()) replayFlagIntro();},180);});
 </script>
