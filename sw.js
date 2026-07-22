@@ -4,7 +4,6 @@ const urlsToCache = [
   './english_data.js',
   './Logo_angles.JPG',
   './logo.jpg',
-  './copyright-license.jpg',
   './English_Backup_Datos.json',
   './manifest.json',
   './html2canvas.min.js'
