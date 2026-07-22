@@ -5563,7 +5563,9 @@ function selectIcon(iconName) {
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
-    navigator.serviceWorker.register('sw.js').then(function(registration) {
+    // Query version forces iOS/Android installed PWAs to re-check the worker
+    // even when the previous worker cached the old app shell.
+    navigator.serviceWorker.register('sw.js?v=40').then(function(registration) {
       console.log('ServiceWorker registration successful');
     }, function(err) {
       console.log('ServiceWorker registration failed: ', err);

@@ -1,10 +1,11 @@
-const CACHE_NAME = 'english-app-v40';
+// V40 mobile refresh: use a new cache key so existing iPhone/Android PWAs
+// cannot keep serving the pre-V40 HTML forever.
+const CACHE_NAME = 'english-app-v40-mobile-refresh';
 const urlsToCache = [
   './English.html',
   './english_data.js',
   './Logo_angles.JPG',
   './logo.jpg',
-  './English_Backup_Datos.json',
   './manifest.json',
   './html2canvas.min.js'
 ];
@@ -20,6 +21,18 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
+  // Keep the app shell offline-first. A new worker installs a fresh shell,
+  // while the versioned registration above makes phones pick that worker up.
+  // This avoids waiting for a network timeout when the app is offline.
+  if (event.request.mode === 'navigate' ||
+      new URL(event.request.url).pathname.endsWith('/English.html')) {
+    event.respondWith(
+      caches.match(event.request)
+        .then(cached => cached || caches.match('./English.html'))
+    );
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request)
       .then(response => {
