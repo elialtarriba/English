@@ -775,6 +775,26 @@ select.study-filter-btn {
 .theme-screen{align-items:center;justify-content:center;padding:24px 16px;background:linear-gradient(160deg,#f5ebe0 0%,#ead9c0 50%,#e0c9a0 100%)}
 /* Complete mint palette: also overrides legacy hard-coded beige/white colours. */
 html[data-theme="menta"] body{background:#dff7ef!important;color:#214b40!important}
+/* V41 responsive corrections */
+.card-modal#statsModal .card-dialog{max-height:calc(100dvh - 24px);overflow-y:auto}
+#statsModal #statsContent{gap:3px!important;margin-top:6px!important}
+#statsModal .stats-row-btn{min-height:0;padding:3px 0 4px;line-height:1.15}
+#statsModal .stats-level-links{gap:6px;margin-top:5px}
+#statsModal .modal-actions{margin-top:10px!important}
+.m-estudio-focus{overflow:hidden!important}
+.m-estudio-focus .sbody{box-sizing:border-box!important;height:calc(100dvh - 51px)!important;flex:1 1 auto!important;overflow:hidden!important;padding:8px 10px max(8px,env(safe-area-inset-bottom))!important;gap:6px!important}
+.m-estudio-focus .flashcard{flex:1 1 auto!important;min-height:0!important;height:auto!important;max-height:none!important}
+.m-estudio-focus .fc-front{min-height:0!important;overflow:hidden!important;padding:48px 12px 20px!important;gap:6px!important}
+.m-estudio-focus .fc-word-wrap{margin-top:0!important;margin-bottom:4px!important;flex:0 0 auto!important}
+.m-estudio-focus .fc-image-container{min-height:0!important;margin-top:0!important;flex:1 1 auto!important;overflow:hidden!important}
+.m-estudio-focus #fcDrawingWrap{min-height:0!important;flex:1 1 auto!important}
+.m-estudio-focus #fcDrawingWrap img{max-width:100%!important;max-height:100%!important;width:auto!important;height:auto!important}
+.m-estudio-focus .fc-front>div[style*="margin-top: 10px"]{flex:0 0 auto!important;margin-top:4px!important;margin-bottom:2px!important;gap:8px!important}
+.m-estudio-focus .fc-status-wrap{flex:0 0 auto!important;margin-top:2px!important;margin-bottom:4px!important}
+.m-estudio-focus .fc-status-btn{transform:scale(1.12)!important;margin:2px 0 4px!important}
+.m-estudio-focus .nav-row{position:static!important;min-height:48px!important;height:48px!important;padding:2px 8px!important}
+.m-estudio-focus .nav-btn{width:42px;height:42px}
+@media(max-height:700px){.m-estudio-focus .fc-front{padding-top:40px!important;padding-bottom:12px!important}.m-estudio-focus .fc-front .fc-word{font-size:clamp(28px,9vw,48px)!important}.m-estudio-focus .btn-audio{width:32px;height:32px;font-size:15px}}
 html[data-theme="menta"] #home,html[data-theme="menta"] #nameScreen,html[data-theme="menta"] #resultsScreen,html[data-theme="menta"] #studyScreen,html[data-theme="menta"] .theme-screen{background:linear-gradient(160deg,#effcf8 0%,#d8f2e9 52%,#bfe5d6 100%)!important}
 html[data-theme="menta"] .mode-btn,html[data-theme="menta"] .total-badge,html[data-theme="menta"] .btn-toggle-sound,html[data-theme="menta"] .motivational-btn,html[data-theme="menta"] .theme-panel,html[data-theme="menta"] .theme-option,html[data-theme="menta"] .pcard,html[data-theme="menta"] .cat-btn,html[data-theme="menta"] .lvl-btn,html[data-theme="menta"] .qc-btn,html[data-theme="menta"] .qcard,html[data-theme="menta"] .rcard,html[data-theme="menta"] .fc-face,html[data-theme="menta"] .fc-sec,html[data-theme="menta"] .search-inp,html[data-theme="menta"] .ninp{background:#f4fffb!important;border-color:#9bd8c7!important;color:#214b40!important}
 html[data-theme="menta"] .mode-btn:hover,html[data-theme="menta"] .cat-btn.on,html[data-theme="menta"] .lvl-btn.on,html[data-theme="menta"] .qc-btn.on{background:#d9f4e9!important}
@@ -1036,7 +1056,7 @@ window.addEventListener('message', function(event) {
 
   <p class="subtitle">Master vocabulary, verbs, conditionals, phrasal verbs and more...</p>
   <div class="stats-row" style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V40</div>
+    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V41</div>
     <div class="total-badge" onclick="playPopSound(); showStatsModal()" style="cursor:pointer;" title="Ver tarjetas por secciones">Total: <b id="totalFlashcards">0</b> &nbsp;&nbsp;flashcards</div>
     <button class="translator-btn" type="button" onclick="openTranslator(event)" title="Translator" aria-label="Open translator">🌐</button>
   </div>
@@ -5565,7 +5585,7 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     // Query version forces iOS/Android installed PWAs to re-check the worker
     // even when the previous worker cached the old app shell.
-    navigator.serviceWorker.register('sw.js?v=40').then(function(registration) {
+    navigator.serviceWorker.register('sw.js?v=41').then(function(registration) {
       console.log('ServiceWorker registration successful');
     }, function(err) {
       console.log('ServiceWorker registration failed: ', err);

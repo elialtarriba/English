@@ -1,6 +1,6 @@
-// V40 mobile refresh: use a new cache key so existing iPhone/Android PWAs
-// cannot keep serving the pre-V40 HTML forever.
-const CACHE_NAME = 'english-app-v40-mobile-refresh';
+// V41 mobile refresh: use a new cache key so existing iPhone/Android PWAs
+// cannot keep serving the pre-V41 HTML forever.
+const CACHE_NAME = 'english-app-v41-mobile-refresh';
 const urlsToCache = [
   './English.html',
   './english_data.js',
