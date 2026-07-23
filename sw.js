@@ -1,6 +1,5 @@
-// V41 mobile refresh: use a new cache key so existing iPhone/Android PWAs
-// cannot keep serving the pre-V41 HTML forever.
-const CACHE_NAME = 'english-app-v41-mobile-refresh';
+// V42 Quiz counts refresh: replace older cached shells on every device.
+const CACHE_NAME = 'english-app-v42-quiz-counts-single';
 const urlsToCache = [
   './English.html',
   './english_data.js',

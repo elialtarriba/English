@@ -99,6 +99,8 @@ body{font-family:Georgia,serif;background:#f5ebe0;color:#3a2918;min-height:100vh
 .cat-grid{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;max-width:520px;width:100%}
 .cat-btn, .lvl-btn{background:var(--white);border:2px solid var(--border);border-radius:11px;padding:8px 11px;font-family:Arial,sans-serif;font-size:12px;color:var(--text2);display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;transition:all .18s;min-width:80px}
 .cat-btn b, .lvl-btn b{font-size:16px;color:var(--text)}
+.quiz-setup .cat-btn b, .quiz-setup .lvl-btn b{display:none}
+.quiz-real-count{font-weight:700;color:var(--text)}
 .cat-btn:hover, .lvl-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(107,68,35,.1)}
 .cat-btn.on, .lvl-btn.on{border-color:var(--br4);background:#ead9c0;box-shadow:0 3px 10px rgba(74,46,26,.15)}
 .cat-btn.on b, .lvl-btn.on b{color:var(--br4)}
@@ -775,7 +777,7 @@ select.study-filter-btn {
 .theme-screen{align-items:center;justify-content:center;padding:24px 16px;background:linear-gradient(160deg,#f5ebe0 0%,#ead9c0 50%,#e0c9a0 100%)}
 /* Complete mint palette: also overrides legacy hard-coded beige/white colours. */
 html[data-theme="menta"] body{background:#dff7ef!important;color:#214b40!important}
-/* V41 responsive corrections */
+/* V42 responsive corrections */
 .card-modal#statsModal .card-dialog{max-height:calc(100dvh - 24px);overflow-y:auto}
 #statsModal #statsContent{gap:3px!important;margin-top:6px!important}
 #statsModal .stats-row-btn{min-height:0;padding:3px 0 4px;line-height:1.15}
@@ -1056,7 +1058,7 @@ window.addEventListener('message', function(event) {
 
   <p class="subtitle">Master vocabulary, verbs, conditionals, phrasal verbs and more...</p>
   <div class="stats-row" style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V41</div>
+    <div id="v-flag" style="font-size: 12px; color: gray; opacity: 0.6; font-weight: bold;">V42</div>
     <div class="total-badge" onclick="playPopSound(); showStatsModal()" style="cursor:pointer;" title="Ver tarjetas por secciones">Total: <b id="totalFlashcards">0</b> &nbsp;&nbsp;flashcards</div>
     <button class="translator-btn" type="button" onclick="openTranslator(event)" title="Translator" aria-label="Open translator">🌐</button>
   </div>
@@ -1103,20 +1105,20 @@ window.addEventListener('message', function(event) {
     </div>
     <div class="section-label"><span class="must-pick">① Categories</span> <span style="font-weight:400">(choose one or more)</span></div>
     <div class="cat-grid" id="catGrid">
-      <div class="cat-btn on" data-cat="adverb"><b>300</b>Adverbs<span class="ck">✓</span></div>
-      <div class="cat-btn on" data-cat="adjective"><b>300</b>Adjectives<span class="ck">✓</span></div>
-      <div class="cat-btn on" data-cat="phrasal"><b>300</b>Phrasal V.<span class="ck">✓</span></div>
-      <div class="cat-btn on" data-cat="connector"><b>100</b>Connectors<span class="ck">✓</span></div>
-      <div class="cat-btn on" data-cat="starter"><b>150</b>Starters<span class="ck">✓</span></div>
-      <div class="cat-btn on" data-cat="verb"><b>150</b>Verbs<span class="ck">✓</span></div>
-      <div class="cat-btn on" data-cat="other"><b>0</b>Other<span class="ck">✓</span></div>
+      <div class="cat-btn on" data-cat="adverb">Adverbs <span class="quiz-real-count">(0)</span><span class="ck">✓</span></div>
+      <div class="cat-btn on" data-cat="adjective">Adjectives <span class="quiz-real-count">(0)</span><span class="ck">✓</span></div>
+      <div class="cat-btn on" data-cat="phrasal">Phrasal V. <span class="quiz-real-count">(0)</span><span class="ck">✓</span></div>
+      <div class="cat-btn on" data-cat="connector">Connectors <span class="quiz-real-count">(0)</span><span class="ck">✓</span></div>
+      <div class="cat-btn on" data-cat="starter">Starters <span class="quiz-real-count">(0)</span><span class="ck">✓</span></div>
+      <div class="cat-btn on" data-cat="verb">Verbs <span class="quiz-real-count">(0)</span><span class="ck">✓</span></div>
+      <div class="cat-btn on" data-cat="other">Other <span class="quiz-real-count">(0)</span><span class="ck">✓</span></div>
     </div>
     <span class="val-hint" id="catHint">⚠ Select at least one category</span>
     <div class="section-label"><span>Levels</span> <span style="font-weight:400">(optional)</span></div>
     <div class="cat-grid" id="lvlGrid">
-      <div class="lvl-btn" data-lvl="b2_1"><b>0</b>B2.1<span class="ck">✓</span></div>
-      <div class="lvl-btn" data-lvl="b2_2"><b>0</b>B2.2<span class="ck">✓</span></div>
-      <div class="lvl-btn" data-lvl="c1"><b>0</b>C1<span class="ck">✓</span></div>
+      <div class="lvl-btn" data-lvl="b2_1">B2.1 <span class="quiz-real-count">(0)</span><span class="ck">✓</span></div>
+      <div class="lvl-btn" data-lvl="b2_2">B2.2 <span class="quiz-real-count">(0)</span><span class="ck">✓</span></div>
+      <div class="lvl-btn" data-lvl="c1">C1 <span class="quiz-real-count">(0)</span><span class="ck">✓</span></div>
     </div>
     <div class="section-label"><span class="must-pick">② Number of questions</span></div>
     <div class="qcount-row">
@@ -3430,12 +3432,21 @@ function enterStudyMode(edit, initialCat, initialLvl){
   document.getElementById("btnStudyTopView").style.display = STUDY_EDIT_MODE ? "" : "none";
   document.getElementById("btnStudyTopSave").style.display = STUDY_EDIT_MODE ? "" : "none";
   document.getElementById("btnStudyTopPdf").style.display = STUDY_EDIT_MODE ? "" : "none";
-  studyCatFilter=initialCat || "all"; studyLvlFilter=initialLvl || "all"; studyRegFilter="all"; studySearch=""; studyIdx=0;
+  // Every entry point starts from the complete deck. A previous Favorites,
+  // status or verification selection must never hide cards on re-entry.
+  studyCatFilter=initialCat || "all"; studyLvlFilter=initialLvl || "all"; studyRegFilter="all"; studySearch="";
+  studyFavFilter=false; studyStatusFilter=0; studyVerifyFilter="all"; studyIdx=0;
   document.getElementById("searchInp").value="";
   var regSel = document.getElementById("regFilterSel");
   if(regSel) regSel.value = "all";
   var lvlSelFilter = document.getElementById("lvlFilterSel");
   if(lvlSelFilter) lvlSelFilter.value = studyLvlFilter;
+  var verifySelFilter = document.getElementById("verifyFilterSel");
+  if(verifySelFilter){ verifySelFilter.value="all"; updateVerifyFilterColor("all"); }
+  var favBtn = document.getElementById("btnStudyFav");
+  if(favBtn){ favBtn.classList.remove("active"); favBtn.textContent="☆ Favoritos"; }
+  var statusSel = document.getElementById("selStudyStatus");
+  if(statusSel){ statusSel.value="0"; statusSel.classList.remove("active"); }
   document.querySelectorAll(".flt-btn:not(.lvl-flt-btn)").forEach(function(b){b.classList.toggle("on",b.dataset.flt===studyCatFilter)});
   document.querySelectorAll(".lvl-flt-btn").forEach(function(b){b.classList.toggle("on",b.dataset.lvlflt===studyLvlFilter)});
   showScreen("studyScreen"); studyRandom();
@@ -4327,7 +4338,25 @@ function toggleStudyVerify(e){
 function studyPrev(){if(typeof forceSaveInline==='function') forceSaveInline(); if(studyIdx>0){studyIdx--;renderStudy()}}
 function studyNext(){if(typeof forceSaveInline==='function') forceSaveInline(); if(studyIdx<studyList.length-1){studyIdx++;renderStudy()}}
 function studyRandom(){if(typeof forceSaveInline==='function') forceSaveInline(); var list=studyFilteredList();studyIdx=list.length?Math.floor(Math.random()*list.length):0;renderStudy()}
-function setStudyFilter(f){if(typeof forceSaveInline==='function') forceSaveInline(); studyCatFilter=f;studyIdx=0;document.querySelectorAll(".flt-btn:not(.lvl-flt-btn)").forEach(function(b){b.classList.toggle("on",b.dataset.flt===f)});renderStudy()}
+function setStudyFilter(f){
+  if(typeof forceSaveInline==='function') forceSaveInline();
+  studyCatFilter=f;
+  if(f === "all"){
+    // “All” is the inventory view, never the current Favorites/status/search subset.
+    studyLvlFilter="all"; studyRegFilter="all"; studySearch="";
+    studyFavFilter=false; studyStatusFilter=0; studyVerifyFilter="all";
+    var search=document.getElementById("searchInp"); if(search) search.value="";
+    var reg=document.getElementById("regFilterSel"); if(reg) reg.value="all";
+    var lvl=document.getElementById("lvlFilterSel"); if(lvl) lvl.value="all";
+    var verify=document.getElementById("verifyFilterSel"); if(verify){verify.value="all"; updateVerifyFilterColor("all");}
+    var fav=document.getElementById("btnStudyFav"); if(fav){fav.classList.remove("active"); fav.textContent="☆ Favoritos";}
+    var status=document.getElementById("selStudyStatus"); if(status){status.value="0"; status.classList.remove("active");}
+  }
+  studyIdx=0;
+  document.querySelectorAll(".flt-btn:not(.lvl-flt-btn)").forEach(function(b){b.classList.toggle("on",b.dataset.flt===f)});
+  document.querySelectorAll(".lvl-flt-btn").forEach(function(b){b.classList.toggle("on",b.dataset.lvlflt===studyLvlFilter)});
+  renderStudy();
+}
 function setStudyLvlFilter(f){if(typeof forceSaveInline==='function') forceSaveInline(); if(studyLvlFilter===f) studyLvlFilter="all"; else studyLvlFilter=f; studyIdx=0; document.querySelectorAll(".lvl-flt-btn").forEach(function(b){b.classList.toggle("on",b.dataset.lvlflt===studyLvlFilter)}); renderStudy()}
 
 
@@ -5025,8 +5054,13 @@ function updateHomeCounts() {
   });
   // Update big grid buttons
   Object.keys(labels).forEach(function(cat){
-    var btn = document.querySelector('.cat-btn[data-cat="'+cat+'"] b');
-    if(btn) btn.textContent = counts[cat] || 0;
+    var quizBtn = document.querySelector('#quizSetup .cat-btn[data-cat="'+cat+'"] .quiz-real-count');
+    if(quizBtn) quizBtn.textContent = '(' + (counts[cat] || 0) + ')';
+  });
+  ['b2_1','b2_2','c1'].forEach(function(level){
+    var levelCount = counts[level] || 0;
+    var levelBtn = document.querySelector('#quizSetup .lvl-btn[data-lvl="'+level+'"] .quiz-real-count');
+    if(levelBtn) levelBtn.textContent = '(' + levelCount + ')';
   });
 }
 
@@ -5057,20 +5091,13 @@ function updateStudyFilterCounts() {
 }
 
 function countStudyFilterCards(kind, value) {
-  var savedCat = studyCatFilter;
-  var savedLvl = studyLvlFilter;
-  if(kind === 'all') {
-    studyCatFilter = 'all';
-    studyLvlFilter = 'all';
-  } else if(kind === 'level') {
-    studyLvlFilter = value;
-  } else {
-    studyCatFilter = value;
-  }
-  var count = studyFilteredList().length;
-  studyCatFilter = savedCat;
-  studyLvlFilter = savedLvl;
-  return count;
+  // Statistics describe the complete deck. They must not inherit Favorites,
+  // status, verification, search, register or another currently selected filter.
+  var cards = getStudyCards();
+  if(kind === 'all') return cards.length;
+  return cards.filter(function(c){
+    return kind === 'level' ? (c.level || 'none') === value : (c.cat || 'other') === value;
+  }).length;
 }
 
 
@@ -5585,7 +5612,7 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     // Query version forces iOS/Android installed PWAs to re-check the worker
     // even when the previous worker cached the old app shell.
-    navigator.serviceWorker.register('sw.js?v=41').then(function(registration) {
+    navigator.serviceWorker.register('sw.js?v=44').then(function(registration) {
       console.log('ServiceWorker registration successful');
     }, function(err) {
       console.log('ServiceWorker registration failed: ', err);
