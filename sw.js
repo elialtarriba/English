@@ -1,10 +1,8 @@
-// V42 Quiz counts refresh: replace older cached shells on every device.
-const CACHE_NAME = 'english-app-v42-quiz-counts-single';
+// V45 EliBi logo embedded above the email in the title card.
+const CACHE_NAME = 'english-app-v45-elibi-logo';
 const urlsToCache = [
   './English.html',
   './english_data.js',
-  './Logo_angles.JPG',
-  './logo.jpg',
   './manifest.json',
   './html2canvas.min.js'
 ];
