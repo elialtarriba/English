@@ -1,10 +1,7 @@
-// V45 EliBi logo embedded above the email in the title card.
-const CACHE_NAME = 'english-app-v45-elibi-logo';
+// V47: the HTML is standalone and updates must not be hidden by stale cache.
+const CACHE_NAME = 'english-app-v47-standalone-html';
 const urlsToCache = [
-  './English.html',
-  './english_data.js',
-  './manifest.json',
-  './html2canvas.min.js'
+  './English.html'
 ];
 
 self.addEventListener('install', event => {
@@ -18,25 +15,27 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
-  // Keep the app shell offline-first. A new worker installs a fresh shell,
-  // while the versioned registration above makes phones pick that worker up.
-  // This avoids waiting for a network timeout when the app is offline.
+  // Check the network first so a newly uploaded English.html is not hidden by
+  // an older cached copy; fall back to the cache only when offline.
   if (event.request.mode === 'navigate' ||
       new URL(event.request.url).pathname.endsWith('/English.html')) {
     event.respondWith(
-      caches.match(event.request)
-        .then(cached => cached || caches.match('./English.html'))
+      fetch(event.request)
+        .then(response => {
+          if (response && response.status === 200 && response.type === 'basic') {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put('./English.html', copy));
+          }
+          return response;
+        })
+        .catch(() => caches.match(event.request)
+          .then(cached => cached || caches.match('./English.html')))
     );
     return;
   }
 
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request).then(
+    fetch(event.request).then(
           function(response) {
             if(!response || response.status !== 200 || response.type !== 'basic') {
               return response;
@@ -48,11 +47,7 @@ self.addEventListener('fetch', event => {
               });
             return response;
           }
-        ).catch(() => {
-          // Fallback if offline and not in cache
-        });
-      })
-  );
+        ).catch(() => caches.match(event.request)));
 });
 
 self.addEventListener('activate', event => {
