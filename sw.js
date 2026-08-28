@@ -1,5 +1,5 @@
-// V14: automatic keyboard-dictation fallback and reliable voice-result handling.
-const CACHE_NAME = 'english-app-v14-standalone-html';
+// V15: resilient translation fallbacks for local-file and restricted browser contexts.
+const CACHE_NAME = 'english-app-v15-standalone-html';
 const urlsToCache = [
   './English.html'
 ];
