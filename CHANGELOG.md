@@ -4,12 +4,18 @@ Este archivo servirá para registrar todos los cambios que vayamos realizando en
 
 ## Historial de Cambios
 
+- **Versión V2 (28 de Agosto)**:
+  - Se corrigió la navegación de las frases inspiratorias: la flecha izquierda vuelve a la frase original cuando se está viendo su traducción y las flechas avanzan y retroceden correctamente entre frases.
+  - Se actualizó la versión visible, la caché y los parámetros de carga a V2.
+
 - **Versión V1 (28 de Agosto)**:
   - Se reinició la numeración visible de la aplicación en V1.
   - Cada descarga mediante **Download HTML with my changes** genera ahora la siguiente versión consecutiva (V2, V3, V4…).
   - Se mantuvieron incrustadas las 1578 tarjetas y el logo correcto de AnglèsPro.
   - Se reinició la caché del Service Worker a V1.
   - Se restauraron las funciones de guardado que utiliza la descarga para que el botón exporte sin errores.
+  - Se separaron los datos y las fotos de las tarjetas en `english_data.js` para evitar que `English.html` siga creciendo; los logos e iconos continúan incrustados. La aplicación utiliza ambos archivos.
+  - Se separaron los datos y las fotos de las tarjetas en `english_data.js` para evitar que `English.html` siga creciendo; los logos e iconos continúan incrustados.
 
 - **Versión V54 (28 de Agosto)**:
   - Se incrustaron las 14 tarjetas personales de la copia del 27/08; el inventario queda en **1578 tarjetas**.

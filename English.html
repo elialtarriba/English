@@ -4450,9 +4450,9 @@ async function downloadEditedHtml(){
   html=replaceMarkedVariable(html,"USER_CARDS",cardsJson,"USER_CARDS_MARKER");
   html=replaceMarkedVariable(html,"USER_QUIZ_EDITS",quizJson,"USER_QUIZ_EDITS_MARKER");
   var exportVersion=nextExportVersion();
-  html=html.replace(">V1</div>",">V"+exportVersion+"</div>");
-  html=html.replace("manifest.json?v=1","manifest.json?v="+exportVersion);
-  html=html.replace("sw.js?v=1","sw.js?v="+exportVersion);
+  html=html.replace(/(<div id="v-flag"[^>]*>)V\d+(<\/div>)/i,"$1V"+exportVersion+"$2");
+  html=html.replace(/manifest\.json\?v=\d+/g,"manifest.json?v="+exportVersion);
+  html=html.replace(/sw\.js\?v=\d+/g,"sw.js?v="+exportVersion);
   var blob=new Blob([html],{type:"text/html;charset=utf-8"});
   downloadSaveCount++;
   var filename="English.html";
