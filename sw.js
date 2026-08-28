@@ -1,5 +1,5 @@
-// V3: the HTML is standalone and updates must not be hidden by stale cache.
-const CACHE_NAME = 'english-app-v3-standalone-html';
+// V6: example numbers play the British English sentence aloud.
+const CACHE_NAME = 'english-app-v6-standalone-html';
 const urlsToCache = [
   './English.html'
 ];
