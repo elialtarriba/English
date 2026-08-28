@@ -1,5 +1,5 @@
-// V12: highly visible red/green microphone halo for desktop and mobile.
-const CACHE_NAME = 'english-app-v12-standalone-html';
+// V13: more reliable mobile voice recognition with a highly visible microphone halo.
+const CACHE_NAME = 'english-app-v13-standalone-html';
 const urlsToCache = [
   './English.html'
 ];
