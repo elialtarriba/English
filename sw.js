@@ -1,5 +1,5 @@
-// V2: the HTML is standalone and updates must not be hidden by stale cache.
-const CACHE_NAME = 'english-app-v2-standalone-html';
+// V3: the HTML is standalone and updates must not be hidden by stale cache.
+const CACHE_NAME = 'english-app-v3-standalone-html';
 const urlsToCache = [
   './English.html'
 ];
