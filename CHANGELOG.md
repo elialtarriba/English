@@ -4,6 +4,13 @@ Este archivo servirá para registrar todos los cambios que vayamos realizando en
 
 ## Historial de Cambios
 
+- **Versión V1 (28 de Agosto)**:
+  - Se reinició la numeración visible de la aplicación en V1.
+  - Cada descarga mediante **Download HTML with my changes** genera ahora la siguiente versión consecutiva (V2, V3, V4…).
+  - Se mantuvieron incrustadas las 1578 tarjetas y el logo correcto de AnglèsPro.
+  - Se reinició la caché del Service Worker a V1.
+  - Se restauraron las funciones de guardado que utiliza la descarga para que el botón exporte sin errores.
+
 - **Versión V54 (28 de Agosto)**:
   - Se incrustaron las 14 tarjetas personales de la copia del 27/08; el inventario queda en **1578 tarjetas**.
   - Se sustituyeron los iconos de la aplicación por el logo correcto **AnglèsPro** en `English.html` y `manifest.json`.
