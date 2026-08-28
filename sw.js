@@ -1,5 +1,5 @@
-// V51: the HTML is standalone and updates must not be hidden by stale cache.
-const CACHE_NAME = 'english-app-v51-standalone-html';
+// V52: the HTML is standalone and updates must not be hidden by stale cache.
+const CACHE_NAME = 'english-app-v52-standalone-html';
 const urlsToCache = [
   './English.html'
 ];
