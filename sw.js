@@ -1,5 +1,5 @@
-// V6: example numbers play the British English sentence aloud.
-const CACHE_NAME = 'english-app-v6-standalone-html';
+// V12: highly visible red/green microphone halo for desktop and mobile.
+const CACHE_NAME = 'english-app-v12-standalone-html';
 const urlsToCache = [
   './English.html'
 ];
