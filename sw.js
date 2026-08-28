@@ -1,5 +1,5 @@
-// V13: more reliable mobile voice recognition with a highly visible microphone halo.
-const CACHE_NAME = 'english-app-v13-standalone-html';
+// V14: automatic keyboard-dictation fallback and reliable voice-result handling.
+const CACHE_NAME = 'english-app-v14-standalone-html';
 const urlsToCache = [
   './English.html'
 ];
