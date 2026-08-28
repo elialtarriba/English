@@ -4,6 +4,150 @@ Este archivo servirá para registrar todos los cambios que vayamos realizando en
 
 ## Historial de Cambios
 
+- **Versión V54 (28 de Agosto)**:
+  - Se incrustaron las 14 tarjetas personales de la copia del 27/08; el inventario queda en **1578 tarjetas**.
+  - Se sustituyeron los iconos de la aplicación por el logo correcto **AnglèsPro** en `English.html` y `manifest.json`.
+  - Se actualizó la caché del Service Worker a V54 para que GitHub Pages y las PWA descarguen esta versión.
+
+- **Versión V52 (28 de Agosto)**:
+  - Se restauró el modal **Cards by section** y el acceso desde sus filas al Modo Estudio.
+  - Se unificó el recuento real de tarjetas para que Total, Study Mode, Quiz Mode y filtros muestren las 1578 flashcards.
+  - Se restauró la contraseña de edición (`5eli5`) para que el botón **Edit** permita entrar correctamente.
+  - Se añadieron botones anterior/siguiente junto a las frases motivadoras para repasar idiomas y frases sin perder la navegación.
+  - Se actualizó la versión de la aplicación y la caché del Service Worker a V52.
+
+- **Versión V50 (28 de Agosto)**:
+  - Se actualizó la versión visible, el manifiesto y el registro del Service Worker a V50.
+  - Se mantienen todas las correcciones de exportación, CSS incrustado, flashcards y actualización de caché de V49.
+  - Se reparó el código incrustado que podía cortar los scripts al encontrar `</script>` dentro de los datos de una flashcard.
+  - Cada descarga mediante **Download HTML with my changes** genera automáticamente una versión consecutiva (V51, V52, etc.).
+  - Se restauraron las funciones de contraseña, recuento y navegación que faltaban en la exportación anterior.
+
+- **Versión V49 (28 de Agosto)**:
+  - La exportación añade una copia completa y explícita del CSS dentro del HTML descargado.
+  - Se actualizó la caché y el registro del Service Worker a V49.
+  - Se mantiene el nombre `English.html`, el manifiesto y todos los recursos incrustados.
+
+- **Versión V48 (27 de Agosto)**:
+  - La exportación incrusta explícitamente todo el CSS, además de los datos y las librerías, para que la app conserve su diseño al subir solo `English.html`.
+  - El archivo exportado se guarda como `English.html`, coincidiendo con la ruta de inicio del manifiesto.
+  - Se mantiene el manifiesto y se actualiza el Service Worker a V48 para refrescar correctamente la app instalada.
+
+- **Versión V47 (27 de Agosto)**:
+  - Se corrigió la exportación: el HTML descargado queda marcado como archivo independiente y no intenta depender del manifiesto ni del Service Worker.
+  - Se corrigió la actualización de la PWA: el Service Worker comprueba primero el HTML nuevo y solo usa la caché cuando no hay conexión.
+  - Se actualizó la versión visible, el manifiesto y el registro del Service Worker a V47.
+
+- **Versión V46 (27 de Agosto)**:
+  - `English.html` ahora incorpora también las flashcards originales de `english_data.js` y la librería `html2canvas`.
+  - El HTML descargado desde **Download HTML with my changes** queda preparado para subirse solo, conservando las tarjetas existentes y permitiendo seguir creando y exportando nuevas flashcards.
+  - Se actualizó el Service Worker a V46.
+
+- **Versión V45 (23 de Julio)**:
+  - Se añadió el logo **EliBi** encima del email en el reverso de la tarjeta giratoria del encabezado.
+  - El logo EliBi quedó incrustado directamente en `English.html` y se amplió para ocupar buena parte del recuadro.
+  - Se actualizó el Service Worker a V45 para refrescar el diseño en los dispositivos.
+
+- **Versión V44 (23 de Julio)**:
+  - El logo AnglèsPro y los iconos de instalación quedaron incrustados directamente en `English.html` y `manifest.json` como datos embebidos.
+  - La aplicación ya no depende de subir archivos de imagen del logo a GitHub ni de descargarlos para funcionar.
+  - Se actualizó el Service Worker a V44 y se eliminó la precarga de los archivos externos del logo.
+
+- **Versión V43 (23 de Julio)**:
+  - Se sustituyó el logo de la aplicación por el nuevo logo completo **AnglèsPro** en la portada y en el reverso de la tarjeta de título.
+  - Se actualizaron el favicon, el icono de iPhone/iPad y los iconos de instalación de la PWA para usar el nuevo logo.
+  - El nombre de la aplicación instalada ahora aparece como **AnglèsPro**.
+  - Se actualizó la caché del Service Worker a V43 para que los dispositivos descarguen los nuevos iconos.
+
+- **Versión V42 (23 de Julio)**:
+  - Se unificó el inventario de tarjetas entre Home, Total, Cards by section y M.Estudio.
+  - El total de `All` y las filas de estadísticas ya no heredan accidentalmente el filtro de Favoritos, estado, verificación, registro o búsqueda.
+  - Al pulsar `All`, se limpian los filtros secundarios y se vuelve a mostrar la baraja completa; las 1564 tarjetas quedan verificables desde cualquier entrada.
+  - Se actualizó la caché del Service Worker a V42 para que los móviles y nuevos dispositivos descarguen esta corrección.
+  - En Quiz Mode, las categorías y niveles muestran una sola vez, entre paréntesis, el número real de tarjetas disponibles, sin cifras duplicadas ni ceros residuales.
+
+- **Versión V41 (23 de Julio)**:
+  - Se compactó la ventana **Cards by section** para que todas las líneas, los accesos rápidos y el botón Close quepan en la pantalla del móvil sin scroll.
+  - Se rehízo el reparto de altura de **M.Estudio**: la foto aprovecha todo el espacio libre de la card y los botones de navegación quedan siempre visibles en la pantalla, sin scroll vertical para cambiar de tarjeta.
+  - Se actualizó la caché y el registro del Service Worker a V41 para forzar la actualización en móviles.
+
+- **Corrección de actualización móvil de V40 (22 de Julio)**:
+  - Se corrigió la caché del Service Worker para que iPhone y Android descarguen el `English.html` actualizado cuando hay conexión.
+  - Se añadió un identificador de actualización al registro del Service Worker para evitar que las PWA sigan mostrando una copia anterior de V40.
+  - Se eliminó de la precarga un archivo de backup inexistente que podía impedir que el Service Worker se instalara.
+  - La aplicación queda en modo offline-first: una vez cargada, abre la interfaz sin conexión sin esperar a la red.
+
+- **Versión V40 (22 de Julio)**:
+  - Se añadió en Settings una duración configurable para la bandera inicial, con 6,3 segundos por defecto y un rango de 0,5 a 600 segundos.
+  - La duración elegida se guarda en el dispositivo y se aplica también al cambiar la bandera.
+
+- **Versión V38 (22 de Julio)**:
+  - Se mejoró la escucha del traductor con estado de preparación, escucha continua y hasta tres reintentos automáticos si el navegador la cierra inesperadamente.
+  - Se añadieron mensajes más claros para permisos, conexión a internet y ausencia de voz.
+
+- **Versión V39 (22 de Julio)**:
+  - El aviso de internet del traductor ahora aparece dentro de su ventana, encima del título y del recuadro de entrada.
+
+- **Versión V37 (22 de Julio)**:
+  - Se corrigió la parada del micrófono del traductor para que no muestre un falso mensaje de error al pulsar el botón para detener la escucha.
+
+- **Versión V36 (22 de Julio)**:
+  - Se actualizó la versión visible de la aplicación y la caché del Service Worker a V36.
+  - El traductor permite seleccionar el idioma de voz, iniciar/detener la escucha y añadir varios dictados sin borrar el texto anterior.
+  - Se mejoró la adaptación responsive de M.Estudio para que la navegación sea visible en móviles y iPad.
+
+- **Versión V35 (22 de Julio)**:
+  - Se añadió el traductor online con entrada escrita, micrófono, detección de idioma y aviso discreto de que requiere internet.
+  - Cuando el navegador no ofrece reconocimiento de voz propio, el botón del micrófono enfoca la caja para usar el dictado del teclado o del dispositivo, sin necesitar API.
+  - Los botones de filtros de M.Estudio ahora muestran el número real de tarjetas disponibles en cada momento, respetando los filtros activos y actualizándose al cambiar la selección.
+  - El modal que se abre desde “Total” utiliza ahora el mismo recuento real que M.Estudio, para que las cifras de sus filas coincidan con las tarjetas que se muestran al entrar.
+  - En M.Estudio enfocado, la tarjeta y la navegación son ahora responsive según la altura disponible, manteniendo visibles los botones de avanzar y retroceder en móviles, iPhone, iPad y orientación horizontal.
+  - El traductor permite elegir Català, Español o English para el reconocimiento de voz; el botón 🎙️ funciona como iniciar/detener y la caja se ilumina mientras escucha.
+  - Los dictados nuevos se añaden al texto existente sin borrar lo anterior; solo “Clear” vacía la caja.
+
+- **Versión V34 (22 de Julio)**:
+  - Se hizo interactivo el modal **Cards by section**: cada fila se hunde al pulsarla y abre el Modo Estudio con el filtro de la categoría o nivel seleccionado.
+  - Se añadieron botones rápidos para B2.1, B2.2 y C1 entre “Otros” y “Close”, enlazados a sus tarjetas filtradas en el Modo Estudio.
+  - Los accesos desde este modal ahora entran directamente en **M.Estudio**, mostrando solo las tarjetas del filtro elegido.
+  - Se añadió el botón ⚙️ de configuración junto a la descarga del HTML, con una opción verde/roja para activar o desactivar la animación inicial de las banderas.
+  - Se actualizó la aplicación a **V34**, incluida la caché del Service Worker.
+  - El control de sonido se trasladó desde la fila del total a la ventana de configuración.
+  - Los controles de Export, Import, Download HTML, configuración y copyright se hicieron más transparentes y se reorganizaron en dos filas rectangulares simétricas: Export/Import arriba y ⚙️/Download HTML/© abajo.
+  - Se añadió separación entre el badge “English” y la tarjeta giratoria del título, y se aumentó y centró el logo del reverso junto al email.
+  - El modal de copyright ahora muestra únicamente la captura de la licencia y el email de contacto.
+  - La captura del copyright quedó incrustada directamente en `English.html` como base64, sin depender de un archivo de imagen externo.
+  - Se añadió un traductor online junto al contador Total: popup con escritura, micrófono, detección del idioma y traducción al inglés o, si el origen es inglés, al catalán y al castellano.
+  - Se añadió una marquesina discreta en la parte superior indicando que se requiere internet para usar el traductor y el micrófono.
+  - El traductor incorpora botones **Clear** y **Copy**.
+  - Los idiomas de destino aparecen separados, en negrita y con el color oscuro del tema para distinguirlos del texto traducido.
+
+- **Versión V33 (22 de Julio)**:
+  - Se eliminó el recuadro visual de las fotografías de las flashcards en modo normal y M.Estudio: sin borde, esquinas redondeadas ni sombra, y con un tamaño responsive mayor aprovechando el espacio disponible sin salirse de la pantalla.
+  - Se añadió un fallback incrustado para el logo de la portada, usando el icono JPEG embebido en el HTML cuando `Logo_angles.JPG` no se carga correctamente en Android u otros dispositivos.
+  - Se añadió un botón simétrico de **App Theme / Colores de la app** debajo de “Pulsa aquí para inspirarte”. Incluye temas pastel rosa, morado, verde, azul, amarillo, naranja, lavanda, menta, marrón claro, blanco, negro, gris y dos combinaciones coordinadas.
+  - La selección de tema se guarda por dispositivo y se aplica a toda la interfaz.
+  - Se actualizó el Service Worker a V33 para forzar la actualización de caché en móviles, iPhone, iPad y Android.
+  - En la cabecera de Inicio, el título “English” queda alineado a la derecha; al girarlo, la cara con el email y el logo queda alineada a la izquierda.
+  - Se corrigió el tema **Mint** para que aplique diferentes tonalidades menta de forma consistente en todas las pantallas, tarjetas, formularios, modales y controles.
+  - Se tradujo la interfaz visible al inglés; se conservan las traducciones españolas de las flashcards porque son contenido didáctico.
+  - Se hizo el botón de temas más discreto y bajo, manteniendo la simetría con el resto de botones.
+  - Se corrigió la aplicación de todos los temas, incluido Gris, sobre fondos, tarjetas, botones, formularios y pantallas secundarias.
+  - Se ajustó el botón Theme a una altura compacta real y se corrigió el reverso de English para que el correo se adapte y no quede cortado.
+  - Las frases inspiradoras vuelven a alternar español e inglés e incluyen “Every cloud has a silver lining.”
+  - Se corrigió el desbordamiento visual del botón Theme: ahora usa una disposición horizontal compacta de 360×44 px y queda centrado sin invadir los botones de exportación.
+  - Se igualaron los colores de los controles del modo Study y de los filtros de categorías con el tema activo.
+  - El filtro All dejó de usar la sombra 3D marrón oscura y ahora utiliza una sombra suave del color seleccionado.
+  - Se suavizó aún más el borde y la sombra del botón All para que destaque sin resultar demasiado intenso.
+  - El botón de validación ahora muestra siempre `VALIDADO` en verde o `NO VALIDADO` en rojo, independientemente del tema elegido.
+  - Se corrigió la prioridad CSS del botón de validación para que el estado rojo/verde se mantenga también al pasar el cursor por encima.
+  - Se añadió una introducción visual de 7 segundos: la bandera 🇬🇧 ondea, se transforma en 🇺🇸 y desaparece con fade; al pulsar el logo de los tres globos se puede repetir.
+  - Se mejoró la animación para que la bandera se mueva lateralmente con efecto de tela ondulando y el cambio entre 🇬🇧 y 🇺🇸 se haga mediante crossfade.
+  - Se sustituyó el emoji por banderas SVG semitransparentes a pantalla completa, con desplazamiento animado mediante turbulencia para simular viento y tela real.
+  - Se ralentizó la ondulación a 3,8 segundos y se redujo ligeramente la opacidad para que la app se vea un poco mejor debajo.
+  - Se eliminó el efecto de pantalla blanca usando mezcla transparente en las zonas claras de las banderas y se ralentizó de nuevo la ondulación a 4,8 segundos.
+  - Se ralentizó la ondulación a 6,5 segundos para lograr un movimiento más suave.
+  - Se añadió la cita bilingüe “They did not know it was impossible, so they did it.” / “No sabían que era imposible, así que lo hicieron.”
+
 - **Versión V32 (22 de Julio)**:
   - **Gran Fusión de Datos (201 Tarjetas Nuevas)**: Se ha extraído todo el diccionario antiguo de nivel C1 (YanAngles) con sus 161 palabras y sus 20 fotos incrustadas. También se han extraído las 40 tarjetas personalizadas creadas recientemente por el usuario junto con sus 69 fotos.
   - **Base de Datos Externa**: Todo este contenido masivo (tarjetas, fotos, ejemplos y colores) se ha inyectado de forma nativa en un nuevo archivo externo `english_data.js` para aligerar la página principal y limpiar la memoria local del navegador, permitiendo al usuario volver a tener el 100% del almacenamiento disponible para futuras cartas y fotos.
