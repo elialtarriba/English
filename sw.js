@@ -1,5 +1,5 @@
-// V15: resilient translation fallbacks for local-file and restricted browser contexts.
-const CACHE_NAME = 'english-app-v15-standalone-html';
+// V17: repaired mobile viewport, self-contained export and visible storage warnings.
+const CACHE_NAME = 'english-app-v17-standalone-html';
 const urlsToCache = [
   './English.html'
 ];
