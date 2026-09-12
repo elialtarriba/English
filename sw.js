@@ -1,5 +1,5 @@
-// V17: repaired mobile viewport, self-contained export and visible storage warnings.
-const CACHE_NAME = 'english-app-v17-standalone-html';
+// V18: recovered cards, reliable editing/history and self-contained verified exports.
+const CACHE_NAME = 'english-app-v18-standalone-html';
 const urlsToCache = [
   './English.html'
 ];
