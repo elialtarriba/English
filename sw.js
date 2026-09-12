@@ -1,5 +1,5 @@
-// V20: explicit microphone permission and reliable translator voice state.
-const CACHE_NAME = 'english-app-v20-standalone-html';
+// V23: remove optional keyboard dictation control.
+const CACHE_NAME = 'english-app-v23-standalone-html';
 const urlsToCache = [
   './English.html'
 ];
