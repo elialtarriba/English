@@ -1,5 +1,5 @@
-// V19: readable card titles and larger editing images.
-const CACHE_NAME = 'english-app-v19-standalone-html';
+// V20: explicit microphone permission and reliable translator voice state.
+const CACHE_NAME = 'english-app-v20-standalone-html';
 const urlsToCache = [
   './English.html'
 ];
