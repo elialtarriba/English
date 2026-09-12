@@ -1,5 +1,5 @@
-// V18: recovered cards, reliable editing/history and self-contained verified exports.
-const CACHE_NAME = 'english-app-v18-standalone-html';
+// V19: readable card titles and larger editing images.
+const CACHE_NAME = 'english-app-v19-standalone-html';
 const urlsToCache = [
   './English.html'
 ];
