@@ -1,5 +1,5 @@
-// V2: compact iPhone home and reusable Translator microphone sessions.
-const CACHE_NAME = 'english-app-restart-20260919-v2-mobile-translator';
+// V4: roomier iPhone cards, reliable translation fallback and verified backup data.
+const CACHE_NAME = 'english-app-restart-20260919-v4-translation-backup';
 const urlsToCache = [
   './English.html'
 ];
