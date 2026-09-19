@@ -1,5 +1,5 @@
-// V1: new numbering cycle; preserve card data and browser changes.
-const CACHE_NAME = 'english-app-restart-20260919-v1-notice-rules';
+// V2: compact iPhone home and reusable Translator microphone sessions.
+const CACHE_NAME = 'english-app-restart-20260919-v2-mobile-translator';
 const urlsToCache = [
   './English.html'
 ];
