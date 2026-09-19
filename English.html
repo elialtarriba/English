@@ -1770,7 +1770,7 @@ body.hide-verify:not(.show-edit) .verify-btn {
 }
 .flt-btn[data-flt="all"].on {
   border: 1.5px solid #4a2e1a !important;
-  background: var(--br4) !important; 
+  background: var(--br4) !important;
 }
 .lvl-btn, .lvl-flt-btn {
   border-radius: 4px !important;
@@ -3519,7 +3519,7 @@ body.hide-verify:not(.show-edit) .verify-btn {
 }
 .flt-btn[data-flt="all"].on {
   border: 1.5px solid #4a2e1a !important;
-  background: var(--br4) !important; 
+  background: var(--br4) !important;
 }
 .lvl-btn, .lvl-flt-btn {
   border-radius: 4px !important;
@@ -3782,6 +3782,10 @@ body:has(#storageDialog:not([hidden])){overflow:hidden}
 .storage-header{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 24px;border-bottom:1px solid #eadfce;background:#fffaf2}.storage-eyebrow{font-size:10px;font-weight:700;letter-spacing:1.6px;color:#816348}.storage-close{min-height:44px;padding:9px 14px;border:1px solid #d8c6ae;border-radius:24px;background:#fffdf8;color:#5b422f;font:600 13px Arial,sans-serif;cursor:pointer}.storage-close span{font-size:22px;margin-left:7px;vertical-align:middle}
 .storage-content{overflow-y:auto;overscroll-behavior:contain;padding:24px 28px}.storage-state{display:inline-block;border-radius:20px;padding:5px 12px;background:#e7efdf;color:#45603f;font-size:11px;font-weight:700}.storage-state.storage-amber{background:#f8e7c5;color:#805a24}.storage-state.storage-danger{background:#f8e0d7;color:#923e2b}#storageDialog h2{font:700 clamp(25px,5vw,34px)/1.13 Georgia,serif;margin:15px 0 12px;letter-spacing:-.6px;color:#4b3020}#storageDialog p{margin:10px 0}.storage-lead{font-size:15px;color:#79604c}.storage-counters{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:24px 0 8px}.storage-counters>div{text-align:center;border:1px solid #e5d6c2;border-radius:16px;padding:16px 4px;background:#f5ebdc}.storage-counters strong{display:block;font:700 29px Georgia,serif;color:#805737}.storage-counters span{font-size:11px;color:#795e47}.storage-caption{font-size:12px;color:#806b57}.storage-meter{margin-top:24px}.storage-meter>div:first-child{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px}.storage-meter small{font-size:11px;color:#806b57}.storage-track{height:8px;margin:12px 0;border-radius:10px;background:#e9ddcc;overflow:hidden}.storage-track span{display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,#9bae88,#bb8247)}.storage-meter p{font-size:12px;color:#806b57}.storage-estimate{margin:20px 0;padding:18px 20px;background:#edf1e7;border:1px solid #dbe3cf;border-radius:17px}.storage-estimate strong{display:block;margin-top:8px;font:700 22px/1.2 Georgia,serif;color:#475d39}.storage-estimate p{font-size:12px;color:#607151}.storage-details{border-top:1px solid #e4d8c7;border-bottom:1px solid #e4d8c7;padding:15px 0}.storage-details summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center;gap:8px}.storage-details summary:before{content:'＋';color:#916b48}.storage-details[open] summary:before{content:'−'}.storage-details p{font-size:13px;color:#79604c}.storage-details dl>div{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid #eee4d7;font-size:12px}.storage-details dd{margin:0;font-weight:bold;white-space:nowrap}.storage-steps h3{font:700 23px Georgia,serif;margin:24px 0 16px}.storage-steps ol{padding-left:22px;font-size:13px}.storage-steps li{padding:0 0 14px 5px}.storage-note{padding:15px;border-left:3px solid #b89466;background:#f3e9da;border-radius:0 12px 12px 0;font-size:13px}.storage-critical{padding:15px;background:#f8e0d7;border-radius:12px;color:#873c2b;font-size:13px}.storage-footer{flex-shrink:0;padding:14px 24px max(14px,env(safe-area-inset-bottom));border-top:1px solid #e4d8c7;display:flex;gap:10px;background:#fffaf2}.storage-primary{flex:1;min-height:46px;border:1px solid #715039;border-radius:24px;background:#715039;color:#fffaf2;padding:12px 18px;font:600 13px Arial,sans-serif;cursor:pointer}.storage-secondary{background:transparent}#storageDialog button:focus-visible,#storageDialog summary:focus-visible,.storage-entry button:focus-visible{outline:3px solid #97734f;outline-offset:3px}
 @media(max-width:480px){#storageDialog{padding:10px}.storage-panel{border-radius:21px;max-height:calc(100vh - 20px);max-height:calc(100dvh - 20px)}.storage-header{padding:10px 16px}.storage-content{padding:19px}.storage-footer{padding:12px 14px max(12px,env(safe-area-inset-bottom));flex-wrap:wrap}.storage-primary{flex-basis:100%}.storage-secondary{width:100%}.storage-eyebrow{font-size:9px;letter-spacing:1.2px}.storage-details dl>div{flex-wrap:wrap;gap:3px}}
+@media(max-width:480px){
+  .mode-row{flex-direction:column;flex-wrap:nowrap;gap:14px;max-width:360px}
+  .mode-row>.mode-btn{width:100%;min-width:0;min-height:78px;flex:0 0 auto;border-radius:10px;box-sizing:border-box}
+}
 </style>
 </head>
 
@@ -3829,7 +3833,7 @@ body:has(#storageDialog:not([hidden])){overflow:hidden}
     <div class="total-badge" onclick="playPopSound(); showStatsModal()" style="cursor:pointer;" title="Ver tarjetas por secciones">Total: <b id="totalFlashcards">1598</b> &nbsp;&nbsp;flashcards</div>
     <button class="translator-btn" type="button" onclick="openTranslator(event)" title="Translator" aria-label="Open translator" style="touch-action: manipulation;">🌐</button>
   </div>
-<div class="storage-entry"><button id="storageInfoButton" type="button" onclick="openStorageDialog('info')">◷ Almacenamiento y guardado</button></div>
+
 
   <div class="mode-row">
     <div class="mode-btn study" id="btnStudyMode" onclick="playPopSound();" style="touch-action: manipulation;"><div class="ico">📚</div><div class="lbl"><strong>Study Mode (1598)</strong><span>Review flashcards</span></div><div class="slbl">Practise your vocabulary</div></div>
@@ -3869,6 +3873,7 @@ body:has(#storageDialog:not([hidden])){overflow:hidden}
 <button class="btn-sec" id="btnExportHtml" type="button" style="opacity: 0.6; font-size: 11px; touch-action: manipulation;">Download HTML with my changes</button>
 <button class="btn-sec" type="button" onclick="openCopyright(event)" style="opacity: 0.6; font-size: 16px; width: 32px; height: 32px; padding: 0px; display: flex; align-items: center; justify-content: center; border-radius: 8px; touch-action: manipulation;" title="Copyright and licence">©</button>
 </div>
+<div class="storage-entry"><button id="storageInfoButton" type="button" onclick="openStorageDialog('info')">◷ Almacenamiento y guardado</button></div>
 </div>
 
   <div id="quizSetup" style="display:none;width:100%;flex-direction:column;align-items:center;gap:14px">
@@ -6169,6 +6174,15 @@ var USER_EDITS = {"phrasal||take off":{"icon":"custom_take_off","customImage":"d
 var STORAGE_REVISION = "1789798448588-gpiu5uhfms";/* STORAGE_REVISION_MARKER */
 var storageBaseline = JSON.parse(JSON.stringify({cards:USER_CARDS, edits:USER_EDITS, quiz:USER_QUIZ_EDITS}));
 var storageKey = "english2026_changes_" + STORAGE_REVISION;
+var HTML_EXPORT_PARENT = "";/* HTML_EXPORT_PARENT_MARKER */
+var storagePendingExport = null;
+var STORAGE_PENDING_EXPORT_KEY = "english2026_pending_html_export";
+function rememberStorageExport(revision,version){
+  storageDownloadedVersion=version;
+  storagePendingExport={source:STORAGE_REVISION,target:revision,version:version};
+  try{localStorage.setItem(STORAGE_PENDING_EXPORT_KEY,JSON.stringify(storagePendingExport));}catch(e){/* Existing quota warning remains; do not interrupt a successful download. */}
+}
+
 var storageSaveFailed = false;
 var storageReadFailed = false;
 var storageWarningLevel = 0;
@@ -6199,7 +6213,7 @@ function showStorageWarning(failed,runtime){
 var storageDialogMode="info", storageDialogReturnFocus=null, storageDownloadedVersion=0;
 function storageFormatBytes(bytes){
   if(bytes===null) return "No disponible";
-  return (bytes/(bytes<1048576?1024:1048576)).toLocaleString("es-ES",{maximumFractionDigits:2})+(bytes<1048576?" KiB":" MiB");
+  return (bytes/(bytes<1048576?1024:1048576)).toLocaleString("es-ES",{maximumFractionDigits:2})+(bytes<1048576?" KB":" MB");
 }
 function storageImageSizes(value,sizes){
   if(typeof value==="string" && value.indexOf("data:image/")===0){sizes.push(value.length*2);return;}
@@ -6214,7 +6228,7 @@ function storageDetails(){
   var average=sample.length?sample.reduce(function(sum,n){return sum+n;},0)/sample.length:0;
   var used=null, previous=0;
   try{used=browserStorageUsage()*2;previous=(localStorage.getItem(storageKey)||"").length*2;}catch(e){}
-  // Include changes still in memory after a failed write. Reserve 1 MiB below the reference limit.
+  // Include changes still in memory after a failed write. Reserve 1 MB below the reference limit.
   var pending=serialized.length*2, projected=used===null?null:Math.max(used,used-previous+pending+storageKey.length*2);
   var budget=projected===null?null:Math.max(0,4*1048576-projected);
   return {used:used,pending:pending,photoBytes:photoBytes,textBytes:Math.max(0,pending-photoBytes),photos:photos.length,
@@ -6262,16 +6276,21 @@ function renderStorageDialog(){
   var title=storageDialogMode==='download'?"Tu copia está preparada":failed?"Protege tus últimos cambios":warning?"Es momento de guardar una copia":storageDialogMode==='version'?"¡Empezamos en V"+version+"!":"Espacio para seguir aprendiendo";
   var lead=storageDialogMode==='download'?"Se ha preparado English.html en la versión V"+storageDownloadedVersion+". Comprueba que el archivo aparece en tus descargas o en la carpeta elegida; la app sigue abierta en V"+version+".":failed?"No podemos confirmar que todos tus cambios estén guardados. Descarga una copia antes de cerrar o recargar.":warning?"Has alcanzado el umbral preventivo. Guarda tus cambios en un nuevo HTML antes de seguir añadiendo tarjetas o fotos.":storageDialogMode==='version'?"Ya estamos en la versión V"+version+". Las tarjetas de este HTML están incluidas en el archivo. Empezamos a guardar los nuevos cambios en el navegador.":"Aquí puedes consultar tus cambios y una estimación del espacio disponible para esta versión.";
   if(storageDialogMode==='version') lead+=counts.total?" Se han recuperado cambios locales en "+counts.total+" tarjetas.":" El contador de tarjetas nuevas y modificadas empieza en 0.";
+  if(storagePendingExport && storageDialogMode!=='version'){
+    title=failed?"Protege tus últimos cambios":"Todavía estás en la versión anterior";
+    lead="Se preparó una copia V"+storagePendingExport.version+", pero esta ventana sigue en V"+version+". Comprueba que guardaste English.html y lo sustituiste en GitHub. Después de publicarse, abre o recarga la app para cargar la nueva versión. Si ya lo subiste, puede que esta ventana todavía muestre la anterior. La app no puede confirmar directamente la publicación en GitHub.";
+    if(failed) lead+=" No cierres ni recargues antes de descargar y verificar una copia con todos tus cambios actuales.";
+  }
   var status=failed?"Guardado sin confirmar":warning?"Copia recomendada":"Guardado local disponible";
   var percent=info.used===null?0:Math.min(100,Math.round(info.used/(5*1048576)*100));
   var estimate=info.remainingPhotos===null?"Sin estimación fiable":info.remainingPhotos===0?"Guarda una copia antes de añadir más":"≈ "+info.remainingPhotos.toLocaleString('es-ES')+" fotos similares más";
   document.getElementById('storageDialogContent').innerHTML=
     '<div class="storage-state '+(failed?'storage-danger':warning?'storage-amber':'')+'">'+status+' · V'+version+'</div><h2 id="storageDialogTitle">'+title+'</h2><p id="storageDialogLead" class="storage-lead">'+lead+'</p>'+
     '<div class="storage-counters"><div><strong>'+counts.created+'</strong><span>tarjetas nuevas</span></div><div><strong>'+counts.modified+'</strong><span>modificadas</span></div><div><strong>'+counts.total+'</strong><span>en total</span></div></div><p class="storage-caption">Cambios respecto al HTML abierto. Una tarjeta nueva editada cuenta una sola vez. Se incluyen cambios de texto, foto y estado; el contador no es el total de tu biblioteca.</p>'+
-    '<section class="storage-meter"><div><strong>Espacio utilizado</strong><span>'+storageFormatBytes(info.used)+' <small>/ 5 MiB de referencia</small></span></div><div class="storage-track" aria-hidden="true"><span style="width:'+percent+'%"></span></div><p>Estimación del almacenamiento local de este sitio. El aviso preventivo aparece alrededor de 4 MiB; no significa que esté completamente lleno.</p></section>'+
-    '<div class="storage-estimate"><span class="storage-eyebrow">CAPACIDAD ORIENTATIVA</span><strong>'+estimate+'</strong><p>Margen hasta el aviso preventivo: '+storageFormatBytes(info.budget)+'. Se reserva aproximadamente 1 MiB respecto al límite habitual para reducir el riesgo de quedarte sin espacio.</p></div>'+
-    '<details class="storage-details"><summary>Ver fotos, textos y cómo se calcula</summary><dl><div><dt>Cambios actuales, incluidos los pendientes</dt><dd>'+storageFormatBytes(info.pending)+'</dd></div><div><dt>Fotos en esos cambios ('+info.photos+')</dt><dd>'+storageFormatBytes(info.photoBytes)+'</dd></div><div><dt>Textos, estados, quiz y estructura de datos</dt><dd>'+storageFormatBytes(info.textBytes)+'</dd></div><div><dt>Tamaño medio de foto almacenada</dt><dd>'+(info.average?storageFormatBytes(info.average):'Sin fotos de referencia')+'</dd></div></dl><p>La estimación usa '+info.samples+' '+info.sampleSource+'. Divide el margen preventivo entre el tamaño medio de foto más 2 KiB orientativos para los datos de una tarjeta. Es una alternativa de uso del mismo espacio: fotos y texto comparten el margen.</p><p>Al insertar una foto se reduce a un máximo de 400 × 400 píxeles, conservando sus proporciones. Se comprime en WebP con calidad 0,60 o JPEG con calidad 0,65 si hace falta. Dos imágenes del mismo tamaño pueden pesar distinto. Las fotos antiguas o importadas pueden tener otros tamaños.</p><p>Medimos el texto guardado a 2 bytes por carácter, incluidas las fotos codificadas en texto. El navegador puede contabilizarlo de otra forma y no comunica una cuota exacta de este almacenamiento. Los 5 MiB son una referencia habitual, no una garantía. No probamos el límite llenando tu navegador.</p><p>Los textos y ejemplos no tienen una longitud fija: no sería fiable prometer un número de tarjetas sin foto. Los cambios de una tarjeta pueden guardar de nuevo su foto aunque solo hayas cambiado el texto. Otros respaldos y preferencias del mismo sitio también ocupan espacio. Los datos incluidos en el HTML no ocupan esta cuota hasta que se guardan como cambios.</p></details>'+
-    '<section class="storage-steps"><h3>Cómo liberar espacio y continuar</h3><ol><li><strong>Descarga English.html con tus cambios.</strong> Comprueba que el archivo se ha guardado. Descargarlo no vacía el almacenamiento de la sesión actual.</li><li><strong>Sustituye English.html en GitHub</strong> por esa descarga y espera a que la web se actualice.</li><li><strong>Abre la nueva versión.</strong> Después de guardar la copia, recarga la app o ciérrala y vuelve a abrirla. Si usas un archivo local, abre el nuevo HTML descargado.</li><li><strong>Comprueba el número de versión.</strong> El mensaje de bienvenida indicará la versión abierta. Si sigue apareciendo V'+version+', todavía no has abierto la nueva descarga. Continúa cuando aparezca la nueva versión y no haya un aviso de almacenamiento.</li></ol><p class="storage-note"><strong>Cerrar y abrir la misma versión no libera espacio.</strong> No hace falta cerrar todo el navegador: hace falta cargar el HTML nuevo. Al abrirlo, se retiran únicamente respaldos cuyos cambios ya están incluidos en ese archivo; otros respaldos se conservan y pueden seguir ocupando espacio.</p>'+(failed?'<p class="storage-critical">No cierres ni recargues ahora: primero descarga y verifica tu copia. Cerrar este aviso solo oculta la ventana; no guarda ni borra tus cambios.</p>':'<p class="storage-caption">Cerrar este aviso no borra datos ni libera espacio. Puedes volver a consultarlo desde «Almacenamiento y guardado» en Inicio.</p>')+'</section>';
+    '<section class="storage-meter"><div><strong>Espacio utilizado</strong><span>'+storageFormatBytes(info.used)+' <small>/ 5 MB de referencia</small></span></div><div class="storage-track" aria-hidden="true"><span style="width:'+percent+'%"></span></div><p>Estimación del almacenamiento local de este sitio. El aviso preventivo aparece alrededor de 4 MB; no significa que esté completamente lleno.</p></section>'+
+    '<div class="storage-estimate"><span class="storage-eyebrow">CAPACIDAD ORIENTATIVA</span><strong>'+estimate+'</strong><p>Margen hasta el aviso preventivo: '+storageFormatBytes(info.budget)+'. Se reserva aproximadamente 1 MB respecto al límite habitual para reducir el riesgo de quedarte sin espacio.</p></div>'+
+    '<details class="storage-details"><summary>Ver fotos, textos y cómo se calcula</summary><dl><div><dt>Cambios actuales, incluidos los pendientes</dt><dd>'+storageFormatBytes(info.pending)+'</dd></div><div><dt>Fotos en esos cambios ('+info.photos+')</dt><dd>'+storageFormatBytes(info.photoBytes)+'</dd></div><div><dt>Textos, estados, quiz y estructura de datos</dt><dd>'+storageFormatBytes(info.textBytes)+'</dd></div><div><dt>Tamaño medio de foto almacenada</dt><dd>'+(info.average?storageFormatBytes(info.average):'Sin fotos de referencia')+'</dd></div></dl><p>La estimación usa '+info.samples+' '+info.sampleSource+'. Divide el margen preventivo entre el tamaño medio de foto más 2 KB orientativos para los datos de una tarjeta. Es una alternativa de uso del mismo espacio: fotos y texto comparten el margen.</p><p>Al insertar una foto se reduce a un máximo de 400 × 400 píxeles, conservando sus proporciones. Se comprime en WebP con calidad 0,60 o JPEG con calidad 0,65 si hace falta. Dos imágenes del mismo tamaño pueden pesar distinto. Las fotos antiguas o importadas pueden tener otros tamaños.</p><p>Medimos el texto guardado a 2 bytes por carácter, incluidas las fotos codificadas en texto. El navegador puede contabilizarlo de otra forma y no comunica una cuota exacta de este almacenamiento. Los 5 MB son una referencia habitual, no una garantía. No probamos el límite llenando tu navegador.</p><p>Los textos y ejemplos no tienen una longitud fija: no sería fiable prometer un número de tarjetas sin foto. Los cambios de una tarjeta pueden guardar de nuevo su foto aunque solo hayas cambiado el texto. Otros respaldos y preferencias del mismo sitio también ocupan espacio. Los datos incluidos en el HTML no ocupan esta cuota hasta que se guardan como cambios.</p></details>'+
+    '<section class="storage-steps"><h3>Cómo liberar espacio y continuar</h3><ol><li><strong>Descarga English.html con tus cambios.</strong> Comprueba que el archivo se ha guardado. Descargarlo no vacía el almacenamiento de la sesión actual.</li><li><strong>Sustituye English.html en GitHub</strong> por esa descarga y espera a que la web se actualice.</li><li><strong>Abre la nueva versión.</strong> Después de guardar la copia, recarga la app o ciérrala y vuelve a abrirla. Si usas un archivo local, abre el nuevo HTML descargado.</li><li><strong>Comprueba el número de versión.</strong> El mensaje de bienvenida indicará la versión abierta. Si sigue apareciendo V'+version+', todavía no has abierto la nueva descarga. Continúa cuando aparezca la nueva versión y no haya un aviso de almacenamiento.</li></ol><p class="storage-note"><strong>Cerrar y abrir la misma versión no libera espacio.</strong> No hace falta cerrar todo el navegador: hace falta cargar el HTML nuevo. Al abrirlo, se retiran únicamente respaldos cuyos cambios ya están incluidos en ese archivo; otros respaldos se conservan y pueden seguir ocupando espacio.</p>'+(failed?'<p class="storage-critical">No cierres ni recargues ahora: primero descarga y verifica tu copia. Cerrar este aviso solo oculta la ventana; no guarda ni borra tus cambios.</p>':'<p class="storage-caption">Cerrar este aviso no borra datos ni libera espacio. Puedes volver a consultarlo desde «Almacenamiento y guardado», debajo de «Download HTML with my changes» en Inicio.</p>')+'</section>';
 }
 function browserChanges(){
   var result={};
@@ -6295,7 +6314,9 @@ function checkBrowserStorage(){
   try{
     var size=browserStorageUsage();
     // Conservative warning, not a claim about the browser's exact quota.
-    if(size>=2*1024*1024) showStorageWarning(false);
+    // Show the automatic copy warning only when the local change store is
+    // close to the conservative 4 MB working threshold.
+    if(size>=4*1024*1024) showStorageWarning(false);
   }catch(e){showStorageWarning(true);}
 }
 function saveBrowserChanges(){
@@ -6343,11 +6364,21 @@ document.addEventListener("DOMContentLoaded",function(){
   updateStorageButton();
   var seenKey="english2026_opened_revision", openedRevision=STORAGE_REVISION+":V"+EXPORT_VERSION_BASE;
   try{
-    if(storageReadFailed || storageSaveFailed || storageWarningLevel || localStorage.getItem(seenKey)===openedRevision) return;
-    // Verify that writing actually works before announcing a fresh saving cycle.
+    if(storageReadFailed) return;
+    var previous=localStorage.getItem(seenKey);
+    var pendingRaw=localStorage.getItem(STORAGE_PENDING_EXPORT_KEY), pending=null;
+    try{pending=JSON.parse(pendingRaw);}catch(ignore){}
+    if(pending && typeof pending.source==='string' && typeof pending.target==='string' && typeof pending.version==='number'){
+      if(pending.target===STORAGE_REVISION){localStorage.removeItem(STORAGE_PENDING_EXPORT_KEY);}
+      else if(pending.source===STORAGE_REVISION) storagePendingExport=pending;
+    }
+    var newRevision=previous!==openedRevision && (!!previous || !!HTML_EXPORT_PARENT);
+    // Remember even when a warning takes priority, so routine reloads stay quiet.
     localStorage.setItem(seenKey,openedRevision);
     if(localStorage.getItem(seenKey)!==openedRevision) throw new Error("Storage unavailable");
-    openStorageDialog("version");
+    if(storageSaveFailed || storageWarningLevel){renderStorageDialog();return;}
+    if(storagePendingExport){openStorageDialog("pending");return;}
+    if(newRevision) openStorageDialog("version");
   }catch(e){showStorageWarning(true);}
 });
   var pendingPasswordAction = null;
@@ -6611,7 +6642,9 @@ async function downloadEditedHtml(){
   html=replaceMarkedVariable(html,"USER_EDITS",editsJson,"USER_EDITS_MARKER");
   html=replaceMarkedVariable(html,"USER_CARDS",cardsJson,"USER_CARDS_MARKER");
   html=replaceMarkedVariable(html,"USER_QUIZ_EDITS",quizJson,"USER_QUIZ_EDITS_MARKER");
-  html=replaceMarkedVariable(html,"STORAGE_REVISION",JSON.stringify(Date.now()+"-"+Math.random().toString(36).slice(2)),"STORAGE_REVISION_MARKER");
+  var exportedRevision=Date.now()+"-"+Math.random().toString(36).slice(2);
+  html=replaceMarkedVariable(html,"STORAGE_REVISION",JSON.stringify(exportedRevision),"STORAGE_REVISION_MARKER");
+  html=replaceMarkedVariable(html,"HTML_EXPORT_PARENT",JSON.stringify(STORAGE_REVISION),"HTML_EXPORT_PARENT_MARKER");
   var exportVersion=nextExportVersion();
   html=html.replace(/var EXPORT_VERSION_BASE = \d+;/,"var EXPORT_VERSION_BASE = "+exportVersion+";");
   html=html.replace(/(<div id="v-flag"[^>]*>)V\d+(<\/div>)/i,"$1V"+exportVersion+"$2");
@@ -6626,7 +6659,7 @@ async function downloadEditedHtml(){
       var writable=await handle.createWritable();
       await writable.write(blob);
       await writable.close();
-      storageDownloadedVersion=exportVersion;openStorageDialog("download");
+      rememberStorageExport(exportedRevision,exportVersion);
       return;
     }catch(e){ if(e && e.name==="AbortError") return; }
   }
@@ -6638,7 +6671,7 @@ async function downloadEditedHtml(){
   link.click();
   link.remove();
   setTimeout(function(){URL.revokeObjectURL(url)},3000);
-  storageDownloadedVersion=exportVersion;openStorageDialog("download");
+  rememberStorageExport(exportedRevision,exportVersion);
 }
 /* QUIZ QUESTION EDITOR */
 var quizEditorList = [];

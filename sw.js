@@ -1,5 +1,5 @@
 // V1: new numbering cycle; preserve card data and browser changes.
-const CACHE_NAME = 'english-app-restart-20260919-v1-standalone-html';
+const CACHE_NAME = 'english-app-restart-20260919-v1-notice-rules';
 const urlsToCache = [
   './English.html'
 ];
