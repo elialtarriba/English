@@ -1,5 +1,5 @@
-// V23: remove optional keyboard dictation control.
-const CACHE_NAME = 'english-app-v23-standalone-html';
+// V1: new numbering cycle; preserve card data and browser changes.
+const CACHE_NAME = 'english-app-restart-20260919-v1-standalone-html';
 const urlsToCache = [
   './English.html'
 ];
