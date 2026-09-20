@@ -1,5 +1,5 @@
-// V4: roomier iPhone cards, reliable translation fallback and verified backup data.
-const CACHE_NAME = 'english-app-restart-20260919-v4-translation-backup';
+// V5: double-height iPhone home buttons with scrolling for the lower controls.
+const CACHE_NAME = 'english-app-restart-20260919-v5-tall-buttons';
 const urlsToCache = [
   './English.html'
 ];
