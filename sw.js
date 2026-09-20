@@ -1,5 +1,5 @@
-// V6: swipe between flashcards in focused study mode.
-const CACHE_NAME = 'english-app-restart-20260919-v6-study-swipe';
+// V7: interactive paper-fold navigation in focused study mode.
+const CACHE_NAME = 'english-app-restart-20260919-v7-page-fold';
 const urlsToCache = [
   './English.html'
 ];
