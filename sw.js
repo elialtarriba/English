@@ -1,5 +1,5 @@
-// V5: double-height iPhone home buttons with scrolling for the lower controls.
-const CACHE_NAME = 'english-app-restart-20260919-v5-tall-buttons';
+// V5: tall iPhone home buttons with coordinated illustrations and typography.
+const CACHE_NAME = 'english-app-restart-20260919-v5-illustrated-buttons';
 const urlsToCache = [
   './English.html'
 ];
