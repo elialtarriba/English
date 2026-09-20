@@ -1,5 +1,5 @@
-// V5: tall iPhone home buttons with coordinated illustrations and typography.
-const CACHE_NAME = 'english-app-restart-20260919-v5-illustrated-buttons';
+// V6: swipe between flashcards in focused study mode.
+const CACHE_NAME = 'english-app-restart-20260919-v6-study-swipe';
 const urlsToCache = [
   './English.html'
 ];
