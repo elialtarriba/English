@@ -1,5 +1,5 @@
-// V7: interactive paper-fold navigation in focused study mode.
-const CACHE_NAME = 'english-app-restart-20260919-v7-page-fold';
+// V9: full inventory, Main status, quick access and speech finalization.
+const CACHE_NAME = 'english-app-restart-20260919-v9-cards-speech';
 const urlsToCache = [
   './English.html'
 ];
