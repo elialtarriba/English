@@ -1,8 +1,8 @@
-// V16: Conditionals editor reparado; conserva pliegues, fotos y tarjetas.
-const CACHE_NAME = 'english-v16-conditionals-editor-20261017';
+// V17: Conditionals editor reparado; conserva pliegues, fotos y tarjetas.
+const CACHE_NAME = 'english-v17-verb-conditional-ui-20261017';
 const urlsToCache = [
   './English.html',
-  './english_lessons.js?v=16'
+  './english_lessons.js?v=17'
 ];
 
 self.addEventListener('install', event => {
