@@ -1,8 +1,8 @@
-// V4 final: Conditionals editor reparado; conserva pliegues, fotos y tarjetas.
-const CACHE_NAME = 'english-v4-lessons-20261017';
+// V5 final: Conditionals editor reparado; conserva pliegues, fotos y tarjetas.
+const CACHE_NAME = 'english-v5-lessons-20261017';
 const urlsToCache = [
   './English.html',
-  './english_lessons.js?v=4&build=20261017-v4lessons'
+  './english_lessons.js?v=5&build=20261017-v5lessons'
 ];
 
 self.addEventListener('install', event => {
