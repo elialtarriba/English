@@ -1,8 +1,8 @@
-// V13: lesson persistence, rich editing and full-screen reading.
-const CACHE_NAME = 'english-v13-lessons-20261017';
+// V14: physical page folds, matching editor, Conditionals photo faces.
+const CACHE_NAME = 'english-v14-folds-20261017';
 const urlsToCache = [
   './English.html',
-  './english_lessons.js?v=13'
+  './english_lessons.js?v=14'
 ];
 
 self.addEventListener('install', event => {
