@@ -1,8 +1,8 @@
-// V2 final: Conditionals editor reparado; conserva pliegues, fotos y tarjetas.
-const CACHE_NAME = 'english-v2-final-20261017';
+// V3 final: Conditionals editor reparado; conserva pliegues, fotos y tarjetas.
+const CACHE_NAME = 'english-v3-photos-20261017';
 const urlsToCache = [
   './English.html',
-  './english_lessons.js?v=2&build=20261017-v2'
+  './english_lessons.js?v=3&build=20261017-v3photos'
 ];
 
 self.addEventListener('install', event => {
