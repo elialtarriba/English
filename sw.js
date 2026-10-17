@@ -1,8 +1,8 @@
-// V5 final: Conditionals editor reparado; conserva pliegues, fotos y tarjetas.
-const CACHE_NAME = 'english-v5-lessons-20261017';
+// V6: Conditionals incorpora las seis fotos recuperadas de la copia de seguridad.
+const CACHE_NAME = 'english-v6-conditionals-20261017-backup';
 const urlsToCache = [
   './English.html',
-  './english_lessons.js?v=5&build=20261017-v5lessons'
+  './english_lessons.js?v=6&build=20261017-v6conditionalsbackup'
 ];
 
 self.addEventListener('install', event => {
