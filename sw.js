@@ -1,8 +1,8 @@
-// V1 final: Conditionals editor reparado; conserva pliegues, fotos y tarjetas.
-const CACHE_NAME = 'english-v1-final-verbfix-20261017';
+// V2 final: Conditionals editor reparado; conserva pliegues, fotos y tarjetas.
+const CACHE_NAME = 'english-v2-final-20261017';
 const urlsToCache = [
   './English.html',
-  './english_lessons.js?v=1&build=20261017-verbfix2'
+  './english_lessons.js?v=2&build=20261017-v2'
 ];
 
 self.addEventListener('install', event => {
