@@ -1,7 +1,8 @@
-// V9: full inventory, Main status, quick access and speech finalization.
-const CACHE_NAME = 'english-app-restart-20260919-v9-cards-speech';
+// V13: lesson persistence, rich editing and full-screen reading.
+const CACHE_NAME = 'english-v13-lessons-20261017';
 const urlsToCache = [
-  './English.html'
+  './English.html',
+  './english_lessons.js?v=13'
 ];
 
 self.addEventListener('install', event => {
