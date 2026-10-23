@@ -1,8 +1,8 @@
-// V6: Conditionals incorpora las seis fotos recuperadas de la copia de seguridad.
-const CACHE_NAME = 'english-v6-conditionals-20261017-backup';
+// V7: copia del 23/10/2026, edición táctil y cinco llamas visibles.
+const CACHE_NAME = 'english-v7-20261023';
 const urlsToCache = [
   './English.html',
-  './english_lessons.js?v=6&build=20261017-v6conditionalsbackup'
+  './english_lessons.js?v=7&build=20261023-v7'
 ];
 
 self.addEventListener('install', event => {
