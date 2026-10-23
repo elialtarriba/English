@@ -1,8 +1,8 @@
-// V7: copia del 23/10/2026, edición táctil y cinco llamas visibles.
-const CACHE_NAME = 'english-v7-20261023';
+// V8: copia del 23/10/2026, edición táctil y cinco llamas visibles.
+const CACHE_NAME = 'english-v8-20261023';
 const urlsToCache = [
   './English.html',
-  './english_lessons.js?v=7&build=20261023-v7'
+  './english_lessons.js?v=8&build=20261023-v8'
 ];
 
 self.addEventListener('install', event => {
