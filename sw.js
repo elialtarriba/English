@@ -1,9 +1,9 @@
-// V9: espacio ocupado y libre; datos separados y guardado verificado.
-const CACHE_NAME = 'english-v9-20261024-whatsapp';
+// V10: entrada aleatoria por el anverso y WhatsApp en la cabecera.
+const CACHE_NAME = 'english-v10-20261024-entry';
 const urlsToCache = [
   './English.html',
-  './english_cards.js?v=9&build=20261024-v9-whatsapp',
-  './english_lessons.js?v=9&build=20261024-v9-whatsapp'
+  './english_cards.js?v=10&build=20261024-v10-entry',
+  './english_lessons.js?v=10&build=20261024-v10-entry'
 ];
 
 self.addEventListener('install', event => {
