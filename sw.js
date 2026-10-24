@@ -1,8 +1,9 @@
-// V8: copia del 23/10/2026, edición táctil y cinco llamas visibles.
-const CACHE_NAME = 'english-v8-20261023';
+// V9: espacio ocupado y libre; datos separados y guardado verificado.
+const CACHE_NAME = 'english-v9-20261024-whatsapp';
 const urlsToCache = [
   './English.html',
-  './english_lessons.js?v=8&build=20261023-v8'
+  './english_cards.js?v=9&build=20261024-v9-whatsapp',
+  './english_lessons.js?v=9&build=20261024-v9-whatsapp'
 ];
 
 self.addEventListener('install', event => {
