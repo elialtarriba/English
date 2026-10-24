@@ -1,9 +1,9 @@
-// V12: asistente local para crear e importar cards con ChatGPT.
-const CACHE_NAME = 'english-v12-20261024-aicardsdetails';
+// V13: asistente local para crear e importar cards con ChatGPT.
+const CACHE_NAME = 'english-v13-20261024-frequency';
 const urlsToCache = [
   './English.html',
-  './english_cards.js?v=12&build=20261024-v12-aicardsdetails',
-  './english_lessons.js?v=12&build=20261024-v12-aicardsdetails'
+  './english_cards.js?v=13&build=20261024-v13-frequency',
+  './english_lessons.js?v=13&build=20261024-v13-frequency'
 ];
 
 self.addEventListener('install', event => {
