@@ -1,9 +1,9 @@
-// V10: entrada aleatoria por el anverso y WhatsApp en la cabecera.
-const CACHE_NAME = 'english-v10-20261024-entry';
+// V11: asistente local para crear e importar cards con ChatGPT.
+const CACHE_NAME = 'english-v11-20261024-aicards10';
 const urlsToCache = [
   './English.html',
-  './english_cards.js?v=10&build=20261024-v10-entry',
-  './english_lessons.js?v=10&build=20261024-v10-entry'
+  './english_cards.js?v=11&build=20261024-v11-aicards10',
+  './english_lessons.js?v=11&build=20261024-v11-aicards10'
 ];
 
 self.addEventListener('install', event => {
