@@ -1,5 +1,5 @@
-const cacheName="english-publication-3112614174641f434b5b85d2";
-const urls=["./English.html","./english_cards.js","./english_lessons.js","./app-6ee604c5cae07c0ccdd3e337.js","./datos-0c797ce41a4c067010fdeaad.js","./datos-3721293c2ead317f39d11683.js","./datos-269a6f3e39623292913c9520.js","./manifest.json"];
+const cacheName="english-publication-a065218a90c20242662a81fc";
+const urls=["./English.html","./english_cards.js","./english_lessons.js","./app-9e48a1385784a378a92c9849.js","./datos-0c797ce41a4c067010fdeaad.js","./datos-3721293c2ead317f39d11683.js","./datos-269a6f3e39623292913c9520.js","./manifest.json"];
 self.addEventListener("install",e=>e.waitUntil(caches.open(cacheName).then(c=>c.addAll(urls.map(u=>new Request(u,{cache:"reload"})))).then(()=>self.skipWaiting())));
 self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith("english-publication-")&&k!==cacheName).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener("fetch",e=>{if(e.request.method!=="GET"||new URL(e.request.url).origin!==location.origin)return;e.respondWith(fetch(e.request).then(async r=>{if(r.ok){const c=await caches.open(cacheName);await c.put(e.request,r.clone())}return r}).catch(async()=>{const c=await caches.open(cacheName);return await c.match(e.request)||(e.request.mode==="navigate"&&await c.match("./English.html"))||Response.error()}))});
