@@ -1,0 +1,1 @@
+Object.assign(window.eliWebMedia ||= {},{"98f295f567d7aa94f902187e":"[{\"path\":[\"0\",\"edits\",\"connector||Although\",\"status\"],\"value\":4}]","f08264cfed3e06ea3aa20f19":"[{\"path\":[\"0\",\"edits\",\"adjective||thorough\"],\"value\":{}},{\"path\":[\"0\",\"edits\",\"adjective||thorough\",\"status\"],\"value\":4}]"});
