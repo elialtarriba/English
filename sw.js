@@ -1,4 +1,4 @@
-const cacheName="english-publication-03b687dbf78c42c80de67d52";
+const cacheName="english-publication-fac8775ccf2294af77253b60";
 const urls=["./English.html","./english_cards.js","./english_lessons.js","./app.js","./cards-1.js","./cards-2.js","./cards-3.js","./cards-4.js","./manifest.json"];
 self.addEventListener("install",e=>e.waitUntil(caches.open(cacheName).then(c=>c.addAll(urls.map(u=>new Request(u,{cache:"reload"})))).then(()=>self.skipWaiting())));
 self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith("english-publication-")&&k!==cacheName).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
