@@ -1,5 +1,5 @@
-const cacheName="english-publication-8e622e3a0a5303f2ac4ffe89";
-const urls=["./English.html","./english_cards.js","./english_lessons.js","./app.js?v=36","./mis_cards.js?v=36","./fotos-1.js?v=36","./Connectors.html","./manifest.json"];
+const cacheName="english-publication-8e622e3a0a5303f2ac4ffe8a";
+const urls=["./English.html","./english_cards.js","./english_lessons.js","./app.js?v=37","./mis_cards.js?v=37","./fotos-1.js?v=37","./Connectors.html","./connectors-icon.png","./connectors-plate.png","./manifest.json"];
 self.addEventListener("install",e=>e.waitUntil(caches.open(cacheName).then(c=>c.addAll(urls.map(u=>new Request(u,{cache:"reload"})))).then(()=>self.skipWaiting())));
 self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith("english-")&&k!==cacheName).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener("fetch",e=>{if(e.request.method!=="GET"||new URL(e.request.url).origin!==location.origin)return;e.respondWith(fetch(e.request).then(async r=>{if(r.ok){const c=await caches.open(cacheName);await c.put(e.request,r.clone())}return r}).catch(async()=>{const c=await caches.open(cacheName);return await c.match(e.request)||(e.request.mode==="navigate"&&await c.match("./English.html"))||Response.error()}))});
